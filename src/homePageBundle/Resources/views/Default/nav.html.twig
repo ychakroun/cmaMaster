@@ -1,5 +1,5 @@
 {% trans_default_domain 'FOSUserBundle' %}
-	{% block nav %}
+{% block nav %}
 	<header id="header">
     <div id="globalH">
       <header id="headerHeader">
@@ -47,6 +47,10 @@
         </nav>
         <div class="devis"><button class="demander"><span>Demander un devis</span></button></div>
       </header>
+      {% block maxheader %}
+      {% endblock %}
     </div>
-  </div>
+    {% block footerheader %}
+    {% endblock %}
+  </header>
 {% endblock %}
