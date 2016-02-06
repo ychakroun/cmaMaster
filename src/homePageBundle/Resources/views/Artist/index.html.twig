@@ -1,0 +1,20 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA Artist{% endblock %}
+{% block home_index_nav %}
+	{% include "homePageBundle:Default:index.html.twig" %}
+{% endblock %}
+{% block home_artist_view %}
+   <div class="artists">
+   		{% if listArtists %}
+        	{% for artist in listArtists %}
+        	    <h1 id="{{ artist.id }}">{{artist.name}}</h1>
+        	    <h2 id="{{ artist.id }}">{{artist.firstname}}</h2>
+        	{% endfor %}
+        {% else %}
+			<h1>
+				{{ 'noartiste' | trans}}
+			</h1>
+        {% endif %}
+    </div>
+{% endblock home_artist_view %}

@@ -1,0 +1,56 @@
+{% if app.request.get('_route') == 'fos_user_registration_register' %}
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<title>{% block title %}Custom My Art{% endblock %}</title>
+			{% block stylesheets  %}
+				{#{% stylesheets '@homePageBundle/Resources/styles/styles.less' filter='lessphp'%}
+    				<link rel="stylesheet" href="{{ asset_url }}" />
+        		{% endstylesheets %}
+        		{% stylesheets '@homePageBundle/Resources/styles/fonts.less' filter='lessphp'%}
+    				<link rel="stylesheet" href="{{ asset_url }}" />
+        		{% endstylesheets %}#}
+      			<!-- <link rel="stylesheet/less" type="text/css" href="styles/normalize.less"> -->
+      			<link rel="stylesheet/less" type="text/css" href="{{ asset( 'css/fonts.less' ) }}">
+      			<link rel="stylesheet/less" type="text/css" href="{{ asset( 'css/styles.less' ) }}">
+			{% endblock stylesheets %}
+			{% block javascripts %}
+    			<script src="{{ asset( 'js/less.min.js' ) }}"></script>
+    			<script src="{{ asset( 'js/main.js' ) }}"></script>
+    			{#{% javascripts '@homePageBundle/Resources/js/less.min.js' %}
+    			    <script src='{{ asset_url }}'></script>
+    			  {% endjavascripts %}#}
+  			{% endblock %}
+		</head>
+		<body>
+   			{% block body %}
+      			{% block nav %}
+      				<div id="smallHeader" >
+        				{% include "homePageBundle:Default:nav.html.twig" %}
+        			</div>
+      			{% endblock %}
+      			{% block main %}
+      				<div id="registrationPage" >
+      					<div id="registration" >
+      						{% include "homePageBundle:User:register_content.html.twig" %}
+      					</div>
+      				</div>
+      			{% endblock %}
+      			{% block footer %}
+        			{% include 'homePageBundle:Default:footer.html.twig' %}
+      			{% endblock %}
+    		{% endblock %}
+		</body>
+		{#{% javascripts '@homePageBundle/Resources/js/less.min.js' %}
+  			<script src='{{ asset_url }}'></script>
+  		{% endjavascripts %}#}
+	</html>
+{% else %}
+	{% block registration %}
+		<div id="registration">
+		{% include "homePageBundle:User:register_content.html.twig" %}
+		</div>
+	{% endblock registration %}
+{% endif %}
+

@@ -1,0 +1,28 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+{% if is_granted('IS_AUTHENTICATED_FULLY') == false %}
+	<div id="login">
+		<form  action="{{ path("fos_user_security_check") }}" method="post">
+	    	<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+	    	<input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'security.login.username'|trans }}" required="required" />
+	    	<input type="password" id="password" placeholder="{{ 'security.login.password'|trans }}" name="_password" required="required" />
+	    	<div class="checkbox">
+	    		<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+	    		<label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+	    	</div>
+	    	<input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+		</form>
+		<a  class='buttonAction' href="{{ path('fos_user_resetting_request') }}">{{ 'resetting.request.submit'|trans }}</a>
+		{% if app.request.get('_route') == 'fos_user_security_login' %}
+			<a  id="btnInsc" class='buttonAction' href="{{ path('fos_user_registration_register') }}" href="{{ path('fos_user_registration_register') }}">{{ 'layout.inscription'|trans }}</a>
+		{% else %}
+			<button  id="btnInsc" class='buttonAction' >{{ 'layout.inscription'|trans }}</button>
+		{% endif %}
+		
+	</div>
+{% endif %}
+{% endblock  %}

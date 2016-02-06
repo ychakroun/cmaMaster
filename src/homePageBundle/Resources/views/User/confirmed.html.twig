@@ -1,0 +1,15 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA Register confirmation{% endblock %}
+{% block body %}
+	{% block home_index_nav %}
+		{% include "homePageBundle:Default:index.html.twig" %}
+	{% endblock %}
+	{% block pop_up %}
+		<div id="popupco" class="pop" style="display:block;">
+			<div class="poprdr">
+				<p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+			</div>
+		</div>
+	{% endblock %}
+{% endblock %}

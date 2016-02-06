@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Deleteuser</title>
+</head>
+<body>
+	{% if user != null %}
+		<div>
+			<p>L'utilisateur avec l'id : {{ user.id }} et le username {{ user.username }} viens d'être supprimer</p>
+		</div>
+	{% else %}
+		<div>
+			<p>L'utilisateur avec le username : <b>{{ username }}</b> n'existe pas </p>
+		</div>
+	{% endif %}
+</body>
+</html>

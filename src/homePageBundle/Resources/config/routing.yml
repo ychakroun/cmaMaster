@@ -1,0 +1,25 @@
+home_page_homepage:
+    path:     /
+    defaults: { _controller: homePageBundle:Default:index }
+hello_the_world:
+    path:     /hello-world
+    defaults: { _controller: homePageBundle:Advert:index }
+deleteuser:
+    path:     /group/delete/{username}
+    defaults: { _controller: homePageBundle:User:deleteadmin }
+home_page_view:
+    path:     /{id}
+    defaults: { _controller: homePageBundle:Advert:view }
+    requirements:
+        id: \d+
+listGalleries:
+    path:     /galleries
+    defaults: { _controller: homePageBundle:Gallery:index }
+listArtists:
+    path:     /artist
+    defaults: { _controller: homePageBundle:Artist:index }
+Artist_id:
+    path:     /artist/{id}
+    defaults: { _controller: homePageBundle:Artist:view }
+    requirements:
+        id: \d+

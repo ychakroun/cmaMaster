@@ -1,0 +1,28 @@
+{% trans_default_domain 'FOSUserBundle' %}
+	<div>
+		<h2>{{ 'layout.title_inscription'|trans }}</h2>
+	</div>
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register','id': 'selectype'}}) }}
+	{{ form_widget(form.group) }}
+	<div id="divselect">
+		<div class="choices" id="2">{{ 'artist' | trans }}<div class="arrow"></div></div>
+		<div class="choices" id="3">{{ 'company' | trans }}<div class="arrow"></div></div>
+		<div class="choices" id="4">{{ 'private' | trans }}<div class="arrow"></div></div>
+	</div>
+	{{ form_widget(form.username, { 'attr': {'placeholder': 'form.username'} }) }}
+	{{ form_widget(form.email, { 'attr': {'placeholder': 'form.email'} }) }}
+    {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'form.password'} }) }}
+    {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'form.password_confirmation'} }) }}
+    <div class="checkbox">
+    	{{ form_widget(form.newsletter) }}
+    	{{ form_label(form.newsletter) }}
+	</div>
+    <div class="checkbox">
+    	{{ form_widget(form.publicPolicy) }}
+    	{{ form_label(form.publicPolicy) }}
+	</div>
+     <input class="buttonAction" type="submit" value="{{ 'layout.register' | trans }}" />
+{{ form_end(form) }}
+	{% if app.request.get('_route') != 'fos_user_registration_register' %}
+			<button id="btnLog" class='buttonAction' >{{ 'layout.login'|trans }}</button>
+	{% endif %}
