@@ -2,3 +2,7 @@
 {% block nav %}
 	{% include "homePageBundle:Default:nav_index.html.twig" %}
 {% endblock %}
+{% block body %}
+    {% include "homePageBundle:Default:presentation_index.html.twig" %}
+    {{parent()}}
+{% endblock %}

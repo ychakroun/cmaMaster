@@ -44,6 +44,7 @@ window.onload = function(){
 			choices[i].onclick = function(event){
 				var form = document.getElementById('fos_user_registration_form_group');
 				form.value = event.target.id;
+				console.log(form.value);
 				for (var y = 0; y < choices.length; y++) {
 					choices[y].removeAttribute("data");
 				}
