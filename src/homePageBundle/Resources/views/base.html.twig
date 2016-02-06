@@ -24,8 +24,16 @@
 </head>
 <body>
     {% block body %}
-      {% block nav %}
+    {% if app.request.get('_route') == 'home_page_homepage' %}
+      {% block navindex %}
+        {% include "homePageBundle:Default:nav_index.html.twig" %}
+      {% endblock %}
+    {% else %}
+    {% block nav %}
         {% include "homePageBundle:Default:nav.html.twig" %}
+      {% endblock %}
+    {% endif %}
+      {% block header %}
       {% endblock %}
       {% block main %}
       {% endblock %}

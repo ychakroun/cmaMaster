@@ -25,7 +25,7 @@ ul,li{
 #smallHeader
 {
   #header{
-  background-image: url(" ");
+  background-image: url("");
   background-color: rgb(0, 0, 0);
   height: 100px;
     #globalH{
@@ -127,7 +127,7 @@ ul,li{
 .pop{
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 100;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -344,11 +344,19 @@ ul,li{
   }
 }
 #loginPage{
+  #login{
+     width: 940px;
+     margin: 0 auto;
+     position: relative;
+  }
+  #login input[type="submit"]{
+    left: 20;margin-left:0;
+  }
   .buttonAction{
     display: inline-block;
     position: absolute;
   }
-  .buttonAction {&:nth-of-type(0){left: 0}&:nth-of-type(1){left: 45%}&:nth-of-type(2){left: 90%}}
+  .buttonAction {&:nth-of-type(0){left: 0;margin-left:0 !important}&:nth-of-type(1){left: 377px;margin-left:0 !important}&:nth-of-type(2){left: 860px;margin-left:0 !important}}
   margin-bottom: 80px;
 }
 #rgstr{
