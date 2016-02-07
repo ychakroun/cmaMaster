@@ -2,20 +2,24 @@
 <section id="presentation">
     <div id="globalP">
         <div id="left">
-          <div id="logo"><img src="img/expLogo1Home.png" alt="" /></div>
+          <div id="logo"><img src="{{ asset('img/expLogo1Home.png') }}" alt="" /></div>
           <div id="text">
             Une séléction de street artist affinées,...
             L’équipe de Custom My Art valide les divers profil pour une meilleure séléction.
           </div>
         </div>
         <div id="center">
-          <div id="logo"><img src="img/expLogo2Home.png" alt="" /></div>
+          <div id="logo">
+            <img src="{{ asset('img/expLogo2Home.png') }}" alt="" />
+          </div>
           <div id="text">
             Une oeuvre unique et certifié chez vous ! Communiquez vos envies aux différents street-artist de la plateforme
           </div>
         </div>
         <div id="right">
-          <div id="logo"><img src="img/expLogo3Home.png" alt="" /></div>
+          <div id="logo">
+            <img src="{{ asset('img/expLogo3Home.png') }}" alt="" />
+          </div>
           <div id="text">
             Un contact direct avec le street artist que vous avez selectionné.
             Custom My Art est avant tout une plateforme sociale ! </div>
@@ -23,6 +27,6 @@
       </div>
 
     </div>
-    <div id="video"><img src="img/video.jpg" alt="" /></div>
+    <div id="video"><img src="{{ asset('img/video.jpg' ) }}" alt="" /></div>
   </section>
 {% endblock %}

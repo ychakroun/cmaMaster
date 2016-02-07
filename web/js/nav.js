@@ -1,16 +1,16 @@
-window.onload = function(){
-	function slowopa (e,e1,e2,timing) {
-		var ts = timing/100+'s';
-		e2.style = "transition:all "+ts+" ease-in-out;"; 
-		e.style = "display:none;transition:all "+ts+" ease-in-out;opacity:0;";
-		e1.style = "display:block;transition:all "+ts+" ease-in-out;opacity:0;";
-		var h = e1.offsetHeight+document.getElementById("headerSection").offsetHeight+30;
-		setTimeout(function(){
-			e1.style = "display:block;transition:all "+ts+" ease-in-out; opacity:1;";
-			ts = timing/200+'s';
-			e2.style = "transition:all "+ts+" ease-in-out;height:"+h+"px;"; 
-		}, timing);
-	}
+function slowopa (e,e1,e2,timing) {
+	var ts = timing/100+'s';
+	e2.style = "transition:all "+ts+" ease-in-out;"; 
+	e.style = "display:none;transition:all "+ts+" ease-in-out;opacity:0;";
+	e1.style = "display:block;transition:all "+ts+" ease-in-out;opacity:0;";
+	var h = e1.offsetHeight+document.getElementById("headerSection").offsetHeight+30;
+	setTimeout(function(){
+		e1.style = "display:block;transition:all "+ts+" ease-in-out; opacity:1;";
+		ts = timing/200+'s';
+		e2.style = "transition:all "+ts+" ease-in-out;height:"+h+"px;"; 
+	}, timing);
+}
+function popupclass(){
 	var popup = document.getElementsByClassName('pop');
 	if(popup!=null){
 		for (var i = 0; i < popup.length; i++) {
@@ -21,6 +21,8 @@ window.onload = function(){
 			}
 		}
 	}
+}
+function btnCo(){
 	if(document.getElementById('btnCo')!=null){
 		document.getElementById('btnCo').onclick = function() {
 			if(document.getElementById('popupco').style.display == 'none'){
@@ -28,6 +30,8 @@ window.onload = function(){
 			}
 		}
 	}
+}
+function btnInsc(){
 	if(document.getElementById('btnInsc')!=null){
 		document.getElementById('btnInsc').onclick = function() {
 			var login = document.getElementById('conex');
@@ -38,6 +42,8 @@ window.onload = function(){
 			}
 		}
 	}
+}
+function btnLog(){
 	if(document.getElementById('btnLog')!=null){
 		document.getElementById('btnLog').onclick = function() {
 			var login = document.getElementById('conex');

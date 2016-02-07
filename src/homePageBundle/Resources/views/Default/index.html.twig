@@ -2,7 +2,23 @@
 {% block nav %}
 	{% include "homePageBundle:Default:nav_index.html.twig" %}
 {% endblock %}
-{% block body %}
+{% block main %}
     {% include "homePageBundle:Default:presentation_index.html.twig" %}
+    {% block home_artist_view %}
+    <div class="artists">
+        {% if listArtists.indexAction %}
+            {% for artist in listArtists.indexAction %}
+                {% if artist.username %}
+                    <h1 id="{{ artist.id }}">{{artist.username}}</h1>
+                    <h2 id="{{ artist.id }}">{{artist.firstname}}</h2>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <h1>
+                {{ 'noartiste' | trans}}
+            </h1>
+        {% endif %}
+     </div>
+    {% endblock home_artist_view %}
     {{ parent() }}
 {% endblock %}

@@ -1,4 +1,4 @@
-window.onload = function(){
+function register () {
 	if(document.getElementById('divselect')!=null){
 		var choices = document.getElementsByClassName('choices');
 		var form = document.getElementById('fos_user_registration_form_group');

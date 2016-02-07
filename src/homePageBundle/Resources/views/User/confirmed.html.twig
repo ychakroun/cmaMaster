@@ -1,14 +1,26 @@
 {% extends "homePageBundle::base.html.twig" %}
 {% trans_default_domain 'FOSUserBundle' %}
-{% block title %}CMA Register confirmation{% endblock %}
+{% block title %}CMA User confirmation{% endblock %}
 {% block body %}
 	{% block home_index_nav %}
 		{% include "homePageBundle:Default:index.html.twig" %}
 	{% endblock %}
 	{% block pop_up %}
-		<div id="popupco" class="pop" style="display:block;">
+		<div  class="pop" style="display:block;">
 			<div class="poprdr">
-				<p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+				{% embed "homePageBundle:Default:popup.html.twig" %}
+					{% trans_default_domain 'FOSUserBundle' %}
+					{% block title %}
+						{{ 'registration.confirm.title'|trans }}
+					{% endblock %}
+					{% block content %}
+						<p><b>{{ 'registration.confirm.great'|trans }}</b></p>
+						</br>
+						<p>{{ 'registration.confirm.confirm'|trans }}</p>
+						<p>{{ 'registration.confirm.message1'|trans }}</p>
+						</br><p>{{ 'registration.confirm.message2'|trans }}</p>
+					{% endblock %}
+				{% endembed %}
 			</div>
 		</div>
 	{% endblock %}
