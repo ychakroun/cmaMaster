@@ -3,22 +3,94 @@
 	{% include "homePageBundle:Default:nav_index.html.twig" %}
 {% endblock %}
 {% block main %}
-    {% include "homePageBundle:Default:presentation_index.html.twig" %}
-    {% block home_artist_view %}
-    <div class="artists">
-        {% if listArtists.indexAction %}
-            {% for artist in listArtists.indexAction %}
-                {% if artist.username %}
-                    <h1 id="{{ artist.id }}">{{artist.username}}</h1>
-                    <h2 id="{{ artist.id }}">{{artist.firstname}}</h2>
-                {% endif %}
-            {% endfor %}
-        {% else %}
-            <h1>
-                {{ 'noartiste' | trans}}
-            </h1>
-        {% endif %}
-     </div>
-    {% endblock home_artist_view %}
+ {% include "homePageBundle:Default:presentation_index.html.twig" %}
+ {% block artist %}
+    <section class="artistes">
+        <header class="headerSection">
+          <div class="globalS">
+            <div class="idSection">Les Artistes</div>
+            <div class="logoSection"><img src="img/logoTampon.png" alt="" /></div>
+            <div class="infoSection">122 Artistes</div>
+          </div>
+        </header>
+        <div class="containerS">
+          <div class="titleS">
+            <h2>Une communauté créative !</h2>
+            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</h3>
+          </div>
+          <div class="contentS">
+            <ul>
+            {% if listArtists.indexAction %}
+                {% for artist in listArtists.indexAction %}
+                    <li class="blocArtiste">
+                         <div class="globalBlocArtiste">
+                            <header class="headerBlocArtiste">
+                            {% if artist.username %}
+                                <div id="{{ artist.id }}" class="name">{{artist.username}}<span>
+                                    <img src="{{ asset('img/map.png') }}" alt="" /> Bordeaux</span>
+                                </div>
+                            {% endif %}
+                                <div class="infos">
+                                    <img src="{{ asset( 'img/custom.png' )  }}" alt="" /><p>19 custom.</p>
+                                    <img src="{{ asset( 'img/likes.png' ) }}" alt="" /><p>38 likes</p>
+                                    <img src="{{ asset( 'img/avis.png' ) }}" alt="" /><p>32 avis</p>
+                                </div>
+                            </header>
+                            <div class="contentBlocArtiste">
+                                <ul>
+                                    <li><img src="{{ asset( 'img/Nebay/Portfolio-1.jpg') }}" alt="" /></li>
+                                    <li><img src="{{ asset( 'img/Nebay/Portfolio-2.jpg') }}" alt="" /></li>
+                                    <li><img src="{{ asset( 'img/Nebay/Portfolio-3.jpg') }}" alt="" /></li>
+                                    <li><img src="{{ asset( 'img/Nebay/Galerie-1.jpg') }}" alt="" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <h1>
+                    {{ 'noartiste' | trans}}
+                </h1>
+            {% endif %}
+            </ul>
+          </div>
+        </div>
+         <footer class="footerSection"><div class="buttonMore">Plus + d'artistes</div></footer>
+    </section>
+  {% endblock %}
+  {% block galerie %}
+   <section class="galerie">
+    <header class="headerSection">
+      <div class="globalS">
+        <div class="idSection">La Galerie</div>
+        <div class="logoSection"><img src="{{ asset('img/logoTampon.png')}}" alt="" /></div>
+        <div class="infoSection">122 Oeuvres</div>
+      </div>
+    </header>
+    <div class="containerS">
+      <div class="titleS">
+        <h2>Des oeuvres originales.</h2>
+        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</h3>
+      </div>
+      <div class="contentS">
+        <ul>
+          <li>
+            <div class="images">
+              <img src="{{ asset('img/Nebay/Galerie-3.jpg')}}" alt="">
+            </div>
+            <div class="infos">
+              <div class="decriptions">
+                <p class="name">Nom Artiste</p>
+                <p class="title">Titre oeuvre / Collection / Date</p>
+              </div>
+              <div class="price">1000 €</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+      <footer class="footerSection"><div class="buttonMore">Plus + galerie</div></footer>
+  </section>
+  {% endblock %}
     {{ parent() }}
 {% endblock %}

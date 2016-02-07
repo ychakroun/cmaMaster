@@ -15,8 +15,6 @@ class ArtistController extends Controller
     }
     public function indexAction()
     {
-    $repository = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:User');
-		$listArtists = $repository->findByRole('ROLE_ARTIST');
-      	return $this->render('homePageBundle:Artist:index.html.twig',array('listArtists' => $listArtists));
+      	return $this->render('homePageBundle:Artist:index.html.twig');
     }
 }

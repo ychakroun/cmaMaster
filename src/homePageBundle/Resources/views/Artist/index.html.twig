@@ -1,15 +1,21 @@
 {% extends "homePageBundle::base.html.twig" %}
 {% trans_default_domain 'FOSUserBundle' %}
 {% block title %}CMA Artist{% endblock %}
-{% block home_index_nav %}
-	{% include "homePageBundle:Default:index.html.twig" %}
+{% block nav %}
+  <div id="smallHeader" >
+    {% include "homePageBundle:Default:nav.html.twig" %}
+  </div>
 {% endblock %}
-{% block home_artist_view %}
+{% block main %}
    <div class="artists">
-   		{% if listArtists %}
-        	{% for artist in listArtists %}
-        	    <h1 id="{{ artist.id }}">{{artist.name}}</h1>
-        	    <h2 id="{{ artist.id }}">{{artist.firstname}}</h2>
+   		{% if listArtists.pageArtist %}
+        	{% for section in listArtists.pageArtist %}
+            <section id="{{ loop.index }}">
+              {% for artist in section %}
+              <h1 id="{{ artist.id }}">{{artist.username}}</h1>
+              <h2 id="{{ artist.id }}">{{artist.firstname}}</h2>
+              {% endfor %}
+            </section>
         	{% endfor %}
         {% else %}
 			<h1>
@@ -17,4 +23,4 @@
 			</h1>
         {% endif %}
     </div>
-{% endblock home_artist_view %}
+{% endblock %}
