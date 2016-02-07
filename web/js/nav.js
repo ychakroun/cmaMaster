@@ -38,20 +38,6 @@ window.onload = function(){
 			}
 		}
 	}
-	if(document.getElementById('divselect')!=null){
-		var choices = document.getElementsByClassName('choices');
-		for (var i = 0; i < choices.length; i++) {
-			choices[i].onclick = function(event){
-				var form = document.getElementById('fos_user_registration_form_group');
-				form.value = event.target.id;
-				console.log(form.value);
-				for (var y = 0; y < choices.length; y++) {
-					choices[y].removeAttribute("data");
-				}
-				event.target.setAttribute("data", "selected");
-			}
-		}
-	}
 	if(document.getElementById('btnLog')!=null){
 		document.getElementById('btnLog').onclick = function() {
 			var login = document.getElementById('conex');
