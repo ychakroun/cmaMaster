@@ -1,0 +1,3 @@
+image_test:
+    path:     /imagetest
+    defaults: { _controller: CmaUserBundle:Image:upload }

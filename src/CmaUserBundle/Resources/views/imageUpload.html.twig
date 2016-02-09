@@ -1,0 +1,10 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block main %}
+		{{ form_start(formImage, {'method': 'post', 'action': path('image_test'), 'attr': {'class': 'imageform','id': 'imageform'}}) }}			
+			{{form_row(formImage.file)}}
+			{{form_row(formImage.name,{attr: {'value':username}})}}
+			<input type="submit">
+		{{ form_end(formImage) }}
+	</form>
+{% endblock %}

@@ -8,7 +8,9 @@ fos_user_group:
 home_page:
     resource: "@homePageBundle/Resources/config/routing.yml"
     prefix:   /
-
+cma:
+    resource: "@CmaUserBundle/Resources/config/routing.yml"
+    prefix:   /cma
 app:
     resource: "@CmaUserBundle/Controller/"
     type:     annotation
