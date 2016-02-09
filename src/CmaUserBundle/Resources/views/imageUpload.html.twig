@@ -1,0 +1,10 @@
+{% extends "homePageBundle::base.html.twig" %}
+
+{% block main %}
+	{{ form_start(formImage, {'method': 'post', 'action': path('image_test'), 'attr': {'class': 'image_test','id': 'image_test'}}) }}
+		{{ form_widget(formImage) }}
+		{{ form_rest(formImage) }}
+	<input class="buttonAction" type="submit" value="{{ 'form.image.submit' | trans }}" />
+	{{ form_end(formImage) }}
+
+{% endblock %}
