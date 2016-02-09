@@ -15,7 +15,7 @@ class UserController extends Controller
   {
     $userManager = $this->get('fos_user.user_manager');
     $repository = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:User');
-    $user = $repository->myFindName('poloralph');
+    $user = $repository->myFindName($username);
     if($user != null){
       $userManager->deleteUser($user[0]);
       return $this->render('homePageBundle:User:delete.html.twig',array('user'=>$user[0]));

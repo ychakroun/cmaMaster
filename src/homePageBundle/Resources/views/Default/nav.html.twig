@@ -28,6 +28,7 @@
             {% image '@homePageBundle/Resources/img/login.png' %}
     				  <img id="btnCo" src="{{ asset_url }}" alt="" />
 				    {% endimage %}
+      {% if app.request.get('_route') != 'fos_user_registration_register' %}
 				<div id="popupco" class="pop" style="display:none;">
 					<div id="poprdr">
             <header id="headerSection" class="headerSection">
@@ -42,6 +43,7 @@
              </div>
 					</div>
 				</div>
+      {% endif %}
 			</li>
           </ul>
         </nav>
