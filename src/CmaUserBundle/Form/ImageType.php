@@ -9,13 +9,15 @@ use CmaUserBundle\Entity\Image;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class ImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', FileType::class);
+            ->add('file', FileType::class, array('label' => 'form.image.file', 'translation_domain' => 'FOSUserBundle'))
+            ->add('name', HiddenType::class);
         ;
     }
     

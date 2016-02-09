@@ -75,6 +75,7 @@ form:
     name: 'Nom'
     image:
         submit: 'Enregister l''image'
+        file: 'Selectionner une image'
     firstname: 'Prenom'
     newsletter: 'Je m''inscrit à la newslettre'
     publicpolicy: 'J''accepte les conditions d''utilisations'

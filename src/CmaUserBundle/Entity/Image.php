@@ -51,7 +51,33 @@ class Image
             $this->path = 'initial';
         }
     }
-
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+    /**
+     * Get file.
+     *
+     * @param String $name
+     */
+    public function setName(String $name)
+    {
+        return $this->name;
+    }
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -62,6 +88,7 @@ class Image
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
             $this->path = $filename.'.'.$this->getFile()->guessExtension();
+            $this->name = $this->name.'_'.$filename;
         }
     }
     protected function getUploadRootDir()
