@@ -18,10 +18,7 @@ class Image
      */
     public $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
-     */
+
     public $name;
 
     /**
@@ -61,18 +58,17 @@ class Image
         return $this->file;
     }
     /**
-     * Get file.
+     * Set name.
      *
      * @param String $name
      */
-    public function setName(String $name)
+    public function setName($name)
     {
         return $this->name;
     }
     /**
-     * Get file.
-     *
-     * @return UploadedFile
+     *  getName.
+     * @return getName
      */
     public function getName()
     {
@@ -87,8 +83,7 @@ class Image
         if (null !== $this->getFile()) {
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
-            $this->path = $filename.'.'.$this->getFile()->guessExtension();
-            $this->name = $this->name.'_'.$filename;
+            $this->path = '/images/'.$this->name.'/'.$filename.'.'.$this->getFile()->guessExtension();
         }
     }
     protected function getUploadRootDir()
@@ -102,7 +97,10 @@ class Image
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'images';
+        if (!file_exists(__DIR__.'/../../../web/images/'.$this->name)) {
+            mkdir(__DIR__.'/../../../web/images/'.$this->name, 0755, true);
+        }
+        return '/images/'.$this->name;
     }
     /**
      * @ORM\PostPersist()

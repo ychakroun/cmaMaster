@@ -15,21 +15,16 @@ class ImageController extends Controller
         $usr = $this->get('security.token_storage')->getToken();
         $form = $this->createForm(ImageType::class, $document);
         $form->handleRequest($request);
-        if ($this->has('security.csrf.token_manager')) {
-            $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
-        } else {
-            // BC for SF < 2.4
-            $csrfToken = $this->has('form.csrf_provider')
-                ? $this->get('form.csrf_provider')->generateCsrfToken('authenticate')
-                : null;
-        }
         if(is_string($usr->getUser())){
-            $document->name = $usr->getUser();
+            $name = $usr->getUser();
         }else{
-             $document->name = $usr->getUser()->getUsername();
+             $name = $usr->getUser()->getUsername();
+             $document->name = $name;
              dump($document);
+             $document->getName();
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
+                
                 $em->persist($document);
                 $em->flush();
                 return $this->redirectToRoute("home_page_homepage");
@@ -37,7 +32,7 @@ class ImageController extends Controller
 
         }
     
-        return $this->render("CmaUserBundle::imageUpload.html.twig",array('formImage' => $form->createView(),'csrf_token' => $csrfToken,"username"=>$usr->getUser()->getUsername()));
+        return $this->render("CmaUserBundle::imageUpload.html.twig",array('formImage' => $form->createView(),'username' => $name));
     }
 }
 ?>

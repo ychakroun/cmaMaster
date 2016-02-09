@@ -1,11 +1,10 @@
 {% extends "homePageBundle::base.html.twig" %}
 {% trans_default_domain 'FOSUserBundle' %}
 {% block main %}
-	<form  action="{{ path("image_test") }}" method="post" class="image_test" id="image_test" >
-		<input id="image_name" name="image[image]" required="required" type="file"></imput>
-		<input id="image_name" name="image[name]" required="required" value="{{ username }}" type="text"></imput>
-		{{ form_rest(formImage) }}
-	<input class="buttonAction" type="submit" value="{{ 'form.image.submit' | trans }}" />
+		{{ form_start(formImage, {'method': 'post', 'action': path('image_test'), 'attr': {'class': 'imageform','id': 'imageform'}}) }}			
+			{{form_row(formImage.file)}}
+			{{form_row(formImage.name,{attr: {'value':username}})}}
+			<input type="submit">
+		{{ form_end(formImage) }}
 	</form>
-
 {% endblock %}
