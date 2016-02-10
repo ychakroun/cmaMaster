@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
 use CmaUserBundle\Form\UserParameterType;
+use CmaUserBundle\Form\UserInformationType;
 use CmaUserBundle\Entity\User;
 use FOS\UserBundle\Doctrine\UserManager;
 use FOS\UserBundle\Model\UserInterface;
@@ -46,5 +47,25 @@ class UserController extends Controller
         }
         dump($form->createView());
         return $this->render('homePageBundle:User:parameter_user.html.twig',array('formPara'=>$form->createView()));
+    }
+    public function informationAction(Request $request)
+    { 
+        if(is_string($this->get('security.token_storage')->getToken()->getUser())) 
+        {
+          return $this->render('homePageBundle:Default:index.html.twig');
+        }else{
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $form = $this->createForm(UserInformationType::class, $user);
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                return $this->redirectToRoute("user_info");
+            }
+
+        }
+        dump($form->createView());
+        return $this->render('homePageBundle:User:information_user.html.twig',array('formInfo'=>$form->createView()));
     }
 }

@@ -1,0 +1,31 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA User information{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block main %}
+  <section class="param">
+    <header class="headerSection">
+      <div class="globalS">
+        <div class="idSection">{{ "information_page.header" | trans }}</div>
+        <div class="logoSection"><img src="{{ asset("img/logoTampon.png") }}" alt="" /></div>
+        <div class="infoSection"> </div>
+      </div>
+    </header>
+    <div class="containerS">
+      {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
+      <div class="contentS">
+      	{% if formInfo %}
+      	{{form_start(formInfo)}}
+          {{form_widget(formInfo)}}
+          <div class="button">
+            <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "parameter_page.submit"|trans }}" />
+          </div>
+      	{{form_end(formInfo)}}
+      	{% endif %}
+    </div>
+  </section>
+{% endblock %}

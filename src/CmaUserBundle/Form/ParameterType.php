@@ -35,7 +35,4 @@ class ParameterType extends AbstractType
             'data_class' => 'CmaUserBundle\Entity\Parameter',
         ));
     }
-    // function __construct() {
-    //     $this->parameter = $this->get('home_page.userServices')->allParameter();
-    // }
 }
