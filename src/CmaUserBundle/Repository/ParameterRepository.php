@@ -10,4 +10,23 @@ namespace CmaUserBundle\Repository;
  */
 class ParameterRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getAll() {
+
+    try {
+
+        $qb = $this->getEntityManager()->createQueryBuilder();
+
+        $qb->select('a')
+           ->from('CmaUserBundle:Parameter', 'a');
+
+        $qb->orderBy('a.createdAt', 'DESC');
+
+         return $qb->getQuery()->getResult();
+
+       } catch (\Doctrine\ORM\NoResultException $e) {
+           return array();
+       } catch (\Exception $e) {
+           return array();
+       }
+	}
 }

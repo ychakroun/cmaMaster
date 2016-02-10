@@ -61,6 +61,9 @@ class User extends BaseUser
     private $publicPolicy;
     /**
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Parameter", cascade={"persist"})
+    * @ORM\JoinTable(name="parameter",
+     *  joinColumns={@ORM\JoinColumn(name="parameter_id", referencedColumnName="id")}
+     * )
     */
     private $parameter;
 
@@ -137,7 +140,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setParameter(\CmaUserBundle\Entity\Parameter $parameter = null)
+    public function setParameter(\CmaUserBundle\Entity\Parameter $parameter)
     {
         $this->parameter = $parameter;
 

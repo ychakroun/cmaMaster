@@ -41,6 +41,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         listArtists: "@home_page.listArtists"
+        userServices: "@home_page.userServices"
 
 # Doctrine Configuration
 doctrine:

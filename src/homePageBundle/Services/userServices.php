@@ -1,18 +1,19 @@
 <?php
 namespace homePageBundle\Services;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ORM\EntityManager;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+
+
 class userServices {
 	
-	protected $em;
+	protected $container;
 
-	public function setEntityManager(ObjectManager $em)
+	public function setContext(TokenStorageInterface $sc)
 	{
-   		$this->em = $em;
+   		$this->sc = $sc;
 	}
 
     public function allParameter() {
-        return $this->$em->getUser()->getParameter()
+        return $this->sc->getToken()->getUser()->getParameter()->getAll();
     }
 }
 ?>

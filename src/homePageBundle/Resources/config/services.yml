@@ -6,4 +6,4 @@ services:
     home_page.userServices:
         class: homePageBundle\Services\userServices
         calls:
-             - [setEntityManager, ["@doctrine.orm.entity_manager"]]
+             - [setContext, ["@security.token_storage"]]

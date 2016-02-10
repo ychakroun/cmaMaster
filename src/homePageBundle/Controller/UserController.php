@@ -27,6 +27,7 @@ class UserController extends Controller
   }
   public function parameterAction()
     {
+        dump($this->get('home_page.userservices'));
         return $this->render('homePageBundle:User:parameter_user.html.twig');
     }
 }
