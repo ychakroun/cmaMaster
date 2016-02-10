@@ -6,8 +6,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
-use CmaUserBundle\Form\ParameterType;
-use CmaUserBundle\Entity\Parameter;
+use CmaUserBundle\Form\UserParameterType;
+use CmaUserBundle\Entity\User;
 use FOS\UserBundle\Doctrine\UserManager;
 use FOS\UserBundle\Model\UserInterface;
 
@@ -28,25 +28,23 @@ class UserController extends Controller
     
   }
   public function parameterAction(Request $request)
-    {
-        $para = new Parameter();
-        $usrPara = $this->get('home_page.userServices')->allParameter();
-        $form = $this->createForm(ParameterType::class, $para);
-        $form->handleRequest($request);
+    { 
         if(is_string($this->get('security.token_storage')->getToken()->getUser())) 
         {
           return $this->render('homePageBundle:Default:index.html.twig');
         }else{
-             dump($para);
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $form = $this->createForm(UserParameterType::class, $user);
+            $form->handleRequest($request);
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-                
-                $em->persist($para);
+                $em->persist($user);
                 $em->flush();
                 return $this->redirectToRoute("user_parameter");
             }
 
         }
-        return $this->render('homePageBundle:User:parameter_user.html.twig',array('formPara'=>$form->createView(),"value"=>$usrPara));
+        dump($form->createView());
+        return $this->render('homePageBundle:User:parameter_user.html.twig',array('formPara'=>$form->createView()));
     }
 }
