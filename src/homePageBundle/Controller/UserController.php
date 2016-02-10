@@ -31,7 +31,7 @@ class UserController extends Controller
     {
         $para = new Parameter();
         $usrPara = $this->get('home_page.userServices')->allParameter();
-        $form = $this->createForm(ParameterType::class, $usrPara);
+        $form = $this->createForm(ParameterType::class, $para);
         $form->handleRequest($request);
         if(is_string($this->get('security.token_storage')->getToken()->getUser())) 
         {
@@ -41,12 +41,12 @@ class UserController extends Controller
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 
-                //$em->persist($para);
-                //$em->flush();
+                $em->persist($para);
+                $em->flush();
                 return $this->redirectToRoute("user_parameter");
             }
 
         }
-        return $this->render('homePageBundle:User:parameter_user.html.twig',array('formPara'=>$form->createView()));
+        return $this->render('homePageBundle:User:parameter_user.html.twig',array('formPara'=>$form->createView(),"value"=>$usrPara));
     }
 }

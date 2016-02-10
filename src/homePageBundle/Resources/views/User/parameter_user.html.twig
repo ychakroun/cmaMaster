@@ -31,26 +31,26 @@
             <ul>
               <li>
                 <div class="checkbox">
-				  {{form_widget(formPara.mailDevisAll)}}
 				  {{form_label(formPara.mailDevisAll)}}
+				  {{form_widget(formPara.mailDevisAll,{'checked': userServices.allParameter.mailDevisAll})}}
                 </div>
               </li>
               <li>
               	 <div class="checkbox">
-				  {{form_widget(formPara.mailDevisUser)}}
 				  {{form_label(formPara.mailDevisUser)}}
+				  {{form_widget(formPara.mailDevisUser,{'checked': userServices.allParameter.mailDevisUser})}}
                 </div>
               </li>
               <li>
               	<div class="checkbox">
-				  {{form_widget(formPara.mailDevisCom)}}
 				  {{form_label(formPara.mailDevisCom)}}
+				  {{form_widget(formPara.mailDevisCom,{'checked': userServices.allParameter.mailDevisCom})}}
                 </div>
               </li>
               <li>
               	<div class="checkbox">
-				  {{form_widget(formPara.mailDevisValid)}}
 				  {{form_label(formPara.mailDevisValid)}}
+				  {{form_widget(formPara.mailDevisValid,{'checked': userServices.allParameter.mailDevisValid})}}
                 </div>
               </li>
             </ul>
@@ -62,14 +62,14 @@
             <ul>
               <li>
                 <div class="checkbox">
-				  {{form_widget(formPara.isPublic)}}
 				  {{form_label(formPara.isPublic)}}
+				  {{form_widget(formPara.isPublic,{'checked': userServices.allParameter.isPublic})}}
                 </div>
               </li>
               <li>
                 <div class="checkbox">
-				  {{form_widget(formPara.newsletter)}}
 				  {{form_label(formPara.newsletter)}}
+				  {{form_widget(formPara.newsletter,{'checked': userServices.allParameter.newsletter})}}
                 </div>
               </li>
              </ul>
