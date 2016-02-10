@@ -81,7 +81,7 @@ class RegistrationController extends Controller
         if (null === $user) {
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
-
+        dump($user);
         return $this->render('FOSUserBundle:Registration:checkEmail.html.twig', array(
             'user' => $user,
         ));

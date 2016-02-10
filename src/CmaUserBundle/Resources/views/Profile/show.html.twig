@@ -1,5 +1,9 @@
-{% extends "CmaUserBundle::layout.html.twig" %}
-
-{% block cma_user_content %}
-{% include "CmaUserBundle::show_content.html.twig" %}
-{% endblock cma_user_content %}
+{% extends "homePageBundle::base.html.twig" %}
+{% block nav %}
+<div id="smallHeader" >
+    {% include "homePageBundle:Default:nav.html.twig" %}
+</div>
+{% endblock %}
+{% block main %}
+{% include "homePageBundle:Profile:show_content.html.twig" %}
+{% endblock %}

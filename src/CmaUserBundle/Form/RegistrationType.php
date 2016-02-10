@@ -7,12 +7,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use CmaUserBundle\Form\ParameterRegistrationType;
 
 class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('newsletter', CheckboxType::class, array('label' => 'form.newsletter','required' => false, 'translation_domain' => 'FOSUserBundle'));
+        $builder->add('parameter', ParameterRegistrationType::class, array('label' => 'form.newsletter','required' => false, 'translation_domain' => 'FOSUserBundle'));
         $builder->add('publicPolicy', CheckboxType::class, array('label' => 'form.publicpolicy','required' => true, 'translation_domain' => 'FOSUserBundle'));
         $builder->add('group', EntityType::class, array('class' => 'CmaUserBundle:Group','choice_label' => 'name',"multiple" => true ,'translation_domain' => 'FOSUserBundle','choice_translation_domain' => 'FOSUserBundle'));
     }
