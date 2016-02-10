@@ -6,10 +6,10 @@
       <p>{{ "sidebar_parameter.profile" | trans }}</p>
       <ul>
         <li>
-          <p><a href="#">{{ "sidebar_parameter.info" | trans }}</a></p>
+          <p><a href="{{ path('user_info') }}">{{ "sidebar_parameter.info" | trans }}</a></p>
         </li>
         <li>
-          <p><a href="#">{{ "sidebar_parameter.parameter" | trans }}</a></p>
+          <p><a href="{{ path('user_parameter') }}">{{ "sidebar_parameter.parameter" | trans }}</a></p>
         </li>
       </ul>
     </div>
@@ -17,16 +17,16 @@
       <p>{{ "sidebar_parameter.order" | trans }}</p>
       <ul>
         <li>
-          <p><a href="#">{{ "sidebar_parameter.devis" | trans }}</a></p>
+          <p><a href="{{ path('user_devis') }}">{{ "sidebar_parameter.devis" | trans }}</a></p>
         </li>
         <li>
-          <p><a href="#">{{ "sidebar_parameter.comment" | trans }}</a></p>
+          <p><a href="{{ path('user_message') }}">{{ "sidebar_parameter.comment" | trans }}</a></p>
         </li>
         <li>
-          <p><a href="#">{{ "sidebar_parameter.progress_project" | trans }}</a></p>
+          <p><a href="{{ path('user_progress_project') }}">{{ "sidebar_parameter.progress_project" | trans }}</a></p>
         </li>
         <li>
-          <p><a href="#">{{ "sidebar_parameter.finish_project" | trans }}</a></p>
+          <p><a href="{{ path('user_finish_project') }}">{{ "sidebar_parameter.finish_project" | trans }}</a></p>
         </li>
       </ul>
     </div>
@@ -34,7 +34,7 @@
       <p>{{ "sidebar_parameter.purchase" | trans }}</p>
       <ul>
         <li>
-          <p><a href="#">{{ "sidebar_parameter.sold" | trans }}</a></p>
+          <p><a href="{{ path('user_sold_project') }}">{{ "sidebar_parameter.sold" | trans }}</a></p>
         </li>
       </ul>
     </div>
