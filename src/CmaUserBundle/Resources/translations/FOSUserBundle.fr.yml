@@ -77,7 +77,13 @@ form:
         submit: 'Enregister l''image'
         file: 'Selectionner une image'
     firstname: 'Prenom'
-    newsletter: 'Je m''inscrit à la newslettre'
+    parameter:
+        newsletter: 'Je m''inscrit à la newslettre'
+        mail_devis_all: 'Recevoir une notification par mail lorsque un devis est envoyé à la communauté.'
+        mail_devis_user: 'Lorsque un devis m’est envoyer.'
+        mail_devis_com: 'Lorsque j’ai un nouveau message.'
+        mail_devis_valid: 'Lorsque ma proposition de devis est acceptée.'
+        is_public: 'Mettre mon compte en suspend.'
     publicpolicy: 'J''accepte les conditions d''utilisations'
     email: 'Adresse e-mail'
     current_password: 'Mot de passe actuel'
@@ -85,3 +91,19 @@ form:
     password_confirmation: Vérification
     new_password: 'Nouveau mot de passe'
     new_password_confirmation: Vérification
+parameter_page:
+    header: 'Informations'
+    notification: 'Notifications'
+    account: 'Compte'
+    submit: 'Enregister les Informations'
+sidebar_parameter:
+    profile: 'Profil'
+    order: 'Commandes'
+    info: 'Informations personnelles'
+    parameter: 'Paramètres'
+    devis: 'Mes devis en attente'
+    comment: 'Mes propositions envoyées'
+    progress_project: 'Mes projets en cours'
+    finish_project: 'Mes projets réalisés'
+    purchase: 'Achat en galerie'
+    sold: 'Mes oeuvres vendues'

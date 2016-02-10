@@ -11,9 +11,23 @@ class userServices {
 	{
    		$this->sc = $sc;
 	}
-
+	public function getUsername(){
+		if(is_string($this->sc->getToken()->getUser())){
+    		return null;
+    	}
+    	else
+    	{
+    		return $this->sc->getToken()->getUser()->getUsername();
+    	}
+	}
     public function allParameter() {
-        return $this->sc->getToken()->getUser()->getParameter()->getAll();
+    	if($this->sc->getToken()->getUser()->getParameter()){
+    		return $this->sc->getToken()->getUser()->getParameter()->getAll();
+    	}
+    	else
+    	{
+    		return null;
+    	}
     }
 }
 ?>

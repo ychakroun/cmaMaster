@@ -1,11 +1,85 @@
 {% extends "homePageBundle::base.html.twig" %}
 {% trans_default_domain 'FOSUserBundle' %}
 {% block title %}CMA User parameter{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
 {% block main %}
-	{{ dump(userServices.allParameter)}}
-	 {% if userServices.allParameter %}
-        {% for parameter in userServices.allParameter %}
-			<p>{{ parameter }}</p>
-        {% endfor %}
-    {% endif %}
+  <section class="param">
+    <header class="headerSection">
+      <div class="globalS">
+        <div class="idSection">{{ "parameter_page.header" | trans }}</div>
+        <div class="logoSection"><img src="{{ asset("img/logoTampon.png") }}" alt="" /></div>
+        <div class="infoSection"> </div>
+      </div>
+    </header>
+    <div class="containerS">
+      {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
+      <div class="contentS">
+      	{% if formPara %}
+      	{{form_start(formPara)}}
+          <div class="identity">
+            <div class="titleS">
+              <div>{{ userServices.getUsername }}</div>
+            </div>
+          <div class="notif">
+            <div class="titleS">
+              <div>{{ "parameter_page.notification" | trans }}</div>
+            </div>
+            <ul>
+              <li>
+                <div class="checkbox">
+				  {{form_widget(formPara.mailDevisAll)}}
+				  {{form_label(formPara.mailDevisAll)}}
+                </div>
+              </li>
+              <li>
+              	 <div class="checkbox">
+				  {{form_widget(formPara.mailDevisUser)}}
+				  {{form_label(formPara.mailDevisUser)}}
+                </div>
+              </li>
+              <li>
+              	<div class="checkbox">
+				  {{form_widget(formPara.mailDevisCom)}}
+				  {{form_label(formPara.mailDevisCom)}}
+                </div>
+              </li>
+              <li>
+              	<div class="checkbox">
+				  {{form_widget(formPara.mailDevisValid)}}
+				  {{form_label(formPara.mailDevisValid)}}
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="account">
+            <div class="titleS">
+              <div>{{ "parameter_page.account" | trans }}</div>
+            </div>
+            <ul>
+              <li>
+                <div class="checkbox">
+				  {{form_widget(formPara.isPublic)}}
+				  {{form_label(formPara.isPublic)}}
+                </div>
+              </li>
+              <li>
+                <div class="checkbox">
+				  {{form_widget(formPara.newsletter)}}
+				  {{form_label(formPara.newsletter)}}
+                </div>
+              </li>
+             </ul>
+          </div>
+          <div class="button">
+            <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "parameter_page.submit"|trans }}" />
+          </div>
+      	</div>
+      	{{form_end(formPara)}}
+      	{% endif %}
+    </div>
+  </section>
 {% endblock %}

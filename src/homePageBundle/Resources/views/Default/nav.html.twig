@@ -34,12 +34,19 @@
             <header id="headerSection" class="headerSection">
             </header>
             <div id="conex">
-                <h1>{{ 'layout.login' | trans }}</h1>
-               {{ render (controller('FOSUserBundle:Security:login')) }}
-            </div>
-             <div id="rgstr">
-                <h1>{{ 'layout.inscription' | trans }}</h1>
-						   {{ render(controller('FOSUserBundle:Registration:register')) }}
+               {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                  <h1>{{ 'layout.logged_in_as' | trans({'%username%' : app.user.username}) }}</h1>
+                  <a href="{{ path('fos_user_security_logout') }}">
+                  <div id="btnLog" class='buttonAction' >{{ 'layout.logout'|trans }}</div>
+                  </a>
+                {% else %}
+                  <h1>{{ 'layout.login' | trans }}</h1>
+                  {{ render (controller('FOSUserBundle:Security:login')) }}
+                </div>
+                <div id="rgstr">
+                  <h1>{{ 'layout.inscription' | trans }}</h1>
+                  {{ render(controller('FOSUserBundle:Registration:register')) }}
+              {% endif %}
              </div>
 					</div>
 				</div>
