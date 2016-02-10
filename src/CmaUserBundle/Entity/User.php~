@@ -21,7 +21,7 @@ class User extends BaseUser
      */
     protected $id;
     /**
-     * @ORM\ManyToOne(targetEntity="CmaUserBundle\Entity\Group")
+     * @ORM\ManyToMany(targetEntity="CmaUserBundle\Entity\Group")
      * @ORM\JoinTable(name="fos_user_user_group",
      *  joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *  inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
@@ -56,13 +56,13 @@ class User extends BaseUser
      */
     protected $name;
 
-    /** @ORM\Column(type="boolean", name="newsletter", nullable=true) */
-
-    private $newsletter;
-
      /** @ORM\Column(type="boolean", name="public_policy") */
 
     private $publicPolicy;
+    /**
+    * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Parameter", cascade={"persist"})
+    */
+    private $parameter;
 
     public function __construct()
     {
@@ -106,42 +106,51 @@ class User extends BaseUser
     {
         return $this->groups;
     }
-
     /**
-     * Set groups
+     * Set publicPolicy
      *
-     * @param \CmaUserBundle\Entity\Group $groups
+     * @param boolean $publicPolicy
      *
      * @return User
      */
-    public function setGroups(\CmaUserBundle\Entity\Group $groups = null)
+    public function setPublicPolicy($publicPolicy)
     {
-        $this->groups = $groups;
+        $this->publicPolicy = $publicPolicy;
 
         return $this;
     }
 
     /**
-     * Set newsletter
-     *
-     * @param boolean $newsletter
-     *
-     * @return User
-     */
-    public function setNewsletter($newsletter)
-    {
-        $this->newsletter = $newsletter;
-
-        return $this;
-    }
-
-    /**
-     * Get newsletter
+     * Get publicPolicy
      *
      * @return boolean
      */
-    public function getNewsletter()
+    public function getPublicPolicy()
     {
-        return $this->newsletter;
+        return $this->publicPolicy;
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param \CmaUserBundle\Entity\Parameter $parameter
+     *
+     * @return User
+     */
+    public function setParameter(\CmaUserBundle\Entity\Parameter $parameter = null)
+    {
+        $this->parameter = $parameter;
+
+        return $this;
+    }
+
+    /**
+     * Get parameter
+     *
+     * @return \CmaUserBundle\Entity\Parameter
+     */
+    public function getParameter()
+    {
+        return $this->parameter;
     }
 }

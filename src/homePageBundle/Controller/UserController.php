@@ -25,4 +25,8 @@ class UserController extends Controller
     }
     
   }
+  public function parameterAction()
+    {
+        return $this->render('homePageBundle:User:parameter_user.html.twig');
+    }
 }

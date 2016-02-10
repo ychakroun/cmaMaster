@@ -56,13 +56,13 @@ class User extends BaseUser
      */
     protected $name;
 
-    /** @ORM\Column(type="boolean", name="newsletter", nullable=true) */
-
-    private $newsletter;
-
      /** @ORM\Column(type="boolean", name="public_policy") */
 
     private $publicPolicy;
+    /**
+    * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Parameter", cascade={"persist"})
+    */
+    private $parameter;
 
     public function __construct()
     {
@@ -106,31 +106,6 @@ class User extends BaseUser
     {
         return $this->groups;
     }
-
-    /**
-     * Set newsletter
-     *
-     * @param boolean $newsletter
-     *
-     * @return User
-     */
-    public function setNewsletter($newsletter)
-    {
-        $this->newsletter = $newsletter;
-
-        return $this;
-    }
-
-    /**
-     * Get newsletter
-     *
-     * @return boolean
-     */
-    public function getNewsletter()
-    {
-        return $this->newsletter;
-    }
-
     /**
      * Set publicPolicy
      *
@@ -153,5 +128,29 @@ class User extends BaseUser
     public function getPublicPolicy()
     {
         return $this->publicPolicy;
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param \CmaUserBundle\Entity\Parameter $parameter
+     *
+     * @return User
+     */
+    public function setParameter(\CmaUserBundle\Entity\Parameter $parameter = null)
+    {
+        $this->parameter = $parameter;
+
+        return $this;
+    }
+
+    /**
+     * Get parameter
+     *
+     * @return \CmaUserBundle\Entity\Parameter
+     */
+    public function getParameter()
+    {
+        return $this->parameter;
     }
 }

@@ -1,6 +1,9 @@
 home_page_homepage:
     path:     /
     defaults: { _controller: homePageBundle:Default:index }
+user_parameter:
+    path:     /parameter
+    defaults: { _controller: homePageBundle:User:parameter }
 hello_the_world:
     path:     /hello-world
     defaults: { _controller: homePageBundle:Advert:index }

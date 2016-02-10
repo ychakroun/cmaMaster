@@ -3,3 +3,7 @@ services:
         class: homePageBundle\Services\listArtists
         calls:
              - [setEntityManager, ["@doctrine.orm.entity_manager"]]
+    home_page.userServices:
+        class: homePageBundle\Services\userServices
+        calls:
+             - [setEntityManager, ["@doctrine.orm.entity_manager"]]

@@ -48,11 +48,5 @@
   			<script src='{{ asset_url }}'></script>
   		{% endjavascripts %}#}
 	</html>
-{% else %}
-	{% block registration %}
-		<div id="registration">
-		{% include "homePageBundle:User:register_content.html.twig" %}
-		</div>
-	{% endblock registration %}
 {% endif %}
 
