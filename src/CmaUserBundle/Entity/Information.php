@@ -31,7 +31,7 @@ class Information
     /**
      * @var int
      *
-     * @ORM\Column(name="zip", type="smallint", nullable=true)
+     * @ORM\Column(name="zip", type="integer", nullable=true)
      */
     private $zip;
 

@@ -1,6 +1,6 @@
 {% extends "homePageBundle:Default:index.html.twig" %}
 {% trans_default_domain 'FOSUserBundle' %}
-{% block title %}CMA User confirmation{% endblock %}
+{% block title %}CMA User checkmail{% endblock %}
 {% block main %}
 	{% block pop_up %}
 		<div  class="pop" style="display:block;">
@@ -8,18 +8,18 @@
 				{% embed "homePageBundle:Default:popup.html.twig" %}
 					{% trans_default_domain 'FOSUserBundle' %}
 					{% block title %}
-						{{ 'registration.confirm.title'|trans }}
+						{{ 'registration.checkmail.title'|trans }}
 					{% endblock %}
 					{% block content %}
-						<p><b>{{ 'registration.confirm.great'|trans }}</b></p>
+						<p><b>{{ 'registration.checkmail.great'|trans }}</b></p>
 						</br>
-						<p>{{ 'registration.confirm.confirm'|trans }}</p>
-						<p>{{ 'registration.confirm.message1'|trans }}</p>
-						</br><p>{{ 'registration.confirm.message2'|trans }}</p>
+						<p>{{ 'registration.checkmail.confirm'|trans }}</p>
+						<p>{{ 'registration.checkmail.message1'|trans }}</p>
+						</br><p>{{ 'registration.checkmail.message2'|trans({'%email%': user.email}) }}</p>
 					{% endblock %}
 				{% endembed %}
 			</div>
 		</div>
 	{% endblock %}
-	{{parent()}};
+	{{parent()}}
 {% endblock %}
