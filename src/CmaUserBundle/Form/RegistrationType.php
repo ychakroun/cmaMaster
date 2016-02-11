@@ -13,7 +13,7 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('parameter', ParameterRegistrationType::class, array('label' => 'form.newsletter','required' => false, 'translation_domain' => 'FOSUserBundle'));
+        $builder->add('parameter', ParameterRegistrationType::class, array('label' => 'form.parameter.newsletter','required' => false, 'translation_domain' => 'FOSUserBundle'));
         $builder->add('publicPolicy', CheckboxType::class, array('label' => 'form.publicpolicy','required' => true, 'translation_domain' => 'FOSUserBundle'));
         $builder->add('group', EntityType::class, array('class' => 'CmaUserBundle:Group','choice_label' => 'name',"multiple" => true ,'translation_domain' => 'FOSUserBundle','choice_translation_domain' => 'FOSUserBundle'));
     }

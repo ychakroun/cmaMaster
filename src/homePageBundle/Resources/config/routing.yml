@@ -34,6 +34,10 @@ hello_the_world:
     path:     /hello-world
     defaults: { _controller: homePageBundle:Advert:index }
 
+artist_profile:
+    path:     /profile/{username}
+    defaults: { _controller: CmaUserBundle:Profile:show }
+
 deleteuser:
     path:     /group/delete/{username}
     defaults: { _controller: homePageBundle:User:deleteadmin }

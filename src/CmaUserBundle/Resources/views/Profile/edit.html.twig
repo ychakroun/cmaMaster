@@ -1,5 +1,10 @@
-{% extends "CmaUserBundle::layout.html.twig" %}
+{% extends "homePageBundle::base.html.twig" %}
+{% set user = userServices.getUsername%}
 
-{% block cma_user_content %}
-{% include "CmaUserBundle:views:Profile:edit_content.html.twig" %}
-{% endblock cma_user_content %}
+{% block main %}
+{% include "homePageBundle:Profile:edit.html.twig" %}
+<script >
+    {#changeHeader('{{ user.header }}');#}
+ </script>
+{% endblock main %}
+ 

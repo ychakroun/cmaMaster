@@ -67,6 +67,10 @@ class User extends BaseUser
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Information", cascade={"persist","remove"})
     */
     private $information;
+    /**
+    * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Profile", cascade={"persist","remove"})
+    */
+    private $profile;
 
     public function __construct()
     {
@@ -158,9 +162,9 @@ class User extends BaseUser
         return $this->parameter;
     }
     /**
-     * Set parameter
+     * Set information
      *
-     * @param \CmaUserBundle\Entity\Information $Information
+     * @param \CmaUserBundle\Entity\Information $information
      *
      * @return User
      */
@@ -172,12 +176,35 @@ class User extends BaseUser
     }
 
     /**
-     * Get parameter
+     * Get information
      *
      * @return \CmaUserBundle\Entity\Information
      */
     public function getInformation()
     {
         return $this->information;
+    }
+    /**
+     * Set profile
+     *
+     * @param \CmaUserBundle\Entity\Profile $profile
+     *
+     * @return User
+     */
+    public function setProfile(\CmaUserBundle\Entity\Profile $profile)
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Get profile
+     *
+     * @return \CmaUserBundle\Entity\Information
+     */
+    public function getProfile()
+    {
+        return $this->profile;
     }
 }

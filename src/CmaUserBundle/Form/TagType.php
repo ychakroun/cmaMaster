@@ -1,27 +1,31 @@
 <?php
+
 namespace CmaUserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use CmaUserBundle\Form\ParameterType;
 
-class UserParameterType extends AbstractType
+class TagType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('parameter', ParameterType::class, array('label' => 'form.parameter','required' => false, 'translation_domain' => 'FOSUserBundle'))
-    ;
+        $builder
+            ->add('name')
+        ;
     }
+    
     /**
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CmaUserBundle\Entity\User',
+            'data_class' => 'CmaUserBundle\Entity\Tag'
         ));
     }
 }
-?>

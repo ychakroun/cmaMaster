@@ -5,14 +5,16 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use CmaUserBundle\Form\ParameterType;
+use CmaUserBundle\Form\ProfileType;
 
-class UserParameterType extends AbstractType
+
+class UserProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('parameter', ParameterType::class, array('label' => 'form.parameter','required' => false, 'translation_domain' => 'FOSUserBundle'))
-    ;
+        $builder->add('profile', ProfileType::class, array('label' => 'form.profile.title', 'translation_domain' => 'FOSUserBundle'))     
+
+        ;
     }
     /**
      * @param OptionsResolver $resolver
