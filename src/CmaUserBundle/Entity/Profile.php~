@@ -3,6 +3,7 @@
 namespace CmaUserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Profile
@@ -29,28 +30,34 @@ class Profile
     private $description;
 
     /**
+    *@ORM\JoinColumn(nullable=true)
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Image", cascade={"persist","remove"})
     */
     private $imageHeader;
 
     /**
+    *@ORM\JoinColumn(nullable=true)
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Image", cascade={"persist","remove"})
     */
     private $image1;
 
     /**
+    *@ORM\JoinColumn(nullable=true)
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Image", cascade={"persist","remove"})
     */
     private $image2;
 
     /**
+    *@ORM\JoinColumn(nullable=true)
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Image", cascade={"persist","remove"})
     */
     private $image3;
     /**
-    * @ORM\ManyToOne(targetEntity="CmaUserBundle\Entity\Tag", cascade={"persist","remove"})
+    * @ORM\OneToMany(targetEntity="CmaUserBundle\Entity\Tag", mappedBy="tags",cascade={"persist","remove"})
+    *
+    *
     */
-    private $tags;
+    protected $profile;
 
 
     /**
@@ -191,5 +198,34 @@ class Profile
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param \CmaUserBundle\Entity\Tag $tags
+     *
+     */
+    public function setTags(\CmaUserBundle\Entity\Tag $tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+    public function getAll()
+    {
+        return $this;
+    }
+    public function addTag(\CmaUserBundle\Entity\Tag $tag)
+    {
+        $this->tags->add($tag);
+    }
+
+    public function removeTag(\CmaUserBundle\Entity\Tag $tag)
+    {
+         $this->tags->removeElement($tag);
+    }
+    public function getTagsValues(){
+        return  $this->tags;
     }
 }

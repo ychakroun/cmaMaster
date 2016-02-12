@@ -79,6 +79,9 @@ form:
     group_name: 'Etes-vous un: '
     username: 'Nom d''artiste'
     name: 'Nom'
+    profile:
+        tag:
+            add: "Ajouter un tag"
     image:
         submit: 'Enregister l''image'
         file: 'Selectionner une image'

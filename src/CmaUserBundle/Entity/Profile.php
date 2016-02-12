@@ -3,6 +3,7 @@
 namespace CmaUserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Profile
@@ -29,33 +30,34 @@ class Profile
     private $description;
 
     /**
-    *@ORM\Column(nullable=true)
+    *@ORM\JoinColumn(nullable=true)
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Image", cascade={"persist","remove"})
     */
     private $imageHeader;
 
     /**
-    *@ORM\Column(nullable=true)
+    *@ORM\JoinColumn(nullable=true)
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Image", cascade={"persist","remove"})
     */
     private $image1;
 
     /**
-    *@ORM\Column(nullable=true)
+    *@ORM\JoinColumn(nullable=true)
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Image", cascade={"persist","remove"})
     */
     private $image2;
 
     /**
-    *@ORM\Column(nullable=true)
+    *@ORM\JoinColumn(nullable=true)
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Image", cascade={"persist","remove"})
     */
     private $image3;
     /**
-    *@ORM\Column(nullable=true)
-    * @ORM\ManyToOne(targetEntity="CmaUserBundle\Entity\Tag", cascade={"persist","remove"})
+    * @ORM\OneToMany(targetEntity="CmaUserBundle\Entity\Tag", mappedBy="profile",cascade={"persist","remove"})
+    *
+    *
     */
-    private $tags;
+    protected $tags;
 
 
     /**
@@ -99,7 +101,7 @@ class Profile
      *
      * @return Profile
      */
-    public function setImageHeader(\CmaUserBundle\Entity\Image $imageHeader)
+    public function setImageHeader(\CmaUserBundle\Entity\Image $imageHeader = null)
     {
         $this->imageHeader = $imageHeader;
 
@@ -123,7 +125,7 @@ class Profile
      *
      * @return Profile
      */
-    public function setImage1(\CmaUserBundle\Entity\Image $image1)
+    public function setImage1(\CmaUserBundle\Entity\Image $image1 = null)
     {
         $this->image1 = $image1;
 
@@ -147,7 +149,7 @@ class Profile
      *
      * @return Profile
      */
-    public function setImage2(\CmaUserBundle\Entity\Image $image2)
+    public function setImage2(\CmaUserBundle\Entity\Image $image2 = null)
     {
         $this->image2 = $image2;
 
@@ -171,7 +173,7 @@ class Profile
      *
      * @return Profile
      */
-    public function setImage3(\CmaUserBundle\Entity\Image $image3)
+    public function setImage3(\CmaUserBundle\Entity\Image $image3 = null)
     {
         $this->image3 = $image3;
 
@@ -198,17 +200,54 @@ class Profile
         return $this->tags;
     }
 
+    public function getAll()
+    {
+        return $this;
+    }
+    public function addTag(\CmaUserBundle\Entity\Tag $tag)
+    {
+        $this->tags[] = $tag;
+    }
+
+    public function removeTag(\CmaUserBundle\Entity\Tag $tag)
+    {
+         $this->tags->removeElement($tag);
+    }
+    public function getTagsValues(){
+        return  $this->tags;
+    }
+
     /**
-     * Set tags
+     * Add profile
      *
-     * @param \CmaUserBundle\Entity\Tag $tags
+     * @param \CmaUserBundle\Entity\profile $profile
      *
      * @return Profile
      */
-    public function setTags(\CmaUserBundle\Entity\Tag $tags)
+    public function addProfile(\CmaUserBundle\Entity\Profile $profile = null)
     {
-        $this->tags = $tags;
+        $this->profile[] = $profile;
 
         return $this;
+    }
+
+    /**
+     * Remove profile
+     *
+     * @param \CmaUserBundle\Entity\profile $profile
+     */
+    public function removeProfile(\CmaUserBundle\Entity\Profile $profile = null)
+    {
+        $this->profile->removeElement($profile);
+    }
+
+    /**
+     * Get profile
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProfile()
+    {
+        return $this->profile;
     }
 }

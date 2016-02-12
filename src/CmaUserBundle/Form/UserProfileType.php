@@ -12,7 +12,7 @@ class UserProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('profile', ProfileType::class, array('label' => 'form.profile.title', 'translation_domain' => 'FOSUserBundle'))     
+        $builder->add('profile', ProfileType::class, array('label' => null, 'translation_domain' => 'FOSUserBundle','required'=>false))     
 
         ;
     }

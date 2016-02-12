@@ -38,6 +38,10 @@ artist_profile:
     path:     /profile/{username}
     defaults: { _controller: CmaUserBundle:Profile:show }
 
+artist_edit:
+    path:     /edit
+    defaults: { _controller: CmaUserBundle:Profile:edit }
+
 deleteuser:
     path:     /group/delete/{username}
     defaults: { _controller: homePageBundle:User:deleteadmin }

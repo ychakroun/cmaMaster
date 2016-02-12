@@ -63,8 +63,8 @@ class ProfileController extends Controller
         //$form = $formFactory->createForm();
 
         $form->handleRequest($request);
-
         if ($form->isValid()) {
+            dump($form);
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
 
@@ -74,8 +74,8 @@ class ProfileController extends Controller
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_profile_show');
-                $response = new RedirectResponse($url);
+                $url = $this->generateUrl('user_profile');
+                $response = new RedirectResponse($url.'/'.$user->getUsername());
             }
 
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
@@ -84,7 +84,8 @@ class ProfileController extends Controller
         }
 
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'username'=>$user->getUsername()
         ));
     }
 }

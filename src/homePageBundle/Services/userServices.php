@@ -29,5 +29,36 @@ class userServices {
     		return null;
     	}
     }
+    public function allProfile() {
+        if($this->sc->getToken()->getUser()->getProfile()){
+            return $this->sc->getToken()->getUser()->getProfile()->getAll();
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public function getImageHeader() {
+        if($this->sc->getToken()->getUser()->getProfile()){
+            return $this->sc->getToken()->getUser()->getProfile()->getImageHeader()->getPath();
+        }
+        else
+        {
+            return null;
+        }
+    }
+     public function getTags() {
+        if($this->sc->getToken()->getUser()->getProfile()){
+            $tab = array();
+            foreach ($this->sc->getToken()->getUser()->getProfile()->getTags() as $key => $value) {
+                 array_push($tab, $value);
+             }
+             return $tab;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
 ?>

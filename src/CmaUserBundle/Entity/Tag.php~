@@ -29,7 +29,7 @@ class Tag
     private $name;
     /**
      * @ORM\ManyToOne(targetEntity="CmaUserBundle\Entity\Profile", inversedBy="tags")
-     * @ORM\JoinColumn(name="Profile", referencedColumnName="id")
+     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
      */
     protected $profile;
 
@@ -66,28 +66,5 @@ class Tag
     {
         return $this->name;
     }
-
-    /**
-     * Set profile
-     *
-     * @param \CmaUserBundle\Entity\Profile $profile
-     *
-     * @return Tag
-     */
-    public function setProfile(\CmaUserBundle\Entity\Profile $profile = null)
-    {
-        $this->profile = $profile;
-
-        return $this;
-    }
-
-    /**
-     * Get profile
-     *
-     * @return \CmaUserBundle\Entity\Profile
-     */
-    public function getProfile()
-    {
-        return $this->profile;
-    }
 }
+

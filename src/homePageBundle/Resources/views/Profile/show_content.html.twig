@@ -1,10 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="Main profile">
-    {% if is_granted('ROLE_ADMIN') %}
-
-    {% elseif is_granted('ROLE_ARTIST') %}
-        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-    {% endif %}
+	<div class= 'description'>{{ userServices.allProfile.description }}</div>
+{{ dump(userServices.allProfile) }}
 </div>

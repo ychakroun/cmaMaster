@@ -639,7 +639,7 @@ ul,li{
       }
     }
   }
-  }
+}
 /*propriétés récurrentes*/
 input[type="search"],input[type="email"], input[type="password"],input[type="text"]{
   outline: none;
@@ -685,6 +685,20 @@ input[type="submit"]{
 }
 .buttonAction{background: #ac0012;padding:15px 35px;.inline;color:#fff;font-family: 'robotoregular';}
 .buttonMore{background: #ac0012;padding:15px 35px;.inline;color:#fff;font-family: 'robotomedium';}
+.tagLiCss{
+  position: relative;
+  div:first-child{
+    display: inline-block;
+  }
+  a{
+      cursor: pointer;
+      font-family: arial;
+      color:red;
+      border-bottom: 1px solid #666;
+      position: absolute;
+      top: 2px;
+  }
+}
 .poprdr{
   background: white;
   width: 50vw;

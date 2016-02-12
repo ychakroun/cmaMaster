@@ -22,7 +22,7 @@ class ProfileType extends AbstractType
             ->add('image1',ImageType::class,array('label' => 'form.profile.image','required' => false, 'translation_domain' => 'FOSUserBundle'))
             ->add('image2',ImageType::class,array('label' => 'form.profile.image','required' => false, 'translation_domain' => 'FOSUserBundle'))
             ->add('image3',ImageType::class,array('label' => 'form.profile.image','required' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('tags', CollectionType::class, array('by_reference' => false,'required' => false,'entry_type' => TagType::class))
+            ->add('tags', CollectionType::class, array('allow_delete' => true,'allow_add'=> true,'by_reference' => false,'required' => false,'entry_type' => TagType::class))
         ;
     }
     

@@ -1,9 +1,12 @@
 {% extends "homePageBundle::base.html.twig" %}
-{% block nav %}
-<div id="smallHeader" >
-    {% include "homePageBundle:Default:nav.html.twig" %}
-</div>
-{% endblock %}
+{% set user = userServices.allProfile %}
 {% block main %}
 {% include "homePageBundle:Profile:show_content.html.twig" %}
+	<script >
+		{% if userServices.getImageHeader is null  %}
+		{% else %}
+			changeHeader('{{asset( userServices.getImageHeader )}}');
+		{% endif %}
+	</script>
+
 {% endblock %}
