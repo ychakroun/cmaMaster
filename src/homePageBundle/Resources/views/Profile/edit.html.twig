@@ -2,23 +2,35 @@
 
 <div class="Main profile">
     {% if is_granted('ROLE_ARTIST') %}
-    <form  action="{{ path("artist_edit")}}" method="post">
-    	<div id="{{form.profile.vars.id}}">
-         	{{form_row(form.profile.description)}}
-         	{{form_row(form.profile.imageHeader.file)}}
-         	{{form_row(form.profile.imageHeader.name,{attr: {'value':username}})}}
-         	<div id="{{ form.profile.tags.vars.id}}"> 
-         		<ul class="tags" data-prototype="{{ form_widget(form.profile.tags.vars.prototype)|e }}">
+    <form  action="{{ path("artist_edit")}}" enctype="multipart/form-data" method="post" >
+        <input id="{{ form._token.vars.id }}" name="{{ form._token.vars.full_name }}"type="hidden" name="_csrf_token" value="{{ form._token.vars.value }}" />
+    	<div id="{{form.vars.id}}">
+         	{{form_row(form.description)}}
+         	{{form_row(form.imageHeader.file)}}
+         	{{form_row(form.imageHeader.name,{attr: {'value':username}})}}
+         	<div id="{{ form.tags.vars.id}}">
+         		<ul class="tags" data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}">
+                    {% for tag in form.tags%}
+                    <li class="tagLiCss">
+                        <div id="profile_tags_{{ tag.vars.name }}">
+                            <div>
+                                <input id="{{ tag.vars.id }}_name" value= "{{tag.vars.data.name}}" name="{{ tag.vars.full_name }}[name]" maxlength="255" type="text">
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
          		</ul>
          	</div>
-         	{{form_row(form.profile.image1.file)}}
-         	{{form_row(form.profile.image1.name,{attr: {'value':username}})}}
-         	{{form_row(form.profile.image2.file)}}
-         	{{form_row(form.profile.image2.name,{attr: {'value':username}})}}
-         	{{form_row(form.profile.image3.file)}}
-         	{{form_row(form.profile.image3.name,{attr: {'value':username}})}}
+         	{{form_row(form.image1.file)}}
+         	{{form_row(form.image1.name,{attr: {'value':username}})}}
+         	{{form_row(form.image2.file)}}
+         	{{form_row(form.image2.name,{attr: {'value':username}})}}
+         	{{form_row(form.image3.file)}}
+         	{{form_row(form.image3.name,{attr: {'value':username}})}}
         </div>
 	<input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.profile.submit"|trans }}" />
 	</form>
     {% endif %}
 </div>
+
+

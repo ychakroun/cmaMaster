@@ -31,7 +31,7 @@ class userServices {
     }
     public function allProfile() {
         if($this->sc->getToken()->getUser()->getProfile()){
-            return $this->sc->getToken()->getUser()->getProfile()->getAll();
+            return $this->sc->getToken()->getUser()->getProfile();
         }
         else
         {

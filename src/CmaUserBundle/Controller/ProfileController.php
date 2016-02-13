@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\HttpNotFoundException;
-use CmaUserBundle\Form\UserProfileType;
+use CmaUserBundle\Form\ProfileType;
 
 class ProfileController extends Controller
 {
@@ -42,6 +42,7 @@ class ProfileController extends Controller
      */
     public function editAction(Request $request)
     {
+        $userprofile = $this->getUser()->getProfile();
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -59,28 +60,33 @@ class ProfileController extends Controller
 
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.profile.form.factory');
-        $form = $this->createForm(UserProfileType::class, $user);
+        $form = $this->createForm(ProfileType::class, $userprofile);
         //$form = $formFactory->createForm();
-
         $form->handleRequest($request);
         if ($form->isValid()) {
-            dump($form);
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
-
             $event = new FormEvent($form, $request);
+            $formTagS = $userprofile->getTags();
+            $existingTagS = $this->getDoctrine()->getRepository('CmaUserBundle:Tag')->findAll();
+            foreach ($formTagS as $key => $formTag) {
+                foreach ($existingTagS as $key => $existingTag) {
+                    if($formTag->getName() === $existingTag->getName()) {
+                        $userprofile->removeTag($formTag);
+                        $userprofile->addTag($existingTag);
+                    }
+                }
+            }
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
-
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('user_profile');
-                $response = new RedirectResponse($url.'/'.$user->getUsername());
+                $url = $this->generateUrl('artist_edit');
+                
             }
 
-            $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
-
-            return $response;
+            //$dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+            return $this->redirectToRoute('artist_edit');
         }
 
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(

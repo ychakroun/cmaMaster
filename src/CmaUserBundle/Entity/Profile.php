@@ -53,11 +53,11 @@ class Profile
     */
     private $image3;
     /**
-    * @ORM\OneToMany(targetEntity="CmaUserBundle\Entity\Tag", mappedBy="profile",cascade={"persist","remove"})
-    *
+    * @ORM\ManyToMany(targetEntity="CmaUserBundle\Entity\Tag", inversedBy="profiles",cascade={"persist","remove"})
+    * @ORM\JoinColumn(name="profile_tag", referencedColumnName="id")
     *
     */
-    protected $tags;
+    private $tags;
 
 
     /**
@@ -200,45 +200,28 @@ class Profile
         return $this->tags;
     }
 
-    public function getAll()
+    /**
+     * Set tags
+     *
+     * @param \CmaUserBundle\Entity\Tag $tags
+     *
+     */
+    public function setTags(\CmaUserBundle\Entity\Tag $tags = null)
     {
+        $this->tags = $tags;
+
         return $this;
     }
-    public function addTag(\CmaUserBundle\Entity\Tag $tag)
+    public function addTag(\CmaUserBundle\Entity\Tag $tag = null)
     {
+        $tag->addProfile($this);
         $this->tags[] = $tag;
+        return $this;
     }
 
-    public function removeTag(\CmaUserBundle\Entity\Tag $tag)
+    public function removeTag(\CmaUserBundle\Entity\Tag $tag = null)
     {
          $this->tags->removeElement($tag);
-    }
-    public function getTagsValues(){
-        return  $this->tags;
-    }
-
-    /**
-     * Add profile
-     *
-     * @param \CmaUserBundle\Entity\profile $profile
-     *
-     * @return Profile
-     */
-    public function addProfile(\CmaUserBundle\Entity\Profile $profile = null)
-    {
-        $this->profile[] = $profile;
-
-        return $this;
-    }
-
-    /**
-     * Remove profile
-     *
-     * @param \CmaUserBundle\Entity\profile $profile
-     */
-    public function removeProfile(\CmaUserBundle\Entity\Profile $profile = null)
-    {
-        $this->profile->removeElement($profile);
     }
 
     /**
@@ -248,6 +231,6 @@ class Profile
      */
     public function getProfile()
     {
-        return $this->profile;
+        return $this;
     }
 }

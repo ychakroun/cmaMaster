@@ -58,6 +58,10 @@
     	newFormLi.innerHTML = newFormLi.innerHTML+newForm;
     	addTagFormDeleteLink(newFormLi);
     	collectionHolder[0].insertBefore(newFormLi, document.getElementById('jsAddLink'));
+        var element = collectionHolder[0].getElementsByTagName("label");
+        for (index = element.length - 1; index >= 0; index--) {
+            element[index].parentNode.removeChild(element[index]);
+        }
 	}
 	function addTagFormDeleteLink(tagFormLi) {
     var removeFormA = document.createElement('a');

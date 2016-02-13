@@ -3,6 +3,8 @@
 namespace CmaUserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tag
@@ -23,15 +25,15 @@ class Tag
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
     /**
-     * @ORM\ManyToOne(targetEntity="CmaUserBundle\Entity\Profile", inversedBy="tags")
-     * @ORM\JoinColumn(name="Profile", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="CmaUserBundle\Entity\Profile", mappedBy="tags")
+     * 
      */
-    protected $profile;
+    private $profiles;
 
     /**
      * Get id
@@ -74,20 +76,31 @@ class Tag
      *
      * @return Tag
      */
-    public function setProfile(\CmaUserBundle\Entity\Profile $profile = null)
+    public function setProfile(\CmaUserBundle\Entity\Profile $profiles = null)
     {
-        $this->profile = $profile;
+        $this->profiles = $profiles;
 
         return $this;
     }
-
+    public function addProfile(\CmaUserBundle\Entity\Profile $profile = null)
+    {
+        $this->profiles[] = $profile;
+    }
     /**
      * Get profile
      *
      * @return \CmaUserBundle\Entity\Profile
      */
-    public function getProfile()
+    public function getProfiles()
     {
-        return $this->profile;
+        return $this->profiles;
+    }
+    public function getTag()
+    {
+        return $this;
+    }
+    public function __construct()
+    {
+        $this->profiles = new ArrayCollection();
     }
 }
