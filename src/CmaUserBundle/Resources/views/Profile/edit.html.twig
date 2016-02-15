@@ -1,6 +1,5 @@
 {% extends "homePageBundle::base.html.twig" %}
 {% trans_default_domain 'FOSUserBundle' %}
-{% set user = userServices.allProfile %}
 {% block javascripts %}
     <script src="{{asset( "js/tags.js" )}}"></script>
      <script src="{{asset( "js/imgProfileEdit.js" )}}"></script>
@@ -11,11 +10,15 @@
 {% endblock main %}
 {% block script %}
     <script >
-	{% if user.imageHeader is null  %}
-	{% else %}
-		changeHeader('{{asset( userServices.getImageHeader )}}');
-	{% endif %}
-        setAddContent('{{ "form.profile.tag.add" | trans }}');
+    {% if profile is null  %}
+    {% else %}
+
+		{% if profile.imageHeader is null  %}
+		{% else %}
+			changeHeader('{{asset( userServices.getImageHeader )}}');
+		{% endif %}
+    {% endif %}
+    setAddContent('{{ "form.profile.tag.add" | trans }}');
  </script>
 {% endblock %}
 

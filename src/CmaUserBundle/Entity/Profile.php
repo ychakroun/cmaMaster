@@ -211,7 +211,22 @@ class Profile
     {
          $this->tags->removeElement($tag);
     }
-
+     public function removeImageHeader(\CmaUserBundle\Entity\Image $image = null)
+    {
+         $this->imageHeader = null;
+    }
+    public function removeImage1(\CmaUserBundle\Entity\Image $image = null)
+    {
+         $this->image1 = null;
+    }
+    public function removeImage2(\CmaUserBundle\Entity\Image $image = null)
+    {
+         $this->image2 = null;
+    }
+    public function removeImage3(\CmaUserBundle\Entity\Image $image = null)
+    {
+         $this->image3 = null;
+    }
     /**
      * Get profile
      *

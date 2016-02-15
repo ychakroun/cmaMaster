@@ -38,8 +38,6 @@ function setImageTemp(){
 		changeHeader(data);
 	}else{
 		id = id.replace(/[a-zA-Z]/g,'');
+		document.getElementById(id).src = data;
 	}
-	console.log(id);
-	document.getElementById(id).src = data;
-
 }

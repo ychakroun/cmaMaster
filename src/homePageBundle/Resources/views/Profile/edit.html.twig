@@ -28,6 +28,7 @@
          	{{form_widget(form.image3.file,{attr: {'style':"display:none"}})}}
          	{{form_row(form.image3.name,{attr: {'value':username}})}}
         </div>
+    {% if (profile and profile.image1 and profile.image2 and profile.image3) %}
     <div id="imageAll">
         <div class="imageProfile">
             {% if profile.image1.path %}
@@ -51,9 +52,22 @@
             {% endif %}
         </div>
     </div>
+    {% else %}
+        <div id="imageAll">
+        <div class="imageProfile">
+            <img id="1" src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+        </div>
+        <div class="imageProfile">
+            <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+        </div>
+        <div class="imageProfile">
+            <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+        </div>
+    </div>
+     {% endif %}
     <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.profile.submit"|trans }}" />
     </form>
-    <div id="imgtmp" style="display:none"></div>
+    <div id="imgtmp"></div>
     {% endif %}
 </div>
 
