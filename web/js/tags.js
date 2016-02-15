@@ -16,9 +16,9 @@ function initTags(){
 		collectionHolder[collectionHolder.length-1].appendChild(newLinkLi);
 	}
 	var lis = collectionHolder[0].getElementsByTagName("li");
-	for(let li of lis){
-		if(li.id!="jsAddLink"){
-			addTagFormDeleteLink(li);
+	for (var i = lis.length - 1; i >= 0; i--) {
+		if(lis[i].id!="jsAddLink"){
+			addTagFormDeleteLink(lis[i]);
 		}
 	}
 // count the current form inputs we have (e.g. 2), use that as the new

@@ -42,12 +42,12 @@ class ProfileController extends Controller
      */
     public function editAction(Request $request)
     {
-        $userprofile = $this->getUser()->getProfile();
+        
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-
+        $userprofile = $this->getUser()->getProfile();
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
 
@@ -93,7 +93,6 @@ class ProfileController extends Controller
             //$dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
             return $this->redirectToRoute('artist_edit');
         }
-
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
             'form' => $form->createView(),
             'username'=>$user->getUsername(),

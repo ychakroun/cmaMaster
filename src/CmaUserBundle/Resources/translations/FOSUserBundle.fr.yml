@@ -82,6 +82,7 @@ form:
     profile:
         tag:
             add: "Ajouter un tag"
+        description: "Ajouter une description"
     image:
         submit: 'Enregister l''image'
         file: 'Selectionner une image'

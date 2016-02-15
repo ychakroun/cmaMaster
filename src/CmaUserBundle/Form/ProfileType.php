@@ -17,7 +17,7 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('description',null,array('label' => 'form.profile.description','required' => false, 'translation_domain' => 'FOSUserBundle'))
+            ->add('description',null,array('label' => 'form.profile.description','required' => false,'label' => false,'translation_domain' => 'FOSUserBundle'))
             ->add('imageHeader',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
             ->add('image1',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
             ->add('image2',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))

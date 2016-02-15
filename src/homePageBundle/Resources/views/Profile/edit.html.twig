@@ -1,12 +1,12 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="Main profile">
+<div id="mainProfile">
     {% if is_granted('ROLE_ARTIST') %}
     <form  action="{{ path("artist_edit")}}" enctype="multipart/form-data" method="post" >
         <input id="{{ form._token.vars.id }}" name="{{ form._token.vars.full_name }}"type="hidden" name="_csrf_token" value="{{ form._token.vars.value }}" />
     	<div id="{{form.vars.id}}">
-         	{{form_row(form.description)}}
-         	{{form_row(form.imageHeader.file,{attr: {'style':"display:none"}})}}
+         	{{form_row(form.description,{attr: {'placeholder':'form.profile.description' | trans }})}}
+         	{{form_widget(form.imageHeader.file,{attr: {'style':"display:none"}})}}
          	{{form_row(form.imageHeader.name,{attr: {'value':username}})}}
          	<div id="{{ form.tags.vars.id}}">
          		<ul class="tags" data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}">
@@ -21,38 +21,39 @@
                     {% endfor %}
          		</ul>
          	</div>
-         	{{form_row(form.image1.file,{attr: {'style':"display:none"}})}}
+         	{{form_widget(form.image1.file,{attr: {'style':"display:none"}})}}
          	{{form_row(form.image1.name,{attr: {'value':username}})}}
-         	{{form_row(form.image2.file,{attr: {'style':"display:none"}})}}
+         	{{form_widget(form.image2.file,{attr: {'style':"display:none"}})}}
          	{{form_row(form.image2.name,{attr: {'value':username}})}}
-         	{{form_row(form.image3.file,{attr: {'style':"display:none"}})}}
+         	{{form_widget(form.image3.file,{attr: {'style':"display:none"}})}}
          	{{form_row(form.image3.name,{attr: {'value':username}})}}
         </div>
-	<input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.profile.submit"|trans }}" />
-	</form>
     <div id="imageAll">
         <div class="imageProfile">
             {% if profile.image1.path %}
-                <img src="{{ asset( 'images/'~profile.image1.path ) }}" alt="">
+                <img id="1" src="{{ asset( 'images/'~profile.image1.path ) }}" alt="">
             {% else %}
-                <img src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+                <img id="1" src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
             {% endif %}
         </div>
         <div class="imageProfile">
             {% if profile.image2.path %}
-                <img src="{{ asset( 'images/'~profile.image2.path ) }}" alt="">
+                <img id="2" src="{{ asset( 'images/'~profile.image2.path ) }}" alt="">
             {% else %}
-                <img src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+                <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
             {% endif %}
         </div>
         <div class="imageProfile">
             {% if profile.image3.path %}
-                <img src="{{ asset( 'images/'~profile.image3.path ) }}" alt="">
+                <img id="3" src="{{ asset( 'images/'~profile.image3.path ) }}" alt="">
             {% else %}
-                <img src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+                <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
             {% endif %}
         </div>
     </div>
+    <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.profile.submit"|trans }}" />
+    </form>
+    <div id="imgtmp" style="display:none"></div>
     {% endif %}
 </div>
 
