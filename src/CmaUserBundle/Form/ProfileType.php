@@ -18,10 +18,10 @@ class ProfileType extends AbstractType
     {
         $builder
             ->add('description',null,array('label' => 'form.profile.description','required' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('imageHeader',ImageType::class,array('label' => 'form.profile.description','required' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('image1',ImageType::class,array('label' => 'form.profile.image','required' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('image2',ImageType::class,array('label' => 'form.profile.image','required' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('image3',ImageType::class,array('label' => 'form.profile.image','required' => false, 'translation_domain' => 'FOSUserBundle'))
+            ->add('imageHeader',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
+            ->add('image1',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
+            ->add('image2',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
+            ->add('image3',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
             ->add('tags', CollectionType::class, array('allow_delete' => true,'allow_add'=> true,'by_reference' => false,'required' => false,'entry_type' => TagType::class))
         ;
     }

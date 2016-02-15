@@ -83,6 +83,7 @@ class Image
         if (null !== $this->getFile()) {
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
+            dump($this->name);
             if($this->name!=null){
                  $this->path = $this->name.'/'.$filename.'.'.$this->getFile()->guessExtension();
              }else{
@@ -94,15 +95,15 @@ class Image
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../web/images'.$this->getUploadDir();
+        return __DIR__.'/../../../web/images/'.$this->getUploadDir();
     }
 
     protected function getUploadDir()
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        if (!file_exists(__DIR__.'/../../../web/images'.$this->name)) {
-            mkdir(__DIR__.'/../../../web/images'.$this->name, 0755, true);
+        if (!file_exists(__DIR__.'/../../../web/images/'.$this->name)) {
+            mkdir(__DIR__.'/../../../web/images/'.$this->name, 0755, true);
         }
         return $this->name;
     }
@@ -124,7 +125,7 @@ class Image
         // check if we have an old image
         if (isset($this->temp)) {
             // delete the old image
-            unlink($this->getUploadRootDir().'/'.$this->temp);
+            if(unlink(__DIR__.'/../../../web/images/'.$this->temp));
             // clear the temp image path
             $this->temp = null;
         }

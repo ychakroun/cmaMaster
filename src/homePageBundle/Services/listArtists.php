@@ -23,6 +23,7 @@ class listArtists {
     	$y = 0;
     	foreach ($listArtists as $key => $artist) {
     		$tab = 'tab'.$key;
+            dump($artist->getParameter()->getIsPublic());
     		if($i == 6){
     			$i = 0;
     			$y++;

@@ -40,20 +40,8 @@ class userServices {
     }
     public function getImageHeader() {
         if($this->sc->getToken()->getUser()->getProfile()){
-            return $this->sc->getToken()->getUser()->getProfile()->getImageHeader()->getPath();
-        }
-        else
-        {
-            return null;
-        }
-    }
-     public function getTags() {
-        if($this->sc->getToken()->getUser()->getProfile()){
-            $tab = array();
-            foreach ($this->sc->getToken()->getUser()->getProfile()->getTags() as $key => $value) {
-                 array_push($tab, $value);
-             }
-             return $tab;
+            $path = $this->sc->getToken()->getUser()->getProfile()->getImageHeader()->getPath();
+            return "/images/".$path;
         }
         else
         {

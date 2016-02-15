@@ -200,18 +200,6 @@ class Profile
         return $this->tags;
     }
 
-    /**
-     * Set tags
-     *
-     * @param \CmaUserBundle\Entity\Tag $tags
-     *
-     */
-    public function setTags(\CmaUserBundle\Entity\Tag $tags = null)
-    {
-        $this->tags = $tags;
-
-        return $this;
-    }
     public function addTag(\CmaUserBundle\Entity\Tag $tag = null)
     {
         $tag->addProfile($this);

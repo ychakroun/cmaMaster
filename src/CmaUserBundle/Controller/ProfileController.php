@@ -69,6 +69,11 @@ class ProfileController extends Controller
             $event = new FormEvent($form, $request);
             $formTagS = $userprofile->getTags();
             $existingTagS = $this->getDoctrine()->getRepository('CmaUserBundle:Tag')->findAll();
+            $userprofile->getimageHeader()->name = $user->getUsername()."/profile";
+            $userprofile->getimage1()->name = $user->getUsername()."/profile";
+            $userprofile->getimage2()->name = $user->getUsername()."/profile";
+            $userprofile->getimage3()->name = $user->getUsername()."/profile";
+            dump($userprofile);
             foreach ($formTagS as $key => $formTag) {
                 foreach ($existingTagS as $key => $existingTag) {
                     if($formTag->getName() === $existingTag->getName()) {
@@ -91,7 +96,8 @@ class ProfileController extends Controller
 
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
             'form' => $form->createView(),
-            'username'=>$user->getUsername()
+            'username'=>$user->getUsername(),
+            'profile'=>$userprofile
         ));
     }
 }

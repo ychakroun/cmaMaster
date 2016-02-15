@@ -17,7 +17,7 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', FileType::class, array('label' => 'form.image.file', 'translation_domain' => 'FOSUserBundle'))
+            ->add('file', FileType::class, array('label' => false, 'translation_domain' => 'FOSUserBundle'))
             ->add('name', HiddenType::class)
         ;
     }
