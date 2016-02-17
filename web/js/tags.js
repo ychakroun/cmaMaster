@@ -16,6 +16,12 @@ function initTags(){
 		collectionHolder[collectionHolder.length-1].appendChild(newLinkLi);
 	}
 	var lis = collectionHolder[0].getElementsByTagName("li");
+	var divs = collectionHolder[0].getElementsByClassName("initial");
+	for (var i = divs.length - 1; i >= 0; i--) {
+		var input = divs[i].getElementsByTagName('input')[0];
+		var li = divs[i].parentNode;
+		removeTagOnChange(li,input,collectionHolder,newLinkLi);
+	}
 	for (var i = lis.length - 1; i >= 0; i--) {
 		if(lis[i].id!="jsAddLink"){
 			addTagFormDeleteLink(lis[i]);
@@ -51,6 +57,20 @@ function addTagForm(collectionHolder, newLinkLi) {
     for (index = element.length - 1; index >= 0; index--) {
         element[index].parentNode.removeChild(element[index]);
     }
+}
+function removeTagOnChange(tagFormLi,input,collectionHolder, newLinkLi){
+	input.onclick =function(e){
+		e.preventDefault();
+	}
+	input.onkeyup = function(e){
+		e.preventDefault();
+		addTagForm(collectionHolder, newLinkLi);
+		inputHolder = collectionHolder[0].getElementsByTagName("input");
+		inputHolder[inputHolder.length-1].value = input.value;
+		inputHolder[inputHolder.length-1].click();
+		var tagtoremove = e.target.parentNode.parentNode.parentNode;
+		tagtoremove.parentNode.removeChild(tagtoremove);
+	}
 }
 function addTagFormDeleteLink(tagFormLi) {
 var removeFormA = document.createElement('a');

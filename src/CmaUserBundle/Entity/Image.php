@@ -31,7 +31,7 @@ class Image
     private $file;
 
     private $temp;
-/**
+    /**
      * Sets file.
      *
      * @param UploadedFile $file
@@ -64,7 +64,9 @@ class Image
      */
     public function setName($name)
     {
-        return $this->name;
+        if (null !== $this->getFile()) {
+            return $this->name;
+        }
     }
     /**
      *  getName.
@@ -83,7 +85,6 @@ class Image
         if (null !== $this->getFile()) {
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
-            dump($this->name);
             if($this->name!=null){
                  $this->path = $this->name.'/'.$filename.'.'.$this->getFile()->guessExtension();
              }else{

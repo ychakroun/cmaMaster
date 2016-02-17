@@ -13,8 +13,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\HttpNotFoundException;
 use CmaUserBundle\Form\ProfileType;
-use CmaUserBundle\Entity\Tag;
-use CmaUserBundle\Entity\Profile;
 
 class ProfileController extends Controller
 {
@@ -44,21 +42,12 @@ class ProfileController extends Controller
      */
     public function editAction(Request $request)
     {
-        
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         $userprofile = $this->getUser()->getProfile();
-        if (null !== $userprofile) {
-            $initialTags = $this->get('home_page.userServices')->allProfile()->getTags();
-        }else{
-            $userprofile = new Profile();
-            $userManager = $this->get('fos_user.user_manager');
-            $user->setProfile($userprofile);
-            $userManager->updateUser($user);
-            $initialTags = null;
-        }
+        $em = $this->getDoctrine()->getManager();
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
 
@@ -71,54 +60,22 @@ class ProfileController extends Controller
 
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.profile.form.factory');
-        $existingTagS = $this->getDoctrine()->getRepository('CmaUserBundle:Tag')->findAll();
         $form = $this->createForm(ProfileType::class, $userprofile);
         //$form = $formFactory->createForm();
         $form->handleRequest($request);
         if ($form->isValid()) {
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
-            $event = new FormEvent($form, $request);
-            if($form->getData()->getimageHeader()->getPath()){
-                $userprofile->removeImageHeader();
-            }
-            if($form->getData()->getimage1()->getPath()){
-                 $userprofile->removeImage1();
-            }
-            if($form->getData()->getimage2()->getPath()){
-                 $userprofile->removeImage2();
-            }
-            if($form->getData()->getimage3()->getPath()){
-                 $userprofile->removeImage3();
-            }
-            if(null !== $initialTags){
             $formTagS = $userprofile->getTags();
-                foreach ($formTagS as $key => $formTag) {
-                    if($formTag===null||$formTag==''){
+            $existingTagS = $this->getDoctrine()->getRepository('CmaUserBundle:Tag')->findAll();
+            foreach ($formTagS as $key => $formTag) {
+                foreach ($existingTagS as $key => $existingTag) {
+                    if($formTag->getName() === $existingTag->getName()) {
                         $userprofile->removeTag($formTag);
-                    }
-                    foreach ($existingTagS as $key => $existingTag) {
-                        if($formTag->getName() === $existingTag->getName()) {
-                            $userprofile->removeTag($formTag);
-                            $userprofile->addTag($existingTag);
-                        }
-                        dump($existingTag->getId());
-                        dump($existingTag->getName());
-                        dump($formTag->getId());
-                        dump($formTag->getName());
-                        if($formTag->getId() === $existingTag->getId()) {
-                            if($formTag->getName()!=$existingTag->getName()){
-                                dump('nip');
-                            }
-                            //$userprofile->removeTag($formTag);
-                            //$newTag = new Tag();
-                            //$newTag->setName($formTag);
-                            //$userprofile->addTag($newTag); 
-                        }
+                        $userprofile->addTag($existingTag);
                     }
                 }
             }
-            dump($userprofile);
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
             $userManager->updateUser($user);
 
@@ -133,7 +90,6 @@ class ProfileController extends Controller
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
             'form' => $form->createView(),
             'username'=>$user->getUsername(),
-            'user'=>$user,
             'profile'=>$userprofile
         ));
     }

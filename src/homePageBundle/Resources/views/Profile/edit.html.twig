@@ -12,7 +12,7 @@
          		<ul class="tags" data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}">
                     {% for tag in form.tags%}
                     <li class="tagLiCss">
-                        <div id="profile_tags_{{ tag.vars.name }}">
+                        <div class="initial" id="profile_tags_{{ tag.vars.name }}">
                             <div>
                                 <input id="{{ tag.vars.id }}_name" value= "{{tag.vars.data.name}}" name="{{ tag.vars.full_name }}[name]" maxlength="255" type="text">
                             </div>
@@ -28,24 +28,24 @@
          	{{form_widget(form.image3.file,{attr: {'style':"display:none"}})}}
          	{{form_row(form.image3.name,{attr: {'value':username}})}}
         </div>
-    {% if (profile and profile.image1 and profile.image2 and profile.image3) %}
+    {% if profile  %}
     <div id="imageAll">
         <div class="imageProfile">
-            {% if profile.image1.path %}
+            {% if profile.image1 and profile.image1.path%}
                 <img id="1" src="{{ asset( 'images/'~profile.image1.path ) }}" alt="">
             {% else %}
                 <img id="1" src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
             {% endif %}
         </div>
         <div class="imageProfile">
-            {% if profile.image2.path %}
+            {% if profile.image2 and profile.image2.path %}
                 <img id="2" src="{{ asset( 'images/'~profile.image2.path ) }}" alt="">
             {% else %}
                 <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
             {% endif %}
         </div>
         <div class="imageProfile">
-            {% if profile.image3.path %}
+            {% if profile.image3 and profile.image3.path%}
                 <img id="3" src="{{ asset( 'images/'~profile.image3.path ) }}" alt="">
             {% else %}
                 <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
@@ -67,7 +67,7 @@
      {% endif %}
     <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.profile.submit"|trans }}" />
     </form>
-    <div id="imgtmp"></div>
+    <div id="imgtmp" style="display:none"></div>
     {% endif %}
 </div>
 

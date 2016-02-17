@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="tag")
  * @ORM\Entity(repositoryClass="CmaUserBundle\Repository\TagRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Tag
 {
@@ -58,7 +59,6 @@ class Tag
 
         return $this;
     }
-
     /**
      * Get name
      *

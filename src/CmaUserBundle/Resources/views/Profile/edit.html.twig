@@ -10,11 +10,8 @@
 {% endblock main %}
 {% block script %}
     <script >
-    {% if profile is null  %}
-    {% else %}
-
-		{% if profile.imageHeader is null  %}
-		{% else %}
+    {% if profile %}
+		{% if profile.imageHeader  %}
 			changeHeader('{{asset( userServices.getImageHeader )}}');
 		{% endif %}
     {% endif %}
