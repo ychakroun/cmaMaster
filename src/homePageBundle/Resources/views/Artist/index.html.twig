@@ -7,55 +7,81 @@
   </div>
 {% endblock %}
 {% block main %}
-  <div class="tags">
+<section id="artistes" class="artistes">
+    <header class="headerSection">
+      <div class="globalS">
+        <div class="idSection">Les Artistes</div>
+        <div class="logoSection"><img src="{{asset('img/logoTampon.png')}}" alt=""></div>
+        <div class="infoSection">{{listArtists.getNbArtists}} Artistes</div>
+      </div>
+    </header>
+  <div class="containerS">
+    <ul id="marqueurs">
     {% if tagServices.findAll %}
       {% for tag in tagServices.findAll %}
-        <a href="#" id="{{tag.id}}" >
-          <span class="tag">{{ tag.name }}</span>
-        </a>
+        <li id="{{tag.id}}">
+          <a href="#">{{ tag.name }}</a>
+        </li>
       {% endfor %}
     {% endif %}
-  </div>
-   <div class="artists">
+    </ul>
+   <div class="contentS">
    		{% if listArtists.pageArtist %}
         	{% for section in listArtists.pageArtist %}
-            <section id="{{ loop.index }}" class="sectionArtistPage">
+            <ul id="{{ loop.index }}">
               {% for artist in section %}
               <a href="{{ path('artist_profile', { 'username': artist.username }) }}">
-                <div class="blockArtist">
-                  <div class="info">
-                    <span class="username" id="{{ artist.id }}">{{artist.username}}</span>
-                    {% if  listArtists.getInformation(artist)%}
-                      {% set information = listArtists.getInformation(artist) %}
-                      <span class="pictoMap"><img src="{{asset('img/map.png')}}"></span>
-                      <span class="localisation">{{information.pays}}</span>
-                    {% endif %}
-                  </div>
-                  {% if listArtists.getProfile(artist) %}
+                <li class="blocArtiste">
+                  <div class="globalBlocArtiste">
+                    <header class="headerBlocArtiste">
+                      <div class="name"id="{{ artist.id }}">{{artist.username}}
+                        {% if  listArtists.getInformation(artist)%}
+                        {% set information = listArtists.getInformation(artist) %}
+                        <span>
+                          <img src="{{asset('img/map.png')}}" alt=""> {{information.pays}}
+                        </span>
+                      </div>
+                      <div class="infos">
+                        <img src="{{asset('img/custom.png')}}" alt=""><p>19 custom.</p>
+                        <img src="{{asset('img/likes.png')}}" alt=""><p>38 likes</p>
+                        <img src="{{asset('img/avis.png')}}" alt=""><p>32 avis</p>
+                      </div>
+                      {% endif %}
+                    </header>
+                    {% if listArtists.getProfile(artist) %}
                     {% set profile = listArtists.getProfile(artist) %}
-                    <div class="imageAll">
-                      <div class= "imageProfile">
-                        <div class="description"><div class="content">{{profile.description}}</div></div>
-                        {% if profile.image1 %}
-                          <img src="{{ asset( 'images/'~profile.image1.path ) }}" alt="">
-                        {% else %}
-                                <img src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
-                        {% endif %}
-                      </div>
-                      <div class= "imageProfile">
-                        {% if profile.image2 %}
-                          <img src="{{ asset( 'images/'~profile.image2.path ) }}" alt="">
-                        {% else %}
-                                <img src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
-                        {% endif %}
-                      </div>
-                      <div class= "imageProfile">
-                        {% if profile.image3 %}
-                          <img src="{{ asset( 'images/'~profile.image3.path ) }}" alt="">
-                        {% else %}
-                                <img src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
-                        {% endif %}
-                      </div>
+                    <div class="contentBlocArtiste">
+                      <ul>
+                        <li>
+                          <div class="description"><div class="content">{{profile.description}}</div></div>
+                          {% if profile.imageHeader %}
+                            <img src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
+                          {% else %}
+                            <img src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+                          {% endif %}
+                        </li>
+                        <li>
+                          {% if profile.image1 %}
+                            <img src="{{ asset( 'images/'~profile.image1.path ) }}" alt="">
+                          {% else %}
+                            <img src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+                          {% endif %}
+                        </li>
+                        <li>
+                          {% if profile.image2 %}
+                            <img src="{{ asset( 'images/'~profile.image2.path ) }}" alt="">
+                          {% else %}
+                            <img src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+                          {% endif %}
+                        </li>
+                        <li>
+                          {% if profile.image3 %}
+                            <img src="{{ asset( 'images/'~profile.image3.path ) }}" alt="">
+                          {% else %}
+                            <img src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+                          {% endif %}
+                        </li>
+                      </ul>
                     </div>
                   {% endif %}
                 </div>
@@ -63,10 +89,12 @@
               {% endfor %}
             </section>
         	{% endfor %}
+        </div>
         {% else %}
 			<h1>
 				{{ 'noartiste' | trans}}
 			</h1>
         {% endif %}
     </div>
+</section>
 {% endblock %}

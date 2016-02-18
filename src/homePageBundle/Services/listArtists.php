@@ -11,10 +11,15 @@ class listArtists {
    		$this->em = $em;
 	}
 
-     public function indexAction() {
+    public function indexAction() {
         $repository = $this->em->getRepository('CmaUserBundle:User');
     	$listArtists = $repository->findByRoleIndex('ROLE_ARTIST');
         return ($listArtists);
+    }
+    public function getNbArtists() {
+        $repository = $this->em->getRepository('CmaUserBundle:User');
+        $listArtists = $repository->findByRoleIndex('ROLE_ARTIST');
+        return sizeof($listArtists);
     }
     public function pageArtist() {
         $repository = $this->em->getRepository('CmaUserBundle:User');

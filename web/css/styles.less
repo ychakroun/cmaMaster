@@ -198,7 +198,7 @@ ul,li{
   }
   #video{background: #fff;}
 }
-#artistes{
+.artistes{
   background: #000;
   .headerSection{}
   .containerS{
@@ -215,7 +215,27 @@ ul,li{
             .contentBlocArtiste{ img{position: relative; width: 100%; height:100%;display: inline-block;}
               ul{width: 100%;
                 li{.inline;
-                  &:first-child{width: 385px; height: 180px;}
+                  &:first-child{width: 385px; height: 180px;position: relative;
+                    &:hover {
+                      .description{
+                       transition: background 0.3s ease,color 0.3s ease;
+                       height:180px;
+                       box-sizing: border-box;
+                       position: absolute;
+                       width: 100%;
+                       padding: 40px;
+                       font-size: 15px;
+                       text-align: left;
+                       background:rgba(6, 6, 6, 0.6);
+                       color:white;
+                       z-index: 2;
+                       .content{
+                         vertical-align: middle;
+                         line-height: 90px;  
+                         }
+                       }
+                    }
+                  }
                   &:nth-child(2){width: 115px;height: 140px; margin-top: 10px;margin-right: 10px;margin-bottom: 10px;}
                   &:nth-child(3){width: 115px;height: 140px; margin-top: 10px;margin-right: 10px;margin-left: 10px;margin-bottom: 10px;}
                   &:last-child{width: 115px;height: 140px; margin-top: 10px;margin-left: 10px;margin-bottom: 10px;}
@@ -229,6 +249,7 @@ ul,li{
           }
         }
       }
+      a{text-decoration: none;color:#FFFFFF;}
     }
   }
   .footerSection{text-align: center;padding-bottom: 50px;}
@@ -300,6 +321,30 @@ ul,li{
       }
       h4{color: #fff;font-family: 'robotomedium';font-size: 14px;margin-bottom: 13px;letter-spacing: 1.3px;}
       ul{li{padding-bottom:8px; }}
+    }
+  }
+}
+#artistes{
+  background: #151515!important;
+#marqueurs{
+  color: #adadad;
+  font-size: 0;
+  padding-top: 40px;padding-bottom: 50px; font-family: 'myriadProregular';
+  li{.inline;border: 1px solid #adadad;
+    line-height: 25px;text-align: center;
+    text-transform: uppercase;
+    width: 218px;height: 25px;
+    margin-bottom: 10px;
+    box-sizing: border-box;font-size: 14px;
+    &:nth-child(4n+1){margin-right: 9px;}
+    &:nth-child(4n+2){margin-left: 9px;margin-right: 9px;}
+    &:nth-child(4n+3){margin-left: 9px;margin-right: 9px;}
+    &:nth-child(4n+4){margin-left: 9px;}
+    a{
+      text-decoration: none;
+      color: #adadad;
+    }
+
     }
   }
 }
@@ -576,81 +621,6 @@ ul,li{
     .imageProfile{
       width: 600px;
       height: 400px;
-      text-align: center;
-      display: inline-block;
-      overflow: hidden;
-    }
-  }
-}
-.tags{
-  width: 1000px;
-  margin: 0px auto;
-  text-align: center;
-  a{
-    margin: 0 10px;
-    border: 1px solid black;
-    color: black;
-    padding: 5px 40px;
-    text-decoration: none;
-  }
-}
-.blockArtist{
-  width: 45%;
-  margin: 0px auto;
-  .info{
-    width: 930px;
-    margin: 0 auto;
-    font-size: 0;
-    .username{
-      display: inline-block;
-      font-size: 25px;
-      margin-right: 10px;
-    }
-    .pictoMap{
-      img{
-       width: 8px;
-      }
-    }
-    .localisation{
-      font-size: 15px;
-      margin-left: 5px;
-    }
-  }
-  .imageAll{
-    width: 100%;
-    font-size: 0;
-    margin: 0 auto;
-    position: relative;
-    .description{
-      color:rgba(255, 255, 255, 0)
-    }
-    &:hover {
-     .description{
-      transition: background 0.3s ease,color 0.3s ease;
-      height:200px;
-      box-sizing: border-box;
-      position: absolute;
-      width: 100%;
-      padding: 40px;
-      font-size: 15px;
-      text-align: left;
-      background:rgba(6, 6, 6, 0.6);
-      color:white;
-      .content{
-        vertical-align: middle;
-        line-height: 120px;  
-        }
-      }
-    }
-    .imageProfile:first-child{
-      width: 100%;
-      height: 200px;
-      display: block;
-      margin: 0 auto;
-    }
-    .imageProfile{
-      width: 50%;
-      height: 200px;
       text-align: center;
       display: inline-block;
       overflow: hidden;
