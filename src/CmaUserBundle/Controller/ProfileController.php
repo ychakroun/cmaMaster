@@ -21,10 +21,15 @@ class ProfileController extends Controller
      */
     public function showAction($username)
     {
-        $user = $this->get('fos_user.user_manager')->findUserByUsername($username);
+        if (is_string($username) && $username !== null) {
+            $user = $this->get('fos_user.user_manager')->findUserByUsername($username);
+        }else{
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
-        }else
+        }
+        else
         {
             $isartist = $user->hasRole('ROLE_ARTIST');
         }
@@ -33,7 +38,7 @@ class ProfileController extends Controller
         }
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
-            'user' => $user
+            'artist' => $user
         ));
     }
 

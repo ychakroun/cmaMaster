@@ -42,6 +42,7 @@ twig:
     globals:
         listArtists: "@home_page.listArtists"
         userServices: "@home_page.userServices"
+        tagServices: "@home_page.tagServices"
 
 # Doctrine Configuration
 doctrine:

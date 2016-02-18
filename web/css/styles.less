@@ -582,6 +582,81 @@ ul,li{
     }
   }
 }
+.tags{
+  width: 1000px;
+  margin: 0px auto;
+  text-align: center;
+  a{
+    margin: 0 10px;
+    border: 1px solid black;
+    color: black;
+    padding: 5px 40px;
+    text-decoration: none;
+  }
+}
+.blockArtist{
+  width: 45%;
+  margin: 0px auto;
+  .info{
+    width: 930px;
+    margin: 0 auto;
+    font-size: 0;
+    .username{
+      display: inline-block;
+      font-size: 25px;
+      margin-right: 10px;
+    }
+    .pictoMap{
+      img{
+       width: 8px;
+      }
+    }
+    .localisation{
+      font-size: 15px;
+      margin-left: 5px;
+    }
+  }
+  .imageAll{
+    width: 100%;
+    font-size: 0;
+    margin: 0 auto;
+    position: relative;
+    .description{
+      color:rgba(255, 255, 255, 0)
+    }
+    &:hover {
+     .description{
+      transition: background 0.3s ease,color 0.3s ease;
+      height:200px;
+      box-sizing: border-box;
+      position: absolute;
+      width: 100%;
+      padding: 40px;
+      font-size: 15px;
+      text-align: left;
+      background:rgba(6, 6, 6, 0.6);
+      color:white;
+      .content{
+        vertical-align: middle;
+        line-height: 120px;  
+        }
+      }
+    }
+    .imageProfile:first-child{
+      width: 100%;
+      height: 200px;
+      display: block;
+      margin: 0 auto;
+    }
+    .imageProfile{
+      width: 50%;
+      height: 200px;
+      text-align: center;
+      display: inline-block;
+      overflow: hidden;
+    }
+  }
+}
 /*aside*/
 .aside{
   padding-top: 70px;
@@ -723,6 +798,10 @@ input[type="submit"]{
 }
 .buttonAction{background: #ac0012;padding:15px 35px;.inline;color:#fff;font-family: 'robotoregular';}
 .buttonMore{background: #ac0012;padding:15px 35px;.inline;color:#fff;font-family: 'robotomedium';}
+.sectionArtistPage{
+  width: 1200px;
+  margin: 0 auto;
+}
 .tagLiCss{
   position: relative;
   div:first-child{

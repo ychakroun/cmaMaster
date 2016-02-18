@@ -1,12 +1,13 @@
 {% extends "homePageBundle::base.html.twig" %}
-{% set user = userServices.allProfile %}
 {% block main %}
 {% include "homePageBundle:Profile:show_content.html.twig" %}
+{% endblock %}
+{% block script %}
 	<script >
 		{% if userServices.getImageHeader is null  %}
 		{% else %}
 			changeHeader('{{asset( userServices.getImageHeader )}}');
 		{% endif %}
 	</script>
-
 {% endblock %}
+

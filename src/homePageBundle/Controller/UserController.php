@@ -33,6 +33,18 @@ class UserController extends Controller
         if(is_string($this->get('security.token_storage')->getToken()->getUser())) 
         {
           return $this->render('homePageBundle:Default:index.html.twig');
+        }else if($this->get('security.token_storage')->getToken()->getUser()->getParameter())
+        {
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $form = $this->createForm(UserParameterType::class, $user);
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                return $this->redirectToRoute("user_parameter");
+            }
+            return $this->render('homePageBundle:Parameter:parameter_user.html.twig',array('formPara'=>$form->createView()));
         }else{
             $user = $this->get('security.token_storage')->getToken()->getUser();
             $form = $this->createForm(UserParameterType::class, $user);
@@ -43,10 +55,8 @@ class UserController extends Controller
                 $em->flush();
                 return $this->redirectToRoute("user_parameter");
             }
-
+            return $this->render('homePageBundle:Parameter:parameter_create.html.twig',array('formPara'=>$form->createView()));
         }
-        dump($form->createView());
-        return $this->render('homePageBundle:User:parameter_user.html.twig',array('formPara'=>$form->createView()));
     }
     public function informationAction(Request $request)
     { 

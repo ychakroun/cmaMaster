@@ -145,7 +145,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setParameter(\CmaUserBundle\Entity\Parameter $parameter)
+    public function setParameter(\CmaUserBundle\Entity\Parameter $parameter= null)
     {
         $this->parameter = $parameter;
 
@@ -168,7 +168,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setInformation(\CmaUserBundle\Entity\Information $information)
+    public function setInformation(\CmaUserBundle\Entity\Information $information= null)
     {
         $this->information = $information;
 
@@ -191,7 +191,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setProfile(\CmaUserBundle\Entity\Profile $profile)
+    public function setProfile(\CmaUserBundle\Entity\Profile $profile = null)
     {
         $this->profile = $profile;
 
@@ -201,7 +201,7 @@ class User extends BaseUser
     /**
      * Get profile
      *
-     * @return \CmaUserBundle\Entity\Information
+     * @return \CmaUserBundle\Entity\profile
      */
     public function getProfile()
     {

@@ -19,6 +19,7 @@ profile:
     show:
         username: 'Nom d''utilisateur'
         email: 'Adresse e-mail'
+        devis: 'Demander un devis'
     edit:
         submit: 'Mettre à jour'
     flash:

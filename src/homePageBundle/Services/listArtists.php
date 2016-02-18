@@ -22,18 +22,37 @@ class listArtists {
     	$i = 0;
     	$y = 0;
     	foreach ($listArtists as $key => $artist) {
-    		$tab = 'tab'.$key;
-            dump($artist->getParameter()->getIsPublic());
-    		if($i == 6){
-    			$i = 0;
-    			$y++;
-    			$artistformat[$y][$i] = $artist; 
-    		}else{
-    			$artistformat[$y][$i] = $artist;
-    		}
-    		$i++;
+            if($artist->getParameter()!=null&&$artist->getProfile()!=null){
+    		  $tab = 'tab'.$key;
+    		  if($i == 6){
+    		  	$i = 0;
+    		  	$y++;
+    		  	$artistformat[$y][$i] = $artist; 
+    		  }else{
+    		  	$artistformat[$y][$i] = $artist;
+    		  }
+    		  $i++;
+            }
     	}
         return ($artistformat);
+    }
+    public function getProfile($user) {
+        $profile = $this->em
+        ->getRepository('CmaUserBundle:Profile')
+        ->findOneById($user->getProfile()->getId());
+        return $profile;
+    }
+    public function getInformation($user) {
+        if($user->getInformation()){
+            $information = $this->em
+            ->getRepository('CmaUserBundle:Information')
+            ->findOneById($user->getInformation()->getId());
+            return $information;
+        }else{
+            $information = (object) ['pays' => 'nc'];
+            return $information;
+        }
+        
     }
 }
 ?>
