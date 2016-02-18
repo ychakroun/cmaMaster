@@ -1,5 +1,10 @@
 {% extends "homePageBundle::base.html.twig" %}
 {% trans_default_domain 'FOSUserBundle' %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
 {% block javascripts %}
     <script src="{{asset( "js/tags.js" )}}"></script>
      <script src="{{asset( "js/imgProfileEdit.js" )}}"></script>
@@ -10,13 +15,8 @@
 {% endblock main %}
 {% block script %}
     <script >
-    {% if profile %}
-		{% if profile.imageHeader  %}
-			changeHeader('{{asset( userServices.getImageHeader )}}');
-		{% endif %}
-    {% endif %}
-    setAddContent('{{ "form.profile.tag.add" | trans }}');
- </script>
+        setAddContent('{{ "form.profile.tag.add" | trans }}');
+    </script>
 {% endblock %}
 
 

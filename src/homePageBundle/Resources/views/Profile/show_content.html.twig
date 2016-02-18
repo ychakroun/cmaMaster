@@ -1,4 +1,11 @@
 {% trans_default_domain 'FOSUserBundle' %}
+<header id="profileHeader">
+    {% if artist.profile.imageHeader and artist.profile.imageHeader.path%}
+        <img id="0" src="{{ asset( 'images/'~artist.profile.imageHeader.path ) }}" alt="">
+    {% else %}
+       <div class="basicHeader"><img id="0" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
+    {% endif %}
+</header>
 <div class="mainProfile">
 	{% if artist.username %}
 		<div class= "username">{{ artist.username }}</div>

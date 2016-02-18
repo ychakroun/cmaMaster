@@ -1,5 +1,11 @@
 {% trans_default_domain 'FOSUserBundle' %}
-
+<header id="profileHeader">
+    {% if profile.imageHeader and profile.imageHeader.path%}
+        <img id="0" src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
+    {% else %}
+       <div class="basicHeader"><img id="0" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
+    {% endif %}
+</header>
 <div id="mainProfile">
     {% if is_granted('ROLE_ARTIST') %}
     <form  action="{{ path("artist_edit")}}" enctype="multipart/form-data" method="post" >

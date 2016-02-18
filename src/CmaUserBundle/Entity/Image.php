@@ -64,9 +64,7 @@ class Image
      */
     public function setName($name)
     {
-        if (null !== $this->getFile()) {
-            return $this->name;
-        }
+        return $this->name = $name;
     }
     /**
      *  getName.

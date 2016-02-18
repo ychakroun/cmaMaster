@@ -38,13 +38,18 @@
                         {% if  listArtists.getInformation(artist)%}
                         {% set information = listArtists.getInformation(artist) %}
                         <span>
-                          <img src="{{asset('img/map.png')}}" alt=""> {{information.pays}}
+                          <img src="{{asset('img/map.png')}}" alt="">
+                            {% if information.city %}
+                              {{information.city}}
+                            {% else %}
+                              nc
+                            {% endif %}
                         </span>
                       </div>
                       <div class="infos">
-                        <img src="{{asset('img/custom.png')}}" alt=""><p>19 custom.</p>
-                        <img src="{{asset('img/likes.png')}}" alt=""><p>38 likes</p>
-                        <img src="{{asset('img/avis.png')}}" alt=""><p>32 avis</p>
+                        <img src="{{asset('img/custom.png')}}" alt=""><p>{{0}} custom.</p>
+                        <img src="{{asset('img/likes.png')}}" alt=""><p>{{0}} likes</p>
+                        <img src="{{asset('img/avis.png')}}" alt=""><p>{{0}} avis</p>
                       </div>
                       {% endif %}
                     </header>

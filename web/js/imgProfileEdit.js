@@ -1,5 +1,5 @@
 function initProfileImage(){
-        document.getElementById('header').onclick = function() {
+        document.getElementById('0').onclick = function() {
         document.getElementById('profile_imageHeader_file').click();
         }
         var images =  document.getElementsByClassName('imageProfile');
@@ -35,7 +35,8 @@ function setImageTemp(){
 	var data = document.getElementById('imgtmp').innerHTML;
 	var id = image.slice(image.indexOf('[')+1,image.indexOf(']'));
 	if(id=='imageHeader'){
-		changeHeader(data);
+        document.getElementById(0).parentNode.setAttribute('class','');
+		document.getElementById(0).src = data;
 	}else{
 		id = id.replace(/[a-zA-Z]/g,'');
 		document.getElementById(id).src = data;

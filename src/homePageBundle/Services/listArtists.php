@@ -18,8 +18,14 @@ class listArtists {
     }
     public function getNbArtists() {
         $repository = $this->em->getRepository('CmaUserBundle:User');
+        $artistReal = 0;
         $listArtists = $repository->findByRoleIndex('ROLE_ARTIST');
-        return sizeof($listArtists);
+        foreach ($listArtists as $key => $artist) {
+            if($artist->getParameter()!=null&&$artist->getProfile()!=null){
+               $artistReal+=1;
+            }
+        }
+        return $artistReal;
     }
     public function pageArtist() {
         $repository = $this->em->getRepository('CmaUserBundle:User');
@@ -54,7 +60,7 @@ class listArtists {
             ->findOneById($user->getInformation()->getId());
             return $information;
         }else{
-            $information = (object) ['pays' => 'nc'];
+            $information = (object) ['city' => 'nc'];
             return $information;
         }
         
