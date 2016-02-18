@@ -67,7 +67,8 @@ function removeTagOnChange(tagFormLi,input,collectionHolder, newLinkLi){
 		addTagForm(collectionHolder, newLinkLi);
 		inputHolder = collectionHolder[0].getElementsByTagName("input");
 		inputHolder[inputHolder.length-1].value = input.value;
-		inputHolder[inputHolder.length-1].click();
+		inputHolder[inputHolder.length-1].focus();
+		inputHolder[inputHolder.length-1].setSelectionRange(input.value.length,input.value.length);
 		var tagtoremove = e.target.parentNode.parentNode.parentNode;
 		tagtoremove.parentNode.removeChild(tagtoremove);
 	}
