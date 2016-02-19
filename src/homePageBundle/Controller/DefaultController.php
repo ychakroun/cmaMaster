@@ -16,6 +16,8 @@ class DefaultController extends Controller
     			dump($this->getUser()->hasGroup(''));
     		}
     	}*/
-        return $this->render('homePageBundle:Default:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $pieces = $em->getRepository('CmaUserBundle:Piece')->findAll();
+        return $this->render('homePageBundle:Default:index.html.twig',array('pieces'=>$pieces));
     }
 }

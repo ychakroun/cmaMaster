@@ -36,9 +36,12 @@ class ProfileController extends Controller
         if(!$isartist==true){
             throw $this->createNotFoundException('This user is not an artist');
         }
-
+        $em = $this->getDoctrine()->getManager();
+        $userD = $this->get('security.token_storage')->getToken()->getUser();
+        $pieces = $pieces = $em->getRepository('CmaUserBundle:Piece')->findByUser($userD);
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
-            'artist' => $user
+            'artist' => $user,
+            'pieces'=> $pieces
         ));
     }
 
@@ -92,11 +95,12 @@ class ProfileController extends Controller
             //$dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
             return $this->redirectToRoute('artist_edit');
         }
-        dump($userprofile);
+        $pieces = $pieces = $em->getRepository('CmaUserBundle:Piece')->findBy($user);
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
             'form' => $form->createView(),
             'username'=>$user->getUsername(),
-            'profile'=>$userprofile
+            'profile'=>$userprofile,
+            'pieces' => $pieces
         ));
     }
 }

@@ -51,7 +51,39 @@
 			{% endif %}
 		</div>
 	</div>
-	<div class="galerie">
-		<h1>la gallerie</h1>
-	</div>
+	<section class="galerie">
+    	<header class="headerSection">
+    	  <div class="globalS">
+    	    <div class="idSection">La Galerie</div>
+    	    <div class="logoSection"><img src="{{asset('img/logoTampon.png')}}" alt=""></div>
+    	    <div class="infoSection">{{pieces|length}} Oeuvres</div>
+    	  </div>
+    	</header>
+    	<div class="containerS">
+    	  <div class="titleS">
+    	  </div>
+    	  <div class="contentS">
+    	    <ul>
+    	    {% for piece in pieces %}
+    	      <li>
+    	        <div class="images">
+    	        {% if piece.image1 %}
+    	          <img src="{{asset("images/"~piece.image1.path)}}" alt="">
+    	        {% else %}
+    	          <img src="{{asset('img/600x400.jpg')}}" alt="">
+    	        {% endif %}
+    	        </div>
+    	        <div class="infos">
+    	          <div class="decriptions">
+    	            <p class="name">{{piece.user.username}}</p>
+    	            <p class="title">{{piece.title}}</p>
+    	          </div>
+    	          <div class="price">{{piece.price}} €</div>
+    	        </div>
+    	      </li>
+    	     {% endfor %}
+    	    </ul>
+    	  </div>
+    	</div>
+  	</section>
 </div>

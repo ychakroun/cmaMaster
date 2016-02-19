@@ -6,6 +6,14 @@ user_parameter:
     path:     /parameter
     defaults: { _controller: homePageBundle:User:parameter }
 
+piece_edit_id:
+    path:     /piece/edit/{id}
+    defaults: { _controller: homePageBundle:Piece:edit }
+
+piece_edit:
+    path:     /piece/edit
+    defaults: { _controller: homePageBundle:Piece:create }
+
 user_message:
     path:     /message
     defaults: { _controller: homePageBundle:User:message }
@@ -30,10 +38,6 @@ user_sold_project:
     path:     /soldproject
     defaults: { _controller: homePageBundle:User:sold }
 
-hello_the_world:
-    path:     /hello-world
-    defaults: { _controller: homePageBundle:Advert:index }
-
 artist_profile:
     path:     /profile/{username}
     defaults: { _controller: CmaUserBundle:Profile:show }
@@ -46,12 +50,6 @@ deleteuser:
     path:     /group/delete/{username}
     defaults: { _controller: homePageBundle:User:deleteadmin }
 
-home_page_view:
-    path:     /{id}
-    defaults: { _controller: homePageBundle:Advert:view }
-    requirements:
-        id: \d+
-
 listGalleries:
     path:     /galleries
     defaults: { _controller: homePageBundle:Gallery:index }
@@ -59,9 +57,3 @@ listGalleries:
 listArtists:
     path:     /artist
     defaults: { _controller: homePageBundle:Artist:index }
-
-Artist_id:
-    path:     /artist/{id}
-    defaults: { _controller: homePageBundle:Artist:view }
-    requirements:
-        id: \d+

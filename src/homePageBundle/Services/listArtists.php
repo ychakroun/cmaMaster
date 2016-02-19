@@ -14,12 +14,18 @@ class listArtists {
     public function indexAction() {
         $repository = $this->em->getRepository('CmaUserBundle:User');
     	$listArtists = $repository->findByRoleIndex('ROLE_ARTIST');
-        return ($listArtists);
+        $artistformat = array();
+        foreach ($listArtists as $key => $artist) {
+            if($artist->getParameter()!=null&&$artist->getProfile()!=null){
+                array_push($artistformat,$artist);
+            }
+        }
+        return ($artistformat);
     }
     public function getNbArtists() {
         $repository = $this->em->getRepository('CmaUserBundle:User');
         $artistReal = 0;
-        $listArtists = $repository->findByRoleIndex('ROLE_ARTIST');
+        $listArtists = $repository->findByRole('ROLE_ARTIST');
         foreach ($listArtists as $key => $artist) {
             if($artist->getParameter()!=null&&$artist->getProfile()!=null){
                $artistReal+=1;
@@ -60,8 +66,7 @@ class listArtists {
             ->findOneById($user->getInformation()->getId());
             return $information;
         }else{
-            $information = (object) ['city' => 'nc'];
-            return $information;
+            return $information = null;
         }
         
     }

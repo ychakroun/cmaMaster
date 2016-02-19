@@ -76,10 +76,19 @@ private: 'Particulier'
 company: 'Entreprise'
 administration: 'Administration'
 noartiste: 'Il n''y as pas d''artistes'
+gallerie: 'Galerie'
+piece: 'Oeuvre'
 form:
     group_name: 'Etes-vous un: '
     username: 'Nom d''artiste'
     name: 'Nom'
+    piece:
+        title: 'titre de l''oeuvre *'
+        collection: 'collection'
+        price: 'prix *'
+        theme: 'thème'
+        technics: 'techniques'
+        feature: 'caractéristiques'
     profile:
         tag:
             add: "Ajouter un tag"

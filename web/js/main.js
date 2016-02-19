@@ -7,7 +7,4 @@ window.onload = function(){
 	if(typeof initTags == 'function'){
 		initTags();
 	}
-	if(typeof initProfileImage == 'function'){
-		initProfileImage();
-	}
 }

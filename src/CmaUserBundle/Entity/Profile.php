@@ -23,7 +23,7 @@ class Profile
     private $id;
 
     /**
-     * @var string
+     * @var text
      *
      * @ORM\Column(name="Description", type="text", nullable=true)
      */

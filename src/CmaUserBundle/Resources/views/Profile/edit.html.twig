@@ -6,8 +6,8 @@
     </div>
 {% endblock %}
 {% block javascripts %}
-    <script src="{{asset( "js/tags.js" )}}"></script>
      <script src="{{asset( "js/imgProfileEdit.js" )}}"></script>
+     <script src="{{asset( "js/tags.js" )}}"></script>
     {{parent()}}
 {% endblock %}
 {% block main %}
@@ -15,6 +15,7 @@
 {% endblock main %}
 {% block script %}
     <script >
+    	imageProfileInit();
         setAddContent('{{ "form.profile.tag.add" | trans }}');
     </script>
 {% endblock %}

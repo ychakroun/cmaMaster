@@ -10,7 +10,7 @@
           <div class="globalS">
             <div class="idSection">Les Artistes</div>
             <div class="logoSection"><img src="img/logoTampon.png" alt="" /></div>
-            <div class="infoSection">122 Artistes</div>
+            <div class="infoSection">{{listArtists.getNbArtists}} Artistes</div>
           </div>
         </header>
         <div class="containerS">
@@ -26,24 +26,61 @@
                          <div class="globalBlocArtiste">
                             <header class="headerBlocArtiste">
                             {% if artist.username %}
-                                <div id="{{ artist.id }}" class="name">{{artist.username}}<span>
-                                    <img src="{{ asset('img/map.png') }}" alt="" /> Bordeaux</span>
+                                <div id="{{ artist.id }}" class="name">{{artist.username}}
+                                  <span>
+                                  {% if  listArtists.getInformation(artist)%}
+                                  {% set information = listArtists.getInformation(artist) %}
+                                    <img src="{{ asset('img/map.png') }}" alt="" />
+                                    {% if information.city %}
+                                      {{information.city}}
+                                    {% else %}
+                                      nc
+                                    {% endif %}
+                                  </span>
                                 </div>
                             {% endif %}
                                 <div class="infos">
-                                    <img src="{{ asset( 'img/custom.png' )  }}" alt="" /><p>19 custom.</p>
-                                    <img src="{{ asset( 'img/likes.png' ) }}" alt="" /><p>38 likes</p>
-                                    <img src="{{ asset( 'img/avis.png' ) }}" alt="" /><p>32 avis</p>
+                                    <img src="{{ asset( 'img/custom.png' )  }}" alt="" /><p>{{0}} custom.</p>
+                                    <img src="{{ asset( 'img/likes.png' ) }}" alt="" /><p>{{0}} likes</p>
+                                    <img src="{{ asset( 'img/avis.png' ) }}" alt="" /><p>{{0}} avis</p>
                                 </div>
+                                {% endif %}
                             </header>
+                            {% if listArtists.getProfile(artist) %}
+                            {% set profile = listArtists.getProfile(artist) %}
                             <div class="contentBlocArtiste">
                                 <ul>
-                                    <li><img src="{{ asset( 'img/Nebay/Portfolio-1.jpg') }}" alt="" /></li>
-                                    <li><img src="{{ asset( 'img/Nebay/Portfolio-2.jpg') }}" alt="" /></li>
-                                    <li><img src="{{ asset( 'img/Nebay/Portfolio-3.jpg') }}" alt="" /></li>
-                                    <li><img src="{{ asset( 'img/Nebay/Galerie-1.jpg') }}" alt="" /></li>
+                                  <li>
+                                    {% if profile.imageHeader %}
+                                      <img src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
+                                    {% else %}
+                                      <img src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+                                    {% endif %}
+                                  </li>
+                                  <li>
+                                    {% if profile.image1 %}
+                                      <img src="{{ asset( 'images/'~profile.image1.path ) }}" alt="">
+                                    {% else %}
+                                      <img src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+                                    {% endif %}
+                                  </li>
+                                  <li>
+                                    {% if profile.image2 %}
+                                      <img src="{{ asset( 'images/'~profile.image2.path ) }}" alt="">
+                                    {% else %}
+                                      <img src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+                                    {% endif %}
+                                  </li>
+                                  <li>
+                                    {% if profile.image3 %}
+                                      <img src="{{ asset( 'images/'~profile.image3.path ) }}" alt="">
+                                    {% else %}
+                                      <img src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+                                    {% endif %}
+                                  </li>
                                 </ul>
                             </div>
+                          {% endif %}
                         </div>
                     </li>
                 {% endfor %}
@@ -59,38 +96,43 @@
     </section>
   {% endblock %}
   {% block galerie %}
-   <section class="galerie">
-    <header class="headerSection">
-      <div class="globalS">
-        <div class="idSection">La Galerie</div>
-        <div class="logoSection"><img src="{{ asset('img/logoTampon.png')}}" alt="" /></div>
-        <div class="infoSection">122 Oeuvres</div>
-      </div>
-    </header>
-    <div class="containerS">
+  <section class="galerie">
+      <header class="headerSection">
+        <div class="globalS">
+          <div class="idSection">La Galerie</div>
+          <div class="logoSection"><img src="{{asset('img/logoTampon.png')}}" alt=""></div>
+          <div class="infoSection">{{pieces|length}} Oeuvres</div>
+        </div>
+      </header>
+      <div class="containerS">
       <div class="titleS">
         <h2>Des oeuvres originales.</h2>
         <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</h3>
       </div>
-      <div class="contentS">
-        <ul>
-          <li>
-            <div class="images">
-              <img src="{{ asset('img/Nebay/Galerie-3.jpg')}}" alt="">
-            </div>
-            <div class="infos">
-              <div class="decriptions">
-                <p class="name">Nom Artiste</p>
-                <p class="title">Titre oeuvre / Collection / Date</p>
+        <div class="contentS">
+          <ul>
+          {% for piece in pieces %}
+            <li>
+              <div class="images">
+              {% if piece.image1 %}
+                <img src="{{asset("images/"~piece.image1.path)}}" alt="">
+              {% else %}
+                <img src="{{asset('img/600x400.jpg')}}" alt="">
+              {% endif %}
               </div>
-              <div class="price">1000 €</div>
-            </div>
-          </li>
-        </ul>
+              <div class="infos">
+                <div class="decriptions">
+                  <p class="name">{{piece.user.username}}</p>
+                  <p class="title">{{piece.title}}</p>
+                </div>
+                <div class="price">{{piece.price}} €</div>
+              </div>
+            </li>
+           {% endfor %}
+          </ul>
+        </div>
       </div>
-    </div>
-      <footer class="footerSection"><div class="buttonMore">Plus + galerie</div></footer>
-  </section>
+    </section>
   {% endblock %}
     {{ parent() }}
 {% endblock %}
