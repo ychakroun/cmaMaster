@@ -217,4 +217,9 @@ class Parameter
     {
         return $this->newsletter;
     }
+
+    public function getAll()
+    {
+        return $this;
+    }
 }

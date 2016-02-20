@@ -19,6 +19,7 @@ profile:
     show:
         username: 'Nom d''utilisateur'
         email: 'Adresse e-mail'
+        devis: 'Demander un devis'
     edit:
         submit: 'Mettre à jour'
     flash:
@@ -28,7 +29,12 @@ change_password:
     flash:
         success: 'Le mot de passe a été modifié'
 registration:
-    check_email: 'Un e-mail a été envoyé à l''adresse %email%. Il contient un lien d''activation sur lequel il vous faudra cliquer afin d''activer votre compte.'
+    checkmail:
+        title: 'Validation e-mail'
+        great: 'Merci !'
+        confirm: 'Votre inscription est bien enregistré !'
+        message2: 'Un e-mail de confirmation viens d''être envoyé à l''adresse e-mail %email%'
+        message1: 'Vous devez clicker sur un lien present dans cet e-mail afin de valider votre inscription'
     confirmed: 'Félicitations %username%, votre compte est maintenant activé.'
     back: 'Retour à la page d''origine.'
     submit: 'Confirmer votre inscription'
@@ -64,15 +70,29 @@ layout:
     inscription: 'S''inscrire'
     logged_in_as: 'Connecté en tant que %username%'
     title_inscription: 'Vous êtes :'
+    parameter: 'Paramètres'
 artist: 'Artiste'
 private: 'Particulier'
 company: 'Entreprise'
 administration: 'Administration'
 noartiste: 'Il n''y as pas d''artistes'
+gallerie: 'Galerie'
+piece: 'Oeuvre'
 form:
     group_name: 'Etes-vous un: '
     username: 'Nom d''artiste'
     name: 'Nom'
+    piece:
+        title: 'titre de l''oeuvre *'
+        collection: 'collection'
+        price: 'prix *'
+        theme: 'thème'
+        technics: 'techniques'
+        feature: 'caractéristiques'
+    profile:
+        tag:
+            add: "Ajouter un tag"
+        description: "Ajouter une description"
     image:
         submit: 'Enregister l''image'
         file: 'Selectionner une image'

@@ -31,7 +31,7 @@ class Image
     private $file;
 
     private $temp;
-/**
+    /**
      * Sets file.
      *
      * @param UploadedFile $file
@@ -64,7 +64,7 @@ class Image
      */
     public function setName($name)
     {
-        return $this->name;
+        return $this->name = $name;
     }
     /**
      *  getName.
@@ -83,14 +83,18 @@ class Image
         if (null !== $this->getFile()) {
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
-            $this->path = '/images/'.$this->name.'/'.$filename.'.'.$this->getFile()->guessExtension();
+            if($this->name!=null){
+                 $this->path = $this->name.'/'.$filename.'.'.$this->getFile()->guessExtension();
+             }else{
+                $this->path = $filename.'.'.$this->getFile()->guessExtension();
+             }
         }
     }
     protected function getUploadRootDir()
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
+        return __DIR__.'/../../../web/images/'.$this->getUploadDir();
     }
 
     protected function getUploadDir()
@@ -100,7 +104,7 @@ class Image
         if (!file_exists(__DIR__.'/../../../web/images/'.$this->name)) {
             mkdir(__DIR__.'/../../../web/images/'.$this->name, 0755, true);
         }
-        return '/images/'.$this->name;
+        return $this->name;
     }
     /**
      * @ORM\PostPersist()
@@ -120,7 +124,7 @@ class Image
         // check if we have an old image
         if (isset($this->temp)) {
             // delete the old image
-            unlink($this->getUploadRootDir().'/'.$this->temp);
+            if(unlink(__DIR__.'/../../../web/images/'.$this->temp));
             // clear the temp image path
             $this->temp = null;
         }

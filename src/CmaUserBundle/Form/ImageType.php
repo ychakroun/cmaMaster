@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use CmaUserBundle\Entity\Image;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -17,8 +19,22 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', FileType::class, array('label' => 'form.image.file', 'translation_domain' => 'FOSUserBundle','multiple' => true))
+            ->add('file', FileType::class, array('label' => false, 'translation_domain' => 'FOSUserBundle'))
             ->add('name', HiddenType::class)
+            ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+                $image = $event->getData();
+                $form = $event->getForm();
+
+                if (!$image) {
+                    return;
+                }
+                if($image['file']===null){
+                    unset($image['imageHeader']);
+                }else{
+                    $image['name'] = $image['name'].'/'.$form->getParent()->getConfig()->getName();
+                 }
+                $event->setData($image);
+            })
         ;
     }
     

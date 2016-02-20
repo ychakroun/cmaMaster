@@ -198,7 +198,7 @@ ul,li{
   }
   #video{background: #fff;}
 }
-#artistes{
+.artistes{
   background: #000;
   .headerSection{}
   .containerS{
@@ -215,7 +215,27 @@ ul,li{
             .contentBlocArtiste{ img{position: relative; width: 100%; height:100%;display: inline-block;}
               ul{width: 100%;
                 li{.inline;
-                  &:first-child{width: 385px; height: 180px;}
+                  &:first-child{width: 385px; height: 180px;position: relative;
+                    &:hover {
+                      .description{
+                       transition: background 0.3s ease,color 0.3s ease;
+                       height:180px;
+                       box-sizing: border-box;
+                       position: absolute;
+                       width: 100%;
+                       padding: 40px;
+                       font-size: 15px;
+                       text-align: left;
+                       background:rgba(6, 6, 6, 0.6);
+                       color:white;
+                       z-index: 2;
+                       .content{
+                         vertical-align: middle;
+                         line-height: 90px;  
+                         }
+                       }
+                    }
+                  }
                   &:nth-child(2){width: 115px;height: 140px; margin-top: 10px;margin-right: 10px;margin-bottom: 10px;}
                   &:nth-child(3){width: 115px;height: 140px; margin-top: 10px;margin-right: 10px;margin-left: 10px;margin-bottom: 10px;}
                   &:last-child{width: 115px;height: 140px; margin-top: 10px;margin-left: 10px;margin-bottom: 10px;}
@@ -229,11 +249,44 @@ ul,li{
           }
         }
       }
+      a{text-decoration: none;color:#FFFFFF;}
     }
   }
   .footerSection{text-align: center;padding-bottom: 50px;}
 }
 #galerie{
+  .headerSection{}
+  .containerS{
+    .titleS{color: #000;}
+    .contentS{
+      ul{font-size: 0;
+        li{
+        margin-bottom: 40px;
+         box-sizing: border-box;
+         border: 1px solid #000;
+          width: 295px; height: 320px; .inline;font-size: 0px;padding: 0;
+          .images{font-size: 0;width: 100%;height: 245px;img{height: 100%;width: 100%;}}
+          .infos{
+            color: #000;font-size: 16px;font-family: 'robotomedium';
+            .decriptions{
+              float: left;padding-left: 20px;padding-top: 15px;
+              .name{}
+              .title{font-size: 12px;color:#ac0012;}
+            }
+            .price{float: right;padding-right: 20px;padding-top: 15px;}
+          }
+          &:nth-child(5n+1){margin-right: 10px;width: 610px;}
+          &:nth-child(5n+2){margin-left: 10px;}
+          &:nth-child(5n+3){margin-right: 10px;}
+          &:nth-child(5n+4){margin-right: 10px;margin-left: 10px;}
+          &:nth-child(5n+5){margin-left: 10px;}
+        }
+      }
+    }
+  }
+  .footerSection{text-align: center;padding-bottom: 50px;}
+}
+.galerie{
   .headerSection{}
   .containerS{
     .titleS{color: #000;}
@@ -300,6 +353,30 @@ ul,li{
       }
       h4{color: #fff;font-family: 'robotomedium';font-size: 14px;margin-bottom: 13px;letter-spacing: 1.3px;}
       ul{li{padding-bottom:8px; }}
+    }
+  }
+}
+#artistes{
+  background: #151515!important;
+#marqueurs{
+  color: #adadad;
+  font-size: 0;
+  padding-top: 40px;padding-bottom: 50px; font-family: 'myriadProregular';
+  li{.inline;border: 1px solid #adadad;
+    line-height: 25px;text-align: center;
+    text-transform: uppercase;
+    width: 218px;height: 25px;
+    margin-bottom: 10px;
+    box-sizing: border-box;font-size: 14px;
+    &:nth-child(4n+1){margin-right: 9px;}
+    &:nth-child(4n+2){margin-left: 9px;margin-right: 9px;}
+    &:nth-child(4n+3){margin-left: 9px;margin-right: 9px;}
+    &:nth-child(4n+4){margin-left: 9px;}
+    a{
+      text-decoration: none;
+      color: #adadad;
+    }
+
     }
   }
 }
@@ -543,7 +620,51 @@ ul,li{
     }
   }
 }
-
+#profileHeader{
+  .basicHeader{
+    width:800px;
+    margin: 0 auto;
+  }
+}
+#mainProfile{
+  display: inline;
+  width: 100%;
+  #profile{
+    width: 930px;
+    margin: 0 auto;
+    font-size: 0;
+    textarea{
+      width: 300px;
+      height: 80px;
+    }
+    div{
+      width: 50%;
+      display: inline-block;
+      font-size: 16px;
+    }
+    #profile_tags{
+      text-align: right;
+    }
+  }
+  #imageAll{
+    width: 1200px;
+    font-size: 0;
+    margin: 0 auto;
+    .imageProfile:first-child{
+      width: 800px;
+      height: 500px;
+      display: block;
+      margin: 0 auto;
+    }
+    .imageProfile{
+      width: 600px;
+      height: 400px;
+      text-align: center;
+      display: inline-block;
+      overflow: hidden;
+    }
+  }
+}
 /*aside*/
 .aside{
   padding-top: 70px;
@@ -639,7 +760,7 @@ ul,li{
       }
     }
   }
-  }
+}
 /*propriétés récurrentes*/
 input[type="search"],input[type="email"], input[type="password"],input[type="text"]{
   outline: none;
@@ -685,6 +806,24 @@ input[type="submit"]{
 }
 .buttonAction{background: #ac0012;padding:15px 35px;.inline;color:#fff;font-family: 'robotoregular';}
 .buttonMore{background: #ac0012;padding:15px 35px;.inline;color:#fff;font-family: 'robotomedium';}
+.sectionArtistPage{
+  width: 1200px;
+  margin: 0 auto;
+}
+.tagLiCss{
+  position: relative;
+  div:first-child{
+    display: inline-block;
+  }
+  a{
+      cursor: pointer;
+      font-family: arial;
+      color:red;
+      border-bottom: 1px solid #666;
+      position: absolute;
+      top: 2px;
+  }
+}
 .poprdr{
   background: white;
   width: 50vw;

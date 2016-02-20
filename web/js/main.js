@@ -4,4 +4,7 @@ window.onload = function(){
 	btnLog();
 	register();
 	popupclass();
+	if(typeof initTags == 'function'){
+		initTags();
+	}
 }

@@ -1,9 +1,10 @@
 {% extends "homePageBundle::base.html.twig" %}
 {% block nav %}
-<div id="smallHeader" >
-    {% include "homePageBundle:Default:nav.html.twig" %}
-</div>
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
 {% endblock %}
 {% block main %}
 {% include "homePageBundle:Profile:show_content.html.twig" %}
 {% endblock %}
+

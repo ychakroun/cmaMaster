@@ -18,8 +18,9 @@
     <script src="{{ asset( 'js/less.min.js' ) }}"></script>
     <script src="{{ asset( 'js/nav.js' ) }}"></script>
     <script src="{{ asset( 'js/register.js' ) }}"></script>
-    <script src="{{ asset( 'js/main.js' ) }}"></script>
-    {#{% javascripts '@homePageBundle/Resources/js/less.min.js' %}
+    <script src="{{ asset( 'js/changeHeader.js' ) }}"></script>
+     <script src="{{ asset( 'js/main.js' ) }}"></script>
+       {#{% javascripts '@homePageBundle/Resources/js/less.min.js' %}
         <script src='{{ asset_url }}'></script>
       {% endjavascripts %}#}
   {% endblock %}
@@ -38,6 +39,8 @@
       {% endblock %}
     {% endblock %}
 </body>
+{% block script %}
+{% endblock %}
 		{#{% javascripts '@homePageBundle/Resources/js/less.min.js' %}
   			<script src='{{ asset_url }}'></script>
   		{% endjavascripts %}#}

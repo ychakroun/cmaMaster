@@ -39,6 +39,9 @@
                   <a href="{{ path('fos_user_security_logout') }}">
                   <div id="btnLog" class='buttonAction' >{{ 'layout.logout'|trans }}</div>
                   </a>
+                  <a href="{{ path('user_info') }}">
+                  <div id="btnLog" class='buttonAction' >{{ 'layout.parameter'|trans }}</div>
+                  </a>
                 {% else %}
                   <h1>{{ 'layout.login' | trans }}</h1>
                   {{ render (controller('FOSUserBundle:Security:login')) }}

@@ -29,5 +29,37 @@ class userServices {
     		return null;
     	}
     }
+    public function allProfile() {
+        if($this->sc->getToken()->getUser()->getProfile()){
+            return $this->sc->getToken()->getUser()->getProfile();
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public function tagsFromProfile($profile) {
+        if($profile->getTags()){
+        $tags =  array();
+        foreach ($profile->getTags() as $key => $value) {
+            array_push($tags, $value);
+        }
+            return $tags;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public function getImageHeader() {
+        if($this->sc->getToken()->getUser()->getProfile()){
+            $path = $this->sc->getToken()->getUser()->getProfile()->getImageHeader()->getPath();
+            return "/images/".$path;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
 ?>

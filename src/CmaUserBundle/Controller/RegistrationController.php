@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the FOSUserBundle package.
- *
- * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace CmaUserBundle\Controller;
 
 use FOS\UserBundle\FOSUserEvents;
@@ -82,7 +73,7 @@ class RegistrationController extends Controller
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
         dump($user);
-        return $this->render('FOSUserBundle:Registration:checkEmail.html.twig', array(
+        return $this->render('homePageBundle:User:checkEmail.html.twig', array(
             'user' => $user,
         ));
     }

@@ -1,5 +1,24 @@
-{% extends "CmaUserBundle::layout.html.twig" %}
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block javascripts %}
+     <script src="{{asset( "js/imgProfileEdit.js" )}}"></script>
+     <script src="{{asset( "js/tags.js" )}}"></script>
+    {{parent()}}
+{% endblock %}
+{% block main %}
+{% include "homePageBundle:Profile:edit.html.twig" %}
+{% endblock main %}
+{% block script %}
+    <script >
+    	imageProfileInit();
+        setAddContent('{{ "form.profile.tag.add" | trans }}');
+    </script>
+{% endblock %}
 
-{% block cma_user_content %}
-{% include "CmaUserBundle:views:Profile:edit_content.html.twig" %}
-{% endblock cma_user_content %}
+
+ 

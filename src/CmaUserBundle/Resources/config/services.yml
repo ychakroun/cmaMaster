@@ -4,8 +4,7 @@ services:
 #    cma_user.example:
 #        class: CmaUserBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
-#    cma.form.registration:
-#       class: CmaUserBundle\Form\RegistrationType
-#       tags: 
-#           - { name: form.type, alias: cma_user_registration }
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    cma.form.profile:
+       class: CmaUserBundle\Form\ProfileType
+       calls:
+             - [setEntityManager, ["@doctrine.orm.entity_manager"]]
