@@ -95,7 +95,7 @@ class ProfileController extends Controller
             //$dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
             return $this->redirectToRoute('artist_edit');
         }
-        $pieces = $pieces = $em->getRepository('CmaUserBundle:Piece')->findBy($user);
+        $pieces = $pieces = $em->getRepository('CmaUserBundle:Piece')->findByUser($user);
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
             'form' => $form->createView(),
             'username'=>$user->getUsername(),
