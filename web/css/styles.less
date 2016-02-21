@@ -254,6 +254,7 @@ ul,li{
   }
   .footerSection{text-align: center;padding-bottom: 50px;}
 }
+
 #galerie{
   .headerSection{}
   .containerS{
@@ -380,6 +381,29 @@ ul,li{
     }
   }
 }
+.footerNav{
+  font-family: 'robotomedium';
+  color: #fff;
+  border-top: 1px solid #fff;
+  .widthCentralBloc;
+  .horizontalCenter;
+  div{
+    text-align: center;
+    margin-top: 10px;padding-bottom: 20px;
+    span{margin-left: 10px; margin-right: 10px;}
+    nav{.inline;
+      ul{
+        li{.inline;font-size: 14px;box-sizing: border-box;
+          padding: 10px 15px;
+          margin: 20px 5px;
+        &:selected{border:solid  #fff 1px;font-size: 18px;}
+        &:nth-child(2){border:solid  #fff 1px;font-size: 18px;}//juste pour intégration
+        }
+      }
+    }
+  }
+}
+
 #login{
   padding: 20px;
   input[type="text"],input[type='password']{
@@ -671,7 +695,6 @@ ul,li{
   color:#000;
   width: 310px;.inline;
   vertical-align: top;
-  float: left;
   .filtres-container{
     width: 220px;
     .box{background: transparent;vertical-align: top;width: 220px;.inline;.horizontalCenter;font-size: 0px;padding-bottom: 4px;border-bottom: 1px solid #000;

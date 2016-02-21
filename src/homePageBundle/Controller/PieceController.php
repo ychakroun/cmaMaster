@@ -46,8 +46,8 @@ class PieceController extends Controller
     public function createAction(Request $request)
     {
       $user = $this->get('security.token_storage')->getToken()->getUser();
-      $piece = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findById($user);
-      $nbPiece = sizeof($piece);
+      $pieces = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findByUser($user);
+      $nbPiece = sizeof($pieces);
       if (!is_object($user)) {
         throw new AccessDeniedException('This user does not have access to this section.');
       }

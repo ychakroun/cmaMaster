@@ -51,8 +51,13 @@ deleteuser:
     defaults: { _controller: homePageBundle:User:deleteadmin }
 
 listGalleries:
-    path:     /galleries
-    defaults: { _controller: homePageBundle:Gallery:index }
+    path:     /galleries/{page}-{topfilter}
+    defaults: { _controller: homePageBundle:Gallery:index, page: 1,topfilter: null}
+    requirements:
+        page:  \d+
+        price: \d+
+        width: \d+
+    methods:  [GET,POST]
 
 listArtists:
     path:     /artist

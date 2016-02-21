@@ -82,6 +82,9 @@ form:
     group_name: 'Etes-vous un: '
     username: 'Nom d''artiste'
     name: 'Nom'
+    filterPieces:
+        price:
+        width:
     piece:
         title: 'titre de l''oeuvre *'
         collection: 'collection'

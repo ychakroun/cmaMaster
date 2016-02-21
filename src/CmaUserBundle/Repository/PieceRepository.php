@@ -10,4 +10,130 @@ namespace CmaUserBundle\Repository;
  */
 class PieceRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findWithUrl($page,$topfilter,$urlParameter)
+	{
+		if($topfilter==2||$topfilter==1){
+			if($topfilter==2){
+				$orderBy = 'a.price';
+				$order = 'DESC';
+			}else{
+				$orderBy = 'a.price';
+				$order = 'ASC';
+			}
+		}else{
+			$orderBy = 'a.date';
+			$order = 'ASC';
+		}
+		$offset = ($page-1)*6;
+		$qb = $this->createQueryBuilder('a')
+			->select('a')
+            ->addOrderBy($orderBy, $order)
+            ->setFirstResult( $offset )
+           	->setMaxResults( 6 )
+        ;
+        $price=array();
+        $medium=array();
+        $width=array();
+        if(!empty($urlParameter)){
+        	foreach ($urlParameter as $key => $value) {
+        		if($key!='_token'){
+        			foreach ($value as $key2 => $setPara) {
+        				switch ($key) {
+        					case 'medium':
+        							$medium[$key2] = $setPara;
+        						break;
+        					case 'price':
+        							$price[$key2] = $setPara;
+        						break;
+        					case 'width':
+        							$width[$key2] = $setPara;
+        						break;
+        					
+        					default:
+        						
+        						break;
+        				}
+        			}
+        		}
+        	}
+        }
+        if(!empty($price)||!empty($medium)||!empty($width)){
+        	if(!empty($price)){
+        		$y = 0;
+        		for ($i=0; $i < sizeof($price); $i++) {
+        			if($price[$i]>100){ 
+        				$qb->andWhere('a.price > :price'.$i*$y);
+        				$qb->setParameter(':price'.$i*$y, $price[$i]+0);
+        			}else{
+        				$qb->andWhere('a.price < :price'.$i*($y+1));
+        				$qb->setParameter(':price'.$i*($y+1), $price[$i]+0);
+        			}
+        			if($price[$i]>=100&&$price[$i]<500){
+        				$qb->andWhere('a.price < :price'.$i*($y+2));
+        				$qb->setParameter(':price'.$i*($y+2), $price[$i]+400);
+        			}else if($price[$i]>=500){
+        				$qb->andWhere("a.price < :price".$i*($y+3));
+        				$qb->setParameter(':price'.$i*($y+3).'', $price[$i]+500);
+        			}else if($price[$i]>=2500){
+        				$qb->andWhere("a.price > :price".$i*($y+4));
+        				$qb->setParameter(':price'.$i*($y+4).'', $price[$i]+0);
+        			}
+        			$y++;
+        		}
+        	}
+        	if(!empty($medium)){
+        		for ($i=0; $i < sizeof($medium); $i++) {
+        			if($i>0){
+        				$qb->orWhere('a.medium = :medium'.$i);
+        				$qb->setParameter(':medium'.$i, $medium[$i]);
+        			}else
+        			{
+        				$qb->andWhere('a.medium = :medium'.$i);
+        				$qb->setParameter(':medium'.$i, $medium[$i]);
+        			}
+        		}
+        	}
+        	if(!empty($width)){
+        		$y = 0;
+        		for ($i=0; $i < sizeof($width); $i++) {
+        			if($width[$i]!='&'){
+        				if($width[$i]>100){
+        					$qb->andWhere("a.width > :width".$i*$y+1);
+        					$qb->setParameter(':width'.$i*$y, $width[$i]);
+        				}else{
+        					$qb->andWhere("a.width < :width".$i*($y+1));
+        					$qb->setParameter(':width'.$i*($y+1), $width[$i]);
+        				}
+        				if($width[$i]>=100&&$width[$i]<500){
+        					$qb->andWhere("a.width > :width".$i*($y+2));
+        					$qb->setParameter(':width'.$i*($y+2), $width[$i]+400);
+        				}else if($width[$i]>=500){
+        					$qb->andWhere("a.width > :width".$i*($y+3));
+        					$qb->setParameter(':width'.$i*($y+3), $width[$i]+500);
+        				}else if($width[$i]>=2500){
+        					$qb->andWhere("a.width > :width".$i*($y+4));
+        					$qb->setParameter(':width'.$i*($y+4), $width[$i]);
+        				}
+        				$y++;
+        			}
+        		}
+        	}
+        }
+	    return $query = $qb->getQuery()->getResult();
+	}
+	public function findSomeMedium($offset){
+		$qb = $this->createQueryBuilder('r')
+			->select('r.medium')
+            ->setFirstResult( $offset )
+           	->setMaxResults( 5 )
+        ;
+        $query = $qb->getQuery()->getResult();
+        $result=array();
+        foreach ($query as $key => $value) {
+        	if($value['medium']!= null){
+        		array_push($result,$value['medium']);
+        	}
+        }
+        return $result;
+	}
 }

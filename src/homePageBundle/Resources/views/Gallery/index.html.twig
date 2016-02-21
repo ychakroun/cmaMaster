@@ -1,0 +1,171 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA Art Piece{% endblock %}
+{% block javascripts %}
+     <script src="{{asset( "js/imgProfileEdit.js" )}}"></script>
+    {{parent()}}
+{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block main %}
+  <section id="galerie">
+    <header class="headerSection">
+      <div class="globalS">
+        <div class="idSection">La Galerie</div>
+        <div class="logoSection"><img src="{{asset('img/logoTampon.png')}}" alt=""></div>
+        <div class="infoSection">
+          {% if pieces|length > 1 %}
+            {{pieces|length}} Oeuvres
+          {% else %}
+            {{pieces|length}} Oeuvre
+          {% endif %}
+        </div>
+      </div>
+    </header>
+    <div class="containerS">
+      <aside class="aside">
+        <div class="filtres-container">
+          {{ form_start(formfilter) }}
+                {{ form_widget(formfilter) }}
+          {#<div class="box">
+            <input class="text" placeholder="mots lefs" required="" type="text">
+            <button class="icon"><img src="img/search-black.png" alt=""></button>
+          </div>
+          <div class="supports cat-filtres">
+            <p>Supports</p>
+            <ul>
+              {% if medium %}
+              <li>
+                <div class="checkbox">
+                  <input value="None" id="{{medium}}" name="check" type="checkbox">
+                  <label for="{{medium}}"></label>
+                </div>
+                <a href="{{ path('listGalleries', {'page': parameter.page, 'topfilter': parameter.topfilter, 'medium': parameter.medium~"+"~medium,'width': parameter.width,price : parameter.price}) }}">{{medium}}</a>
+              </li>
+              {% endif %}
+            {% endfor %}
+              <li>
+                <div class="checkbox">
+                  <input value="None" id="more" name="check" type="checkbox">
+                  <label for="more"></label>
+                </div>
+                <p>...</p>
+              </li>
+            </ul>
+          </div>
+          <div class="formats cat-filtres">
+            <p>Formats</p>
+            <ul>
+              <li>
+                <div class="checkbox">
+                  <input value="None" id="petit" name="check" type="checkbox">
+                  <label for="petit"></label>
+                </div>
+                <p>Petit</p>
+              </li>
+              <li>
+                <div class="checkbox">
+                  <input value="None" id="moyen" name="check" type="checkbox">
+                  <label for="moyen"></label>
+                </div>
+                <p>Moyen</p>
+              </li>
+              <li>
+                <div class="checkbox">
+                  <input value="None" id="grand" name="check" type="checkbox">
+                  <label for="grand"></label>
+                </div>
+                <p>Grand</p>
+              </li>
+              <li>
+                <div class="checkbox">
+                  <input value="None" id="geant" name="check" type="checkbox">
+                  <label for="geant"></label>
+                </div>
+                <p>Geant</p>
+              </li>
+            </ul>
+          </div>
+          <div class="prix cat-filtres">
+            <p>Prix</p>
+            <ul>
+              <li>
+                <div class="checkbox">
+                  <input value="None" id="100" name="check" type="checkbox">
+                  <label for="100"></label>
+                </div>
+                <p>&lt; 100€</p>
+              </li>
+              <li>
+                <div class="checkbox">
+                  <input value="None" id="500" name="check" type="checkbox">
+                  <label for="500"></label>
+                </div>
+                <p>100 - 500 €</p>
+              </li>
+              <li>
+                <div class="checkbox">
+                  <input value="None" id="1000" name="check" type="checkbox">
+                  <label for="1000"></label>
+                </div>
+                <p>500 - 1000 €</p>
+              </li>
+              <li>
+                <div class="checkbox">
+                  <input value="None" id="2000" name="check" type="checkbox">
+                  <label for="2000"></label>
+                </div>
+                <p>2500€ &lt; </p>
+              </li>
+            </ul>
+          </div>#}
+        <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.filterPieces.submit"|trans }}" />
+        {{ form_end(formfilter) }}
+        </div>
+      </aside>
+      <div class="contentS">
+        <div class="filtres-top">
+          <p class="nouveaute"><span>Nouveautés</span></p>
+          <p class="prix-croiss"><span>Prix croissants</span></p>
+          <p class="prix-decroiss"><span>Prix décroissants</span></p>
+        </div>
+        <ul id="galerieLink">
+          {% for piece in pieces %}
+          <li>
+            <div class="images">
+              {% if piece.image1 %}
+                <img src="{{asset("images/"~piece.image1.path)}}" alt="">
+              {% else %}
+                <img src="{{asset('img/600x400.jpg')}}" alt="">
+              {% endif %}
+            </div>
+            <div class="infos">
+              <div class="decriptions">
+                <p class="name">{{piece.user.username}}</p>
+                  <p class="title">{{piece.title}}</p>
+                </div>
+              <div class="price">{{piece.price}} €</div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <footer class="footerNav">
+      <div> <span>&lt;</span>
+      <nav>
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+        </ul>
+      </nav>
+      <span>&gt;</span> </div>
+    </footer>
+  </section>
+{% endblock %}
