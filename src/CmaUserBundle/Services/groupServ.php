@@ -21,31 +21,24 @@ class groupServ extends AbstractFixture implements FixtureInterface, OrderedFixt
      *
      * @return void
      */
-    public function load(ObjectManager $manager)
+    public function load()
     {
  
-        $adminsGroup = new Group('administration');
-        $adminsGroup->addRole('ROLE_ADMIN');
-        $manager->persist($adminsGroup);
 
         $artistesGroup = new Group('artist');
         $artistesGroup->addRole('ROLE_ARTIST');
-        $manager->persist($artistesGroup);
+         $this->om->persist($artistesGroup);
 
         $companysGroup = new Group('company');
         $companysGroup->addRole('ROLE_COMPANY');
-        $manager->persist($companysGroup);
+         $this->om->persist($companysGroup);
 
         $privatesGroup = new Group('private');
         $privatesGroup->addRole('ROLE_USER');
-        $manager->persist($privatesGroup);
+         $this->om->persist($privatesGroup);
  
-        $manager->flush();
+         $this->om->flush();
  
-        $this->addReference('admin-group', $adminsGroup);
-        $this->addReference('artist-group', $adminsGroup);
-        $this->addReference('company-group', $adminsGroup);
-        $this->addReference('private-group', $adminsGroup);
     }
     /**
      * {@inheritdoc}
@@ -53,5 +46,11 @@ class groupServ extends AbstractFixture implements FixtureInterface, OrderedFixt
     public function getOrder()
     {
         return 1;
+    }
+    protected $om;
+
+    public function __construct(Doctrine\Common\Persistence\ObjectManager $om)
+    {
+        $this->om = $om;
     }
 }
