@@ -20,21 +20,21 @@ class groupServ extends AbstractFixture implements FixtureInterface, OrderedFixt
      *
      * @return void
      */
-    public function load(ObjectManager $manager)
+    public function load()
     {
         $artistesGroup = new Group('artist');
         $artistesGroup->addRole('ROLE_ARTIST');
-        $manager->persist($artistesGroup);
+         $this->om->persist($artistesGroup);
 
         $companysGroup = new Group('company');
         $companysGroup->addRole('ROLE_COMPANY');
-        $manager->persist($companysGroup);
+         $this->om->persist($companysGroup);
 
         $privatesGroup = new Group('private');
         $privatesGroup->addRole('ROLE_USER');
-        $manager->persist($privatesGroup);
+         $this->om->persist($privatesGroup);
  
-        $manager->flush();
+         $this->om->flush();
  
         $this->addReference('artist-group', $adminsGroup);
         $this->addReference('company-group', $adminsGroup);
