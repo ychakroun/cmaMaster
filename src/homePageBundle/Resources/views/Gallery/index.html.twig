@@ -28,25 +28,23 @@
     <div class="containerS">
       <aside class="aside">
         <div class="filtres-container">
-          {{ form_start(formfilter) }}
-                {{ form_widget(formfilter) }}
-          {#<div class="box">
-            <input class="text" placeholder="mots lefs" required="" type="text">
+          <form name="{{formfilter.vars.name}}" method="{{formfilter.vars.method}}" >
+          <div id="{{formfilter.vars.id}}">
+          <div class="box">
+            <input class="text" placeholder="mots lefs" type="text">
             <button class="icon"><img src="img/search-black.png" alt=""></button>
           </div>
           <div class="supports cat-filtres">
             <p>Supports</p>
             <ul>
-              {% if medium %}
+              {% for mediums in formfilter.medium %}
               <li>
                 <div class="checkbox">
-                  <input value="None" id="{{medium}}" name="check" type="checkbox">
-                  <label for="{{medium}}"></label>
+                  {{form_widget(mediums)}}
                 </div>
-                <a href="{{ path('listGalleries', {'page': parameter.page, 'topfilter': parameter.topfilter, 'medium': parameter.medium~"+"~medium,'width': parameter.width,price : parameter.price}) }}">{{medium}}</a>
+                <p>{{mediums.vars.label}}</p>
               </li>
-              {% endif %}
-            {% endfor %}
+              {% endfor %}
               <li>
                 <div class="checkbox">
                   <input value="None" id="more" name="check" type="checkbox">
@@ -59,72 +57,34 @@
           <div class="formats cat-filtres">
             <p>Formats</p>
             <ul>
+              {% for widths  in formfilter.width %}
               <li>
                 <div class="checkbox">
-                  <input value="None" id="petit" name="check" type="checkbox">
-                  <label for="petit"></label>
+                  {{form_widget(widths)}}
                 </div>
-                <p>Petit</p>
+                <p>{{widths.vars.label}}</p>
               </li>
-              <li>
-                <div class="checkbox">
-                  <input value="None" id="moyen" name="check" type="checkbox">
-                  <label for="moyen"></label>
-                </div>
-                <p>Moyen</p>
-              </li>
-              <li>
-                <div class="checkbox">
-                  <input value="None" id="grand" name="check" type="checkbox">
-                  <label for="grand"></label>
-                </div>
-                <p>Grand</p>
-              </li>
-              <li>
-                <div class="checkbox">
-                  <input value="None" id="geant" name="check" type="checkbox">
-                  <label for="geant"></label>
-                </div>
-                <p>Geant</p>
-              </li>
+              {% endfor %}
             </ul>
           </div>
           <div class="prix cat-filtres">
             <p>Prix</p>
             <ul>
+              {% for prices  in formfilter.price %}
               <li>
                 <div class="checkbox">
-                  <input value="None" id="100" name="check" type="checkbox">
-                  <label for="100"></label>
+                  {{form_widget(prices)}}
                 </div>
-                <p>&lt; 100€</p>
-              </li>
-              <li>
-                <div class="checkbox">
-                  <input value="None" id="500" name="check" type="checkbox">
-                  <label for="500"></label>
-                </div>
-                <p>100 - 500 €</p>
-              </li>
-              <li>
-                <div class="checkbox">
-                  <input value="None" id="1000" name="check" type="checkbox">
-                  <label for="1000"></label>
-                </div>
-                <p>500 - 1000 €</p>
-              </li>
-              <li>
-                <div class="checkbox">
-                  <input value="None" id="2000" name="check" type="checkbox">
-                  <label for="2000"></label>
-                </div>
-                <p>2500€ &lt; </p>
+                <p>{{prices.vars.value}}</p>
+                {% endfor %}
               </li>
             </ul>
-          </div>#}
+          </div>
+        <input id="filter_pieces__token" name="filter_pieces[_token]" value="{{formfilter._token.vars.value}}" type="hidden">
         <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.filterPieces.submit"|trans }}" />
-        {{ form_end(formfilter) }}
-        </div>
+      </div>
+      </form>
+      </div>
       </aside>
       <div class="contentS">
         <div class="filtres-top">

@@ -59,6 +59,7 @@ class FilterPiecesType extends AbstractType
                 'expanded' => 'true',
                 'label' => 'form.filterPieces.price',
                 'required' => false,
+                'translation_domain' => 'FOSUserBundle'
                 ))
             ->setMethod('GET')
         ;

@@ -83,8 +83,10 @@ form:
     username: 'Nom d''artiste'
     name: 'Nom'
     filterPieces:
-        price:
-        width:
+        price: 'Prix'
+        width: 'Taille'
+        medium: 'Support'
+        submit: 'Valider'
     piece:
         title: 'titre de l''oeuvre *'
         collection: 'collection'
