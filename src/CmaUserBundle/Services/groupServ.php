@@ -11,7 +11,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 /**
  * Définition de mes groupes
  */
-class groupServ extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
+class groupServ extends AbstractFixture 
 {
    
     /**
