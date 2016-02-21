@@ -6,7 +6,6 @@ use CmaUserBundle\Entity\Image;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\UserBundle\Model\UserInterface;
-use Doctrine\Common\Persistence\ObjectManager;
 
 class ImageController extends Controller
 {
@@ -36,9 +35,7 @@ class ImageController extends Controller
         return $this->render("CmaUserBundle::imageUpload.html.twig",array('formImage' => $form->createView(),'username' => $name));
     }
     public function indexAction(Request $equest){
-        $om = $this->getDoctrine()->getObjectManager();
-        dump($om);
-        //$this->get('cma_user.groupserv.services')->load();
+        $this->get('cma_user.groupserv.services')->load();
         return $this->render("homePageBundle:Default:index.html.twig");
     }
 }
