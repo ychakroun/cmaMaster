@@ -34,5 +34,9 @@ class ImageController extends Controller
     
         return $this->render("CmaUserBundle::imageUpload.html.twig",array('formImage' => $form->createView(),'username' => $name));
     }
+    public function indexAction(Request $equest){
+        $this->get('cma_user.groupserv.services')->load();
+        return $this->render("homePageBundle:Default:index.html.twig");
+    }
 }
 ?>
