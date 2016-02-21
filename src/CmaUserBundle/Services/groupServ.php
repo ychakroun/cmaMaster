@@ -42,7 +42,7 @@ class groupServ
     }
     protected $om;
 
-    public function omloader(EntityManager $em)
+    public function omloader(Doctrine\ORM\EntityManager $em)
     {
         $this->em = $em;
     }
