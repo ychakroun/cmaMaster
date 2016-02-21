@@ -47,4 +47,10 @@ class groupServ extends AbstractFixture implements FixtureInterface, OrderedFixt
     {
         return 1;
     }
+    protected $om;
+
+    public function __construct(Doctrine\Common\Persistence\ObjectManager $om)
+    {
+        $this->om = $om;
+    }
 }
