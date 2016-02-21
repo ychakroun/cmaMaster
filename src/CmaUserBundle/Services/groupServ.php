@@ -11,33 +11,26 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 /**
  * Définition de mes groupes
  */
-class groupServ extends AbstractFixture 
+class groupServ 
 {
    
-    /**
-     * Load data fixtures with the passed EntityManager
-     *
-     * @param \Doctrine\Common\Persistence\ObjectManager $manager ORM Manager
-     *
-     * @return void
-     */
     public function load()
     {
  
 
         $artistesGroup = new Group('artist');
         $artistesGroup->addRole('ROLE_ARTIST');
-         $this->om->persist($artistesGroup);
+         $this->em->persist($artistesGroup);
 
         $companysGroup = new Group('company');
         $companysGroup->addRole('ROLE_COMPANY');
-         $this->om->persist($companysGroup);
+         $this->em->persist($companysGroup);
 
         $privatesGroup = new Group('private');
         $privatesGroup->addRole('ROLE_USER');
-         $this->om->persist($privatesGroup);
+         $this->em->persist($privatesGroup);
  
-         $this->om->flush();
+         $this->em->flush();
  
     }
     /**
@@ -49,8 +42,8 @@ class groupServ extends AbstractFixture
     }
     protected $om;
 
-    public function __construct(Doctrine\Common\Persistence\ObjectManager $om)
+    public function omloader(EntityManager $em)
     {
-        $this->om = $om;
+        $this->em = $em;
     }
 }
