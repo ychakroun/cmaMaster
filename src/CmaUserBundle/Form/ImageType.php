@@ -36,7 +36,8 @@ class ImageType extends AbstractType
                        $image['name'] = $image['name'].'/'.$form->getParent()->getConfig()->getName();
                     }
                 }else{
-                    dump($image);
+                    dump($image->file);
+                    dump($image->name);
                 }
                 $event->setData($image);
             })
