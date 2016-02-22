@@ -28,11 +28,16 @@ class ImageType extends AbstractType
                 if (!$image) {
                     return;
                 }
-                if($image['file']===null){
-                    unset($image['imageHeader']);
+                if (is_array($image)) {
+                    return;
+                    if($image['file']===null){
+                        unset($image['imageHeader']);
+                    }else{
+                       $image['name'] = $image['name'].'/'.$form->getParent()->getConfig()->getName();
+                    }
                 }else{
-                    $image['name'] = $image['name'].'/'.$form->getParent()->getConfig()->getName();
-                 }
+                    dump($image);
+                }
                 $event->setData($image);
             })
         ;

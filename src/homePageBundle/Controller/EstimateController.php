@@ -25,18 +25,23 @@ class EstimateController extends Controller
       $formEstimate = $this->createForm(EstimateType::class,$estimate);
       $formEstimate->handleRequest($request);
         if ($formEstimate->isValid()) {
+            if($formEstimate->get('submit')->isClicked()){
+              $estimate->setIsPublic(true);
+            }else if($formEstimate->get('save')->isClicked()){
+              $estimate->setIsPublic(false);
+            }
             $em = $this->getDoctrine()->getManager();
-            $em->persist($piece);
+            $em->persist($estimate);
             $user->addEstimate($estimate);
             $em->persist($user);
-            dump($user);
+            dump($user->getEstimates());
             //$em->flush();
             return $this->redirectToRoute("user_parameter");
         }
-      return $this->render('homePageBundle:Estimate:estimate_create.html.twig',array('formEstimate' => $formEstimate->createView()));
+      return $this->render('homePageBundle:Estimate:estimate_create.html.twig',array('username'=>$user->getUsername(),'formEstimate' => $formEstimate->createView()));
     }
     public function editAction()
     {
-      return $this->render('homePageBundle:Estimate:estimate_edit.html.twig',array('formEstimate' => $formEstimate));
+      return $this->render('homePageBundle:Estimate:estimate_edit.html.twig',array('username'=>$user->getUsername(),'formEstimate' => $formEstimate));
     }
 }

@@ -23,11 +23,25 @@ class Estimate
     private $id;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="orientation", type="boolean", length=255, nullable=true)
+     */
+    private $orientation;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="budget", type="string", length=255)
+     * @ORM\Column(name="budget", type="string", length=255, nullable=true)
      */
     private $budget;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
 
     /**
      * @var string
@@ -38,31 +52,31 @@ class Estimate
         /**
      * @var string
      *
-     * @ORM\Column(name="medium", type="string", length=255)
+     * @ORM\Column(name="medium", type="string", length=255, nullable=true)
      */
     private $medium;
         /**
      * @var string
      *
-     * @ORM\Column(name="technics", type="string", length=255)
+     * @ORM\Column(name="technics", type="string", length=255), nullable=true
      */
     private $technics;
         /**
      * @var string
      *
-     * @ORM\Column(name="tools", type="string", length=255)
+     * @ORM\Column(name="tools", type="string", length=255, nullable=true)
      */
     private $tools;
         /**
      * @var string
      *
-     * @ORM\Column(name="width", type="string", length=255)
+     * @ORM\Column(name="width", type="string", length=255, nullable=true)
      */
     private $width;
         /**
      * @var string
      *
-     * @ORM\Column(name="height", type="string", length=255)
+     * @ORM\Column(name="height", type="string", length=255, nullable=true)
      */
     private $height;
     /**
@@ -546,11 +560,59 @@ class Estimate
     {
         $this->day = $day;
         $timeToLimit = new \DateTime("now");
-        $timeToLimit = strtotime('+'.$day.' days');
+        $timeToLimit->modify('+'.$day.' days');
         $this->setTimeLimit($timeToLimit);
         return $this;
     }
     public function getDay(){
         return $this->day;
+    }
+
+    /**
+     * Set orientation
+     *
+     * @param boolean $orientation
+     *
+     * @return Estimate
+     */
+    public function setOrientation($orientation)
+    {
+        $this->orientation = $orientation;
+
+        return $this;
+    }
+
+    /**
+     * Get orientation
+     *
+     * @return boolean
+     */
+    public function getOrientation()
+    {
+        return $this->orientation;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Estimate
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
