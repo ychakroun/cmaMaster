@@ -81,7 +81,8 @@ class ProfileController extends Controller
         if ($form->isValid()) {
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
-            if(is_object(($userprofile)){
+            if(is_object($userprofile))
+            {
                 $formTagS = $userprofile->getTags();
                 $existingTagS = $this->getDoctrine()->getRepository('CmaUserBundle:Tag')->findAll();
                 foreach ($formTagS as $key => $formTag) {
