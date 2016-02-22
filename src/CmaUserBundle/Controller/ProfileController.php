@@ -97,11 +97,12 @@ class ProfileController extends Controller
                 $user->setProfile($userprofile);
             }
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
+            dump($user);
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
                 $url = $this->generateUrl('artist_edit');
-                
+
             }
 
             //$dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
