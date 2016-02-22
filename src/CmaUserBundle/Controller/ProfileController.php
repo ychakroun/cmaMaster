@@ -81,13 +81,15 @@ class ProfileController extends Controller
         if ($form->isValid()) {
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
-            $formTagS = $userprofile->getTags();
-            $existingTagS = $this->getDoctrine()->getRepository('CmaUserBundle:Tag')->findAll();
-            foreach ($formTagS as $key => $formTag) {
-                foreach ($existingTagS as $key => $existingTag) {
-                    if($formTag->getName() === $existingTag->getName()) {
-                        $userprofile->removeTag($formTag);
-                        $userprofile->addTag($existingTag);
+            if(is_object(($userprofile)){
+                $formTagS = $userprofile->getTags();
+                $existingTagS = $this->getDoctrine()->getRepository('CmaUserBundle:Tag')->findAll();
+                foreach ($formTagS as $key => $formTag) {
+                    foreach ($existingTagS as $key => $existingTag) {
+                        if($formTag->getName() === $existingTag->getName()) {
+                            $userprofile->removeTag($formTag);
+                            $userprofile->addTag($existingTag);
+                        }
                     }
                 }
             }
