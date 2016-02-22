@@ -93,6 +93,8 @@ class ProfileController extends Controller
                         }
                     }
                 }
+            }else{
+                $user->setProfile($userprofile);
             }
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
             $userManager->updateUser($user);
