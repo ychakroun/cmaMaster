@@ -20,8 +20,31 @@
       <div class="contentS">
       	{% if formInfo %}
       	{{form_start(formInfo)}}
+
+
+          {{form_row(formInfo.username)}}
+          {{form_row(formInfo.email)}}
+          {{form_row(formInfo.information.adress)}}
+          {{form_row(formInfo.information.zip)}}
+          {{form_row(formInfo.information.city)}}
+          {{form_row(formInfo.information.adress)}}
+          {{form_row(formInfo.information.zip)}}
+          {{form_row(formInfo.information.pays)}}
+          {{form_row(formInfo.information.zip)}}
+          {{form_row(formInfo.information.siret)}}
+          {{form_row(formInfo.information.zip)}}
+          {{form_row(formInfo.information.adress)}}
+          {{form_row(formInfo.information.zip)}}
+          {{form_row(formInfo.information.aBank)}}
+          {{form_row(formInfo.information.ownerBank)}}
+          {{form_row(formInfo.information.resBank)}}
+          {{form_row(formInfo.information.rib)}}
+          {{form_row(formInfo.information.bic)}}
+          {{dump(formInfo)}}
+
         {{dump(formInfo)}}
           {{form_widget(formInfo)}}
+
           <div class="button">
             <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "parameter_page.submit"|trans }}" />
           </div>

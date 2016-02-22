@@ -105,7 +105,7 @@ class ProfileController extends Controller
 
             if (null === $response = $event->getResponse()) {
                 $url = $this->generateUrl('artist_edit');
-                
+
             }
 
             //$dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
