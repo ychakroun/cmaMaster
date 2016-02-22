@@ -21,6 +21,7 @@
       	{% if formInfo %}
       	{{form_start(formInfo)}}
 
+
           {{form_row(formInfo.username)}}
           {{form_row(formInfo.email)}}
           {{form_row(formInfo.information.adress)}}
@@ -40,6 +41,9 @@
           {{form_row(formInfo.information.rib)}}
           {{form_row(formInfo.information.bic)}}
           {{dump(formInfo)}}
+
+        {{dump(formInfo)}}
+          {{form_widget(formInfo)}}
 
           <div class="button">
             <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "parameter_page.submit"|trans }}" />

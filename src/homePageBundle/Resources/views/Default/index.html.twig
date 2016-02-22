@@ -101,7 +101,9 @@
         <div class="globalS">
           <div class="idSection">La Galerie</div>
           <div class="logoSection"><img src="{{asset('img/logoTampon.png')}}" alt=""></div>
-          <div class="infoSection">{{pieces|length}} Oeuvres</div>
+          {% if pieces %} 
+          <div class="infoSection"> {{pieces|length}} Oeuvres</div>
+          {% endif %}
         </div>
       </header>
       <div class="containerS">
@@ -111,6 +113,7 @@
       </div>
         <div class="contentS">
           <ul>
+          {% if pieces %}
           {% for piece in pieces %}
             <li>
               <div class="images">
@@ -129,6 +132,7 @@
               </div>
             </li>
            {% endfor %}
+         {% endif %}
           </ul>
         </div>
       </div>

@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use CmaUserBundle\Form\ProfileType;
+use CmaUserBundle\Entity\Profile;
 
 class ProfileController extends Controller
 {
@@ -61,6 +62,13 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         $userprofile = $this->getUser()->getProfile();
+        dump($userprofile);
+        if(!is_object($userprofile)){
+            $userprofile = new Profile();
+            $this->getDoctrine()->getManager()->persist($userprofile);
+            $this->getDoctrine()->getManager()->flush();
+            $user->setProfile($userprofile);
+        }
         $em = $this->getDoctrine()->getManager();
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
@@ -81,20 +89,15 @@ class ProfileController extends Controller
         if ($form->isValid()) {
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
-            if(is_object($userprofile))
-            {
-                $formTagS = $userprofile->getTags();
-                $existingTagS = $this->getDoctrine()->getRepository('CmaUserBundle:Tag')->findAll();
-                foreach ($formTagS as $key => $formTag) {
-                    foreach ($existingTagS as $key => $existingTag) {
-                        if($formTag->getName() === $existingTag->getName()) {
-                            $userprofile->removeTag($formTag);
-                            $userprofile->addTag($existingTag);
-                        }
+            $formTagS = $userprofile->getTags();
+            $existingTagS = $this->getDoctrine()->getRepository('CmaUserBundle:Tag')->findAll();
+            foreach ($formTagS as $key => $formTag) {
+                foreach ($existingTagS as $key => $existingTag) {
+                    if($formTag->getName() === $existingTag->getName()) {
+                        $userprofile->removeTag($formTag);
+                        $userprofile->addTag($existingTag);
                     }
                 }
-            }else{
-                $user->setProfile($userprofile);
             }
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
             dump($user);
