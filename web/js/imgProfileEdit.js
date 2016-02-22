@@ -95,7 +95,7 @@ function setImageTemp(){
 	var image = document.getElementById('imgtmp').getAttribute('name');
 	var data = document.getElementById('imgtmp').innerHTML;
 	var id = image.slice(image.indexOf('[')+1,image.indexOf(']'));
-    if(id='imageHeader'){
+    if(id =='imageHeader'){
         document.getElementById(id).src = data;
     }else{
         id = id.replace(/[a-zA-Z]/g,'');
