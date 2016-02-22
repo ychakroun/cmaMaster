@@ -72,6 +72,15 @@ class User extends BaseUser
     */
     private $profile;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="CmaUserBundle\Entity\Estimate")
+     * @ORM\JoinTable(name="users_estimates",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="estimate_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    private $estimates;
+
     public function __construct()
     {
         $this->groups = new ArrayCollection();
@@ -206,5 +215,39 @@ class User extends BaseUser
     public function getProfile()
     {
         return $this->profile;
+    }
+
+    /**
+     * Add estimate
+     *
+     * @param \CmaUserBundle\Entity\Estimate $estimate
+     *
+     * @return User
+     */
+    public function addEstimate(\CmaUserBundle\Entity\Estimate $estimate)
+    {
+        $this->estimates[] = $estimate;
+
+        return $this;
+    }
+
+    /**
+     * Remove estimate
+     *
+     * @param \CmaUserBundle\Entity\Estimate $estimate
+     */
+    public function removeEstimate(\CmaUserBundle\Entity\Estimate $estimate)
+    {
+        $this->estimates->removeElement($estimate);
+    }
+
+    /**
+     * Get estimates
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEstimates()
+    {
+        return $this->estimates;
     }
 }

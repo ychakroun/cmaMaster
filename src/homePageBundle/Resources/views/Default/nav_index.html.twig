@@ -25,6 +25,19 @@
               <li>Le concept</li>
               <li>Aide</li>
               <li>
+              {% if is_granted('ROLE_ARTIST') %}
+                {% image '@homePageBundle/Resources/img/login.png' %}
+                  <a href="{{path('artist_edit')}}"><img src="{{ asset_url }}" alt="" /></a>
+                {% endimage %}
+              </li>
+              <li><a href="{{path('user_parameter')}}"><img src="{{asset('img/parametre.png')}}" alt=""></a></li>
+                {% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% image '@homePageBundle/Resources/img/login.png' %}
+                  <a href="{{ path('user_parameter') }}"><img src="{{ asset_url }}" alt="" /></a>
+              </li>
+              <li><a href="{{path('home_page_homepage')}}"><img src="{{asset('img/basket.png')}}" alt=""></a></li>
+                {% endimage %}
+                {% else %}
                 {% image '@homePageBundle/Resources/img/login.png' %}
                   <img id="btnCo" src="{{ asset_url }}" alt="" />
                 {% endimage %}
@@ -33,29 +46,20 @@
                     <header id="headerSection" class="headerSection">
                     </header>
                     <div id="conex">
-                      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <h1>{{ 'layout.logged_in_as' | trans({'%username%' : app.user.username}) }}</h1>
-                        <a href="{{ path('fos_user_security_logout') }}">
-                          <div id="btnLog" class='buttonAction' >{{ 'layout.logout'|trans }}</div>
-                        </a>
-                        <a href="{{ path('user_info') }}">
-                          <div id="btnLog" class='buttonAction' >{{ 'layout.parameter'|trans }}</div>
-                        </a>
-                      {% else %}
                         <h1>{{ 'layout.login' | trans }}</h1>
                        {{ render (controller('FOSUserBundle:Security:login')) }}
                     </div>
                     <div id="rgstr">
                       <h1>{{ 'layout.inscription' | trans }}</h1>
                       {{ render(controller('FOSUserBundle:Registration:register')) }}
-                      {% endif %}
                     </div>
                   </div>
                 </div>
               </li>
+              {% endif %}
             </ul>
           </nav>
-        <div class="devis"><button class="demander"><span>Demander un devis</span></button></div>
+        <a href="{{path( 'user_estimate_create' )}}"><div class="devis"><button class="demander"><span>Demander un devis</span></button></div></a>
       </header>
        <section id="sectionHeader">
           <div id="logo">

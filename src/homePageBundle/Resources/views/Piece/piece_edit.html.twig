@@ -44,11 +44,7 @@
       </div>
     </header>
     <div class="nbPiece">
-    {% if nbPiece > 1 %}
-      {{'piece' | trans }}s n°{{nbPiece + 1}}
-    {% else %}
-      {{'piece' | trans }} n°{{nbPiece + 1}}
-    {% endif %} 
+      {{'piece' | trans }} : {{piece.title}}
     </div>
     <div class="">
       <div class="">
@@ -68,13 +64,25 @@
           {{form_row(formPiece.image3.file,{attr: {'style':"display:none"}})}}
           {{form_row(formPiece.image3.name,{attr: {'value': username }})}}
           <div class="imagePiece">
-              <img id="1" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
-          </div>
-          <div class="imagePiece">
-              <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
-          </div>
-          <div class="imagePiece">
-              <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+            {% if piece.image1 and piece.image1.path%}
+                <img id="1" src="{{ asset( 'images/'~piece.image1.path ) }}" alt="">
+            {% else %}
+                <img id="1" src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+            {% endif %}
+        </div>
+        <div class="imagePiece">
+            {% if piece.image2 and piece.image2.path %}
+                <img id="2" src="{{ asset( 'images/'~piece.image2.path ) }}" alt="">
+            {% else %}
+                <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+            {% endif %}
+        </div>
+        <div class="imagePiece">
+            {% if piece.image3 and piece.image3.path%}
+                <img id="3" src="{{ asset( 'images/'~piece.image3.path ) }}" alt="">
+            {% else %}
+                <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+            {% endif %}
           </div>
           <div class="button">
             <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "parameter_page.submit"|trans }}" />

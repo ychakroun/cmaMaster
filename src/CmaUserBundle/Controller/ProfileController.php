@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\Security\Core\Exception\HttpNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use CmaUserBundle\Form\ProfileType;
 
 class ProfileController extends Controller
@@ -51,7 +51,13 @@ class ProfileController extends Controller
     public function editAction(Request $request)
     {
         $user = $this->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
+        $is_artist = false;
+        foreach ($user->getRoles() as $key => $value) {
+           if ($value == 'ROLE_ARTIST') {
+               $is_artist = true;
+           }
+        }
+        if (!is_object($user) || !$user instanceof UserInterface || !$is_artist ) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         $userprofile = $this->getUser()->getProfile();

@@ -1,0 +1,6 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA User Estimate{% endblock %}
+{% block main %}
+	{{form_widget(formEstimate)}}
+{% endblock %}
