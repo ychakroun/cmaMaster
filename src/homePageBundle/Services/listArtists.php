@@ -33,6 +33,17 @@ class listArtists {
         }
         return $artistReal;
     }
+    public function allPieces() {
+        $repository = $this->em->getRepository('CmaUserBundle:Piece');
+        $listPieces = $repository->findAll();
+        $piecesformat = array();
+        foreach ($listPieces as $key => $piece) {
+            if($piece->getUser()!=null){
+               array_push($piecesformat, $piece);
+            }
+        }
+        return $piecesformat;
+    }
     public function pageArtist() {
         $repository = $this->em->getRepository('CmaUserBundle:User');
     	$listArtists = $repository->findByRole('ROLE_ARTIST');

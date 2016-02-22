@@ -1,6 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <header id="profileHeader">
-    {% if profile.imageHeader and profile.imageHeader.path%}
+    {% if profile and profile.imageHeader and profile.imageHeader.path %}
         <img id="0" src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
     {% else %}
        <div class="basicHeader"><img id="0" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
@@ -73,7 +73,7 @@
      {% endif %}
     <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.profile.submit"|trans }}" />
     </form>
-    <a href="{{path('piece_edit')}}"><div class="buttonAction">{{'form.profile.piece' | trans }} </div></a>
+    <a href="{{path('piece_create')}}"><div class="buttonAction">{{'form.profile.piece' | trans }} </div></a>
     <div id="imgtmp" style="display:none"></div>
     {% endif %}
 </div>

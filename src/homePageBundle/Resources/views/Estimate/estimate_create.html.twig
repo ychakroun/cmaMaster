@@ -1,0 +1,122 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA User Estimate{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset( 'js/imgProfileEdit.js' ) }}"></script>
+	{{parent()}}
+{% endblock %}
+{% block main %}
+
+<section id="devis">
+    <header class="headerSection">
+      <div class="globalS">
+        <div class="idSection">Devis</div>
+        <div class="logoSection"><img src="img/logoTampon.png" alt=""></div>
+        <div class="infoSection"> </div>
+      </div>
+    </header>
+    <div class="containerS" style='color:black!important'>
+    <form name="{{formEstimate.vars.name}}" method="{{formEstimate.vars.method}}" enctype="multipart/form-data">
+      <div class="remarques"></div>
+      <div class="titleS">
+        <div>Décrivez votre commande</div>
+        <p>* Champs obligatoires</p>
+      </div>
+        <div class="descriptionOeuvre">
+        		<p>
+        			<label for="{{formEstimate.title.vars.id}}" class="titreOeuvre">{{formEstimate.title.vars.label}}*</label><br>
+        			<input id="{{formEstimate.title.vars.id}}" name="{{formEstimate.title.vars.name}}" required="required" placeholder="Titre" type="text">
+        		</p>
+        		<p>
+        			<label for="{{formEstimate.day.vars.id}}" class="jours">{{formEstimate.day.vars.label}}</label><br>
+        			<input id="{{formEstimate.day.vars.id}}" name="{{formEstimate.day.vars.name}}"  placeholder="Jours" type="number">
+        		</p>
+        		<p>
+        			<label for="{{formEstimate.deliveryAdress.vars.id}}" class="localité">{{formEstimate.deliveryAdress.vars.label}}*</label><br>
+        			<input id="{{formEstimate.deliveryAdress.vars.id}}" name="{{formEstimate.deliveryAdress.vars.name}}" required="required" placeholder="France" type="text">
+        		</p>
+            <p>
+        			<label for="{{formEstimate.medium.vars.id}}" class="localité">{{formEstimate.medium.vars.label}}</label><br>
+        			{{form_widget(formEstimate.medium)}}
+        		</p>
+            <p class="textarea">
+        			<label for="{{formEstimate.description.vars.id}}" class="desc">{{formEstimate.description.vars.label}}</label><br>
+              <textarea name="{{formEstimate.description.vars.name}}" id="{{formEstimate.description.vars.id}}"rows="8" cols="40" placeholder="Votre texte ici..."></textarea>
+        		</p>
+        </div>
+        <div class="titleS">
+          <div>Plus de détails</div>
+        </div>
+        <div class="descriptionOeuvre">
+            <p>
+        			<label for="{{formEstimate.budget.vars.id}}" class="prix">{{formEstimate.budget.vars.label}}</label><br>
+        			<input id="{{formEstimate.budget.vars.id}}" name="{{formEstimate.budget.vars.name}}" placeholder="€" type="text">
+        		</p>
+            <p>
+              <label for="{{formEstimate.orientation.vars.id}}" class="localité">{{formEstimate.orientation.vars.label}}</label><br>
+              {{form_widget(formEstimate.orientation)}}
+            </p>
+            <p>
+              <label for="{{formEstimate.technics.vars.id}}" class="techniques">{{formEstimate.technics.vars.label}}</label><br>
+              <input name="{{formEstimate.technics.vars.name}}" id="{{formEstimate.technics.vars.id}}" type="text"></input>
+            </p>
+            <p>
+              <label for="{{formEstimate.tools.vars.id}}" class="outils">{{formEstimate.tools.vars.label}}</label><br>
+              <input name="{{formEstimate.tools.vars.name}}" id="{{formEstimate.tools.vars.id}}" type="text"></input>
+            </p>
+            <p>
+        			<label for="{{formEstimate.width.vars.id}}" class="largeur">{{formEstimate.width.vars.label}}</label><br>
+        			<input id="{{formEstimate.width.vars.id}}" name="{{formEstimate.width.vars.name}}" placeholder="cm" type="text">
+        		</p>
+            <p>
+        			<label for="{{formEstimate.height.vars.id}}" class="hauteur">{{formEstimate.height.vars.label}}</label><br>
+        			<input id="{{formEstimate.height.vars.id}}" name="{{formEstimate.height.vars.name}}" placeholder="cm" type="text">
+        		</p>
+        </div>
+        <div class="titleS">
+          <div>Illustrer votre demande</div>
+        </div>
+        <div id="uploadImage">
+          <div id="div1" class="imageEstimate">
+            <input id="{{formEstimate.image1.vars.id}}" name="{{formEstimate.image1.vars.full_name}}" style="display:none" type="file">
+            {{form_row(formEstimate.image1.name,{attr: {'value': username }})}}
+            <img id="1" src="" alt="">
+          </div>
+          <div  id="div2" class="imageEstimate" >
+            <input id="{{formEstimate.image2.vars.id}}" name="{{formEstimate.image2.vars.full_name}}" style="display:none" type="file">
+            {{form_row(formEstimate.image2.name,{attr: {'value': username }})}}
+             <img id="2" src="" alt="">
+            <!-- <canvas id="imageCanvas"></canvas> -->
+          </div>
+          <div id="div3" class="imageEstimate" >
+            {{form_row(formEstimate.image3.file,{attr: {'style':"display:none"}})}}
+            {{form_row(formEstimate.image3.name,{attr: {'value': username }})}}
+             <img id="3" src="" alt="">
+            <!-- <canvas id="imageCanvas"></canvas> -->
+          </div>
+      </div>
+      <div class="blockCheckbox">
+      <div class="checkbox">
+      	<input value="None" id="{{formEstimate.save.vars.id}}" required="true" name="{{formEstimate.save.vars.name}}" type="checkbox">
+      	<label for="{{formEstimate.save.vars.id}}"></label>
+      </div>
+      <p>J’accepte les conditions d’utilisation </p>
+    </div>
+    <div class="button">
+    <button type="submit" id="{{formEstimate.save.vars.id}}" name="{{formEstimate.save.vars.full_name}}" class="buttonAction" value="{{formEstimate.save.vars.value}}">{{formEstimate.save.vars.name}}</button>
+    <button type="submit" id="{{formEstimate.submit.vars.id}}" name="{{formEstimate.submit.vars.full_name}}" class="buttonAction" value="{{formEstimate.submit.vars.value}}">{{formEstimate.submit.vars.name}}</button>
+    </div>
+    <div class="footertext">
+      <p>Vous pouvez également consulter la commnauté d’artistes et envoyer
+        un devis “coup de cœur” à l’artiste de votre choix via son profil.
+      </p>
+    </div>
+    <input id="{{formEstimate._token.vars.id}}" name="{{formEstimate._token.vars.full_name}}" value="{{formEstimate._token.vars.value}}" type="hidden">
+    </form>
+  </div>
+  <div id="imgtmp" style="display:none"></div>
+</section>
+{% endblock %}
+{% block script %}
+	<script>initEstimateImage();</script>
+{% endblock %}

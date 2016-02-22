@@ -2,16 +2,24 @@ home_page_homepage:
     path:     /
     defaults: { _controller: homePageBundle:Default:index }
 
+user_estimate_create:
+    path:     /estimate/create
+    defaults: {_controller: homePageBundle:Estimate:create }
+
 user_parameter:
     path:     /parameter
     defaults: { _controller: homePageBundle:User:parameter }
+
+user_basket:
+    path:     /basket
+    defaults: { _controller: homePageBundle:Basket:index }
 
 piece_edit_id:
     path:     /piece/edit/{id}
     defaults: { _controller: homePageBundle:Piece:edit }
 
-piece_edit:
-    path:     /piece/edit
+piece_create:
+    path:     /piece/create
     defaults: { _controller: homePageBundle:Piece:create }
 
 user_message:
@@ -51,8 +59,13 @@ deleteuser:
     defaults: { _controller: homePageBundle:User:deleteadmin }
 
 listGalleries:
-    path:     /galleries
-    defaults: { _controller: homePageBundle:Gallery:index }
+    path:     /galleries/{page}-{topfilter}
+    defaults: { _controller: homePageBundle:Gallery:index, page: 1,topfilter: null}
+    requirements:
+        page:  \d+
+        price: \d+
+        width: \d+
+    methods:  [GET,POST]
 
 listArtists:
     path:     /artist

@@ -82,6 +82,11 @@ form:
     group_name: 'Etes-vous un: '
     username: 'Nom d''artiste'
     name: 'Nom'
+    filterPieces:
+        price: 'Prix'
+        width: 'Taille'
+        medium: 'Support'
+        submit: 'Valider'
     piece:
         title: 'titre de l''oeuvre *'
         collection: 'collection'

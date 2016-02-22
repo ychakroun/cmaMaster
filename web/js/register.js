@@ -9,7 +9,7 @@ function register () {
 				for (var y = 0; y < choices.length; y++) {
 					choices[y].removeAttribute("data");
 				}
-				event.target.setAttribute("data", "selected");
+				e.target.setAttribute("data", "selected");
 			}
 		}
 	}

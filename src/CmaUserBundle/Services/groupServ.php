@@ -11,41 +11,27 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 /**
  * Définition de mes groupes
  */
-class groupServ extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
+class groupServ 
 {
    
-    /**
-     * Load data fixtures with the passed EntityManager
-     *
-     * @param \Doctrine\Common\Persistence\ObjectManager $manager ORM Manager
-     *
-     * @return void
-     */
-    public function load(ObjectManager $manager)
+    public function load()
     {
  
-        $adminsGroup = new Group('administration');
-        $adminsGroup->addRole('ROLE_ADMIN');
-        $manager->persist($adminsGroup);
 
         $artistesGroup = new Group('artist');
         $artistesGroup->addRole('ROLE_ARTIST');
-        $manager->persist($artistesGroup);
+         $this->em->persist($artistesGroup);
 
         $companysGroup = new Group('company');
         $companysGroup->addRole('ROLE_COMPANY');
-        $manager->persist($companysGroup);
+         $this->em->persist($companysGroup);
 
         $privatesGroup = new Group('private');
         $privatesGroup->addRole('ROLE_USER');
-        $manager->persist($privatesGroup);
+         $this->em->persist($privatesGroup);
  
-        $manager->flush();
+         $this->em->flush();
  
-        $this->addReference('admin-group', $adminsGroup);
-        $this->addReference('artist-group', $adminsGroup);
-        $this->addReference('company-group', $adminsGroup);
-        $this->addReference('private-group', $adminsGroup);
     }
     /**
      * {@inheritdoc}
@@ -53,5 +39,11 @@ class groupServ extends AbstractFixture implements FixtureInterface, OrderedFixt
     public function getOrder()
     {
         return 1;
+    }
+    protected $om;
+
+    public function omloader(ObjectManager $em)
+    {
+        $this->em = $em;
     }
 }
