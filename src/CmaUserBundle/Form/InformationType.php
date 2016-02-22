@@ -5,6 +5,7 @@ namespace CmaUserBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class InformationType extends AbstractType
 {
@@ -15,7 +16,7 @@ class InformationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('adress',null, array(
+            ->add('adress',TextType::class, array(
               'label' => 'form.information.adress',
               'required' => false,
               'translation_domain' => 'FOSUserBundle',
