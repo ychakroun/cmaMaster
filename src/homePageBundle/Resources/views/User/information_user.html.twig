@@ -20,6 +20,7 @@
       <div class="contentS">
       	{% if formInfo %}
       	{{form_start(formInfo)}}
+        {{dump(formInfo)}}
           {{form_widget(formInfo)}}
           <div class="button">
             <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "parameter_page.submit"|trans }}" />

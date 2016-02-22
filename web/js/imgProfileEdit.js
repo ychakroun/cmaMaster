@@ -1,5 +1,5 @@
 function initProfileImage(){
-        document.getElementById('0').onclick = function() {
+        document.getElementById('imageHeader').onclick = function() {
         document.getElementById('profile_imageHeader_file').click();
         }
         var images =  document.getElementsByClassName('imageProfile');
@@ -95,7 +95,10 @@ function setImageTemp(){
 	var image = document.getElementById('imgtmp').getAttribute('name');
 	var data = document.getElementById('imgtmp').innerHTML;
 	var id = image.slice(image.indexOf('[')+1,image.indexOf(']'));
-    id = id.replace(/[a-zA-Z]/g,'');
-    console.log(id);
-	document.getElementById(id).src = data;
+    if(id =='imageHeader'){
+        document.getElementById(id).src = data;
+    }else{
+        id = id.replace(/[a-zA-Z]/g,'');
+        document.getElementById(id).src = data;
+    }
 }

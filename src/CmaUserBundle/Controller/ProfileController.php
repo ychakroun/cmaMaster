@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use CmaUserBundle\Form\ProfileType;
+use CmaUserBundle\Entity\Profile;
 
 class ProfileController extends Controller
 {
@@ -61,6 +62,13 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         $userprofile = $this->getUser()->getProfile();
+        dump($userprofile);
+        if(!is_object($userprofile)){
+            $userprofile = new Profile();
+            $this->getDoctrine()->getManager()->persist($userprofile);
+            $this->getDoctrine()->getManager()->flush();
+            $user->setProfile($userprofile);
+        }
         $em = $this->getDoctrine()->getManager();
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
@@ -92,6 +100,7 @@ class ProfileController extends Controller
                 }
             }
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
+            dump($user);
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
