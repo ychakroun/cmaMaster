@@ -3,7 +3,7 @@
     {% if profile and profile.imageHeader and profile.imageHeader.path %}
         <img id="imageHeader" src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
     {% else %}
-       <div class="basicHeader"><img id="0" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
+       <div class="basicHeader"><img id="imageHeader" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
     {% endif %}
 </header>
 <div id="mainProfile">
@@ -77,5 +77,3 @@
     <div id="imgtmp" style="display:none"></div>
     {% endif %}
 </div>
-
-
