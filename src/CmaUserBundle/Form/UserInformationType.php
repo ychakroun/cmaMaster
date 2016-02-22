@@ -15,10 +15,19 @@ class UserInformationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
-                ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
-                ->add('information', InformationType::class, array('label' => null,'required' => false, 'translation_domain' => 'FOSUserBundle'))       
-
+        $builder
+        ->add('username', null, array(
+          'label' => 'form.username',
+          'translation_domain' => 'FOSUserBundle'
+        ))
+        ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array(
+          'label' => 'form.email',
+          'translation_domain' => 'FOSUserBundle'
+        ))
+        ->add('information', InformationType::class, array(
+          'label' => null,'required' => false,
+          'translation_domain' => 'FOSUserBundle'
+        ))       
         ;
     }
     /**
