@@ -1,10 +1,12 @@
 {% trans_default_domain 'FOSUserBundle' %}
-<header id="profileHeader imgLiquidFill">
+<header id="profileHeader">
+  <div class="basicHeaderOk imgLiquidFill">
     {% if profile and profile.imageHeader and profile.imageHeader.path %}
         <img id="imageHeader" src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
     {% else %}
        <div class="basicHeader"><img id="imageHeader" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
     {% endif %}
+  </div>
 </header>
 <div id="mainProfile">
     {% if is_granted('ROLE_ARTIST') %}
