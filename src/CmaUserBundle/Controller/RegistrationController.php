@@ -72,9 +72,11 @@ class RegistrationController extends Controller
         if (null === $user) {
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
-        dump($user);
+         $pieces = $this->get('home_page.listArtists')->allPieces();
         return $this->render('homePageBundle:User:checkEmail.html.twig', array(
             'user' => $user,
+            'pieces'=> $pieces,
+
         ));
     }
 
@@ -122,9 +124,10 @@ class RegistrationController extends Controller
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-
+        $pieces = $this->get('home_page.listArtists')->allPieces();
         return $this->render('homePageBundle:User:confirmed.html.twig', array(
             'user' => $user,
+            'pieces'=> $pieces,
             'targetUrl' => $this->getTargetUrlFromSession(),
         ));
     }

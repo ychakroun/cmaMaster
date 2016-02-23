@@ -131,14 +131,28 @@ class Image
         $this->file = null;
     }
     /**
-     * @ORM\PostRemove()
+     * @ORM\PreRemove()
      */
     public function removeUpload()
     {
-        $file = $this->getAbsolutePath();
+        $updloadDir = $this->getAbsolutePath();
+        $chmod = $updloadDir.substr($this->path, 0,strpos($this->path,'/'));
+        $file = $this->path;
+        dump("le path");
+        dump($file);
+        dump("Le chmod");
+        dump($chmod);
         if ($file) {
-            unlink($file);
+            chmod($chmod,0777);
+            dump("lefichier");
+            dump($updloadDir.$file);
+            unlink($updloadDir.$file);
+            chmod($chmod,0755);
         }
+    }
+    public function getAbsolutePath(){
+
+        return __DIR__.'/../../../web/images/';
     }
 
     /**

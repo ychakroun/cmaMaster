@@ -1,0 +1,102 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA User Estimate{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block main %}
+  <section class="param">
+    <header class="headerSection">
+      <div class="globalS">
+        <div class="idSection">{{ "estimate_page.header" | trans }}</div>
+        <div class="logoSection"><img src="{{ asset("img/logoTampon.png") }}" alt="cma_tampon" /></div>
+        <div class="infoSection"></div>
+      </div>
+    </header>
+    <div class="containerS">
+      {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
+      <div class="contentS">
+        {% if estimates|length > 0 %}
+          <header class="headerEstimates">
+            <div class="Name" style="border-bottom:2px solid black;width:100%;padding-bottom:10px;margin-bottom:40px">
+              {% if estimates|length > 1 %}
+                {{ estimates|length }}
+                {{"estimate.show.title.plurial" | trans }}
+              {% else %}
+                {{ estimates|length }}
+                {{"estimate.show.title.single" | trans }}
+              {% endif %}
+            </div>
+          </header>
+           {% for estimate in estimates %}
+              <div class="estimates" id="estimate[{{estimate.id}}]">
+                <a id="linktoproposal" href="{{path ( 'user_estimate_edit',{'id': estimate.id} ) }}"></a>
+                <header class="header">
+                  <div class="delete"><a href="{{path ('user_estimate_delete', {'id': estimate.id} ) }}">X</a></div>
+                  <div class="icons">
+                    {% if estimate.isCrush %}
+                      <div><img src="{{asset('img/likes.png')}}" alt=""></div>
+                    {% endif %}
+                    {% if not estimate.isPublic %}
+                      <div><img src="{{asset('img/document.png')}}" alt=""></div>
+                    {% endif %}
+                  </div>
+                </header>
+                <div class="titleEstimate">
+                  <h4>{{ estimate.title }}</h4>
+                  <div><p>{{ estimate.date.date|date("m/d/Y") }} - {{ estimate.timeLimit.date|date("H:i") }}</p></div>
+                </div>
+                <div class="infoEstimate">
+                  <div class="budget"><p>{{ estimate.budget }}</p></div>
+                  <div class="timeLimit"><p>{{ estimate.timeLimit.date|date("m/d/Y") }} € </p></div>
+                  <div class="technics"><p>{{ estimate.technics }}</p></div>
+                </div>
+                <div class="estimateProposals">
+                {% if not is_granted('ROLE_ARTIST') %}
+                  {% if estimate.proposals %}
+                    {#{% if estimate.proposal.comments %}
+                      {% if estimate.proposal.comments.unread %}
+                        {% if estimate.proposals.comments.unread|length > 1 %}
+                          {{ estimate.proposal.comments.unread|length }}
+                          {{ 'estimate.proposal.comment.plurial' }}
+                        {% else %}
+                          {{ estimate.proposal.comments.unread|length }}
+                          {{ 'estimate.proposal.comment.single' }}
+                        {% endif %}
+                      {% endif %}
+                    {% endif %}#}
+                    {% if estimate.proposals|length > 1 %}
+                          {{ estimate.proposals|length }}
+                          {{ 'estimate.proposals.plurial'|trans }}
+                    {% else %}
+                          {{ estimate.proposals|length }}
+                          {{ 'estimate.proposals.single'|trans }}
+                    {% endif %}
+                  {% endif %}
+                {% elseif is_granted('ROLE_ARTIST') %}
+                    {{ estimate.description|length > 100 ? estimate.description|slice(0, 100) ~ '...' : estimate.description  }}
+                {% endif %}
+                </div>
+                {% if not is_granted('ROLE_ARTIST') %}
+                  <a href="{{ path('user_estimate_proposals',{'id': estimate.id} ) }}">
+                    <div class="action">
+                      {{ 'estimate.proposals.list'|trans }}
+                    </div>
+                  </a>
+                {% elseif is_granted('ROLE_ARTIST') %}
+                  <a href="{{ path('user_estimate_proposal_create',{'id': estimate.id} ) }}">
+                    <div class="action">
+                      {{ 'estimate.proposal.create'|trans }}
+                    </div>
+                  </a>
+                {% endif %}
+              </div>
+           {% endfor %}
+        {% else %}
+          <div><p>{{ 'estimate.user.notExist' |trans}}</p></div>
+        {% endif %}
+      </div>
+  </section>
+{% endblock %}

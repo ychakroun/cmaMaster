@@ -87,6 +87,13 @@ class Estimate
     private $isPublic;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_crush", type="boolean", nullable=true)
+     */
+    private $isCrush;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
@@ -137,7 +144,7 @@ class Estimate
     private $isValidate;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CmaUserBundle\Entity\Proposal")
+     * @ORM\ManyToMany(targetEntity="CmaUserBundle\Entity\Proposal", cascade={"persist","remove"})
      * @ORM\JoinTable(name="estimates_proposals",
      *      joinColumns={@ORM\JoinColumn(name="estimate_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id", unique=true)}
@@ -614,5 +621,29 @@ class Estimate
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set isCrush
+     *
+     * @param boolean $isCrush
+     *
+     * @return Estimate
+     */
+    public function setIsCrush($isCrush)
+    {
+        $this->isCrush = $isCrush;
+
+        return $this;
+    }
+
+    /**
+     * Get isCrush
+     *
+     * @return boolean
+     */
+    public function getIsCrush()
+    {
+        return $this->isCrush;
     }
 }

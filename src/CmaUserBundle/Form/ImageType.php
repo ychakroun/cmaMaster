@@ -29,14 +29,14 @@ class ImageType extends AbstractType
                     return;
                 }
                 if (is_array($image)) {
-                    return;
                     if($image['file']===null){
                         unset($image['imageHeader']);
                     }else{
                        $image['name'] = $image['name'].'/'.$form->getParent()->getConfig()->getName();
                     }
                 }else{
-                    dump($image);
+                    dump($image->file);
+                    dump($image->name);
                 }
                 $event->setData($image);
             })

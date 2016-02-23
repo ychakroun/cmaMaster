@@ -64,8 +64,8 @@ function initEstimateImage(){
         var images =  document.getElementsByClassName('imageEstimate');
         for (var i = images.length - 1; i >= 0; i--) {
             images[i].onclick = function(e){
-                id = e.target.id.replace('div','');
-                document.getElementById("estimate_image"+id).click();
+                id = e.target.id.replace(/[a-zA-Z]/g,'');
+                document.getElementById("estimate_image"+id+"_file").click();
             }
         }
         var inputs =  document.getElementsByTagName('input');

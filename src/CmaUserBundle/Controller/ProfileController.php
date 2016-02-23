@@ -62,7 +62,6 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         $userprofile = $this->getUser()->getProfile();
-        dump($userprofile);
         if(!is_object($userprofile)){
             $userprofile = new Profile();
             $this->getDoctrine()->getManager()->persist($userprofile);
@@ -83,7 +82,6 @@ class ProfileController extends Controller
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.profile.form.factory');
         $form = $this->createForm(ProfileType::class, $userprofile);
-        dump($form);
         //$form = $formFactory->createForm();
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -100,7 +98,6 @@ class ProfileController extends Controller
                 }
             }
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
-            dump($user);
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {

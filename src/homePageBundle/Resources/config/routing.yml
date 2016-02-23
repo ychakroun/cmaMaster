@@ -6,6 +6,26 @@ user_estimate_create:
     path:     /estimate/create
     defaults: {_controller: homePageBundle:Estimate:create }
 
+user_estimate_edit:
+    path:     /estimate/{id}
+    defaults: {_controller: homePageBundle:Estimate:edit }
+
+user_estimate_update:
+    path:     /estimate/update/{id}
+    defaults: {_controller: homePageBundle:Estimate:update }
+
+user_estimate_delete:
+    path:     /estimate/delete/{id}
+    defaults: {_controller: homePageBundle:Estimate:delete }
+
+proposal_create:
+    path:     /estimate/{id}/proposal/create
+    defaults: {_controller: homePageBundle:Proposal:create }
+
+user_estimate_proposals:
+    path:     /estimate/{id}/proposals
+    defaults: {_controller: homePageBundle:Estimate:proposalList }
+
 user_parameter:
     path:     /parameter
     defaults: { _controller: homePageBundle:User:parameter }
@@ -31,8 +51,8 @@ user_info:
     defaults: { _controller: homePageBundle:User:information }
 
 user_devis:
-    path:     /devis
-    defaults: { _controller: homePageBundle:User:devis }
+    path:     /estimate
+    defaults: { _controller: homePageBundle:Estimate:show }
 
 user_progress_project:
     path:     /progressproject
