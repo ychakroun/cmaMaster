@@ -1,8 +1,8 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <header id="profileHeader">
-  <div class="basicHeaderOk imgLiquidFill">
+  <div id="imageHeader" class="basicHeaderOk imgLiquidFill">
     {% if profile and profile.imageHeader and profile.imageHeader.path %}
-        <img id="imageHeader" src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
+        <img  src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
     {% else %}
        <div class="basicHeader"><img id="imageHeader" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
     {% endif %}
@@ -38,21 +38,21 @@
         </div>
     {% if profile  %}
     <div id="imageAll">
-        <div class="imageProfile imgLiquidFill">
+        <div id="div1" class="imageProfile imgLiquidFill">
             {% if profile.image1 and profile.image1.path%}
                 <img id="1" src="{{ asset( 'images/'~profile.image1.path ) }}" alt="">
             {% else %}
                 <img id="1" src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
             {% endif %}
         </div>
-        <div class="imageProfile imgLiquidFill">
+        <div id="div2" class="imageProfile imgLiquidFill">
             {% if profile.image2 and profile.image2.path %}
                 <img id="2" src="{{ asset( 'images/'~profile.image2.path ) }}" alt="">
             {% else %}
                 <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
             {% endif %}
         </div>
-        <div class="imageProfile imgLiquidFill">
+        <div id="div3" class="imageProfile imgLiquidFill">
             {% if profile.image3 and profile.image3.path%}
                 <img id="3" src="{{ asset( 'images/'~profile.image3.path ) }}" alt="">
             {% else %}
@@ -62,13 +62,13 @@
     </div>
     {% else %}
         <div id="imageAll">
-        <div class="imageProfile">
+        <div id="div1" class="imageProfile">
             <img id="1" src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
         </div>
-        <div class="imageProfile">
+        <div id="div2" class="imageProfile">
             <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
         </div>
-        <div class="imageProfile">
+        <div id="div3" class="imageProfile">
             <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
         </div>
     </div>
