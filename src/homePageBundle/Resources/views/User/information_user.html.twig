@@ -21,19 +21,28 @@
       	{% if formInfo %}
       	{{form_start(formInfo)}}
 
-
+        <div class="identity">
+            <div class="titleS">
+              <div>LTR Crew</div>
+            </div>
+            <p class="instruction">
+              Vous devez remplir les informations suivante pour finaliser votre inscription et rendre votre profil public.
+              Ces informations sont gardées confidentielles et servent à vous rémunérer.
+            </p>
           {{form_row(formInfo.username)}}
           {{form_row(formInfo.email)}}
-          {{form_row(formInfo.information.adress)}}
-          {{form_row(formInfo.information.zip)}}
-          {{form_row(formInfo.information.city)}}
-          {{form_row(formInfo.information.adress)}}
+        </div>
+        <div class="statut">
+            <div class="titleS">
+              <div>Statut</div>
+            </div>
           {{form_row(formInfo.information.zip)}}
           {{form_row(formInfo.information.pays)}}
           {{form_row(formInfo.information.zip)}}
           {{form_row(formInfo.information.siret)}}
           {{form_row(formInfo.information.zip)}}
           {{form_row(formInfo.information.adress)}}
+        </div>
           {{form_row(formInfo.information.zip)}}
           {{form_row(formInfo.information.aBank)}}
           {{form_row(formInfo.information.ownerBank)}}
