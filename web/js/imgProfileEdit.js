@@ -4,8 +4,9 @@ function initProfileImage(){
         }
         var images =  document.getElementsByClassName('imageProfile');
         for (var i = images.length - 1; i >= 0; i--) {
-        	images[i].getElementsByTagName('img')[0].onclick = function(e){
-        		document.getElementById("profile_image"+e.target.id+"_file").click();
+        	images[i].onclick = function(e){
+                id = e.target.id.replace(/[a-zA-Z]/g,'');
+        		document.getElementById("profile_image"+id+"_file").click();
         	}
         }
         var inputs =  document.getElementsByTagName('input');
@@ -33,8 +34,9 @@ function initProfileImage(){
 function initPieceImage(){
         var images =  document.getElementsByClassName('imagePiece');
         for (var i = images.length - 1; i >= 0; i--) {
-            images[i].getElementsByTagName('img')[0].onclick = function(e){
-                document.getElementById("piece_image"+e.target.id+"_file").click();
+            images[i].onclick = function(e){
+                id = e.target.id.replace(/[a-zA-Z]/g,'');
+                document.getElementById("piece_image"+id+"_file").click();
             }
         }
         var inputs =  document.getElementsByTagName('input');
@@ -96,9 +98,12 @@ function setImageTemp(){
 	var data = document.getElementById('imgtmp').innerHTML;
 	var id = image.slice(image.indexOf('[')+1,image.indexOf(']'));
     if(id =='imageHeader'){
-        document.getElementById(id).src = data;
+        document.getElementById(id).setAttribute('style','background-image: url("'+data+'"); background-size: cover; background-position: center center; background-repeat: no-repeat;)');
+        document.getElementById(id).getElementsByTagName('img')[0].src = data;
     }else{
-        id = id.replace(/[a-zA-Z]/g,'');
+        id = 'div'+id.replace(/[a-zA-Z]/g,'');
+        document.getElementById(id).setAttribute('style','background-image: url("'+data+'"); background-size: cover; background-position: center center; background-repeat: no-repeat;)');
+        document.getElementById(id).getElementsByTagName('img')[0].style.display = 'none';
         document.getElementById(id).src = data;
     }
 }
