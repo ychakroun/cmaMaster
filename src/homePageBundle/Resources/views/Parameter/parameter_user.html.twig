@@ -30,28 +30,29 @@
             </div>
             <ul>
               <li>
-                <div class="checkbox">
+
 				          {{form_label(formPara.parameter.mailDevisAll)}}
 				          {{form_widget(formPara.parameter.mailDevisAll,{'checked': userServices.allParameter.mailDevisAll})}}
-                </div>
+                <div class="checkbox"></div>
               </li>
               <li>
-              	 <div class="checkbox">
+
 				          {{form_label(formPara.parameter.mailDevisUser)}}
 				          {{form_widget(formPara.parameter.mailDevisUser,{'checked': userServices.allParameter.mailDevisUser})}}
-                </div>
+              <div class="checkbox">  </div>
               </li>
               <li>
-              	<div class="checkbox">
+
 				          {{form_label(formPara.parameter.mailDevisCom)}}
+                  <div class="checkbox">
 				          {{form_widget(formPara.parameter.mailDevisCom,{'checked': userServices.allParameter.mailDevisCom})}}
                 </div>
               </li>
               <li>
-              	<div class="checkbox">
+
 				        {{form_label(formPara.parameter.mailDevisValid)}}
 				        {{form_widget(formPara.parameter.mailDevisValid,{'checked': userServices.allParameter.mailDevisValid})}}
-                </div>
+              <div class="checkbox">  </div>
               </li>
             </ul>
           </div>
@@ -61,16 +62,16 @@
             </div>
             <ul>
               <li>
-                <div class="checkbox">
+
 				        {{form_label(formPara.parameter.isPublic)}}
 				        {{form_widget(formPara.parameter.isPublic,{'checked': userServices.allParameter.isPublic})}}
-                </div>
+                <div class="checkbox">  </div>
               </li>
               <li>
-                <div class="checkbox">
+
 				        {{form_label(formPara.parameter.newsletter)}}
 				        {{form_widget(formPara.parameter.newsletter,{'checked': userServices.allParameter.newsletter})}}
-                </div>
+                <div class="checkbox"></div>
               </li>
              </ul>
           </div>
