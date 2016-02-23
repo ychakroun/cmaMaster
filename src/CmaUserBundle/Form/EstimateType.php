@@ -21,34 +21,96 @@ class EstimateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title',null,array('label' => 'form.estimate.title','required' => true,'translation_domain' => 'FOSUserBundle'))
+            ->add('title',null,array('label' => 'form.estimate.title',
+                'required' => true,
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('class' => 'titreOeuvre')
+                ))
             ->add('orientation',ChoiceType::class , array(
                 'choices' => array(
                     'form.estimate.orientation.true'=>true,
                     'form.estimate.orientation.false'=>false,
                     ),
                 'required' => false,
+                'label' => 'form.estimate.orientation',
+                'attr' => array('class' => 'localité')
             ))
-            ->add('description',null,array('label' => 'form.estimate.description','required' => false,'label' => false,'translation_domain' => 'FOSUserBundle'))
-            ->add('day', NumberType::class,array('label' => 'form.estimate.day','required' => false,'translation_domain' => 'FOSUserBundle'))
-            ->add('deliveryAdress',null,array('label' => 'form.estimate.deliveryAdress','required' => true,'translation_domain' => 'FOSUserBundle'))
-            ->add('budget',MoneyType::class,array('label' => 'form.estimate.budget','required' => false,'translation_domain' => 'FOSUserBundle'))
-            ->add('medium',null,array('label' => 'form.estimate.medium','required' => false,'translation_domain' => 'FOSUserBundle'))
-            ->add('technics',null,array('label' => 'form.estimate.technics','required' => false,'translation_domain' => 'FOSUserBundle'))
-            ->add('tools',null,array('label' => 'form.estimate.tools','required' => false,'translation_domain' => 'FOSUserBundle'))
-            ->add('width',null,array('label' => 'form.estimate.width','required' => false,'translation_domain' => 'FOSUserBundle'))
-            ->add('height',null,array('label' => 'form.estimate.height','required' => false,'translation_domain' => 'FOSUserBundle'))
-            ->add('image1',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('image2',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('image3',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('condition', CheckboxType::class,array("mapped" => false,'required' => true,'label' => 'form.estimate.condition', 'translation_domain' => 'FOSUserBundle'))
+            ->add('description',null,array('label' => 'form.estimate.description',
+                'required' => false,
+                'label' => false,
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('class' => 'desc',
+                    'cols'=>'40',
+                    'rows'=>'8')
+                ))
+            ->add('day', NumberType::class,array('label' => 'form.estimate.day',
+                'required' => false,
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('class' => 'jours',
+                    'type'=>'number')
+                ))
+            ->add('deliveryAdress',null,array('label' => 'form.estimate.deliveryAdress',
+                'required' => true,
+                'translation_domain' => 'FOSUserBundle', 
+                'attr' => array('class' => 'localité')
+                ))
+            ->add('budget',null,array('label' => 'form.estimate.budget',
+                'required' => false,
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('class' => 'prix')
+                ))
+            ->add('medium',null,array('label' => 'form.estimate.medium',
+                'required' => false,
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('class' => 'localité')
+                ))
+            ->add('technics',null,array('label' => 'form.estimate.technics',
+                'required' => false,
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('class' => 'techniques')
+                ))
+            ->add('tools',null,array('label' => 'form.estimate.tools',
+                'required' => false,
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('class' => 'outils')
+                ))
+            ->add('width',null,array('label' => 'form.estimate.width',
+                'required' => false,
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('class' => 'largeur')
+                ))
+            ->add('height',null,array('label' => 'form.estimate.height',
+                'required' => false,
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('class' => 'hauteur')
+                ))
+            ->add('image1',ImageType::class,array('required' => false,
+                'label' => false,
+                 'translation_domain' => 'FOSUserBundle',
+                 'attr' => array('class' => 'outils')
+                 ))
+            ->add('image2',ImageType::class,array('required' => false,
+                'label' => false,
+                 'translation_domain' => 'FOSUserBundle'))
+            ->add('image3',ImageType::class,array('required' => false,
+                'label' => false,
+                 'translation_domain' => 'FOSUserBundle'))
+            ->add('condition', CheckboxType::class,array("mapped" => false,
+                'required' => true,
+                'label' => 'form.estimate.condition',
+                 'translation_domain' => 'FOSUserBundle'))
             ->add('save', SubmitType::class, array(
-                    'attr' => array("mapped" => false,'class' => 'buttonAction','value'=>'form.estimate.save'),
+                    'attr' => array("mapped" => false,
+                        'class' => 'buttonAction',
+                        ),
+                    'label'=>'from.estimate.save',
                     'translation_domain' => 'FOSUserBundle'
-
                 ))
             ->add('submit', SubmitType::class, array(
-                    'attr' => array("mapped" => false,'class' => 'buttonAction','value'=>'form.estimate.save'),
+                    'attr' => array("mapped" => false,
+                        'class' => 'buttonAction',
+                        ),
+                    'label'=>'from.estimate.submit',
                     'translation_domain' => 'FOSUserBundle'
                 ))
 

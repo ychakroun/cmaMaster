@@ -51,7 +51,7 @@ class PieceController extends Controller
       $user = $this->get('security.token_storage')->getToken()->getUser();
       $pieces = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findByUser($user);
       $nbPiece = sizeof($pieces);
-      if (!is_object($user)) {
+      if (!is_object($user)||$user->getRoles()[0]!='ROLE_ARTIST') {
         throw new AccessDeniedException('This user does not have access to this section.');
       }
       $piece = new Piece();

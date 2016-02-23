@@ -29,7 +29,6 @@ class ImageType extends AbstractType
                     return;
                 }
                 if (is_array($image)) {
-                    return;
                     if($image['file']===null){
                         unset($image['imageHeader']);
                     }else{

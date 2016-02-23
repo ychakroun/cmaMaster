@@ -87,6 +87,13 @@ class Estimate
     private $isPublic;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_crush", type="boolean", nullable=true)
+     */
+    private $isCrush;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
@@ -590,5 +597,29 @@ class Estimate
     public function getOrientation()
     {
         return $this->orientation;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Estimate
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

@@ -11,51 +11,56 @@
 	{{parent()}}
 {% endblock %}
 {% block main %}
-<section id="devis">
+
+<section class="param">
     <header class="headerSection">
       <div class="globalS">
-        <div class="idSection">Devis</div>
-        <div class="logoSection"><img src="{{asset('img/logoTampon.png')}}" alt=""></div>
-        <div class="infoSection"> </div>
+        <div class="idSection">{{ "estimate_page.header" | trans }}</div>
+        <div class="logoSection"><img src="{{ asset("img/logoTampon.png") }}" alt="cma_tampon" /></div>
+        <div class="infoSection"></div>
       </div>
     </header>
-    <div class="containerS" style='color:black!important'>
-    {{form_start(formEstimate)}}
+    <div class="containerS">
+      {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
+      <div class="contentS">
+        <section id="devis">
+          <div class="containerS">
+       {{form_start(formEstimate)}}
       <div class="remarques"></div>
       <div class="titleS">
         <div>Décrivez votre commande</div>
         <p>* Champs obligatoires</p>
       </div>
         <div class="descriptionOeuvre">
-        		<p>
-        			<label for="{{formEstimate.title.vars.id}}" class="titreOeuvre">{{formEstimate.title.vars.label}}*</label><br>
-        			{{form_widget(formEstimate.title)}}
-        		</p>
-        		<p>
-        			<label for="{{formEstimate.day.vars.id}}" class="jours">{{formEstimate.day.vars.label}}</label><br>
-        			{{form_widget(formEstimate.day)}}
-        		</p>
-        		<p>
-        			<label for="{{formEstimate.deliveryAdress.vars.id}}" class="localité">{{formEstimate.deliveryAdress.vars.label}}*</label><br>
-        			{{form_widget(formEstimate.deliveryAdress)}}
-        		</p>
             <p>
-        			<label for="{{formEstimate.medium.vars.id}}" class="localité">{{formEstimate.medium.vars.label}}</label><br>
-        			{{form_widget(formEstimate.medium)}}
-        		</p>
+              <label for="{{formEstimate.title.vars.id}}" class="titreOeuvre">{{formEstimate.title.vars.label}}*</label><br>
+              {{form_widget(formEstimate.title)}}
+            </p>
+            <p>
+              <label for="{{formEstimate.day.vars.id}}" class="jours">{{formEstimate.day.vars.label}}</label><br>
+              {{form_widget(formEstimate.day)}}
+            </p>
+            <p>
+              <label for="{{formEstimate.deliveryAdress.vars.id}}" class="localité">{{formEstimate.deliveryAdress.vars.label}}*</label><br>
+              {{form_widget(formEstimate.deliveryAdress)}}
+            </p>
+            <p>
+              <label for="{{formEstimate.medium.vars.id}}" class="localité">{{formEstimate.medium.vars.label}}</label><br>
+              {{form_widget(formEstimate.medium)}}
+            </p>
             <p class="textarea">
-        			<label for="{{formEstimate.description.vars.id}}" class="desc">{{formEstimate.description.vars.label}}</label><br>
+              <label for="{{formEstimate.description.vars.id}}" class="desc">{{formEstimate.description.vars.label}}</label><br>
               {{form_widget(formEstimate.description)}}
-        		</p>
+            </p>
         </div>
         <div class="titleS">
           <div>Plus de détails</div>
         </div>
         <div class="descriptionOeuvre">
             <p>
-        			<label for="{{formEstimate.budget.vars.id}}" class="prix">{{formEstimate.budget.vars.label}}</label><br>
-        			{{form_widget(formEstimate.budget)}}
-        		</p>
+              <label for="{{formEstimate.budget.vars.id}}" class="prix">{{formEstimate.budget.vars.label}}</label><br>
+              {{form_widget(formEstimate.budget)}}
+            </p>
             <p>
               <label for="{{formEstimate.orientation.vars.id}}" class="localité">{{formEstimate.orientation.vars.label}}</label><br>
               {{form_widget(formEstimate.orientation)}}
@@ -69,13 +74,13 @@
               {{form_widget(formEstimate.tools)}}
             </p>
             <p>
-        			<label for="{{formEstimate.width.vars.id}}" class="largeur">{{formEstimate.width.vars.label}}</label><br>
-					{{form_widget(formEstimate.width)}}
-        		</p>
+              <label for="{{formEstimate.width.vars.id}}" class="largeur">{{formEstimate.width.vars.label}}</label><br>
+          {{form_widget(formEstimate.width)}}
+            </p>
             <p>
-        			<label for="{{formEstimate.height.vars.id}}" class="hauteur">{{formEstimate.height.vars.label}}</label><br>
-        			{{form_widget(formEstimate.height)}}
-        		</p>
+              <label for="{{formEstimate.height.vars.id}}" class="hauteur">{{formEstimate.height.vars.label}}</label><br>
+              {{form_widget(formEstimate.height)}}
+            </p>
         </div>
         <div class="titleS">
           <div>Illustrer votre demande</div>
@@ -84,31 +89,37 @@
           <div id="div1" class="imageEstimate">
             {{form_widget(formEstimate.image1.file,{attr: {'style':"display:none"}})}}
             {{form_row(formEstimate.image1.name,{attr: {'value': username }})}}
-            <img id="1" src="" alt="">
+            {% if estimate.image1 %}
+              <img id="1" src="{{ asset("images/"~estimate.image1.path) }}" alt="">
+            {% endif %}
           </div>
           <div  id="div2" class="imageEstimate" >
             {{form_widget(formEstimate.image2.file,{attr: {'style':"display:none"}})}}
             {{form_row(formEstimate.image2.name,{attr: {'value': username }})}}
-             <img id="2" src="" alt="">
+            {% if estimate.image2 %}
+              <img id="2" src="{{ asset("images/"~estimate.image2.path) }}" alt="">
+            {% endif %}
             <!-- <canvas id="imageCanvas"></canvas> -->
           </div>
           <div id="div3" class="imageEstimate" >
             {{form_widget(formEstimate.image3.file,{attr: {'style':"display:none"}})}}
             {{form_row(formEstimate.image3.name,{attr: {'value': username }})}}
-             <img id="3" src="" alt="">
+            {% if estimate.image3 %}
+              <img id="3" src="{{ asset("images/"~estimate.image3.path) }}" alt="">
+            {% endif %}
             <!-- <canvas id="imageCanvas"></canvas> -->
           </div>
       </div>
       <div class="blockCheckbox">
-      	<div class="checkbox">
-      		{{form_widget(formEstimate.condition)}}
-      		<label for="{{formEstimate.condition.vars.id}}"></label>
-      	</div>
+        <div class="checkbox">
+          {{form_widget(formEstimate.condition)}}
+          <label for="{{formEstimate.condition.vars.id}}"></label>
+        </div>
       <p>J’accepte les conditions d’utilisation </p>
     </div>
     <div class="button">
-		{{form_widget(formEstimate.save)}}
-		{{form_widget(formEstimate.submit)}}
+    {{form_widget(formEstimate.save)}}
+    {{form_widget(formEstimate.submit)}}
     </div>
     <div class="footertext">
       <p>Vous pouvez également consulter la commnauté d’artistes et envoyer
@@ -119,8 +130,8 @@
     {{form_end(formEstimate)}}
   </div>
   <div id="imgtmp" style="display:none"></div>
+    </div>
+    </section>
+  </div>
 </section>
-{% endblock %}
-{% block script %}
-	<script>initEstimateImage();</script>
 {% endblock %}
