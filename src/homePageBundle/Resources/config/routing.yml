@@ -60,7 +60,7 @@ proposal_delete:
 
 artist_proposal_show:
     path:     /proposal/{username}/{id}
-    defaults: { _controller: homePageBundle:Proposal:showArtist }
+    defaults: { _controller: homePageBundle:Proposal:show }
 
 user_info:
     path:     /information
@@ -89,10 +89,6 @@ artist_profile:
 artist_edit:
     path:     /profile/edit
     defaults: { _controller: CmaUserBundle:Profile:edit }
-
-deleteuser:
-    path:     /group/delete/{username}
-    defaults: { _controller: homePageBundle:User:deleteadmin }
 
 listGalleries:
     path:     /galleries/{page}-{topfilter}

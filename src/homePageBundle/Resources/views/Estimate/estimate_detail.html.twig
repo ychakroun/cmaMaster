@@ -74,6 +74,7 @@
               <!-- <canvas id="imageCanvas"></canvas> -->
             </div>
           </div>
+          {% if estimate.ownerId != userServices.getId %}
           <form action="{{ path('proposal_create',{'id': estimate.id} ) }}">
             <div class="blockCheckbox">
               <div class="checkbox">
@@ -86,6 +87,7 @@
               <div class="buttonSend"><input type="submit" value="Proposer une création" style="background-color:rgba(0,0,0,0)"></input></div>
             </div>
           </form>
+          {% endif %}
         </div>
       </section>
     </div>

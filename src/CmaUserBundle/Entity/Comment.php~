@@ -152,13 +152,13 @@ class Comment
     }
 
     /**
-     * Set ownerComment
+     * Set unread
      *
      * @param boolean $unread
      *
      * @return Comment
      */
-    public function setOwnerComment($ownerComment)
+    public function setOwnerComment(\bool $ownerComment)
     {
         $this->ownerComment = $ownerComment;
 
@@ -166,7 +166,7 @@ class Comment
     }
 
     /**
-     * Get ownerComment
+     * Get unread
      *
      * @return boolean
      */

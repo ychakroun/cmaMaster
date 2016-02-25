@@ -63,21 +63,21 @@
           {{form_row(formPiece.image2.name,{attr: {'value': username }})}}
           {{form_row(formPiece.image3.file,{attr: {'style':"display:none"}})}}
           {{form_row(formPiece.image3.name,{attr: {'value': username }})}}
-          <div id="div1" class="imagePiece">
+          <div id="div1" class="imagePiece imgLiquidFill">
             {% if piece.image1 and piece.image1.path%}
                 <img id="1" src="{{ asset( 'images/'~piece.image1.path ) }}" alt="">
             {% else %}
                 <img id="1" src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
             {% endif %}
         </div>
-        <div id="div2" class="imagePiece">
+        <div id="div2" class="imagePiece imgLiquidFill">
             {% if piece.image2 and piece.image2.path %}
                 <img id="2" src="{{ asset( 'images/'~piece.image2.path ) }}" alt="">
             {% else %}
                 <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
             {% endif %}
         </div>
-        <div id="div3" class="imagePiece">
+        <div id="div3" class="imagePiece imgLiquidFill">
             {% if piece.image3 and piece.image3.path%}
                 <img id="3" src="{{ asset( 'images/'~piece.image3.path ) }}" alt="">
             {% else %}

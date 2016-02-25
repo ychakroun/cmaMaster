@@ -117,7 +117,7 @@
           {% for piece in pieces %}
             {% if piece and piece.user %}
             <li>
-              <div class="images">
+              <div class="images imgLiquidFill">
               {% if piece.image1 %}
                 <img src="{{asset("images/"~piece.image1.path)}}" alt="">
               {% else %}

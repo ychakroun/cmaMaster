@@ -146,3 +146,18 @@ sidebar_parameter:
     finish_project: 'Mes projets réalisés'
     purchase: 'Achat en galerie'
     sold: 'Mes oeuvres vendues'
+proposal:
+    show:
+        title:
+             single: 'Proposition envoyée'
+estimate:
+    proposal:
+        show: 'Voir la proposition'
+        create: 'Proposer une création'
+        unread:
+            single: 'message non lu'
+            plurial: 'messages non lus'
+        artist:
+            list:
+                single: 'Propostion en attente'
+
