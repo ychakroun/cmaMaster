@@ -112,6 +112,13 @@ class Piece
     private $crush;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_proposal", type="boolean", nullable=true)
+     */
+    private $isProposal;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="realisation_date", type="datetime", nullable=true)
@@ -593,5 +600,29 @@ class Piece
     public function getImage3()
     {
         return $this->image3;
+    }
+
+    /**
+     * Set feature
+     *
+     * @param string $feature
+     *
+     * @return Piece
+     */
+    public function setFeature($feature)
+    {
+        $this->feature = $feature;
+
+        return $this;
+    }
+
+    /**
+     * Get feature
+     *
+     * @return string
+     */
+    public function getFeature()
+    {
+        return $this->feature;
     }
 }

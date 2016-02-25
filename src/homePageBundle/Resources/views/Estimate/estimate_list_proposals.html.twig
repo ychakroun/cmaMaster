@@ -1,0 +1,79 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA Art Piece{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block main %}
+<section class="param">
+  <header class="headerSection">
+    <div class="globalS">
+      <div class="idSection">{{ "proposal_page.header" | trans }}</div>
+      <div class="logoSection"><img src="{{ asset("img/logoTampon.png") }}" alt="cma_tampon" /></div>
+      <div class="infoSection"></div>
+    </div>
+  </header>
+  <div class="containerS">
+    {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
+    <div class="contentS">
+      <section id="devis">
+        <div class="containerS">
+        {% if proposals|length > 0 %}
+          <header class="headerproposals">
+            <div class="Name" style="border-bottom:2px solid black;width:100%;padding-bottom:10px;margin-bottom:40px">
+              {% if proposals|length > 1 %}
+                {{ proposals|length }}
+                {{"proposal.show.title.plurial" | trans }}
+              {% else %}
+                {{ proposals|length }}
+                {{"proposal.show.title.single" | trans }}
+              {% endif %}
+            </div>
+          </header>
+           {% for proposal in proposals %}
+              <div class="proposals" id="proposal[{{proposal.id}}]">
+                  <a id="linktoproposal" href="{{path ( 'proposal_detail',{'id': proposal.id} ) }}"></a>
+                <header class="header">
+                {% if proposal.owner == userServices.getId %}
+                  <div class="delete"><a href="{{path ('proposal_delete', {'id': proposal.id} ) }}">X</a></div>
+                {% endif %}
+                </header>
+                <div class="titleproposal" style='background-image: url({% if proposal.parent.image1 %}{{asset('images/'~proposal.piece.image1.path)}}{% else %} {{asset('img/600x400.jpg')}}{% endif %}); background-size: cover; background-position: center center; background-repeat: no-repeat;width:150px;height:150px;'>
+                  <h4>{{ proposal.parent.title }}</h4>
+                  <div><p>{{ proposal.parent.date.date|date("m/d/Y") }} - {{ proposal.timeLimit.date|date("H:i") }}</p></div>
+                </div>
+                <div class="infoproposal">
+                  <div class="budget"><p>{{ proposal.piece.price }}  € </p></div>
+                  <div class="timeLimit"><p>{{ proposal.timeLimit.date|date("m/d/Y") }} </p></div>
+                  <div class="technics"><p>{{ proposal.piece.technics }}</p></div>
+                  <div class="proposalProposals">
+                    {{ proposal.description|length > 100 ? proposal.description|slice(0, 100) ~ '...' : proposal.description  }}
+                  </div>
+                </div>
+                {% if proposal.unread %}
+                <div class="unread">
+                   {% if proposal.unread > 1 %}
+                      {{proposal.unread}}{{'estimate.proposal.unread.plurial'|trans}}
+                    {% else %}
+                      {{proposal.unread}}{{'estimate.proposal.unread.single'|trans}}
+                    {% endif %}
+                </div>
+                {% endif %}
+                  <a href="{{ path('artist_proposal_show',{'id': proposal.id,'username': username} ) }}">
+                    <div class="action">
+                      {{ 'estimate.proposal.show'|trans }}
+                    </div>
+                  </a>
+              </div>
+           {% endfor %}
+        {% else %}
+          <div><p>{{ 'proposal.user.notExist' |trans}}</p></div>
+        {% endif %}
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+{% endblock %}

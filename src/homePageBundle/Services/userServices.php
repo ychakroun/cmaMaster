@@ -20,6 +20,15 @@ class userServices {
     		return $this->sc->getToken()->getUser()->getUsername();
     	}
 	}
+    public function getId(){
+        if(is_string($this->sc->getToken()->getUser())){
+            return null;
+        }
+        else
+        {
+            return $this->sc->getToken()->getUser()->getId();
+        }
+    }
     public function allParameter() {
     	if($this->sc->getToken()->getUser()->getParameter()){
     		return $this->sc->getToken()->getUser()->getParameter()->getAll();

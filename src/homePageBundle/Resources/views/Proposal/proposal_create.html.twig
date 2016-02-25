@@ -1,0 +1,105 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA Art Piece{% endblock %}
+{% block javascripts %}
+     <script src="{{asset( "js/imgProfileEdit.js" )}}"></script>
+    {{parent()}}
+{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block main %}
+<section class="param">
+  <header class="headerSection">
+    <div class="globalS">
+      <div class="idSection">{{ "estimate_page.header" | trans }}</div>
+      <div class="logoSection"><img src="{{ asset("img/logoTampon.png") }}" alt="cma_tampon" /></div>
+      <div class="infoSection"></div>
+    </div>
+  </header>
+  <div class="containerS">
+    {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
+    <div class="contentS">
+      <section id="devis">
+        <div class="containerS">
+        <div class="descriptionOeuvre">
+        <header class="">
+          <div class="Name">
+            {% if owner %}
+              {{owner}}
+            {% endif %}
+              {{"form.proposal.create.title" | trans }}
+          </div>
+        </header>
+        {% if formProposal %}
+        {{form_start(formProposal)}}
+          <div class="titreOeuvre"> {{ 'form.estimate.title'|trans }} {{estimate.title}}</div>
+          <div class="localité">{{ 'form.estimate.medium'|trans }} {{estimate.medium}}</div><br>
+          <div class="localité">{{ 'form.estimate.deliveryAdress'|trans }} {{estimate.deliveryAdress}}</div><br>
+          <label for="{{formProposal.day.vars.id}}">{{ formProposal.day.vars.label }}</label>
+          {{form_widget(formProposal.day)}}
+          <label for="{{formProposal.description.vars.id}}">{{ formProposal.description.vars.label }}</label>
+          {{form_widget(formProposal.description)}}
+        </div>
+        <div class="titleS">
+          <div>Plus de détails</div>
+        </div>
+        <div class="descriptionOeuvre">
+          <label for="{{formProposal.piece.price.vars.id}}">{{ formProposal.piece.price.vars.label }}</label>
+          {{form_widget(formProposal.piece.price)}}
+          <label for="{{formProposal.piece.feature.vars.id}}">{{ formProposal.piece.feature.vars.label }}</label>
+          {{form_widget(formProposal.piece.feature)}}
+          <label for="{{formProposal.piece.technics.vars.id}}">{{ formProposal.piece.technics.vars.label }}</label>
+          {{form_widget(formProposal.piece.technics)}}
+          <label for="{{formProposal.piece.width.vars.id}}">{{ formProposal.piece.width.vars.label }}</label>
+          {{form_widget(formProposal.piece.width)}}
+          <label for="{{formProposal.piece.height.vars.id}}">{{ formProposal.piece.height.vars.label }}</label>
+          {{form_widget(formProposal.piece.height)}}
+        </div>
+        <div class="titleS">
+          <div>Illustrez votre oeuvre</div>
+        </div>
+          {{form_widget(formProposal.piece.image1.file,{attr: {'style':"display:none"}})}}
+          {{form_widget(formProposal.piece.image1.name,{attr: {'value': username }})}}
+          {{form_widget(formProposal.piece.image2.file,{attr: {'style':"display:none"}})}}
+          {{form_widget(formProposal.piece.image2.name,{attr: {'value': username }})}}
+          {{form_widget(formProposal.piece.image3.file,{attr: {'style':"display:none"}})}}
+          {{form_widget(formProposal.piece.image3.name,{attr: {'value': username }})}}
+          <div id="uploadImage">
+            <div id="div1" class="imagePiece imgLiquidFill">
+                <img id="1" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+            </div>
+            <div id="div2" class="imagePiece imgLiquidFill">
+                <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+            </div>
+            <div id="div3" class="imagePiece imgLiquidFill">
+                <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+            </div>
+          </div>
+          <div class="blockCheckbox">
+            <div class="checkbox">
+              {{form_widget(formProposal.condition)}}
+              <label for="{{formProposal.condition.vars.id}}"></label>
+
+            </div>
+            <p>J’accepte les conditions d’utilisation </p>
+          </div>
+          <div class="button">
+            <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "parameter_page.submit"|trans }}" />
+          </div>
+        {{form_end(formProposal)}}
+      {% endif %}
+    </div>
+  </div>
+  </section>
+  </div>
+  <div id="imgtmp" style="display:none"></div>
+</section>
+{% endblock %}
+{% block script %}
+    <script >
+      initProposalImage();
+    </script>
+{% endblock %}

@@ -1,3 +1,0 @@
-image_test:
-    path:     /groupadd
-    defaults: { _controller: CmaUserBundle:Image:index }

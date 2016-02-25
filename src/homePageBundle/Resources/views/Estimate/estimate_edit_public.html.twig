@@ -6,10 +6,6 @@
         {% include "homePageBundle:Default:nav.html.twig" %}
     </div>
 {% endblock %}
-{% block javascripts %}
-	<script src="{{ asset( 'js/imgProfileEdit.js' ) }}"></script>
-	{{parent()}}
-{% endblock %}
 {% block main %}
 
 <section class="param">
@@ -100,6 +96,5 @@
     </div>
     </section>
   </div>
-  <div id="imgtmp" style="display:none"></div>
 </section>
 {% endblock %}

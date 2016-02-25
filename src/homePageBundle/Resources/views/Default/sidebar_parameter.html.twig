@@ -19,9 +19,11 @@
         <li>
           <p><a href="{{ path('user_devis') }}">{{ "sidebar_parameter.devis" | trans }}</a></p>
         </li>
+        {% if is_granted('ROLE_ARTIST') %}
         <li>
-          <p><a href="{{ path('user_message') }}">{{ "sidebar_parameter.comment" | trans }}</a></p>
+          <p><a href="{{ path('artist_proposal') }}">{{ "sidebar_parameter.comment" | trans }}</a></p>
         </li>
+        {% endif %}
         <li>
           <p><a href="{{ path('user_progress_project') }}">{{ "sidebar_parameter.progress_project" | trans }}</a></p>
         </li>

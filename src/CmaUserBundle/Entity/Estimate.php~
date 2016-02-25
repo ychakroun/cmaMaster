@@ -25,7 +25,7 @@ class Estimate
     /**
      * @var bool
      *
-     * @ORM\Column(name="orientation", type="boolean", length=255, nullable=true)
+     * @ORM\Column(name="orientation", type="boolean",nullable=true)
      */
     private $orientation;
 
@@ -79,12 +79,20 @@ class Estimate
      * @ORM\Column(name="height", type="string", length=255, nullable=true)
      */
     private $height;
+
     /**
      * @var bool
      *
      * @ORM\Column(name="is_public", type="boolean")
      */
     private $isPublic;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="user_id", type="integer")
+     */
+    private $ownerId;
 
     /**
      * @var bool
@@ -144,7 +152,7 @@ class Estimate
     private $isValidate;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CmaUserBundle\Entity\Proposal")
+     * @ORM\ManyToMany(targetEntity="CmaUserBundle\Entity\Proposal", cascade={"persist","remove"})
      * @ORM\JoinTable(name="estimates_proposals",
      *      joinColumns={@ORM\JoinColumn(name="estimate_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="proposal_id", referencedColumnName="id", unique=true)}
@@ -621,5 +629,29 @@ class Estimate
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set isCrush
+     *
+     * @param boolean $isCrush
+     *
+     * @return Estimate
+     */
+    public function setIsCrush($isCrush)
+    {
+        $this->isCrush = $isCrush;
+
+        return $this;
+    }
+
+    /**
+     * Get isCrush
+     *
+     * @return boolean
+     */
+    public function getIsCrush()
+    {
+        return $this->isCrush;
     }
 }

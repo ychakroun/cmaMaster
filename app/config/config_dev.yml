@@ -31,5 +31,7 @@ monolog:
         #    type:   chromephp
         #    level:  info
 
-#swiftmailer:
-#    delivery_address: me@example.com
+security:
+    firewalls: 
+        main:
+            switch_user: true

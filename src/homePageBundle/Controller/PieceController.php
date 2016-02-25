@@ -20,6 +20,11 @@ class PieceController extends Controller
       if(sizeof($pieces)){
       	throw new HttpException(404,'This user does not have pieces.');
       }
+      foreach ($pieces as $key => $value) {
+        if($piece->getUser()!=null||$piece->getEtat()==null||$piece->getEtat()==5){
+          array_push($piecesformat, $piece);
+        }
+      }
       return $this->render('homePageBundle:Gallerie:index.html.twig',array('pieces' => $pieces));
     }
     public function editAction(Request $request,$id)
