@@ -9,7 +9,14 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: %kernel.debug%
+    read_from:      %kernel.root_dir%/../web/bundles
+    write_to:       %kernel.root_dir%/../web/assets
+    filters:
+        cssrewrite: ~
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }
@@ -68,8 +75,7 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: gmail
-    #host:      "%mailer_host%"
+    host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     delivery_address: "%mailer_user%"

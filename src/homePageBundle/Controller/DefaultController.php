@@ -18,7 +18,6 @@ class DefaultController extends Controller
     	}*/
         $em = $this->getDoctrine()->getManager();
         $pieces = $em->getRepository('CmaUserBundle:Piece')->findAll();
-        dump($pieces);
         return $this->render('homePageBundle:Default:index.html.twig',array('pieces'=>$pieces));
     }
 }

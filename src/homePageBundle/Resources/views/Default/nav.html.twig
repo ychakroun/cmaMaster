@@ -5,16 +5,16 @@
       <header id="headerHeader">
         <div id="search">
           <div id="smallLogo">
-          	{% image '@homePageBundle/Resources/img/smallLogoHeaderHome.png' %}
-    				<a href="{{ url('home_page_homepage') }}"><img src="{{ asset_url }}" alt="" /></a>
-			{% endimage %}
+          	{#{% image '@homePageBundle/Resources/img/smallLogoHeaderHome.png' %}#}
+    				    <a href="{{ url('home_page_homepage') }}"><img src="{{ asset('img/smallLogoHeaderHome.png') }}" alt="" /></a>
+			       {#{% endimage %}#}
           </div>
           <div class="box">
             <input class="text" type="text" placeholder="une oeuvre, un artiste ..." required>
             <button class="icon">
-            {% image '@homePageBundle/Resources/img/search.png' %}
-    				  <img src="{{ asset_url }}" alt="" />
-				    {% endimage %}
+            {# image '@homePageBundle/Resources/img/search.png' #}
+    				  <img src="{{ asset('img/search.png') }}" alt="" />
+				    {# endimage #}
 			</button>
           </div>
         </div>
@@ -27,21 +27,21 @@
             {% if app.request.get('_route') != 'fos_user_registration_register' %}
             <li>
             {% if is_granted('ROLE_ARTIST') %}
-                {% image '@homePageBundle/Resources/img/login.png' %}
-                  <a href="{{path('artist_edit')}}"><img src="{{ asset_url }}" alt="" /></a>
-                {% endimage %}
+                {# image '@homePageBundle/Resources/img/login.png' #}
+                  <a href="{{path('artist_edit')}}"><img src="{{ asset('img/login.png') }}" alt="" /></a>
+                {# endimage #}
               </li>
               <li><a href="{{path('user_parameter')}}"><img src="{{asset('img/parametre.png')}}" alt=""></a></li>
                 {% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
-                {% image '@homePageBundle/Resources/img/login.png' %}
-                  <a href="{{ path('user_parameter') }}"><img src="{{ asset_url }}" alt="" /></a>
+                {# image '@homePageBundle/Resources/img/login.png' #}
+                  <a href="{{ path('user_parameter') }}"><img src="{{ asset('img/login.png') }}" alt="" /></a>
               </li>
               <li><a href="{{path('home_page_homepage')}}"><img src="{{asset('img/basket.png')}}" alt=""></a></li>
-                {% endimage %}
+                {# endimage #}
                 {% else %}
-                {% image '@homePageBundle/Resources/img/login.png' %}
-                  <img id="btnCo" src="{{ asset_url }}" alt="" />
-                {% endimage %}
+                {# image '@homePageBundle/Resources/img/login.png' #}
+                  <img id="btnCo" src="{{ asset('img/login.png') }}" alt="" />
+                {# endimage #}
                 <div id="popupco" class="pop" style="display:none;">
                   <div id="poprdr">
                     <header id="headerSection" class="headerSection">

@@ -26,10 +26,12 @@ class EstimateController extends Controller
           if(count($userEstimates)>0){
             foreach ($userEstimates as $key1 => $userEstimate) {
             if($userEstimate->getId()!=$existingEstimate->getId()&&$existingEstimate->getIsPublic()){
+              $existingEstimate->owner = false;
               array_push($estimates, $existingEstimate);
               }
             }
           }else if($existingEstimate->getIsPublic()===true){
+            $existingEstimate->owner = false;
             array_push($estimates, $existingEstimate);
           }
         }
@@ -39,7 +41,6 @@ class EstimateController extends Controller
         $estimates = $user->getEstimates();
         $estimates;
       }
-      dump($estimates);
       return $this->render('homePageBundle:Estimate:estimate_show.html.twig',array('estimates'=>$estimates));
     }
     public function createAction(Request $request)
@@ -57,6 +58,7 @@ class EstimateController extends Controller
             }else if($formEstimate->get('save')->isClicked()){
               $estimate->setIsPublic(false);
             }
+            $estimate->setOwnerId($estimate);
             $em = $this->getDoctrine()->getManager();
             $em->persist($estimate);
             $user->addEstimate($estimate);
@@ -97,7 +99,6 @@ class EstimateController extends Controller
             }else if($formEstimate->get('save')->isClicked()){
               $estimate->setIsPublic(false);
             }
-            dump($estimate);
             $em = $this->getDoctrine()->getManager();
             $em->persist($estimate);
             $user->addEstimate($estimate);
@@ -123,8 +124,18 @@ class EstimateController extends Controller
         }
       }
       if($user->getRoles()[0]=='ROLE_ARTIST'){
-        return $this->redirectToRoute('user_estimate_proposal_create',array('id'=>$estimate->getId()));
+        return $this->redirectToRoute('proposal_create',array('id'=>$estimate->getId()));
       }
       throw new AccessDeniedException('This user does not have access to this section.');
+    }
+    public function detailAction($id)
+    {
+      $user = $this->get('security.token_storage')->getToken()->getUser();
+      $userEstimates = $user->getEstimates();
+      $estimate = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:Estimate')->findById($id)[0];
+      if(!is_object($estimate)){
+        throw new AccessDeniedException('This user does not have access to this section.');
+      }
+      return $this->render('homePageBundle:Estimate:estimate_detail.html.twig',array('estimate' => $estimate));
     }
 }

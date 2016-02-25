@@ -18,6 +18,10 @@ user_estimate_delete:
     path:     /estimate/delete/{id}
     defaults: {_controller: homePageBundle:Estimate:delete }
 
+estimate_detail:
+    path:     /estimate/{id}/detail
+    defaults: {_controller: homePageBundle:Estimate:detail }
+
 proposal_create:
     path:     /estimate/{id}/proposal/create
     defaults: {_controller: homePageBundle:Proposal:create }
@@ -42,9 +46,21 @@ piece_create:
     path:     /piece/create
     defaults: { _controller: homePageBundle:Piece:create }
 
-user_message:
-    path:     /message
-    defaults: { _controller: homePageBundle:User:message }
+artist_proposal:
+    path:     /proposals/list
+    defaults: { _controller: homePageBundle:Proposal:list }
+
+proposal_detail:
+    path:     /proposal/{id}
+    defaults: { _controller: homePageBundle:Proposal:detail }
+
+proposal_delete:
+    path:     /proposal/delete/{id}
+    defaults: {_controller: homePageBundle:Proposal:delete }
+
+artist_proposal_show:
+    path:     /proposal/{username}/{id}
+    defaults: { _controller: homePageBundle:Proposal:showArtist }
 
 user_info:
     path:     /information

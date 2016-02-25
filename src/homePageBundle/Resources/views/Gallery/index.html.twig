@@ -94,6 +94,7 @@
         </div>
         <ul id="galerieLink">
           {% for piece in pieces %}
+          {% if piece.user %}
           <li>
             <div class="images">
               {% if piece.image1 %}
@@ -110,6 +111,7 @@
               <div class="price">{{piece.price}} €</div>
             </div>
           </li>
+          {% endif %}
           {% endfor %}
         </ul>
       </div>

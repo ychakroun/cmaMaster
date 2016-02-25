@@ -75,7 +75,6 @@ class UserController extends Controller
             }
 
         }
-        dump($form->createView());
         return $this->render('homePageBundle:User:information_user.html.twig',array('formInfo'=>$form->createView()));
     }
 }

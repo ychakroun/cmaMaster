@@ -32,9 +32,15 @@
           </header>
            {% for estimate in estimates %}
               <div class="estimates" id="estimate[{{estimate.id}}]">
-                <a id="linktoproposal" href="{{path ( 'user_estimate_edit',{'id': estimate.id} ) }}"></a>
+                {% if not is_granted('ROLE_ARTIST') %}
+                  <a id="linktoproposal" href="{{path ( 'user_estimate_edit',{'id': estimate.id} ) }}"></a>
+                {% elseif is_granted('ROLE_ARTIST') %}
+                  <a id="linktoproposal" href="{{path ( 'estimate_detail',{'id': estimate.id} ) }}"></a>
+                {% endif %}
                 <header class="header">
+                {% if estimate.owner %}
                   <div class="delete"><a href="{{path ('user_estimate_delete', {'id': estimate.id} ) }}">X</a></div>
+                {% endif %}
                   <div class="icons">
                     {% if estimate.isCrush %}
                       <div><img src="{{asset('img/likes.png')}}" alt=""></div>
@@ -56,17 +62,21 @@
                 <div class="estimateProposals">
                 {% if not is_granted('ROLE_ARTIST') %}
                   {% if estimate.proposals %}
-                    {#{% if estimate.proposal.comments %}
-                      {% if estimate.proposal.comments.unread %}
-                        {% if estimate.proposals.comments.unread|length > 1 %}
-                          {{ estimate.proposal.comments.unread|length }}
-                          {{ 'estimate.proposal.comment.plurial' }}
-                        {% else %}
-                          {{ estimate.proposal.comments.unread|length }}
-                          {{ 'estimate.proposal.comment.single' }}
-                        {% endif %}
+                    {#{% for proposal in estimate.proposals %}
+                      {% if proposal.comments|length > 0 %}
+                        {% for comment in proposal.comments %}
+                          {% if comment.unread %}
+                            {% if comment.unread|length > 1 %}
+                              {{ comment.unread|length }}
+                              {{ 'estimate.proposal.comment.plurial' }}
+                            {% else %}
+                              {{ comment.unread|length }}
+                              {{ 'estimate.proposal.comment.single' }}
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
                       {% endif %}
-                    {% endif %}#}
+                    {% endfor %}#}
                     {% if estimate.proposals|length > 1 %}
                           {{ estimate.proposals|length }}
                           {{ 'estimate.proposals.plurial'|trans }}
@@ -86,7 +96,7 @@
                     </div>
                   </a>
                 {% elseif is_granted('ROLE_ARTIST') %}
-                  <a href="{{ path('user_estimate_proposal_create',{'id': estimate.id} ) }}">
+                  <a href="{{ path('proposal_create',{'id': estimate.id} ) }}">
                     <div class="action">
                       {{ 'estimate.proposal.create'|trans }}
                     </div>

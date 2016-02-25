@@ -25,7 +25,7 @@ class Estimate
     /**
      * @var bool
      *
-     * @ORM\Column(name="orientation", type="boolean", length=255, nullable=true)
+     * @ORM\Column(name="orientation", type="boolean",nullable=true)
      */
     private $orientation;
 
@@ -79,12 +79,20 @@ class Estimate
      * @ORM\Column(name="height", type="string", length=255, nullable=true)
      */
     private $height;
+
     /**
      * @var bool
      *
      * @ORM\Column(name="is_public", type="boolean")
      */
     private $isPublic;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="user_id", type="integer")
+     */
+    private $ownerId;
 
     /**
      * @var bool
@@ -645,5 +653,29 @@ class Estimate
     public function getIsCrush()
     {
         return $this->isCrush;
+    }
+
+    /**
+     * Set ownerId
+     *
+     * @param integer $ownerId
+     *
+     * @return Estimate
+     */
+    public function setOwnerId($ownerId)
+    {
+        $this->ownerId = $ownerId;
+
+        return $this;
+    }
+
+    /**
+     * Get ownerId
+     *
+     * @return integer
+     */
+    public function getOwnerId()
+    {
+        return $this->ownerId;
     }
 }

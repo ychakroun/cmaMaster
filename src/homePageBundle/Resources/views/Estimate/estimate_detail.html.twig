@@ -1,0 +1,94 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA User Estimate{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset( 'js/imgProfileEdit.js' ) }}"></script>
+	{{parent()}}
+{% endblock %}
+{% block main %}
+
+<section class="param">
+  <header class="headerSection">
+    <div class="globalS">
+      <div class="idSection">{{ "estimate_page.header" | trans }}</div>
+      <div class="logoSection"><img src="{{ asset("img/logoTampon.png") }}" alt="cma_tampon" /></div>
+      <div class="infoSection"></div>
+    </div>
+  </header>
+  <div class="containerS">
+    {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
+    <div class="contentS">
+      <section id="devis">
+        <div class="containerS">
+          <div class="descriptionOeuvre">
+          	<div class="titreOeuvre"> {{ 'form.estimate.title'|trans }} {{estimate.title}}</div>
+            <br>
+          	<div class="jours"> {{ 'form.estimate.day'|trans  }} {{estimate.timeLimit|date('d/m/y')}}</div><br>
+          	<div class="localité">{{ 'form.estimate.deliveryAdress'|trans }} {{estimate.deliveryAdress}}</div><br>
+          	<div class="localité">{{ 'form.estimate.medium'|trans }} {{estimate.medium}}</div><br>
+          	<div class="desc">{{ 'form.estimate.description'|trans }} {{estimate.description}}</div><br>
+          </div>
+          <div class="titleS">
+            <div>Plus de détails</div>
+          </div>
+          <div class="descriptionOeuvre">
+          	<div class="prix">{{ 'form.estimate.price'|trans }} {{estimate.budget}}</div><br>
+            <div class="localité">
+              {{ 'form.estimate.orientation'|trans }} 
+              {% if estimate.orientation %} 
+                {{ 'form.estimate.orientation.true'|trans }} 
+              {% else %} 
+              {{ 'form.estimate.orientation.false'|trans }}  
+              {% endif %}
+            </div>
+            <br>
+            <div for="{{estimate.technics}}" class="techniques">{{ 'form.estimate.technics'|trans }} {{estimate.technics}}</div>
+            <br>
+            <div class="outils">{{ 'form.estimate.tools'|trans }} {{estimate.tools}}</div><br>
+          	<div class="largeur">{{ 'form.estimate.width'|trans }} {{estimate.width}}</div><br>
+          	<div class="hauteur">{{ 'form.estimate.height'|trans }} {{estimate.height}}</div><br>
+          </div>
+          <div class="titleS">
+            <div>Illustrer votre demande</div>
+          </div>
+          <div id="uploadImage">
+            <div id="div1" class="imageEstimate">
+              {% if estimate.image1 %}
+                <img src="{{ asset("images/"~estimate.image1.path) }}" alt="">
+              {% endif %}          </div>
+            <div  id="div2" class="imageEstimate" >
+              {% if estimate.image2 %}
+                <img src="{{ asset("images/"~estimate.image2.path) }}" alt="">
+              {% endif %}
+              <!-- <canvas id="imageCanvas"></canvas> -->
+            </div>
+            <div id="div3" class="imageEstimate" >
+              {% if estimate.image3 %}
+                <img src="{{ asset("images/"~estimate.image3.path) }}" alt="">
+              {% endif %}
+              <!-- <canvas id="imageCanvas"></canvas> -->
+            </div>
+          </div>
+          <form action="{{ path('proposal_create',{'id': estimate.id} ) }}">
+            <div class="blockCheckbox">
+              <div class="checkbox">
+                <input id="checkbox" required="" name="check" type="checkbox">
+                <label for="checkbox"></label>
+              </div>
+                <p>J’accepte les conditions d’utilisation </p>
+            </div>
+            <div class="button">
+              <div class="buttonSend"><input type="submit" value="Proposer une création" style="background-color:rgba(0,0,0,0)"></input></div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+{% endblock %}
