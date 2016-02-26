@@ -45,6 +45,7 @@ class ProposalController extends Controller
         $em->persist($proposal);
         $em->flush();
         $comment=new Comment();
+        $formComment = $this->createForm(CommentType::class,$comment);
       }
       $formEtat = $this->createForm(ProposalEtatType::class,$proposal);
       $formEtat->handleRequest($request);
@@ -55,12 +56,12 @@ class ProposalController extends Controller
       }
       $comments = $proposal->getComments();
       foreach ($comments as $i => $comment) {
-          if($comment->getUnread()&&$comment->getUserId()!=$user->getId()){
-            $comment->setUnread(false);
-            $em->persist($comment);
-            $em->flush();
-          }
+        if($comment->getUnread()&&$comment->getUserId()!=$user->getId()){
+          $comment->setUnread(false);
+          $em->persist($comment);
+          $em->flush();
         }
+      }
       return $this->render('homePageBundle:Proposal:proposal_artist_show.html.twig',array('formComment'=>$formComment->createView(),'formEtat'=>$formEtat->createView(),'userId'=>$user->getId(),'proposal'=>$proposal));
     }
     public function createAction(Request $request,$id)
