@@ -82,6 +82,26 @@ form:
     group_name: 'Etes-vous un: '
     username: 'Nom d''artiste'
     name: 'Nom'
+    comment:
+        submit: 'Envoyer'
+        placeholder: 'Votre message'
+        file: 'Ajouter une piece jointe'
+    estimate:
+        title: 'Titre de l''oeuvre'
+        medium: 'Support'
+        deliveryAddress: 'Adresse de livraison / Réalisation '
+        day: 'Délais'
+        description: 'Décrivez votre proposition'
+    proposal:
+        price: 'Budget précis'
+        submit: 'Envoyer votre proposition'
+        etat:
+            1: 'Valider la proposition'
+            2: 'Oeuvre Livrée'
+            3: 'Oeuvre Reçue'
+            4: 'Montant de la vente perçue' 
+        create:
+            title: 'Proposition à '
     filterPieces:
         price: 'Prix'
         width: 'Taille'
@@ -94,6 +114,8 @@ form:
         theme: 'thème'
         technics: 'techniques'
         feature: 'caractéristiques'
+        width: 'Hauteur'
+        height: 'Largeurs'
     profile:
         tag:
             add: "Ajouter un tag"
@@ -147,10 +169,20 @@ sidebar_parameter:
     purchase: 'Achat en galerie'
     sold: 'Mes oeuvres vendues'
 proposal:
+    delete: 'Supprimer la proposition'
+    decline: 'Decliner la proposition'
+    description:
+    title: 'Description de l''oeuvre'
     show:
         title:
              single: 'Proposition envoyée'
+comment: 
+    title: 'Discuter avec '
 estimate:
+    show:
+        title:
+            plurial: 'Demandes de devis en cours'
+            single: 'Demande de devis en cours'
     proposal:
         show: 'Voir la proposition'
         create: 'Proposer une création'
@@ -160,4 +192,8 @@ estimate:
         artist:
             list:
                 single: 'Propostion en attente'
+estimate_page:
+    header: 'Commandes'
+proposal_page:
+    header: 'Commandes'
 

@@ -162,4 +162,15 @@ class EstimateController extends Controller
       }
       return $this->render('homePageBundle:Estimate:estimate_list_proposals.html.twig',array('username'=>$user->getUsername(),'proposals' => $proposals));
     }
+    public function validationAction(Request $request, $id){
+      $em = $this->getDoctrine()->getManager();
+      $estimate = $em->getRepository('CmaUserBundle:Estimate')->findOneById($id);
+      $user = $this->get('security.token_storage')->getToken()->getUser();
+      dump($estimate->getOwnerId());
+      dump($user->getId());
+      if (!is_object($user)||$user->getId()!=$estimate->getOwnerId()) {
+        throw new AccessDeniedException('This user does not have access to this section.');
+      }
+      return $this->render('homePageBundle:Estimate:estimate_validation.html.twig');
+    }
 }

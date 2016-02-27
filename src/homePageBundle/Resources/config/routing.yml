@@ -22,6 +22,14 @@ estimate_detail:
     path:     /estimate/{id}/detail
     defaults: {_controller: homePageBundle:Estimate:detail }
 
+estimate_validation:
+    path:     /estimate/{id}/validation
+    defaults: {_controller: homePageBundle:Estimate:validation }
+
+user_devis:
+    path:     /estimate
+    defaults: { _controller: homePageBundle:Estimate:show }
+
 proposal_create:
     path:     /estimate/{id}/proposal/create
     defaults: {_controller: homePageBundle:Proposal:create }
@@ -55,7 +63,7 @@ proposal_detail:
     defaults: { _controller: homePageBundle:Proposal:detail }
 
 proposal_delete:
-    path:     /proposal/delete/{id}
+    path:     /proposal/delete/{id}/{idp}
     defaults: {_controller: homePageBundle:Proposal:delete }
 
 artist_proposal_show:
@@ -65,10 +73,6 @@ artist_proposal_show:
 user_info:
     path:     /information
     defaults: { _controller: homePageBundle:User:information }
-
-user_devis:
-    path:     /estimate
-    defaults: { _controller: homePageBundle:Estimate:show }
 
 user_progress_project:
     path:     /progressproject

@@ -41,7 +41,7 @@
                 </div>
                 <div class="infoproposal">
                   <span class="budget"><p>{{ proposal.piece.price }}  € </p></span>
-                  <span class="timeLimit"><p>{{ proposal.timeLimit.date|date("m/d/Y") }} </p></span>
+                  <span class="timeLimit"><p>{{ proposal.timeLimit.date|date("d/m/Y") }} </p></span>
                   <span class="technics"><p>{{ proposal.piece.technics }}</p></span>
                   <div class="proposalProposals">
                      {{ proposal.description|length > 100 ? proposal.description|slice(0, 100) ~ '...' : proposal.description  }}
@@ -62,7 +62,7 @@
                     </div>
                   </a>
                 {% if proposal.owner %}
-                  <div class="delete"><a href="{{path ('proposal_delete', {'id': proposal.id} ) }}">X</a></div>
+                  <div class="delete"><a href="{{path ('proposal_delete', {'id':proposal.id,'idp':proposal.parent.id} ) }}">X</a></div>
                 {% endif %}
               </div>
            {% endfor %}

@@ -49,7 +49,7 @@ class EstimateType extends AbstractType
                 'attr' => array('class' => 'jours',
                     'type'=>'number')
                 ))
-            ->add('deliveryAdress',null,array('label' => 'form.estimate.deliveryAdress',
+            ->add('deliveryAdress',null,array('label' => 'form.estimate.deliveryAddress',
                 'required' => true,
                 'translation_domain' => 'FOSUserBundle', 
                 'attr' => array('class' => 'localité')

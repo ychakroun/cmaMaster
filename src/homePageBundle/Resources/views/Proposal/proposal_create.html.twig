@@ -27,35 +27,35 @@
         <div class="descriptionOeuvre">
         <header class="">
           <div class="Name">
+            {{"form.proposal.create.title" | trans }}
             {% if owner %}
               {{owner}}
             {% endif %}
-              {{"form.proposal.create.title" | trans }}
           </div>
         </header>
         {% if formProposal %}
         {{form_start(formProposal)}}
           <div class="titreOeuvre"> {{ 'form.estimate.title'|trans }} {{estimate.title}}</div>
           <div class="localité">{{ 'form.estimate.medium'|trans }} {{estimate.medium}}</div><br>
-          <div class="localité">{{ 'form.estimate.deliveryAdress'|trans }} {{estimate.deliveryAdress}}</div><br>
-          <label for="{{formProposal.day.vars.id}}">{{ formProposal.day.vars.label }}</label>
+          <div class="localité">{{ 'form.estimate.deliveryAddress'|trans }} {{estimate.deliveryAdress}}</div><br>
+          <label for="{{formProposal.day.vars.id}}">{{ formProposal.day.vars.label|trans }}</label>
           {{form_widget(formProposal.day)}}
-          <label for="{{formProposal.description.vars.id}}">{{ formProposal.description.vars.label }}</label>
+          <label for="{{formProposal.description.vars.id}}">{{ formProposal.description.vars.label|trans }}</label>
           {{form_widget(formProposal.description)}}
         </div>
         <div class="titleS">
           <div>Plus de détails</div>
         </div>
         <div class="descriptionOeuvre">
-          <label for="{{formProposal.piece.price.vars.id}}">{{ formProposal.piece.price.vars.label }}</label>
+          <label for="{{formProposal.piece.price.vars.id}}">{{ formProposal.piece.price.vars.label|trans }}</label>
           {{form_widget(formProposal.piece.price)}}
-          <label for="{{formProposal.piece.feature.vars.id}}">{{ formProposal.piece.feature.vars.label }}</label>
+          <label for="{{formProposal.piece.feature.vars.id}}">{{ formProposal.piece.feature.vars.label|trans }}</label>
           {{form_widget(formProposal.piece.feature)}}
-          <label for="{{formProposal.piece.technics.vars.id}}">{{ formProposal.piece.technics.vars.label }}</label>
+          <label for="{{formProposal.piece.technics.vars.id}}">{{ formProposal.piece.technics.vars.label|trans }}</label>
           {{form_widget(formProposal.piece.technics)}}
-          <label for="{{formProposal.piece.width.vars.id}}">{{ formProposal.piece.width.vars.label }}</label>
+          <label for="{{formProposal.piece.width.vars.id}}">{{ formProposal.piece.width.vars.label|trans }}</label>
           {{form_widget(formProposal.piece.width)}}
-          <label for="{{formProposal.piece.height.vars.id}}">{{ formProposal.piece.height.vars.label }}</label>
+          <label for="{{formProposal.piece.height.vars.id}}">{{ formProposal.piece.height.vars.label|trans }}</label>
           {{form_widget(formProposal.piece.height)}}
         </div>
         <div class="titleS">
@@ -87,7 +87,7 @@
             <p>J’accepte les conditions d’utilisation </p>
           </div>
           <div class="button">
-            <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "parameter_page.submit"|trans }}" />
+            <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.proposal.submit"|trans }}" />
           </div>
         {{form_end(formProposal)}}
       {% endif %}

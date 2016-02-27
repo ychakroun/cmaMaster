@@ -40,15 +40,13 @@
                   <div class="delete"><a href="{{path ('proposal_delete', {'id': proposal.id} ) }}">X</a></div>
                 {% endif %}
                 </header>
-                {% if  proposal.parent.image1 %}
                 <div class="titleproposal" style='background-image: url({% if proposal.parent.image1 %}{{asset('images/'~proposal.piece.image1.path)}}{% else %} {{asset('img/600x400.jpg')}}{% endif %}); background-size: cover; background-position: center center; background-repeat: no-repeat;width:150px;height:150px;'>
-                {% endif %}
                   <h4>{{ proposal.parent.title }}</h4>
                   <div><p>{{ proposal.parent.date.date|date("m/d/Y") }} - {{ proposal.timeLimit.date|date("H:i") }}</p></div>
                 </div>
                 <div class="infoproposal">
                   <div class="budget"><p>{{ proposal.piece.price }}  € </p></div>
-                  <div class="timeLimit"><p>{{ proposal.timeLimit.date|date("m/d/Y") }} </p></div>
+                  <div class="timeLimit"><p>{{ proposal.timeLimit.date|date("d/m/Y") }} </p></div>
                   <div class="technics"><p>{{ proposal.piece.technics }}</p></div>
                   <div class="proposalProposals">
                     {{ proposal.description|length > 100 ? proposal.description|slice(0, 100) ~ '...' : proposal.description  }}

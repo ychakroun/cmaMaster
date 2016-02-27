@@ -52,11 +52,11 @@
                 </header>
                 <div class="titleEstimate">
                   <h4>{{ estimate.title }}</h4>
-                  <div><p>{{ estimate.date.date|date("m/d/Y") }} - {{ estimate.timeLimit.date|date("H:i") }}</p></div>
+                  <div><p>{{ estimate.date.date|date("d/m/Y") }} - {{ estimate.date.date|date("H:i") }}</p></div>
                 </div>
                 <div class="infoEstimate">
                   <div class="budget"><p>{{ estimate.budget }} € </p></div>
-                  <div class="timeLimit"><p>{{ estimate.timeLimit.date|date("m/d/Y") }} </p></div>
+                  <div class="timeLimit"><p>{{ estimate.timeLimit.date|date("d/m/Y") }} </p></div>
                   <div class="technics"><p>{{ estimate.technics }}</p></div>
                 </div>
                 <div class="estimateProposals">

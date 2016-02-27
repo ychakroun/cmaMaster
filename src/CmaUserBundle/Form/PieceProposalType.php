@@ -18,7 +18,7 @@ class PieceProposalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('price',MoneyType::class,array('label' => 'form.piece.price',
+            ->add('price',MoneyType::class,array('label' => 'form.proposal.price',
                 'required' => true,
                 'translation_domain' => 'FOSUserBundle'
                 ))
@@ -29,12 +29,12 @@ class PieceProposalType extends AbstractType
             ->add('technics',TextType::class,array('label' => 'form.piece.technics'
                 ,'required' => false,
                 'translation_domain' => 'FOSUserBundle'))
-            ->add('width',null,array('label' => 'form.estimate.width',
+            ->add('width',null,array('label' => 'form.piece.width',
                 'required' => false,
                 'translation_domain' => 'FOSUserBundle',
                 'attr' => array('class' => 'largeur')
                 ))
-            ->add('height',null,array('label' => 'form.estimate.height',
+            ->add('height',null,array('label' => 'form.piece.height',
                 'required' => false,
                 'translation_domain' => 'FOSUserBundle',
                 'attr' => array('class' => 'hauteur')
