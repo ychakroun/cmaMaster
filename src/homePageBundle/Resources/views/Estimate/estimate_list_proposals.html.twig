@@ -25,10 +25,18 @@
             <div class="Name" style="border-bottom:2px solid black;width:100%;padding-bottom:10px;margin-bottom:40px">
               {% if proposals|length > 1 %}
                 {{ proposals|length }}
-                {{"proposal.show.title.plurial" | trans }}
+                {% if userServices.getUsername != proposals.0.owner%}
+                  {{"proposal.show.title.plurial" | trans }}
+                {% else %}
+                  {{"estimate.proposal.artist.list.plurial" | trans }}
+                {% endif %}
               {% else %}
                 {{ proposals|length }}
-                {{"proposal.show.title.single" | trans }}
+                {% if userServices.getUsername != proposals.0.owner %}
+                  {{"proposal.show.title.single" | trans }}
+                {% else %}
+                  {{"estimate.proposal.artist.list.single" | trans }}
+                {% endif %}
               {% endif %}
             </div>
           </header>
@@ -41,7 +49,7 @@
                 {% endif %}
                 </header>
                 <div class="titleproposal" style='background-image: url({% if proposal.parent.image1 %}{{asset('images/'~proposal.piece.image1.path)}}{% else %} {{asset('img/600x400.jpg')}}{% endif %}); background-size: cover; background-position: center center; background-repeat: no-repeat;width:150px;height:150px;'>
-                  <h4>{{ proposal.parent.title }}</h4>
+                  <h4>{{ proposal.otheruser }}</h4>
                   <div><p>{{ proposal.parent.date.date|date("m/d/Y") }} - {{ proposal.timeLimit.date|date("H:i") }}</p></div>
                 </div>
                 <div class="infoproposal">

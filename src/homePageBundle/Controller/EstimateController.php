@@ -141,16 +141,22 @@ class EstimateController extends Controller
     public function proposalListAction($id)
     {
       $user = $this->get('security.token_storage')->getToken()->getUser();
-      $proposals = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:Estimate')->findOneById($id)->getProposals();
+      $em = $this->getDoctrine()->getManager();
+      $proposals = $em->getRepository('CmaUserBundle:Estimate')->findOneById($id)->getProposals();
       if (!is_object($user)) {
         throw new AccessDeniedException('This user does not have access to this section.');
       }else if(!count($proposals)>0){
         throw new HttpException(404,'This proposals not found');
       }
       foreach ($proposals as $key => $proposal) {
-        $piece = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:Piece')->findById($proposal->getPiece()->getId());
-        $proposal->parent = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:Estimate')->findOneById($proposal->getEstimateId());
-        $proposal->owner = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId())->getUsername();
+        $piece = $em->getRepository('CmaUserBundle:Piece')->findById($proposal->getPiece()->getId());
+        $proposal->parent = $em->getRepository('CmaUserBundle:Estimate')->findOneById($proposal->getEstimateId());
+        if($user->getId()==$proposal->parent->getOwnerId()){
+          $proposal->otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->getUserId())->getUsername();
+        }else{
+          $proposal->otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId())->getUsername();
+        }
+        $proposal->owner = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId())->getUsername();
         $comments = $proposal->getComments();
         $comments = $proposal->getComments();
         $proposal->unread = 0;

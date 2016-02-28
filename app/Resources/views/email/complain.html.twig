@@ -1,0 +1,22 @@
+{% block subject %}Envoi d'une réclamation{% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+L'utilisateur <b>{{ user.username }}</b> viens de poster une réclamation.</br>
+La propostion de {{complain.otherusername}} sur le devis n° {{proposal.estimateId}} necessite un coup d'oeil 
+</br>
+Pour acceder à la propostion, connecter vous en compte admin <a style="display: block;width: 115px;height: 15px;background: #D23B3A;border-bottom:2px solid #666;padding: 8px;text-align: center;text-decoration: none;border-radius: 1px;color: white;font-weight: bold;" href="{{login}}">Se connecter</a>
+</br>
+IMPORTANT : pour acceder à la proposition vous devez virtuellement vous connecter à un des comptes utilisteur de la proposition 
+</br>
+pour ce faire, à la fin de {{url}} ajouter ?_switch_user=username 
+</br>
+pour sortir de la connection virtuelle ajouter ?_switch_user=_exit
+</br>
+{% endblock %}
+ 

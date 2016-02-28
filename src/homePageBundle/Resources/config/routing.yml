@@ -26,17 +26,13 @@ estimate_validation:
     path:     /estimate/{id}/validation
     defaults: {_controller: homePageBundle:Estimate:validation }
 
+estimate_opinion:
+    path:    /estimate/{id}/opinion
+    defaults: {_controller: homePageBundle:Estimate:opinion }
+
 user_devis:
     path:     /estimate
     defaults: { _controller: homePageBundle:Estimate:show }
-
-proposal_create:
-    path:     /estimate/{id}/proposal/create
-    defaults: {_controller: homePageBundle:Proposal:create }
-
-user_estimate_proposals:
-    path:     /estimate/{id}/proposals
-    defaults: {_controller: homePageBundle:Estimate:proposalList }
 
 user_parameter:
     path:     /parameter
@@ -54,6 +50,14 @@ piece_create:
     path:     /piece/create
     defaults: { _controller: homePageBundle:Piece:create }
 
+proposal_create:
+    path:     /estimate/{id}/proposal/create
+    defaults: {_controller: homePageBundle:Proposal:create }
+
+user_estimate_proposals:
+    path:     /estimate/{id}/proposals
+    defaults: {_controller: homePageBundle:Estimate:proposalList }
+
 artist_proposal:
     path:     /proposals/list
     defaults: { _controller: homePageBundle:Proposal:list }
@@ -65,6 +69,10 @@ proposal_detail:
 proposal_delete:
     path:     /proposal/delete/{id}/{idp}
     defaults: {_controller: homePageBundle:Proposal:delete }
+
+proposal_complain:
+    path:    /proposal/{id}/complain
+    defaults: { _controller: homePageBundle:Complain:create }
 
 artist_proposal_show:
     path:     /proposal/{username}/{id}

@@ -28,9 +28,9 @@ class ProposalController extends Controller
         throw new HttpException(404,'This user does not have proposal.');
       }
       if($user->getId()==$proposal->parent->getOwnerId()){
-        $otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->getUserId())->getUsername();
+        $proposal->otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->getUserId())->getUsername();
       }else{
-        $otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId())->getUsername();
+        $proposal->otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId())->getUsername();
       }
       $comment=new Comment();
       $formComment = $this->createForm(CommentType::class,$comment);
@@ -71,7 +71,7 @@ class ProposalController extends Controller
           $em->flush();
         }
       }
-      return $this->render('homePageBundle:Proposal:proposal_artist_show.html.twig',array('formComment'=>$formComment->createView(),'formEtat'=>$formEtat->createView(),'user'=>$user->getId(),'otheruser'=>$otheruser,'proposal'=>$proposal));
+      return $this->render('homePageBundle:Proposal:proposal_artist_show.html.twig',array('formComment'=>$formComment->createView(),'formEtat'=>$formEtat->createView(),'user'=>$user->getId(),'proposal'=>$proposal));
     }
     public function createAction(Request $request,$id)
     {
@@ -115,7 +115,6 @@ class ProposalController extends Controller
       foreach ($proposals as $key => $proposal) {
         $piece = $em->getRepository('CmaUserBundle:Piece')->findById($proposal->getPiece()->getId());
         $proposal->parent = $em->getRepository('CmaUserBundle:Estimate')->findOneById($proposal->getEstimateId());
-        $proposal->owner = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId())->getUsername();
         $comments = $proposal->getComments();
         $proposal->unread = 0;
         foreach ($comments as $i => $comment) {

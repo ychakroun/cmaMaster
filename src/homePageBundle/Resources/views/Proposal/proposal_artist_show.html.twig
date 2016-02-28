@@ -96,8 +96,8 @@
             <span>
               <h2>
                 {{ 'comment.title'|trans }}
-                {% if otheruser %}
-                    {{ otheruser  }}
+                {% if proposal.otheruser %}
+                    {{ proposal.otheruser  }}
                 {% endif %}
               </h2>
             </span>
@@ -119,7 +119,7 @@
                   </div>
                 {% else %}
                 <div class='contentC' style="padding:30px;box-sizing:border-box;margin-bottom:30px;">
-                  <span class="commentOwner">{{userServices.getUsername}} - {{comment.date.date|date("m/d")}}</span>
+                  <span class="commentOwner">{{proposal.otheruser}} - {{comment.date.date|date("m/d")}}</span>
                   {% if comment.image and comment.image.path %}
                     <div style="background:url({{asset('images/'~comment.image.path)}});background-size: cover; background-position: center center; background-repeat: no-repeat;width:300px;height:300px;margin:20px auto;"></div>
                   {% endif %}
@@ -156,7 +156,7 @@
       </span>
       {% elseif user == proposal.parent.ownerId and proposal.piece.etat == 4 %}
       <span class="left" style="width: 50%; display: inline-block; font-size: 14px;">
-        <a style="background-color:#666;"class="buttonAction" href="{{path('proposal_complaint',{'id':proposal.id,'idp':proposal.parent.id} ) }}">
+        <a style="background-color:#666;"class="buttonAction" href="{{path('proposal_complain',{'id':proposal.id} ) }}">
           {{'proposal.complaint'|trans}}
         </a>
       </span>
@@ -182,9 +182,9 @@
         {{form_end(formEtat)}}
       </span>
       {% elseif user == proposal.parent.ownerId and proposal.piece.etat == 4 %}
-        <span class="left" style="width: 50%; display: inline-block; font-size: 14px;">
-          <a style="background-color:#666;"class="buttonAction" href="{{path('estimate_opinion',{'id':proposal.id,'idp':proposal.parent.id} ) }}">
-            {{'proposal.complaint'|trans}}
+        <span class="right" style="width: 50%; display: inline-block; font-size: 14px;text-align: right;">
+          <a style="background-color:#666;"class="buttonAction" href="{{path('estimate_opinion',{'id':proposal.id} ) }}">
+            {{'proposal.opinion'|trans}}
           </a>
         </span>
       {% elseif user != proposal.parent.ownerId and proposal.piece.etat == 4 %}
