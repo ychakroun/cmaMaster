@@ -138,14 +138,8 @@ class Image
         $updloadDir = $this->getAbsolutePath();
         $chmod = $updloadDir.substr($this->path, 0,strpos($this->path,'/'));
         $file = $this->path;
-        dump("le path");
-        dump($file);
-        dump("Le chmod");
-        dump($chmod);
         if ($file) {
             chmod($chmod,0777);
-            dump("lefichier");
-            dump($updloadDir.$file);
             unlink($updloadDir.$file);
             chmod($chmod,0755);
         }

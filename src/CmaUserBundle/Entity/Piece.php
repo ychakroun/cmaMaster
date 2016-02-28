@@ -98,9 +98,9 @@ class Piece
     private $price;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="etat", type="string", length=255, nullable=true)
+     * @ORM\Column(name="etat", type="integer", nullable=true)
      */
     private $etat;
 
@@ -110,6 +110,13 @@ class Piece
      * @ORM\Column(name="crush", type="boolean", nullable=true)
      */
     private $crush;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_proposal", type="boolean", nullable=true)
+     */
+    private $isProposal;
 
     /**
      * @var \DateTime
@@ -400,7 +407,7 @@ class Piece
     /**
      * Set etat
      *
-     * @param string $etat
+     * @param int $etat
      *
      * @return Piece
      */
@@ -414,7 +421,7 @@ class Piece
     /**
      * Get etat
      *
-     * @return string
+     * @return int
      */
     public function getEtat()
     {
@@ -617,5 +624,29 @@ class Piece
     public function getFeature()
     {
         return $this->feature;
+    }
+
+    /**
+     * Set isProposal
+     *
+     * @param boolean $isProposal
+     *
+     * @return Piece
+     */
+    public function setIsProposal($isProposal)
+    {
+        $this->isProposal = $isProposal;
+
+        return $this;
+    }
+
+    /**
+     * Get isProposal
+     *
+     * @return boolean
+     */
+    public function getIsProposal()
+    {
+        return $this->isProposal;
     }
 }

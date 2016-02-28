@@ -27,6 +27,9 @@ class PieceRepository extends \Doctrine\ORM\EntityRepository
 		$offset = ($page-1)*6;
 		$qb = $this->createQueryBuilder('a')
 			->select('a')
+            ->andWhere('a.etat = :etat')
+            ->orWhere('a.etat IS NULL')
+            ->setParameter(':etat', 5)
             ->addOrderBy($orderBy, $order)
             ->setFirstResult( $offset )
            	->setMaxResults( 6 )

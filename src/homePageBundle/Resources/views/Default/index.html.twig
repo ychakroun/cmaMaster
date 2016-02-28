@@ -114,10 +114,10 @@
       </div>
         <div class="contentS">
           <ul>
-          {% if pieces %}
           {% for piece in pieces %}
+            {% if piece and piece.user %}
             <li>
-              <div class="images">
+              <div class="images imgLiquidFill">
               {% if piece.image1 %}
                 <img src="{{asset("images/"~piece.image1.path)}}" alt="">
               {% else %}
@@ -126,14 +126,14 @@
               </div>
               <div class="infos">
                 <div class="decriptions">
-                  <p class="name">{{piece.user.username}}</p>
+                  {#<p class="name">{{piece.user.username}}</p>#}
                   <p class="title">{{piece.title}}</p>
                 </div>
                 <div class="price">{{piece.price}} €</div>
               </div>
             </li>
+              {% endif %}
            {% endfor %}
-         {% endif %}
           </ul>
         </div>
       </div>
