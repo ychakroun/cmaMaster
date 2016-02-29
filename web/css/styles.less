@@ -848,9 +848,9 @@ ul,li{
 }
 .username{
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 900;
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 20px;
   color: #c71616;
   font-family: 'FuturaStd-MediumOblique';
@@ -860,16 +860,85 @@ ul,li{
   font-size: 16px;
   font-weight: 900;
   padding-bottom: 10px;
-  font-family: 'FuturaStd-MediumOblique';
+  font-family: 'FuturaStd-Medium';
 }
 .navProfilArtiste{
   width: 100%;
-  height: 50px;
+  height: 60px;
+  font-size: 20px;
   background: rgba(0,0,0,0.7);
-  margin-top: -50px;
-  color:#fff;
+  margin-top: -60px;
   text-align: center;
+  ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li{
+      .inline;
+      line-height: 60px;
+      padding : 0 100px;
+      a{
+        font-family: 'abelregular';
+        text-decoration: none;
+        color: #c71616;
+        text-transform: uppercase;
+      }
+      a.active{
+        color: #fff;
+      }
+    }
+  }
 }
+.profilArtiste{
+  padding-bottom: 50px;
+  border-bottom: 1px solid #000;
+}
+.headeArtisteRight{
+  float: right;
+  width: 49%;
+  .infos{
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+    margin-top: 50px;
+    text-align: center;
+    div{
+      .inline;
+      margin: 0 40px;
+      text-align: center;
+    }
+  }
+}
+.headeArtisteLeft{
+  float: left;
+  width: 49%;
+}
+.headerArtisteGalerie{
+  text-align: center;
+  p{
+    font-family: 'FuturaStd-MediumOblique';
+    font-size: 30px;
+  }
+}
+#marqueurs{
+  color: #adadad;
+  font-size: 0;
+  padding-top: 10px;padding-bottom: 50px; font-family: 'myriadProregular';
+  li{.inline;border: 1px solid #adadad;
+    line-height: 24px;text-align: center;
+    text-transform: uppercase;
+    width: 118px;height: 25px;
+    margin-bottom: 10px;
+    box-sizing: border-box;font-size: 14px;
+    &:nth-child(4n+1){margin-right: 9px;}
+    &:nth-child(4n+2){margin-left: 9px;margin-right: 9px;}
+    &:nth-child(4n+3){margin-left: 9px;margin-right: 9px;}
+    &:nth-child(4n+4){margin-left: 9px;}
+    a{
+      text-decoration: none;
+      color: #adadad;
+    }
+    }
+  }
 #profileHeader{
   .basicHeaderOk{
     width: 100%;
@@ -881,7 +950,7 @@ ul,li{
   }
 }
 .infosArtiste{
-  min-height: 290px;
+  min-height: 320px;
   color:#000;
   textarea{
     height: 120px;
@@ -1174,9 +1243,6 @@ button{
 }
 
 /*padding & margin*/
-.top20{
-  margin-top: 20px;
-}
-.bottom20{
-  margin-bottom: 20px;
-}
+.top20{margin-top: 20px;}
+.top50{margin-top: 50px;}
+.bottom20{margin-bottom: 20px;}

@@ -11,8 +11,9 @@
 </header>
 <div class="mainProfile grayBackground">
   <div class="containerS">
+    <section class="profilArtiste">
     <div class="infosArtiste">
-      <div class="left">
+      <div class="headeArtisteLeft">
       	{% if artist.username %}
       		<div class= "username">{{ artist.username }}</div>
       	{% endif %}
@@ -22,13 +23,18 @@
       	{% if artist.profile.description %}
       		<div class= "description">{{ artist.profile.description }}</div>
       	{% endif %}
-      	 <div class="top20 bottom20"><button class="buttonMore"> {{"profile.show.devis" | trans }} </button></div>
+      	 <div class="top0 bottom20"><button class="buttonMore"> {{"profile.show.devis" | trans }} </button></div>
        </div>
-       <div class="right">
+       <div class="headeArtisteRight">
+         <div class="infos">
+           <div><img src="{{asset('img/custom.png')}}" alt=""><p>{{0}} custom.</p></div>
+           <div><img src="{{asset('img/likes.png')}}" alt=""><p>{{0}} likes</p></div>
+           <div><img src="{{asset('img/avis.png')}}" alt=""><p>{{0}} avis</p></div>
+         </div>
     	{% if userServices.tagsFromProfile(artist.profile) %}
     		<div class= 'tags'>
     		{% for tag in userServices.tagsFromProfile(artist.profile) %}
-    			<ul id="tagsContainer">
+    			<ul id="marqueurs">
     				<li id"tag_{{tag.id}}">
     					{{tag.name}}
     				</li>
@@ -61,14 +67,11 @@
   			{% endif %}
   		</div>
   	</div>
+  </section>
 
   	<section class="galerie">
-      	<header class="headerSection">
-      	  <div class="globalS">
-      	    <div class="idSection">La Galerie</div>
-      	    <div class="logoSection"><img src="{{asset('img/logoTampon.png')}}" alt=""></div>
-      	    <div class="infoSection">{{pieces|length}} Oeuvres</div>
-      	  </div>
+      	<header class="headerArtisteGalerie top50">
+      	  <p>Galerie <span class= "username">{{ artist.username }}</span></p>
       	</header>
       	<div class="containerS">
       	  <div class="titleS">
