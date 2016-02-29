@@ -416,6 +416,7 @@ ul,li{
     }
     #uploadImage{
       font-size: 0px;
+      .horizontalCenter;
       width: 940px;
       box-sizing: inherit;
       div{
@@ -813,6 +814,62 @@ ul,li{
     box-sizing: border-box;
   }
 }
+
+.pink{
+  background: red;
+}
+.mainProfile{
+  .containerS{
+    color: #000;
+
+  }
+}
+#mainProfile{
+  display: inline;
+  background: #f5f4f4;
+  width: 100%;
+  #profile{
+    width: 930px;
+    margin: 0 auto;
+    font-size: 0;
+    div{
+      width: 50%;
+      display: inline-block;
+      font-size: 16px;
+    }
+    #profile_tags{
+      text-align: right;
+    }
+  }
+}
+/*general profil artiste*/
+.grayBackground{
+  background: #f5f4f4;
+}
+.username{
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 900;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #c71616;
+  font-family: 'FuturaStd-MediumOblique';
+}
+.localisation{
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 900;
+  padding-bottom: 10px;
+  font-family: 'FuturaStd-MediumOblique';
+}
+.navProfilArtiste{
+  width: 100%;
+  height: 50px;
+  background: rgba(0,0,0,0.7);
+  margin-top: -50px;
+  color:#fff;
+  text-align: center;
+}
 #profileHeader{
   .basicHeaderOk{
     width: 100%;
@@ -823,76 +880,45 @@ ul,li{
     margin: 0 auto;
   }
 }
-.pink{
-  background: red;
-}
-.mainProfile{
-  background: #f5f4f4;
-  .containerS{
-    color: #000;
-    .infosArtiste{
-      min-height: 290px;
-    }
-    #imageAll{
-      font-size: 0px;
-      .imageProfile{
-        &:first-child{
-          width: 100%;
-          height: 400px;
-          margin-bottom: 25px;
-        }
-        &:nth-child(2){
-          width: 452.5px;
-          .inline;
-          height: 400px;
-          margin-right: 12.50px;
-        }
-        &:nth-child(3){
-          width: 452.5px;
-          .inline;
-          height: 400px;
-          margin-left: 12.50px;
-        }
-      }
-    }
+.infosArtiste{
+  min-height: 290px;
+  color:#000;
+  textarea{
+    height: 120px;
+    width: 440px;
+    font-size: 13px;
+    border: 1px solid #959595;
+    resize: none;
+    padding: 5px;
+  }
+  .description{
+    height: 120px;
+    width: 440px;
+    font-size: 13px;
+    resize: none;
+    padding: 5px;
+    overflow: hidden;
   }
 }
-#mainProfile{
-  display: inline;
-  width: 100%;
-  #profile{
-    width: 930px;
-    margin: 0 auto;
-    font-size: 0;
-    textarea{
-      width: 300px;
-      height: 80px;
-    }
-    div{
-      width: 50%;
-      display: inline-block;
-      font-size: 16px;
-    }
-    #profile_tags{
-      text-align: right;
-    }
-  }
-  #imageAll{
-    width: 1200px;
-    font-size: 0;
-    margin: 0 auto;
-    .imageProfile:first-child{
-      width: 800px;
-      height: 500px;
-      display: block;
-      margin: 0 auto;
-    }
-    .imageProfile{
-      width: 600px;
+#imageAll{
+  font-size: 0px;
+  .imageProfile{
+    &:first-child{
+      width: 100%;
       height: 400px;
-      text-align: center;
-      display: inline-block;
-      overflow: hidden;
+      margin-bottom: 25px;
+    }
+    &:nth-child(2){
+      width: 452.5px;
+      .inline;
+      height: 400px;
+      margin-right: 12.50px;
+    }
+    &:nth-child(3){
+      width: 452.5px;
+      .inline;
+      height: 400px;
+      margin-left: 12.50px;
     }
   }
 }
@@ -1042,14 +1068,16 @@ input[type="submit"]{
 }
 .tagLiCss{
   position: relative;
-  div:first-child{
-    display: inline-block;
+  input{
+    width: auto !important;
+    text-decoration: none;
+    border: none;
   }
   a{
       cursor: pointer;
       font-family: arial;
       color:red;
-      border-bottom: 1px solid #666;
+      border-bottom: 0px solid #666;
       position: absolute;
       top: 2px;
   }
@@ -1139,4 +1167,16 @@ input[type="submit"]{
   filter: alpha(opacity=100);
   opacity: 1;
  }
+}
+button{
+  border: 0px;
+  cursor: pointer;
+}
+
+/*padding & margin*/
+.top20{
+  margin-top: 20px;
+}
+.bottom20{
+  margin-bottom: 20px;
 }

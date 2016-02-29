@@ -7,20 +7,24 @@
        <div class="basicHeader"><img id="0" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
     {% endif %}
   </div>
+  {% include "homePageBundle:Default:navProfilArtiste.html.twig" %}
 </header>
-<div class="mainProfile">
+<div class="mainProfile grayBackground">
   <div class="containerS">
     <div class="infosArtiste">
-    	{% if artist.username %}
-    		<div class= "username">{{ artist.username }}</div>
-    	{% endif %}
-    	{% if artist.information %}
-    		<div class= "localisation">{{ artist.information.pays }}</div>
-    	{% endif %}
-    	{% if artist.profile.description %}
-    		<div class= "description">{{ artist.profile.description }}</div>
-    	{% endif %}
-    	 <button class="buttonAction"> {{"profile.show.devis" | trans }} </button>
+      <div class="left">
+      	{% if artist.username %}
+      		<div class= "username">{{ artist.username }}</div>
+      	{% endif %}
+      	{% if artist.information %}
+      		<div class= "localisation">{{ artist.information.pays }}</div>
+      	{% endif %}
+      	{% if artist.profile.description %}
+      		<div class= "description">{{ artist.profile.description }}</div>
+      	{% endif %}
+      	 <div class="top20 bottom20"><button class="buttonMore"> {{"profile.show.devis" | trans }} </button></div>
+       </div>
+       <div class="right">
     	{% if userServices.tagsFromProfile(artist.profile) %}
     		<div class= 'tags'>
     		{% for tag in userServices.tagsFromProfile(artist.profile) %}
@@ -32,6 +36,7 @@
     		{% endfor %}
     		</div>
     	{% endif %}
+      </div>
     </div>
   	<div id="imageAll">
   		<div class= "imageProfile imgLiquidFill">
@@ -56,6 +61,7 @@
   			{% endif %}
   		</div>
   	</div>
+
   	<section class="galerie">
       	<header class="headerSection">
       	  <div class="globalS">

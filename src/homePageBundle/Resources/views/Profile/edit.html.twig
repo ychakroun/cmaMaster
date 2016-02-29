@@ -1,81 +1,90 @@
 {% trans_default_domain 'FOSUserBundle' %}
-<header id="profileHeader">
-  <div id="imageHeader" class="basicHeaderOk imgLiquidFill">
-    {% if profile and profile.imageHeader and profile.imageHeader.path %}
-        <img  src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
-    {% else %}
-       <div class="basicHeader"><img id="imageHeader" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
-    {% endif %}
-  </div>
-</header>
-<div id="mainProfile">
-    {% if is_granted('ROLE_ARTIST') %}
-    <form  action="{{ path("artist_edit")}}" enctype="multipart/form-data" method="post" >
-        <input id="{{ form._token.vars.id }}" name="{{ form._token.vars.full_name }}"type="hidden" name="_csrf_token" value="{{ form._token.vars.value }}" />
-    	<div id="{{form.vars.id}}">
-         	{{form_row(form.description,{attr: {'placeholder':'form.profile.description' | trans }})}}
-         	{{form_widget(form.imageHeader.file,{attr: {'style':"display:none"}})}}
-         	{{form_row(form.imageHeader.name,{attr: {'value':username}})}}
-         	<div id="{{ form.tags.vars.id}}">
-         		<ul class="tags" data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}">
-                    {% for tag in form.tags%}
-                    <li class="tagLiCss">
-                        <div class="initial" id="profile_tags_{{ tag.vars.name }}">
-                            <div>
-                                <input id="{{ tag.vars.id }}_name" value= "{{tag.vars.data.name}}" name="{{ tag.vars.full_name }}[name]" maxlength="255" type="text">
+<div class="grayBackground">
+  <header id="profileHeader">
+    <div id="imageHeader" class="basicHeaderOk imgLiquidFill">
+      {% if profile and profile.imageHeader and profile.imageHeader.path %}
+          <img  src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
+      {% else %}
+         <div class="basicHeader"><img id="imageHeader" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
+      {% endif %}
+    </div>
+    {% include "homePageBundle:Default:navProfilArtiste.html.twig" %}
+  </header>
+  <div class="containerS">
+    <div id="mainProfile">
+        {% if is_granted('ROLE_ARTIST') %}
+      <div class="infosArtiste">
+        <div class="username">{{username }}</div>
+        <div class="localisation">Paris</div>
+        <form  action="{{ path("artist_edit")}}" enctype="multipart/form-data" method="post" >
+            <input id="{{ form._token.vars.id }}" name="{{ form._token.vars.full_name }}"type="hidden" name="_csrf_token" value="{{ form._token.vars.value }}" />
+        	<div id="{{form.vars.id}}">
+             	{{form_row(form.description,{attr: {'placeholder':'form.profile.description' | trans }})}}
+             	{{form_widget(form.imageHeader.file,{attr: {'style':"display:none"}})}}
+             	{{form_row(form.imageHeader.name,{attr: {'value':username}})}}
+             	<div id="{{ form.tags.vars.id}}">
+             		<ul class="tags" data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}">
+                        {% for tag in form.tags%}
+                        <li class="tagLiCss">
+                            <div class="initial" id="profile_tags_{{ tag.vars.name }}">
+                                <div>
+                                    <input id="{{ tag.vars.id }}_name" value= "{{tag.vars.data.name}}" name="{{ tag.vars.full_name }}[name]" maxlength="255" type="text">
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    {% endfor %}
-         		</ul>
-         	</div>
-         	{{form_widget(form.image1.file,{attr: {'style':"display:none"}})}}
-         	{{form_row(form.image1.name,{attr: {'value':username}})}}
-         	{{form_widget(form.image2.file,{attr: {'style':"display:none"}})}}
-         	{{form_row(form.image2.name,{attr: {'value':username}})}}
-         	{{form_widget(form.image3.file,{attr: {'style':"display:none"}})}}
-         	{{form_row(form.image3.name,{attr: {'value':username}})}}
+                        </li>
+                        {% endfor %}
+             		</ul>
+             	</div>
+             	{{form_widget(form.image1.file,{attr: {'style':"display:none"}})}}
+             	{{form_row(form.image1.name,{attr: {'value':username}})}}
+             	{{form_widget(form.image2.file,{attr: {'style':"display:none"}})}}
+             	{{form_row(form.image2.name,{attr: {'value':username}})}}
+             	{{form_widget(form.image3.file,{attr: {'style':"display:none"}})}}
+             	{{form_row(form.image3.name,{attr: {'value':username}})}}
+            </div>
         </div>
-    {% if profile  %}
-    <div id="imageAll">
-        <div id="div1" class="imageProfile imgLiquidFill">
-            {% if profile.image1 and profile.image1.path%}
-                <img id="1" src="{{ asset( 'images/'~profile.image1.path ) }}" alt="">
-            {% else %}
-                <img id="1" src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
-            {% endif %}
-        </div>
-        <div id="div2" class="imageProfile imgLiquidFill">
-            {% if profile.image2 and profile.image2.path %}
-                <img id="2" src="{{ asset( 'images/'~profile.image2.path ) }}" alt="">
-            {% else %}
-                <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
-            {% endif %}
-        </div>
-        <div id="div3" class="imageProfile imgLiquidFill">
-            {% if profile.image3 and profile.image3.path%}
-                <img id="3" src="{{ asset( 'images/'~profile.image3.path ) }}" alt="">
-            {% else %}
-                <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
-            {% endif %}
-        </div>
-    </div>
-    {% else %}
+        {% if profile  %}
         <div id="imageAll">
-        <div id="div1" class="imageProfile">
-            <img id="1" src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+            <div id="div1" class="imageProfile imgLiquidFill">
+                {% if profile.image1 and profile.image1.path%}
+                    <img id="1" src="{{ asset( 'images/'~profile.image1.path ) }}" alt="">
+                {% else %}
+                    <img id="1" src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+                {% endif %}
+            </div>
+            <div id="div2" class="imageProfile imgLiquidFill">
+                {% if profile.image2 and profile.image2.path %}
+                    <img id="2" src="{{ asset( 'images/'~profile.image2.path ) }}" alt="">
+                {% else %}
+                    <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+                {% endif %}
+            </div>
+            <div id="div3" class="imageProfile imgLiquidFill">
+                {% if profile.image3 and profile.image3.path%}
+                    <img id="3" src="{{ asset( 'images/'~profile.image3.path ) }}" alt="">
+                {% else %}
+                    <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+                {% endif %}
+            </div>
         </div>
-        <div id="div2" class="imageProfile">
-            <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+        {% else %}
+            <div id="imageAll">
+            <div id="div1" class="imageProfile">
+                <img id="1" src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+            </div>
+            <div id="div2" class="imageProfile">
+                <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+            </div>
+            <div id="div3" class="imageProfile">
+                <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+            </div>
         </div>
-        <div id="div3" class="imageProfile">
-            <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
-        </div>
+         {% endif %}
+        <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.profile.submit"|trans }}" />
+        </form>
+        <a href="{{path('piece_create')}}"><div class="buttonAction">{{'form.profile.piece' | trans }} </div></a>
+        <div id="imgtmp" style="display:none"></div>
+        {% endif %}
     </div>
-     {% endif %}
-    <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.profile.submit"|trans }}" />
-    </form>
-    <a href="{{path('piece_create')}}"><div class="buttonAction">{{'form.profile.piece' | trans }} </div></a>
-    <div id="imgtmp" style="display:none"></div>
-    {% endif %}
+  </div>
 </div>
