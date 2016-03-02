@@ -19,12 +19,18 @@ class ProposalController extends Controller
     {
       $em = $this->getDoctrine()->getManager();
       $proposal = $em->getRepository('CmaUserBundle:Proposal')->findOneById($id);
+      $proposal->parent = $em->getRepository('CmaUserBundle:Estimate')->findOneById($proposal->getEstimateId());
       $user = $this->get('security.token_storage')->getToken()->getUser();
-      if (!is_object($user)||!$user->hasRole('ROLE_ARTIST')||$user->getUsername()!==$username) {
+      if (!is_object($user)||$proposal->getUserId()!=$user->getId()&&$proposal->parent->getOwnerId()!=$user->getId()) {
         throw new AccessDeniedException('This user does not have access to this section.');
       }
       if(!is_object($proposal)){
         throw new HttpException(404,'This user does not have proposal.');
+      }
+      if($user->getId()==$proposal->parent->getOwnerId()){
+        $proposal->otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->getUserId())->getUsername();
+      }else{
+        $proposal->otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId())->getUsername();
       }
       $comment=new Comment();
       $formComment = $this->createForm(CommentType::class,$comment);
@@ -45,23 +51,27 @@ class ProposalController extends Controller
         $em->persist($proposal);
         $em->flush();
         $comment=new Comment();
+        $formComment = $this->createForm(CommentType::class,$comment);
       }
       $formEtat = $this->createForm(ProposalEtatType::class,$proposal);
       $formEtat->handleRequest($request);
       if($formEtat->isValid()){
-        $proposal->setEtat($proposal->getEtat()+1);
+        $proposal->getPiece()->setEtat($proposal->getPiece()->getEtat()+1);
         $em->persist($proposal);
         $em->flush();
       }
+      if($proposal->getPiece()->getEtat()==2&&$user->getId()==$proposal->parent->getOwnerId()){
+          return $this->RedirectToRoute('estimate_validation',array('id'=>$proposal->parent->getId()));
+      }
       $comments = $proposal->getComments();
       foreach ($comments as $i => $comment) {
-          if($comment->getUnread()&&$comment->getUserId()!=$user->getId()){
-            $comment->setUnread(false);
-            $em->persist($comment);
-            $em->flush();
-          }
+        if($comment->getUnread()&&$comment->getUserId()!=$user->getId()){
+          $comment->setUnread(false);
+          $em->persist($comment);
+          $em->flush();
         }
-      return $this->render('homePageBundle:Proposal:proposal_artist_show.html.twig',array('formComment'=>$formComment->createView(),'formEtat'=>$formEtat->createView(),'userId'=>$user->getId(),'proposal'=>$proposal));
+      }
+      return $this->render('homePageBundle:Proposal:proposal_artist_show.html.twig',array('formComment'=>$formComment->createView(),'formEtat'=>$formEtat->createView(),'user'=>$user->getId(),'proposal'=>$proposal));
     }
     public function createAction(Request $request,$id)
     {
@@ -105,7 +115,6 @@ class ProposalController extends Controller
       foreach ($proposals as $key => $proposal) {
         $piece = $em->getRepository('CmaUserBundle:Piece')->findById($proposal->getPiece()->getId());
         $proposal->parent = $em->getRepository('CmaUserBundle:Estimate')->findOneById($proposal->getEstimateId());
-        $proposal->owner = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId())->getUsername();
         $comments = $proposal->getComments();
         $proposal->unread = 0;
         foreach ($comments as $i => $comment) {
@@ -122,7 +131,7 @@ class ProposalController extends Controller
       $proposal = $em->getRepository('CmaUserBundle:Proposal')->findOneById($id);
       $estimate = $em->getRepository('CmaUserBundle:Estimate')->findOneById($idp);
       $user = $this->get('security.token_storage')->getToken()->getUser();
-      if (!is_object($user)||$proposal->getUserId()!=$user->getId()||$estimate->getUserId()!=$user->getId()) {
+      if (!is_object($user)||$proposal->getUserId()!=$user->getId()&&$estimate->getOwnerId()!=$user->getId()) {
         throw new AccessDeniedException('This user does not have access to this section.');
       }
       if(!is_object($proposal)){

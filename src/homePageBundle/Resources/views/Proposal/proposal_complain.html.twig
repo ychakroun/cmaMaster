@@ -1,0 +1,81 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA User Complain{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset( 'js/imgProfileEdit.js' ) }}"></script>
+	{{parent()}}
+{% endblock %}
+{% block main %}
+<section id="devis">
+    <header class="headerSection">
+      <div class="globalS">
+        <div class="idSection">Devis</div>
+        <div class="logoSection"><img src="{{asset('img/logoTampon.png')}}" alt=""></div>
+        <div class="infoSection"> </div>
+      </div>
+    </header>
+    <div class="containerS" style='color:black!important'>
+    {{form_start(formComplain)}}
+      <div class="remarques"></div>
+      <div class="titleS">
+        <div>Informations Personnelles</div>
+        <p>* Champs obligatoires</p>
+      </div>
+        <div class="descriptionOeuvre">
+        		<p>
+        			<label for="{{formComplain.username.vars.id}}" class="Username">{{formComplain.username.vars.label}}*</label>
+        			<br>
+        			{{form_widget(formComplain.username)}}
+        		</p>
+        		<p>
+        			<label for="{{formComplain.name.vars.id}}" class="jours">{{formComplain.name.vars.label}}*</label>
+        			<br>
+        			{{form_widget(formComplain.name)}}
+        		</p>
+        		<p>
+        			<label for="{{formComplain.firstname.vars.id}}" class="localité">{{formComplain.firstname.vars.label}}*</label><br>
+        			{{form_widget(formComplain.firstname)}}
+        		</p>
+            <p>
+        			<label for="{{formComplain.phoneNumber.vars.id}}" class="localité">{{formComplain.phoneNumber.vars.label}}</label>
+        			<br>
+        			{{form_widget(formComplain.phoneNumber)}}
+        		</p>
+            <p class="textarea">
+        		<label for="{{formComplain.mailAddress.vars.id}}" class="desc">{{formComplain.mailAddress.vars.label}}*</label>
+        		<br>
+              {{form_widget(formComplain.mailAddress)}}
+        	</p>
+        </div>
+        <div class="titleS">
+          <div>Descritptif de la reclamation</div>
+        </div>
+        <div class="descriptionOeuvre" id="complain">
+			<label for="{{formComplain.complain.vars.id}}" class="description">{{formComplain.complain.vars.label}}*</label>
+            <br>
+            {{form_widget(formComplain.complain)}}
+			<div id="uploadfile" style="padding:10px;box-sizing:border-box;cursor:pointer;font-size: 14px;display: inline-block; width: 50%;text-align:left">
+            	<img style="width:15px"src="{{asset('img/uploadfileicon.png')}}" alt=""> 
+                {{'form.comment.file'|trans}} 
+                {{form_widget(formComplain.image.file,{attr: {'style':"display:none"}})}}
+        	  	{{form_row(formComplain.image.name,{attr: {'value': userServices.getUsername }})}}
+            </div>
+            <input type="submit" class="buttonAction" value='{{ 'form.complain.submit'|trans }}'>
+        </div>
+      </div>
+    {{form_end(formComplain)}}
+  </div>
+</section>
+{% endblock %}
+{% block script %}
+	<script>
+		document.getElementById('uploadfile').onclick = function(e){
+      document.getElementById('complain_image_file').click();
+    }
+	</script>
+{% endblock %}

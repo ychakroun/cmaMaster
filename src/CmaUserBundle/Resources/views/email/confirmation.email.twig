@@ -1,0 +1,19 @@
+{% block subject %}Validation de votre adresse e-mail // Votre inscription sur CMA{% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+Bonjour <b>{{ user.username }}</b> et bienvenue sur CMA, !</br>
+</br>
+
+Pour valider définitivement votre inscription, rien de plus simple ! Cliquez sur <a href="{{ confirmationUrl }}">"Je confirme mon
+
+compte"</a> ou rendez-vous directement sur </br>
+</br>
+<a style="display: block;width: 115px;height: 15px;background: #D23B3A;border-bottom:2px solid #666;padding: 8px;text-align: center;text-decoration: none;border-radius: 1px;color: white;font-weight: bold;" href="{{ confirmationUrl }}">Confirmer</a>
+{% endblock %}
+ 
