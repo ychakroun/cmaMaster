@@ -20,7 +20,7 @@
             Information(s) Manquante(s)
           {% endblock %}
           {% block content %}
-            Niahah nan an le siret machin 
+            Niahah nan an le siret machin
           {% endblock %}
         {% endembed %}
         </div>
@@ -28,11 +28,13 @@
   {% endblock %}
 {% endif %}
 <header id="profileHeader">
-  {% if userServices.allProfile.imageHeader and userServices.allProfile.imageHeader.path%}
-      <img id="0" src="{{ asset( 'images/'~userServices.allProfile.imageHeader.path ) }}" alt="">
-  {% else %}
-     <div class="basicHeader"><img id="0" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
-  {% endif %}
+  <div class="basicHeaderOk imgLiquidFill">
+    {% if userServices.allProfile.imageHeader and userServices.allProfile.imageHeader.path%}
+        <img id="0" src="{{ asset( 'images/'~userServices.allProfile.imageHeader.path ) }}" alt="">
+    {% else %}
+       <div class="basicHeader"><img id="0" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
+    {% endif %}
+  </div>
 </header>
   <section class="piece">
     <header class="headerPiece">
@@ -48,7 +50,7 @@
       {{'piece' | trans }}s n°{{nbPiece + 1}}
     {% else %}
       {{'piece' | trans }} n°{{nbPiece + 1}}
-    {% endif %} 
+    {% endif %}
     </div>
     <div class="">
       <div class="">
