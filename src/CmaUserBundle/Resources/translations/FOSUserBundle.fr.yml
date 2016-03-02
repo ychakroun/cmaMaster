@@ -116,9 +116,12 @@ form:
         feature: 'caractéristiques'
         width: 'Hauteur'
         height: 'Largeurs'
+        submit: 'Ajouter cette oeuvre'
     profile:
         tag:
             add: "Ajouter un tag"
+        submit: 'Enregister votre profile'
+        piece: 'Ajouter une oeuvre'
         description: "Ajouter une description"
     image:
         submit: 'Enregister l''image'

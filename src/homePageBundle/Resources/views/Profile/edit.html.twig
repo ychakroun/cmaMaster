@@ -8,7 +8,8 @@
          <div class="basicHeader"><img id="imageHeader" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
       {% endif %}
     </div>
-    {% include "homePageBundle:Default:navProfilArtiste.html.twig" %}
+    {% embed "homePageBundle:Default:navProfilArtiste.html.twig" %}
+    {% endembed %}
   </header>
   <div class="containerS">
     <div id="mainProfile">

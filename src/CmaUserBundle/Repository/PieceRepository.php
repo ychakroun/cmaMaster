@@ -62,26 +62,35 @@ class PieceRepository extends \Doctrine\ORM\EntityRepository
         }
         if(!empty($price)||!empty($medium)||!empty($width)){
         	if(!empty($price)){
-        		$y = 0;
         		for ($i=0; $i < sizeof($price); $i++) {
-        			if($price[$i]>100){ 
-        				$qb->andWhere('a.price > :price'.$i*$y);
-        				$qb->setParameter(':price'.$i*$y, $price[$i]+0);
-        			}else{
-        				$qb->andWhere('a.price < :price'.$i*($y+1));
-        				$qb->setParameter(':price'.$i*($y+1), $price[$i]+0);
-        			}
+                    if($i>0){
+        			     if($price[$i]>=100){ 
+        			     	$qb->orWhere('a.price >= :price'.$i);
+        			     	$qb->setParameter(':price'.$i, $price[$i]+0);
+        			     }else{
+        			     	$qb->orWhere('a.price < :price'.$i);
+        			     	$qb->setParameter(':price'.$i, $price[$i]+0);
+        			     }
+                    }else{
+                        if($price[$i]>=100){
+                            $qb->andWhere("a.price >= :price".$i);
+                            $qb->setParameter(':price'.$i, $price[$i]);
+                        }else{
+                            $qb->andWhere("a.price < :price".$i);
+                            $qb->setParameter(':price'.$i, $price[$i]);
+                        }
+
+                    }
         			if($price[$i]>=100&&$price[$i]<500){
-        				$qb->andWhere('a.price < :price'.$i*($y+2));
-        				$qb->setParameter(':price'.$i*($y+2), $price[$i]+400);
+        				$qb->andWhere('a.price <= :price'.$i.'y');
+        				$qb->setParameter(':price'.$i.'y', $price[$i]+400);
         			}else if($price[$i]>=500){
-        				$qb->andWhere("a.price < :price".$i*($y+3));
-        				$qb->setParameter(':price'.$i*($y+3).'', $price[$i]+500);
+        				$qb->andWhere("a.price <= :price".$i.'z');
+        				$qb->setParameter(':price'.$i.'z', $price[$i]+500);
         			}else if($price[$i]>=2500){
-        				$qb->andWhere("a.price > :price".$i*($y+4));
-        				$qb->setParameter(':price'.$i*($y+4).'', $price[$i]+0);
+        				$qb->andWhere("a.price >= :price".$i.'x');
+        				$qb->setParameter(':price'.$i.'x', $price[$i]+0);
         			}
-        			$y++;
         		}
         	}
         	if(!empty($medium)){
@@ -97,27 +106,33 @@ class PieceRepository extends \Doctrine\ORM\EntityRepository
         		}
         	}
         	if(!empty($width)){
-        		$y = 0;
         		for ($i=0; $i < sizeof($width); $i++) {
-        			if($width[$i]!='&'){
-        				if($width[$i]>100){
-        					$qb->andWhere("a.width > :width".$i*$y+1);
-        					$qb->setParameter(':width'.$i*$y, $width[$i]);
+        			if($i>0){
+        				if($width[$i]>=100){
+        					$qb->orWhere("a.width >= :width".$i);
+        					$qb->setParameter(':width'.$i, $width[$i]);
         				}else{
-        					$qb->andWhere("a.width < :width".$i*($y+1));
-        					$qb->setParameter(':width'.$i*($y+1), $width[$i]);
+        					$qb->orWhere("a.width < :width".$i);
+        					$qb->setParameter(':width'.$i, $width[$i]);
         				}
-        				if($width[$i]>=100&&$width[$i]<500){
-        					$qb->andWhere("a.width > :width".$i*($y+2));
-        					$qb->setParameter(':width'.$i*($y+2), $width[$i]+400);
-        				}else if($width[$i]>=500){
-        					$qb->andWhere("a.width > :width".$i*($y+3));
-        					$qb->setParameter(':width'.$i*($y+3), $width[$i]+500);
-        				}else if($width[$i]>=2500){
-        					$qb->andWhere("a.width > :width".$i*($y+4));
-        					$qb->setParameter(':width'.$i*($y+4), $width[$i]);
-        				}
-        				$y++;
+                    }else{
+                        if($width[$i]>=100){
+                            $qb->andWhere("a.width >= :width".$i);
+                            $qb->setParameter(':width'.$i, $width[$i]);
+                        }else{
+                            $qb->andWhere("a.width < :width".$i);
+                            $qb->setParameter(':width'.$i, $width[$i]);
+                        }
+                    }
+        			if($width[$i]>=100&&$width[$i]<500){
+        				$qb->andWhere("a.width >= :width".$i.'x');
+        				$qb->setParameter(':width'.$i.'x', $width[$i]+400);
+        			}else if($width[$i]>=500){
+        				$qb->andWhere("a.width >= :width".$i.'y');
+        				$qb->setParameter(':width'.$i.'y', $width[$i]+500);
+        			}else if($width[$i]>=2500){
+        				$qb->andWhere("a.width >= :width".$i.'z');
+        				$qb->setParameter(':width'.$i.'z', $width[$i]);
         			}
         		}
         	}
