@@ -98,6 +98,14 @@ artist_profile:
     path:     /profile/{username}
     defaults: { _controller: CmaUserBundle:Profile:show }
 
+artist_profile_gallery:
+    path:     /profile/{username}/gallery/{topfilter}
+    defaults: { _controller: CmaUserBundle:Profile:gallery,topfilter: null }
+
+artist_profile_opinions:
+    path:     /profile/{username}/opinions
+    defaults: { _controller: CmaUserBundle:Profile:opinions }
+
 artist_edit:
     path:     /profile/edit
     defaults: { _controller: CmaUserBundle:Profile:edit }

@@ -1,0 +1,123 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA Artist Profile Gallery{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block main %}
+<header id="profileHeader">
+  <div class="basicHeaderOk imgLiquidFill">
+    {% if artist.profile.imageHeader and artist.profile.imageHeader.path%}
+        <img id="0" src="{{ asset( 'images/'~artist.profile.imageHeader.path ) }}" alt="">
+    {% else %}
+       <div class="basicHeader"><img id="0" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
+    {% endif %}
+  </div>
+  {% embed 'homePageBundle:Default:navProfilArtiste.html.twig' with {'class':'gallery'}%}
+  {% endembed %}
+</header>
+<div class="mainProfile grayBackground">
+    <div class="containerS">
+      <aside class="aside">
+        <div class="filtres-container">
+          <form name="{{formfilter.vars.name}}" method="{{formfilter.vars.method}}" >
+          <div id="{{formfilter.vars.id}}">
+          <div class="box">
+            <input class="text" placeholder="mots lefs" type="text">
+            <button class="icon"><img src="img/search-black.png" alt=""></button>
+          </div>
+          <div class="supports cat-filtres">
+            <p>Supports</p>
+            <ul>
+              {% for mediums in formfilter.medium %}
+              <li>
+                <div class="checkbox">
+                  {{form_widget(mediums)}}
+                </div>
+                <p>{{mediums.vars.label}}</p>
+              </li>
+              {% endfor %}
+              <li>
+                <div class="checkbox">
+                  <input value="None" id="more" name="check" type="checkbox">
+                  <label for="more"></label>
+                </div>
+                <p>...</p>
+              </li>
+            </ul>
+          </div>
+          <div class="formats cat-filtres">
+            <p>Formats</p>
+            <ul>
+              {% for widths  in formfilter.width %}
+              <li>
+                <div class="checkbox">
+                  {{form_widget(widths)}}
+                </div>
+                <p>{{widths.vars.label}}</p>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="prix cat-filtres">
+            <p>Prix</p>
+            <ul>
+              {% for prices  in formfilter.price %}
+              <li>
+                <div class="checkbox">
+                  {{form_widget(prices)}}
+                </div>
+                <p>{{prices.vars.value}}</p>
+                {% endfor %}
+              </li>
+            </ul>
+          </div>
+        <input id="filter_pieces__token" name="filter_pieces[_token]" value="{{formfilter._token.vars.value}}" type="hidden">
+        <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.filterPieces.submit"|trans }}" />
+      </div>
+      </form>
+      </div>
+      </aside>
+      <div class="contentS">
+        <div class="filtres-top">
+          <p class="nouveaute"><span>Nouveautés</span></p>
+          <p class="prix-croiss"><span>Prix croissants</span></p>
+          <p class="prix-decroiss"><span>Prix décroissants</span></p>
+        </div>
+        <ul id="galerieLink">
+          <section class="galerie">
+            <div class="containerS">
+              <div class="titleS">
+              </div>
+              <div class="contentS">
+                <ul>
+                {% for piece in pieces %}
+                  <li>
+                    <div class="images">
+                    {% if piece.image1 %}
+                      <img src="{{asset("images/"~piece.image1.path)}}" alt="">
+                    {% else %}
+                      <img src="{{asset('img/600x400.jpg')}}" alt="">
+                    {% endif %}
+                    </div>
+                    <div class="infos">
+                      <div class="decriptions">
+                        <p class="name">{{piece.user.username}}</p>
+                        <p class="title">{{piece.title}}</p>
+                      </div>
+                      <div class="price">{{piece.price}} €</div>
+                    </div>
+                  </li>
+                 {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </section>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

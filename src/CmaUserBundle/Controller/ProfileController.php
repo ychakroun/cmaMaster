@@ -14,6 +14,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use CmaUserBundle\Form\ProfileType;
 use CmaUserBundle\Entity\Profile;
+use CmaUserBundle\Form\FilterPiecesType;
 
 class ProfileController extends Controller
 {
@@ -38,11 +39,52 @@ class ProfileController extends Controller
             throw $this->createNotFoundException('This user is not an artist');
         }
         $em = $this->getDoctrine()->getManager();
-        $userD = $this->get('security.token_storage')->getToken()->getUser();
-        $pieces = $pieces = $em->getRepository('CmaUserBundle:Piece')->findByUser($userD);
+        $pieces = $pieces = $em->getRepository('CmaUserBundle:Piece')->findBy(array('user'=>$user),null,5,null);
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
             'artist' => $user,
             'pieces'=> $pieces
+        ));
+    }
+
+    public function galleryAction(Request $request,$username,$topfilter)
+    {
+        $urlParameter = $request->query->get('filter_pieces');
+        $mediums = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findSomeMedium(0);
+        $piecesQuery = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findWithUrl(1,$topfilter,$urlParameter);
+        $form = $this->createForm(FilterPiecesType::class,array($mediums));
+        $form->handleRequest($request);
+        if (is_string($username) && $username !== null) {
+            $user = $this->get('fos_user.user_manager')->findUserByUsername($username);
+        }else{
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        else
+        {
+            $isartist = $user->hasRole('ROLE_ARTIST');
+        }
+        if(!$isartist==true){
+            throw $this->createNotFoundException('This user is not an artist');
+        }
+        $em = $this->getDoctrine()->getManager();
+        $piecesArtist = $pieces = $em->getRepository('CmaUserBundle:Piece')->findByUser($user);
+        $piecesSort = array();
+        dump($piecesQuery);
+        foreach ($piecesArtist as $key => $pieceArtist) {
+            if(!empty($piecesQuery)){
+                foreach ($piecesQuery as $key => $pieceQuery) {
+                    if($pieceArtist->getId()==$pieceQuery->getId()){
+                        array_push($piecesSort, $pieceArtist);
+                    }
+                }
+            }
+        }
+        return $this->render('homePageBundle:Profile:show_gallery.html.twig', array(
+            'artist' => $user,
+            'pieces'=> $piecesSort,
+            'formfilter' => $form->createView()
         ));
     }
 
@@ -111,6 +153,7 @@ class ProfileController extends Controller
         $pieces = $pieces = $em->getRepository('CmaUserBundle:Piece')->findByUser($user);
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
             'form' => $form->createView(),
+            'artist' => $user,
             'username'=>$user->getUsername(),
             'profile'=>$userprofile,
             'pieces' => $pieces

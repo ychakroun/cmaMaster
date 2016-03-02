@@ -1,7 +1,7 @@
 <div class="navProfilArtiste">
   <ul>
-    <li><a href="#">Galerie</a></li>
-    <li><a href="#" class="active">Profil</a></li>
-    <li><a href="#">Avis</a></li>
+    <li><a href="{{path('artist_profile_gallery',{'username':artist.username})}}"{% if class == 'gallery' %}class="active"{% endif %}>Galerie</a></li>
+    <li><a href="{{path('artist_profile',{'username':artist.username})}}" {% if class == 'profile' %}class="active"{% endif %} >Profil</a></li>
+    <li><a href="{{path('artist_profile_opinions',{'username':artist.username})}}" {% if class == 'opinions' %}class="active"{% endif %}>Avis</a></li>
   </ul>
 </div>
