@@ -93,7 +93,7 @@
             </ul>
           </div>
         </div>
-         <footer class="footerSection"><div class="buttonMore">Plus + d'artistes</div></footer>
+         <footer class="footerSection"><a href="{{path('listArtists')}}"><div class="buttonMore">Plus + d'artistes</div></a></footer>
     </section>
   {% endblock %}
   {% block galerie %}
@@ -126,7 +126,7 @@
               </div>
               <div class="infos">
                 <div class="decriptions">
-                  {#<p class="name">{{piece.user.username}}</p>#}
+                  <p class="name">{{piece.user.username}}</p>
                   <p class="title">{{piece.title}}</p>
                 </div>
                 <div class="price">{{piece.price}} €</div>

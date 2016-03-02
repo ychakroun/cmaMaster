@@ -17,7 +17,7 @@ class DefaultController extends Controller
     		}
     	}*/
         $em = $this->getDoctrine()->getManager();
-        $pieces = $em->getRepository('CmaUserBundle:Piece')->findAll();
+        $pieces = $em->getRepository('CmaUserBundle:Piece')->findBy(array('etat'=>array('5',null)));
         return $this->render('homePageBundle:Default:index.html.twig',array('pieces'=>$pieces));
     }
 }

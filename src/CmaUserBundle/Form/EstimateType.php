@@ -28,11 +28,14 @@ class EstimateType extends AbstractType
                 ))
             ->add('orientation',ChoiceType::class , array(
                 'choices' => array(
-                    'form.estimate.orientation.true'=>true,
-                    'form.estimate.orientation.false'=>false,
+                    'Portrait' => true,
+                    'Paysage' => false,
                     ),
                 'required' => false,
                 'label' => 'form.estimate.orientation',
+                'choice_translation_domain' => 'FOSUserBundle',
+                'choices_as_values' => true,
+                'translation_domain' => 'FOSUserBundle',
                 'attr' => array('class' => 'localité')
             ))
             ->add('description',null,array('label' => 'form.estimate.description',
@@ -103,14 +106,14 @@ class EstimateType extends AbstractType
                     'attr' => array("mapped" => false,
                         'class' => 'buttonAction',
                         ),
-                    'label'=>'from.estimate.save',
+                    'label'=>'form.estimate.save',
                     'translation_domain' => 'FOSUserBundle'
                 ))
             ->add('submit', SubmitType::class, array(
                     'attr' => array("mapped" => false,
                         'class' => 'buttonAction',
                         ),
-                    'label'=>'from.estimate.submit',
+                    'label'=>'form.estimate.submit',
                     'translation_domain' => 'FOSUserBundle'
                 ))
 
