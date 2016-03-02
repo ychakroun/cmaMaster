@@ -28,23 +28,23 @@
       </div>
         <div class="descriptionOeuvre">
         		<p>
-        			<label for="{{formEstimate.title.vars.id}}" class="titreOeuvre">{{formEstimate.title.vars.label}}*</label><br>
+        			<label for="{{formEstimate.title.vars.id}}" class="titreOeuvre">{{formEstimate.title.vars.label|trans}}*</label><br>
         			{{form_widget(formEstimate.title)}}
         		</p>
         		<p>
-        			<label for="{{formEstimate.day.vars.id}}" class="jours">{{formEstimate.day.vars.label}}</label><br>
+        			<label for="{{formEstimate.day.vars.id}}" class="jours">{{formEstimate.day.vars.label|trans}}</label><br>
         			{{form_widget(formEstimate.day)}}
         		</p>
         		<p>
-        			<label for="{{formEstimate.deliveryAdress.vars.id}}" class="localité">{{formEstimate.deliveryAdress.vars.label}}*</label><br>
+        			<label for="{{formEstimate.deliveryAdress.vars.id}}" class="localité">{{formEstimate.deliveryAdress.vars.label|trans}}*</label><br>
         			{{form_widget(formEstimate.deliveryAdress)}}
         		</p>
             <p>
-        			<label for="{{formEstimate.medium.vars.id}}" class="localité">{{formEstimate.medium.vars.label}}</label><br>
+        			<label for="{{formEstimate.medium.vars.id}}" class="localité">{{formEstimate.medium.vars.label|trans}}</label><br>
         			{{form_widget(formEstimate.medium)}}
         		</p>
             <p class="textarea">
-        			<label for="{{formEstimate.description.vars.id}}" class="desc">{{formEstimate.description.vars.label}}</label><br>
+        			<label for="{{formEstimate.description.vars.id}}" class="desc">{{formEstimate.description.vars.label|trans}}</label><br>
               {{form_widget(formEstimate.description)}}
         		</p>
         </div>
@@ -53,27 +53,27 @@
         </div>
         <div class="descriptionOeuvre">
             <p>
-        			<label for="{{formEstimate.budget.vars.id}}" class="prix">{{formEstimate.budget.vars.label}}</label><br>
+        			<label for="{{formEstimate.budget.vars.id}}" class="prix">{{formEstimate.budget.vars.label|trans}}</label><br>
         			{{form_widget(formEstimate.budget)}}
         		</p>
             <p>
-              <label for="{{formEstimate.orientation.vars.id}}" class="localité">{{formEstimate.orientation.vars.label}}</label><br>
-              {{form_widget(formEstimate.orientation)}}
+              <label for="{{formEstimate.orientation.vars.id}}" class="localité">{{formEstimate.orientation.vars.label|trans}}</label><br>
+              {{form_widget(formEstimate.orientation.vars.form)}}
             </p>
             <p>
-              <label for="{{formEstimate.technics.vars.id}}" class="techniques">{{formEstimate.technics.vars.label}}</label><br>
+              <label for="{{formEstimate.technics.vars.id}}" class="techniques">{{formEstimate.technics.vars.label|trans}}</label><br>
               {{form_widget(formEstimate.technics)}}
             </p>
             <p>
-              <label for="{{formEstimate.tools.vars.id}}" class="outils">{{formEstimate.tools.vars.label}}</label><br>
+              <label for="{{formEstimate.tools.vars.id}}" class="outils">{{formEstimate.tools.vars.label|trans}}</label><br>
               {{form_widget(formEstimate.tools)}}
             </p>
             <p>
-        			<label for="{{formEstimate.width.vars.id}}" class="largeur">{{formEstimate.width.vars.label}}</label><br>
+        			<label for="{{formEstimate.width.vars.id}}" class="largeur">{{formEstimate.width.vars.label|trans}}</label><br>
 					{{form_widget(formEstimate.width)}}
         		</p>
             <p>
-        			<label for="{{formEstimate.height.vars.id}}" class="hauteur">{{formEstimate.height.vars.label}}</label><br>
+        			<label for="{{formEstimate.height.vars.id}}" class="hauteur">{{formEstimate.height.vars.label|trans}}</label><br>
         			{{form_widget(formEstimate.height)}}
         		</p>
         </div>
