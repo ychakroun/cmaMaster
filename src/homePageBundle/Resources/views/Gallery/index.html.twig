@@ -80,7 +80,6 @@
               </li>
             </ul>
           </div>
-        <input id="filter_pieces__token" name="filter_pieces[_token]" value="{{formfilter._token.vars.value}}" type="hidden">
         <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.filterPieces.submit"|trans }}" />
       </div>
       </form>
@@ -88,9 +87,9 @@
       </aside>
       <div class="contentS">
         <div class="filtres-top">
-          <p class="nouveaute"><span>Nouveautés</span></p>
-          <p class="prix-croiss"><span>Prix croissants</span></p>
-          <p class="prix-decroiss"><span>Prix décroissants</span></p>
+          <p class="nouveaute"><a href="{{path('listGalleries',{'topfilter':'null'})}}"><span>Nouveautés</span></a></p>
+          <p class="prix-croiss"><a href="{{path('listGalleries',{'topfilter':'2'})}}"><span>Prix croissants</span></a></p>
+          <p class="prix-decroiss"><a href="{{path('listGalleries',{'topfilter':'1'})}}"><span>Prix décroissants</span></a></p>
         </div>
         <ul id="galerieLink">
           {% for piece in pieces %}

@@ -13,6 +13,7 @@ class PieceRepository extends \Doctrine\ORM\EntityRepository
 	public function findWithUrl($page,$topfilter,$urlParameter)
 	{
 		if($topfilter==2||$topfilter==1){
+        //Si les filtre nouveautés, ou prix croissant ou décroissant
 			if($topfilter==2){
 				$orderBy = 'a.price';
 				$order = 'DESC';
@@ -22,7 +23,7 @@ class PieceRepository extends \Doctrine\ORM\EntityRepository
 			}
 		}else{
 			$orderBy = 'a.date';
-			$order = 'ASC';
+			$order = 'DESC';
 		}
 		$offset = ($page-1)*6;
 		$qb = $this->createQueryBuilder('a')

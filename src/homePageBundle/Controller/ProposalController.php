@@ -27,15 +27,12 @@ class ProposalController extends Controller
       if(!is_object($proposal)){
         throw new HttpException(404,'This user does not have proposal.');
       }
-      if($user->getId()==$proposal->parent->getOwnerId()){
-        $proposal->otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->getUserId())->getUsername();
-      }else{
-        $proposal->otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId())->getUsername();
-      }
+      $proposal->otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->getUserId())->getUsername();
+      $proposal->owner = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId());
       $comment=new Comment();
       $formComment = $this->createForm(CommentType::class,$comment);
       $proposal->parent = $em->getRepository('CmaUserBundle:Estimate')->findOneById($proposal->getEstimateId());
-      $proposal->owner = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId());
+      
       $proposal->setPiece = $em->getRepository('CmaUserBundle:Piece')->findById($proposal->getPiece()->getId());
       $formComment->handleRequest($request);
       if($formComment->isValid()){
@@ -115,6 +112,7 @@ class ProposalController extends Controller
       foreach ($proposals as $key => $proposal) {
         $piece = $em->getRepository('CmaUserBundle:Piece')->findById($proposal->getPiece()->getId());
         $proposal->parent = $em->getRepository('CmaUserBundle:Estimate')->findOneById($proposal->getEstimateId());
+        $proposal->owner = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId());
         $comments = $proposal->getComments();
         $proposal->unread = 0;
         foreach ($comments as $i => $comment) {

@@ -42,12 +42,15 @@ class ComplainController extends Controller
       	$formComplain = $this->createForm(ComplainType::class,$complain);
       	$formComplain->handleRequest($request);
       	if ($formComplain->isValid()) {
+          if(is_null($complain->getImage()->getPath())){
+            $complain->setImage(null);
+          }
       		$em->persist($complain);
       		$em->flush();
       		$login = $this->generateUrl('fos_user_security_login');
       		$url = $this->generateUrl('artist_proposal_show',array('username' => $user->getUsername(),'id'=>$proposal->getId()));
       		$message = \Swift_Message::newInstance()
-        	->setSubject('Reclamation'.$proposal->getId())
+        	->setSubject('Reclamation sur la proposition n°'.$proposal->getId().' de l\'artiste '.$complain->otherusername)
         	->setFrom($user->getEmail())
         	->setTo('leo.pena@custommyart.com')
         	->setBody(
@@ -57,8 +60,8 @@ class ComplainController extends Controller
             	),
             	'text/html'
         	);
-	        $this->get('fos_user.mailer')->sendMessage($message);
-      		
+	        $this->get('mailer')->send($message);
+      		return $this->redirectToRoute('user_finish_project');
       	}
       return $this->render('homePageBundle:Proposal:proposal_complain.html.twig',array('formComplain'  => $formComplain->createview()));
     }
