@@ -71,7 +71,6 @@ class ProfileController extends Controller
         $em = $this->getDoctrine()->getManager();
         $piecesArtist = $pieces = $em->getRepository('CmaUserBundle:Piece')->findByUser($user);
         $piecesSort = array();
-        dump($piecesQuery);
         foreach ($piecesArtist as $key => $pieceArtist) {
             if(!empty($piecesQuery)){
                 foreach ($piecesQuery as $key => $pieceQuery) {
@@ -87,6 +86,18 @@ class ProfileController extends Controller
             'formfilter' => $form->createView()
         ));
     }
+    public function opinionsAction($username){
+        $em = $this->getDoctrine()->getManager();
+        if (is_string($username) && $username !== null) {
+            $user = $this->get('fos_user.user_manager')->findUserByUsername($username);
+        }else{
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        return $this->redirectToRoute('artist_profile',array('username'=>$username));
+    }
 
     /**
      * Edit the user
@@ -94,13 +105,7 @@ class ProfileController extends Controller
     public function editAction(Request $request)
     {
         $user = $this->getUser();
-        $is_artist = false;
-        foreach ($user->getRoles() as $key => $value) {
-           if ($value == 'ROLE_ARTIST') {
-               $is_artist = true;
-           }
-        }
-        if (!is_object($user) || !$user instanceof UserInterface || !$is_artist ) {
+        if (!is_object($user) || !$user instanceof UserInterface || !$user->hasRole('ROLE_ARTIST') ) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         $userprofile = $this->getUser()->getProfile();

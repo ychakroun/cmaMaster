@@ -98,9 +98,9 @@ class Piece
     private $price;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="etat", type="string", length=255, nullable=true)
+     * @ORM\Column(name="etat", type="integer", nullable=true)
      */
     private $etat;
 
@@ -112,11 +112,9 @@ class Piece
     private $crush;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="is_proposal", type="boolean", nullable=true)
-     */
-    private $isProposal;
+    * @ORM\ManyToOne(targetEntity="CmaUserBundle\Entity\Proposal", cascade={"persist","remove"})
+    */
+    private $proposal;
 
     /**
      * @var \DateTime
@@ -407,7 +405,7 @@ class Piece
     /**
      * Set etat
      *
-     * @param string $etat
+     * @param int $etat
      *
      * @return Piece
      */
@@ -421,7 +419,7 @@ class Piece
     /**
      * Get etat
      *
-     * @return string
+     * @return int
      */
     public function getEtat()
     {
@@ -625,4 +623,5 @@ class Piece
     {
         return $this->feature;
     }
+
 }

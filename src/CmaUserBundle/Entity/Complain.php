@@ -91,7 +91,7 @@ class Complain
     private $image;
 
     /**
-    *@ORM\JoinColumn(nullable=true)
+    *@ORM\JoinColumn(nullable=false)
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Proposal", cascade={"persist","remove"})
     */
     private $proposal;
@@ -356,7 +356,7 @@ class Complain
      */
     public function setProposal(\CmaUserBundle\Entity\Proposal $proposal = null)
     {
-        $this->Proposal = $proposal;
+        $this->proposal = $proposal;
 
         return $this;
     }
@@ -368,6 +368,6 @@ class Complain
      */
     public function getProposal()
     {
-        return $this->Proposal;
+        return $this->proposal;
     }
 }

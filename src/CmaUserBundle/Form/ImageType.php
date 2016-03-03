@@ -24,7 +24,6 @@ class ImageType extends AbstractType
             ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
                 $image = $event->getData();
                 $form = $event->getForm();
-
                 if (!$image) {
                     return;
                 }

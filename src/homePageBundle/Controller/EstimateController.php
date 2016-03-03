@@ -8,10 +8,42 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
 use CmaUserBundle\Form\EstimateType;
+use CmaUserBundle\Form\OpinionType;
 use CmaUserBundle\Entity\Estimate;
+use CmaUserBundle\Entity\Opinion;
 
 class EstimateController extends Controller
 {
+    public function opinionAction(Request $request,$id)
+    {
+      $user = $this->get('security.token_storage')->getToken()->getUser();
+      $em = $this->getDoctrine()->getManager();
+      if (!is_object($user)) {
+        throw new AccessDeniedException('This user does not have access to this section.');
+      }
+      $proposal = $em->getRepository('CmaUserBundle:Proposal')->findOneById($id);
+      $proposal->owner = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->getUserId())->getUsername();
+      $opinion = new Opinion();
+      $opinion->setUser($em->getRepository('CmaUserBundle:User')->findOneById($proposal->getUserId()));
+      $opinion->setMedium($em->getRepository('CmaUserBundle:Piece')->findOneById($proposal->getPiece()->getId())->getMedium());
+      $opinion->setUsername($user->getUsername());
+      $formOpinion = $this->createForm(OpinionType::class,$opinion);
+      $formOpinion->handleRequest($request);
+      if($formOpinion->isValid()){
+        if(is_null($opinion->getMedium())){
+          $opinion->setMedium('piece.default.medium');
+        }
+        if(is_null($opinion->getImage()->getPath())){
+          $opinion->setImage(null);
+        }
+        $em->persist($opinion);
+        $em->flush();
+        return $this->redirect($this->generateUrl('user_finish_project'));
+      }else{
+        dump($formOpinion);
+      }
+      return $this->render('homePageBundle:Estimate:estimate_opinion.html.twig',array('formOpinion'=>$formOpinion->createView(),'user'=>$user,'proposal'=>$proposal));
+    }
     public function showAction()
     {
       $user = $this->get('security.token_storage')->getToken()->getUser();
@@ -23,10 +55,10 @@ class EstimateController extends Controller
         $existingEstimates = $em->getRepository('CmaUserBundle:Estimate')->findAll();
         $estimates = array();
         foreach ($existingEstimates as $key => $existingEstimate) {
-          if( $user->getId()==$existingEstimate->getOwnerId() && $existingEstimate->getIsPublic() ){
+          if( $user->getId()==$existingEstimate->getOwnerId() && $existingEstimate->getIsPublic() && is_null($existingEstimate->getIsValidate())){
               $existingEstimate->owner = true;
               array_push($estimates, $existingEstimate);
-          }else if($existingEstimate->getIsPublic()===true){
+          }else if($existingEstimate->getIsPublic()===true && is_null($existingEstimate->getIsValidate())){
             $existingEstimate->owner = false;
             array_push($estimates, $existingEstimate);
           }
@@ -37,8 +69,10 @@ class EstimateController extends Controller
         $Iestimates = $user->getEstimates();
         $estimates =array();
         foreach ($Iestimates as $key => $value) {
-          $value->owner = true;
-          array_push($estimates, $value);
+          if(is_null($existingEstimate->getIsValidate())){
+            $value->owner = true;
+            array_push($estimates, $value);
+          }
         }
       }
       return $this->render('homePageBundle:Estimate:estimate_show.html.twig',array('estimates'=>$estimates));

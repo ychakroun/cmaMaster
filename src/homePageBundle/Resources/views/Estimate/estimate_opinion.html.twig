@@ -1,0 +1,56 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA User Estimate{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset( 'js/imgProfileEdit.js' ) }}"></script>
+	{{parent()}}
+{% endblock %}
+{% block main %}
+
+<section class="param">
+  <header class="headerSection">
+    <div class="globalS">
+      <div class="idSection">{{ "estimate_page.header" | trans }}</div>
+      <div class="logoSection"><img src="{{ asset("img/logoTampon.png") }}" alt="cma_tampon" /></div>
+      <div class="infoSection"></div>
+    </div>
+  </header>
+  <div class="containerS">
+    {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
+    <div class="contentS">
+      <section id="devis">
+        <div class="containerS">
+          <div class="titleS">
+            {{'form.opinion.header'|trans}} {{proposal.owner}}
+          </div>
+            {{form_start(formOpinion)}}
+            <div id="div" class="imageOpinion imgLiquidFill" style="width=100%;height:250px;background:url({{asset('img/upload.png')}});background-size: 20%; background-position: center center; background-repeat: no-repeat;background-color:white;">
+              {{form_widget(formOpinion.image.file,{attr: {'style':"display:none"}})}}
+              {{form_row(formOpinion.image.name,{attr: {'value': user.username }})}}
+            </div>
+            <div>
+              <label for="{{formOpinion.title.vars.id}}" class="desc">{{formOpinion.title.vars.label|trans}}</label>
+              {{form_widget(formOpinion.title)}}
+            </div>
+            <div>
+              <label for="{{formOpinion.opinion.vars.id}}" class="desc">{{formOpinion.opinion.vars.label|trans}}</label>
+              {{form_widget(formOpinion.opinion,{'attr':{'class':'desc'}})}}
+            </div>
+            {{form_end(formOpinion)}}
+          </div>
+      </section>
+    </div>
+  </div>
+  <div id="imgtmp" style="display:none"></div>
+</section>
+{% endblock %}
+{% block script %}
+  <script>
+    initOpinionImage();
+  </script>
+{% endblock %}

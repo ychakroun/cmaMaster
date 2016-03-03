@@ -1,11 +1,19 @@
 <?php
 namespace homePageBundle\Services;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Doctrine\ORM\EntityManager;
 
 
 class userServices {
 	
-	protected $container;
+    protected $em;
+
+    public function setEntityManager(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
+    protected $container;
 
 	public function setContext(TokenStorageInterface $sc)
 	{
@@ -59,6 +67,39 @@ class userServices {
         {
             return null;
         }
+    }
+    public function getCustom($id) {
+        $user = $this->em->getRepository('CmaUserBundle:User')->findOneById($id);
+        $custom = 0;
+        $pieces = $this->em->getRepository('CmaUserBundle:Piece')->findByUser($user);
+        foreach ($pieces as $key => $piece) {
+            if($piece->getIsProposal()){
+                $custom ++;
+            }
+        }
+        return $custom;
+    }
+    public function getLike($id) {
+        $user = $this->em->getRepository('CmaUserBundle:User')->findOneById($id);
+        $crush = 0;
+        $pieces = $this->em->getRepository('CmaUserBundle:Piece')->findByUser($user);
+        foreach ($pieces as $key => $piece) {
+            if($piece->getCrush()){
+                $crush ++;
+            }
+        }
+        return $crush;
+    }
+    public function getOpinion($id) {
+        $user = $this->em->getRepository('CmaUserBundle:User')->findOneById($id);
+        $crush = 0;
+        $pieces = $this->em->getRepository('CmaUserBundle:Opinion')->findByUser($user);
+        foreach ($pieces as $key => $piece) {
+            if($piece->getCrush()){
+                $crush ++;
+            }
+        }
+        return $crush;
     }
     public function getImageHeader() {
         if($this->sc->getToken()->getUser()->getProfile()){
