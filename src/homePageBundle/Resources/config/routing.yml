@@ -23,8 +23,9 @@ estimate_detail:
     defaults: {_controller: homePageBundle:Estimate:detail }
 
 estimate_validation:
-    path:     /estimate/{id}/validation
+    path:     /estimate/{id}/validation/{userp}
     defaults: {_controller: homePageBundle:Estimate:validation }
+    schemes:  [https]
 
 estimate_opinion:
     path:    /estimate/{id}/opinion
