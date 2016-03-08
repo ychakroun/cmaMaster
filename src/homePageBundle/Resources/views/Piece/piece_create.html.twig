@@ -52,7 +52,6 @@
       {{'piece' | trans }} n°{{nbPiece + 1}}
     {% endif %}
     </div>
-    <div class="">
       <div class="descriptionOeuvre">
       	{% if formPiece %}
       	{{form_start(formPiece)}}
@@ -69,12 +68,12 @@
             {{form_widget(formPiece.realisationDate)}}
           </p>
           <p>
-            <label for="{{formPiece.theme.vars.id}}">Thème</label><br>
-            {{form_widget(formPiece.theme)}}
-          </p>
-          <p>
             <label for="{{formPiece.price.vars.id}}">Prix</label><br>
             {{form_widget(formPiece.price)}}
+          </p>
+          <p>
+            <label for="{{formPiece.theme.vars.id}}">Thème</label><br>
+            {{form_widget(formPiece.theme)}}
           </p>
           <p>
             <label for="{{formPiece.feature.vars.id}}">Caractéristiques</label><br>
@@ -93,21 +92,24 @@
       </div>
       <div id="uploadImage">
           <div id="div1" class="imagePiece imgLiquidFill">
-              <img id="1" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+              <img id="1" src="{{ asset( ' ' ) }}" alt="">
           </div>
           <div id="div2" class="imagePiece imgLiquidFill">
-              <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+              <img id="2" src="{{ asset( ' ' ) }}" alt="">
           </div>
           <div id="div3" class="imagePiece imgLiquidFill">
-              <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
+              <img id="3" src="{{ asset( ' ' ) }}" alt="">
           </div>
-          <div class="button">
-            <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "parameter_page.submit"|trans }}" />
-          </div>
+      </div>
+
+      <div class="centerText bottom100">
+        <div class="button">
+          <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "parameter_page.submit"|trans }}" />
+        </div>
+      </div>
       	{{form_end(formPiece)}}
       	{% endif %}
-      </div>
-    </div>
+
     <div id="imgtmp" style="display:none"></div>
   </section>
 {% endblock %}

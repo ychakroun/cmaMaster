@@ -21,7 +21,10 @@ ul,li{
 .widthCentralBloc{
   width:930px;
 }
-
+.centerText{text-align: center;}
+.bottom100{
+  margin-bottom: 100px;
+}
 #smallHeader
 {
   #header{
@@ -374,23 +377,6 @@ ul,li{
       div{border-bottom: 1px solid black;  text-align: left;font-size: 16px;}
       p{text-align: right;font-size: 13px;}
     }
-    #uploadImage{
-      font-size: 0px;
-      .horizontalCenter;
-      width: 940px;
-      box-sizing: inherit;
-      div{
-        margin-top: 10px;
-        font-size: 0px;
-        background: url('../img/upload.png') 50% 50% no-repeat #fff;
-        background-size: 20%;
-        width: 300px;height: 295px; .inline;
-        &:nth-child(1){margin-right: 10px;}
-        &:nth-child(2){margin-right: 10px;margin-left: 10px;}
-        &:nth-child(3){margin-left: 10px;}
-      }
-      padding-bottom:50px;
-    }
     .blockCheckbox{
       width: 265px;
       .horizontalCenter;
@@ -448,6 +434,23 @@ ul,li{
       white-space: nowrap;
       outline: none;
   }
+}
+#uploadImage{
+  font-size: 0px;
+  .horizontalCenter;
+  width: 940px;
+  box-sizing: inherit;
+  div{
+    margin-top: 10px;
+    font-size: 0px;
+    background: url('../img/upload.png') 50% 50% no-repeat #fff;
+    background-size: 20%;
+    width: 300px;height: 295px; .inline;
+    &:nth-child(1){margin-right: 10px;}
+    &:nth-child(2){margin-right: 10px;margin-left: 10px;}
+    &:nth-child(3){margin-left: 10px;}
+  }
+  padding-bottom:50px;
 }
 #artistes{
   background: #151515!important;
@@ -1185,12 +1188,12 @@ input[type="submit"]{
     padding: 40px 120px;
   }
 }
-.imagePiece{
-    width: 452.5px;
-    .inline;
-    height: 400px;
-    margin-right: 12.50px;
-}
+// .imagePiece{
+//     width: 452.5px;
+//     .inline;
+//     height: 400px;
+//     margin-right: 12.50px;
+// }
 .checkbox {
   .inline;
   width: auto;
