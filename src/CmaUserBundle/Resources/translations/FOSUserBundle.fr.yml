@@ -40,7 +40,7 @@ registration:
     submit: 'Confirmer votre inscription'
     flash:
         user_created: 'L''utilisateur a été créé avec succès'
-    confirm: 
+    confirm:
         title: 'Bienvenue'
         great: 'Felicitation !'
         confirm: 'Votre compte est désormais activé !'
@@ -109,7 +109,7 @@ form:
             1: 'Valider la proposition'
             2: 'Oeuvre Livrée'
             3: 'Oeuvre Reçue'
-            4: 'Montant de la vente perçue' 
+            4: 'Montant de la vente perçue'
         create:
             title: 'Proposition à '
     filterPieces:
@@ -118,12 +118,13 @@ form:
         medium: 'Support'
         submit: 'Valider'
     piece:
-        title: 'titre de l''oeuvre *'
-        collection: 'collection'
-        price: 'prix *'
-        theme: 'thème'
-        technics: 'techniques'
-        feature: 'caractéristiques'
+        title: 'Titre de l''oeuvre *'
+        collection: 'Collection'
+        price: 'Prix *'
+        theme: 'Thème'
+        technics: 'Techniques'
+        feature: 'Caractéristiques'
+        realisationDate: 'Date de réalisation'
         width: 'Hauteur'
         height: 'Largeurs'
         submit: 'Ajouter cette oeuvre'
@@ -189,7 +190,7 @@ proposal:
     show:
         title:
              single: 'Proposition envoyée'
-comment: 
+comment:
     title: 'Discuter avec '
 estimate:
     show:
@@ -209,4 +210,3 @@ estimate_page:
     header: 'Commandes'
 proposal_page:
     header: 'Commandes'
-
