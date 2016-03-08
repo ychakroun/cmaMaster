@@ -17,8 +17,18 @@ class PieceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title',null,array('label' => 'form.piece.title','required' => true,'translation_domain' => 'FOSUserBundle'))
-            ->add('collection',null,array('label' => 'form.piece.collection','required' => false,'translation_domain' => 'FOSUserBundle'))
+            ->add('title',null,array(
+              'label' => 'form.piece.title',
+              'label_attr' => array('class' => 'prix'),
+              'attr' => array('class' => 'titreOeuvre'),
+              'required' => true,
+              'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('collection',null,array(
+              'label' => 'form.piece.collection',
+              'required' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
             ->add('realisationDate',DateType::class, array(
                 'input'  => 'datetime',
                 'widget' => 'single_text',
@@ -26,16 +36,44 @@ class PieceType extends AbstractType
                 'required' => false,
                 'label' => false
             ))
-            ->add('price',MoneyType::class,array('label' => 'form.piece.price','required' => true,'translation_domain' => 'FOSUserBundle'))
-            ->add('theme',null,array('label' => 'form.piece.theme','required' => false,'translation_domain' => 'FOSUserBundle'))
-            ->add('feature',null,array('label' => 'form.piece.feature','required' => false,'translation_domain' => 'FOSUserBundle'))
-            ->add('technics',null,array('label' => 'form.piece.technics','required' => false,'translation_domain' => 'FOSUserBundle'))
-            ->add('image1',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('image2',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('image3',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
+            ->add('price',MoneyType::class,array(
+              'label' => 'form.piece.price',
+              'required' => true,
+              'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('theme',null,array(
+              'label' => 'form.piece.theme',
+              'required' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('feature',null,array(
+              'label' => 'form.piece.feature',
+              'required' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('technics',null,array(
+              'label' => 'form.piece.technics',
+              'required' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('image1',ImageType::class,array(
+              'required' => false,
+              'label' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('image2',ImageType::class,array(
+              'required' => false,
+              'label' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('image3',ImageType::class,array(
+              'required' => false,
+              'label' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
             ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
