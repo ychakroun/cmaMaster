@@ -37,15 +37,15 @@
   </div>
 </header>
   <section id="devis" class="piece">
-    <header class="headerPiece">
-      <div class="Name">
+    <header class="headerArtisteGalerie">
+      <p class="padTop60">
         {{"gallerie" | trans }}
         {% if username %}
-          {{username}}
+          <span class="username">{{username}}</span>
         {% endif %}
-      </div>
+      </p>
     </header>
-    <div class="nbPiece">
+    <div class="nbPiece titlePieceCreate">
     {% if nbPiece > 1 %}
       {{'piece' | trans }}s n°{{nbPiece + 1}}
     {% else %}
@@ -56,31 +56,33 @@
       	{% if formPiece %}
       	{{form_start(formPiece)}}
           <p>
-            <label for="{{formPiece.title.vars.id}}">Titre</label><br>
+            <label for="{{formPiece.title.vars.id}}">{{"form.piece.title" | trans }}</label><br>
             {{form_widget(formPiece.title)}}
           </p>
           <p>
-            <label for="{{formPiece.collection.vars.id}}">Collection</label><br>
+            <label for="{{formPiece.collection.vars.id}}">{{"form.piece.collection" | trans }}</label><br>
             {{form_widget(formPiece.collection)}}
           </p>
           <p>
-            <label for="{{formPiece.realisationDate.vars.id}}">Date de réalisation</label><br>
+            <label for="{{formPiece.realisationDate.vars.id}}">{{"form.piece.realisationDate" | trans }}</label><br>
             {{form_widget(formPiece.realisationDate)}}
           </p>
           <p>
-            <label for="{{formPiece.price.vars.id}}">Prix</label><br>
+            <label for="{{formPiece.price.vars.id}}">{{"form.piece.price" | trans }} </label><br>
             {{form_widget(formPiece.price)}}
           </p>
           <p>
-            <label for="{{formPiece.theme.vars.id}}">Thème</label><br>
+            <label for="{{formPiece.theme.vars.id}}">{{"form.piece.theme" | trans }}</label><br>
             {{form_widget(formPiece.theme)}}
           </p>
           <p>
-            <label for="{{formPiece.feature.vars.id}}">Caractéristiques</label><br>
+            <label for="{{formPiece.feature.vars.id}}">{{"form.piece.feature" | trans }}</label><br>
             {{form_widget(formPiece.feature)}}
           </p>
+          <div class="titlePieceCreate">
+            <div>{{"form.piece.technics" | trans }}</div>
+          </div>
           <p>
-            <label for="{{formPiece.technics.vars.id}}">Techniques</label><br>
             {{form_widget(formPiece.technics)}}
           </p>
           {{form_row(formPiece.image1.file,{attr: {'style':"display:none"}})}}
@@ -89,6 +91,9 @@
           {{form_row(formPiece.image2.name,{attr: {'value': username }})}}
           {{form_row(formPiece.image3.file,{attr: {'style':"display:none"}})}}
           {{form_row(formPiece.image3.name,{attr: {'value': username }})}}
+      </div>
+      <div class="titlePieceCreate">
+        <div>Photos de l'oeuvre</div>
       </div>
       <div id="uploadImage">
           <div id="div1" class="imagePiece imgLiquidFill">
