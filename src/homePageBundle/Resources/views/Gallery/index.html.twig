@@ -80,11 +80,12 @@
               </li>
             </ul>
           </div>
-        <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.filterPieces.submit"|trans }}" />
+
       </div>
       </form>
       </div>
       </aside>
+
       <div class="contentS">
         <div class="filtres-top">
           <p class="nouveaute"><a href="{{path('listGalleries',{'topfilter':'null'})}}"><span>Nouveautés</span></a></p>
@@ -113,6 +114,7 @@
           {% endif %}
           {% endfor %}
         </ul>
+        <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.filterPieces.submit"|trans }}" />
       </div>
     </div>
     <footer class="footerNav">

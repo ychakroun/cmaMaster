@@ -262,36 +262,69 @@ ul,li{
 }
 
 #galerie{
-  .headerSection{}
-  .containerS{
-    .titleS{color: #000;}
-    .contentS{
-      ul{font-size: 0;
-        li{
-        margin-bottom: 40px;
-         box-sizing: border-box;
-         border: 1px solid #000;
-          width: 295px; height: 320px; .inline;font-size: 0px;padding: 0;
-          .images{font-size: 0;width: 100%;height: 245px;img{height: 100%;width: 100%;}}
-          .infos{
-            color: #000;font-size: 16px;font-family: 'robotomedium';
-            .decriptions{
-              float: left;padding-left: 20px;padding-top: 15px;
-              .name{}
-              .title{font-size: 12px;color:#ac0012;}
-            }
-            .price{float: right;padding-right: 20px;padding-top: 15px;}
-          }
-          &:nth-child(5n+1){margin-right: 10px;width: 610px;}
-          &:nth-child(5n+2){margin-left: 10px;}
-          &:nth-child(5n+3){margin-right: 10px;}
-          &:nth-child(5n+4){margin-right: 10px;margin-left: 10px;}
-          &:nth-child(5n+5){margin-left: 10px;}
+  .contentS{
+    padding-top: 70px;
+    width: 620px;
+    .inline;
+    .filtres-top{
+      font-family: 'robotomedium';
+      vertical-align: top;
+      color:#000;
+      border-bottom: 1px solid #000;
+      width: 100%;font-size : 0 ;
+      p{.inline;font-size : 15px;padding-bottom: 5px;
+        a{color: #000; text-decoration: none;}}
+      .nouveaute{width: 33%;}
+      .prix-croiss{width: 34%;text-align: center;}
+      .prix-decroiss{width: 33%;text-align: right;}
+    }
+  #galerieLink{font-size: 0;
+    padding-top: 55px;
+    li{
+    margin-bottom: 40px;
+     box-sizing: border-box;
+     border: 1px solid #000;
+      width: 300px; height: 320px; .inline;font-size: 0px;padding: 0;
+      .images{font-size: 0;width: 100%;height: 245px;img{height: 100%;width: 100%;}}
+      .infos{
+        color: #000;font-size: 16px;font-family: 'robotomedium';
+        .decriptions{
+          float: left;padding-left: 20px;padding-top: 15px;
+          .name{}
+          .title{font-size: 12px;color:#ac0012;}
+        }
+        .price{float: right;padding-right: 20px;padding-top: 15px;}
+      }
+      &:nth-child(5n+1){margin-right: 0px;width: 620px;}
+      &:nth-child(5n+2){margin-right: 10px;}
+      &:nth-child(5n+3){margin-left: 10px;}
+      &:nth-child(5n+4){margin-right: 10px;}
+      &:nth-child(5n+5){margin-left: 10px;}
+    }
+  }
+  }
+.footerNav{
+  font-family: 'robotomedium';
+  color: #000;
+  border-top: 1px solid #000;
+  .widthCentralBloc;
+  .horizontalCenter;
+  div{
+    text-align: center;
+    margin-top: 10px;padding-bottom: 20px;
+    span{margin-left: 10px; margin-right: 10px;}
+    nav{.inline;
+      ul{
+        li{.inline;font-size: 14px;box-sizing: border-box;
+          padding: 10px 15px;
+          margin: 20px 5px;
+        &:selected{border:solid  #000 1px;font-size: 18px;}
+        &:nth-child(2){border:solid  #000 1px;font-size: 18px;}//juste pour intégration
         }
       }
     }
   }
-  .footerSection{text-align: center;padding-bottom: 50px;}
+}
 }
 .galerie{
   .headerSection{}
