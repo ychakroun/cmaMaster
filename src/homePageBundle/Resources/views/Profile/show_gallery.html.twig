@@ -18,7 +18,7 @@
   {% embed 'homePageBundle:Default:navProfilArtiste.html.twig' with {'class':'gallery'}%}
   {% endembed %}
 </header>
-<div class="mainProfile grayBackground">
+<div id="galerie" class=" grayBackground">
     <div class="containerS">
       <aside class="aside">
         <div class="filtres-container">
@@ -85,11 +85,9 @@
           <p class="prix-croiss"><span>Prix croissants</span></p>
           <p class="prix-decroiss"><span>Prix décroissants</span></p>
         </div>
-        <ul id="galerieLink">
+        <ul>
           <section class="galerie">
             <div class="containerS">
-              <div class="titleS">
-              </div>
               <div class="contentS">
                 <ul>
                 {% for piece in pieces %}
