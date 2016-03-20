@@ -22,47 +22,47 @@ class InformationType extends AbstractType
               'translation_domain' => 'FOSUserBundle',
               'attr' => array('class' => 'test')
             ))
-            ->add('zip',null, array(
+            ->add('zip',TextType::class, array(
               'label' => 'form.information.zipcode',
               'required' => false,
               'translation_domain' => 'FOSUserBundle'
             ))
-            ->add('city',null, array(
+            ->add('city',TextType::class, array(
               'label' => 'form.information.city',
               'required' => false,
               'translation_domain' => 'FOSUserBundle'
             ))
-            ->add('pays',null, array(
+            ->add('pays',TextType::class, array(
               'label' => 'form.information.pays',
               'required' => false,
               'translation_domain' => 'FOSUserBundle'
             ))
-            ->add('siret',null, array(
+            ->add('siret',TextType::class, array(
               'label' => 'form.information.siret',
               'required' => false,
               'translation_domain' => 'FOSUserBundle'
             ))
-            ->add('aBank',null, array(
+            ->add('aBank',TextType::class, array(
               'label' => 'form.information.aBank',
               'required' => false,
               'translation_domain' => 'FOSUserBundle'
             ))
-            ->add('ownerBank',null, array(
+            ->add('ownerBank',TextType::class, array(
               'label' => 'form.information.ownerBank',
               'required' => false,
               'translation_domain' => 'FOSUserBundle'
             ))
-            ->add('resBank',null, array(
+            ->add('resBank',TextType::class, array(
               'label' => 'form.information.resBank',
               'required' => false,
               'translation_domain' => 'FOSUserBundle'
             ))
-            ->add('rib',null, array(
+            ->add('rib',TextType::class, array(
               'label' => 'form.information.rib',
               'required' => false,
               'translation_domain' => 'FOSUserBundle'
             ))
-            ->add('bic',null, array(
+            ->add('bic',TextType::class, array(
               'label' => 'form.information.bic',
               'required' => false,
               'translation_domain' => 'FOSUserBundle'
