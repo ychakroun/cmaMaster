@@ -1,0 +1,16 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA Art Piece{% endblock %}
+{% block javascripts %}
+     <script src="{{asset( "js/imgProfileEdit.js" )}}"></script>
+    {{parent()}}
+{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block main %}
+  <section>
+  </section>
+{% endblock %}
