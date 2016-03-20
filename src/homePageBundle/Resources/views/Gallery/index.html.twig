@@ -61,6 +61,7 @@
               <li>
                 <div class="checkbox">
                   {{form_widget(widths)}}
+                  <label for="{{widths.vars.id}}"></label>
                 </div>
                 <p>{{widths.vars.label}}</p>
               </li>
@@ -74,6 +75,7 @@
               <li>
                 <div class="checkbox">
                   {{form_widget(prices)}}
+                  <label for="{{prices.vars.id}}"></label>
                 </div>
                 <p>{{prices.vars.value}}</p>
                 {% endfor %}
