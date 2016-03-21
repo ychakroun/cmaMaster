@@ -22,7 +22,7 @@
           <ul>
             <li><a href="{{ url('listArtists') }}">Les artistes</a></li>
             <li><a href="{{ url('listGalleries') }}">La galerie</a></li>
-            <li>Le concept</li>
+            <li><a href="{{ url('concept') }}">Le concept</a></li>
             <li>Aide</li>
             {% if app.request.get('_route') != 'fos_user_registration_register' %}
             <li>
