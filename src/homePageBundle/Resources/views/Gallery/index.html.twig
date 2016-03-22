@@ -85,6 +85,9 @@
 
       </div>
       </form>
+      <div class="centerText top50">
+        <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.filterPieces.submit"|trans }}" />
+      </div>
       </div>
       </aside>
 
@@ -116,21 +119,21 @@
           {% endif %}
           {% endfor %}
         </ul>
-        <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.filterPieces.submit"|trans }}" />
+        <footer class="footerNav">
+          <div> <span>&lt;</span>
+          <nav>
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+          </nav>
+          <span>&gt;</span> </div>
+        </footer>
       </div>
     </div>
-    <footer class="footerNav">
-      <div> <span>&lt;</span>
-      <nav>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-        </ul>
-      </nav>
-      <span>&gt;</span> </div>
-    </footer>
+
   </section>
 {% endblock %}
