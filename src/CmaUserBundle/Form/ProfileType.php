@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use CmaUserBundle\Form\ImageType;
 use CmaUserBundle\Entity\Tag;
 
@@ -19,15 +20,42 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('description',null,array('label' => 'form.profile.description','required' => false,'label' => false,'translation_domain' => 'FOSUserBundle'))
-            ->add('imageHeader',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('image1',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('image2',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('image3',ImageType::class,array('required' => false,'label' => false, 'translation_domain' => 'FOSUserBundle'))
-            ->add('tags', CollectionType::class, array('allow_delete' => true,'allow_add'=> true,'by_reference' => false,'required' => false,'entry_type' => TagType::class))
+            ->add('description',null,array(
+              'label' => 'form.profile.description',
+              'required' => false,'label' => false,
+              'translation_domain' => 'FOSUserBundle'))
+            ->add('imageHeader',ImageType::class,array(
+              'required' => false,
+              'label' => false,
+              'translation_domain' =>
+              'FOSUserBundle'))
+            ->add('image1',ImageType::class,array(
+              'required' => false,
+              'label' => false,
+              'translation_domain' => 'FOSUserBundle'))
+            ->add('image2',ImageType::class,array(
+              'required' => false,
+              'label' => false,
+              'translation_domain' =>
+              'FOSUserBundle'))
+            ->add('image3',ImageType::class,array(
+              'required' => false,
+              'label' => false,
+              'translation_domain' =>
+              'FOSUserBundle'))
+            ->add('tags', CollectionType::class, array(
+              'allow_delete' => true,
+              'allow_add'=> true,
+              'by_reference' => false,
+              'required' => false,
+              'entry_type' => TagType::class))
+            ->add('condition', CheckboxType::class,array("mapped" => false,
+                'required' => true,
+                'label' => "J'accepte les conditions d'utilisations",
+                 'translation_domain' => 'FOSUserBundle'))
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

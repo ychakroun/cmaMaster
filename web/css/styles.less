@@ -15,6 +15,12 @@ ul,li{
 .horizontalCenter{
   margin: 0 auto;
 }
+.borderTop{
+  border-top: 1px solid #000;
+}
+.black{
+  color: #000!important;
+}
 .inline{display: inline-block;}
 .horizontalAbsCenter{
   transform: translate(0%, -50%);
@@ -304,13 +310,10 @@ color: #000;font-size: 16px;font-family: 'robotomedium';
 &:nth-child(5n+5){margin-left: 10px;}
 }
 }
-}
 .footerNav{
 font-family: 'robotomedium';
 color: #000;
 border-top: 1px solid #000;
-.widthCentralBloc;
-.horizontalCenter;
 div{
 text-align: center;
 margin-top: 10px;padding-bottom: 20px;
@@ -327,6 +330,8 @@ ul{
 }
 }
 }
+}
+
 }
 .galerie{
 .headerSection{}
@@ -361,42 +366,53 @@ ul{font-size: 0;
 .footerSection{text-align: center;padding-bottom: 50px;}
 }
 #footer{
-font-family: 'robotolight';
-background: url('../img/footerHome.png') no-repeat center;
-background-size: cover; /* version standardisée */
-height: 355px;
-width: 100%;
-position: relative;
-.global{
-color:#ababab;
-.horizontalCenter;
-.widthCentralBloc;
-font-size: 0;
-h3{color: #fff;font-family: 'robotomedium';font-size: 14px;margin-bottom: 20px;margin-top: 35px;letter-spacing: 1.3px;}
-.help,.about{
-  width: 240px;.inline;font-family: 'robotolight';font-size: 14px;vertical-align: top;
-  ul{
-    li{
-      margin-bottom: 25px;
-    }
-  }
-}
-.newsletters{
-  .inline;
-  .abonnement{font-size: 14px;
-    p{width: 300px;}
-    .email{margin-top: 15px;margin-bottom: 30px;background: #fff;height: 40px;
-      .text{margin: 0;padding-left: 20px;background: transparent;border: 0;vertical-align: middle;height: 40px;}
-      .button{
-        border: 1px solid #000;background: #4b4949;color:#fff;letter-spacing: 1.2px;
-        padding-left: 20px;padding-right: 20px;margin-top: 3px;margin-right: 3px;float:right;vertical-align: middle;
-        height: 34px;font-family: 'robotomedium';}
+  font-family: 'robotolight';
+  background: url('../img/footerHome.png') no-repeat center;
+  background-size: cover; /* version standardisée */
+  height: 355px;
+  width: 100%;
+  position: relative;
+  .global{
+  color:#ababab;
+  .horizontalCenter;
+  .widthCentralBloc;
+  font-size: 0;
+  h3{color: #fff;font-family: 'robotomedium';font-size: 14px;margin-bottom: 20px;margin-top: 35px;letter-spacing: 1.3px;}
+  .help,.about{
+    width: 240px;.inline;font-family: 'robotolight';font-size: 14px;vertical-align: top;
+    ul{
+      li{
+        margin-bottom: 25px;
       }
     }
-    h4{color: #fff;font-family: 'robotomedium';font-size: 14px;margin-bottom: 13px;letter-spacing: 1.3px;}
-    ul{li{padding-bottom:8px; }}
   }
-}
+  .newsletters{
+    .inline;
+    .abonnement{font-size: 14px;
+      p{width: 300px;}
+      .email{margin-top: 15px;margin-bottom: 30px;background: #fff;height: 40px;
+        .text{margin: 0;padding-left: 20px;background: transparent;border: 0;vertical-align: middle;height: 40px;}
+        .button{
+          border: 1px solid #000;background: #4b4949;color:#fff;letter-spacing: 1.2px;
+          padding-left: 20px;padding-right: 20px;margin-top: 3px;margin-right: 3px;float:right;vertical-align: middle;
+          height: 34px;font-family: 'robotomedium';}
+        }
+      }
+      .follow{
+        display: inline-block;
+        float: left;
+        h4{color: #fff;font-family: 'robotomedium';font-size: 14px;margin-bottom: 13px;letter-spacing: 1.3px;}
+        ul{li{padding-bottom:8px; }}
+      }
+      .logo{
+        display: inline-block;
+        float: right;
+        img{
+          padding-left: 10px;
+        }
+      }
+    }
+  }
 }
 #devis{
 background: #f5f4f4;
@@ -518,8 +534,6 @@ height: 100%;
   font-family: 'robotomedium';
   color: #fff;
   border-top: 1px solid #fff;
-  .widthCentralBloc;
-  .horizontalCenter;
   div{
     text-align: center;
     margin-top: 10px;padding-bottom: 20px;
@@ -988,6 +1002,19 @@ height: 100%;
     box-sizing: border-box;
   }
 }
+.estimateEdit{
+  .blockCheckbox{
+    text-align: center;
+    color: #000;
+    .notice{
+      margin: 20px auto;
+      font-size: 14px;
+      font-weight: 100;
+      color:#797979;
+      width: 500px;
+    }
+  }
+}
 
 .pink{
   background: red;
@@ -1175,6 +1202,36 @@ height: 100%;
       .inline;
       height: 400px;
       margin-left: 12.50px;
+    }
+  }
+}
+/*help*/
+#help{
+  background: #f5f4f4;
+  .helpBlock{
+    color: #000;
+    .horizontalCenter;
+    width: 600px;
+    padding: 40px 0 100px 0;
+    .notice{
+      font-family: 'FuturaStd-Medium';
+      padding: 55px 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .answer{
+      font-family: 'FuturaStd-MediumOblique';
+      padding: 0 0 30px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .response{
+      font-family: 'FuturaStd-Medium';
+      font-size: 14px;
+      color: #2a2a2a;
+      font-weight: 300;
+      padding-bottom: 70px;
+
     }
   }
 }
@@ -1532,3 +1589,8 @@ button{
 .top20{margin-top: 20px;}
 .top50{margin-top: 50px;}
 .bottom20{margin-bottom: 20px;}
+.bottom30{margin-bottom: 30px;}
+.bottom50{margin-bottom: 50px;}
+.bottom100{margin-bottom: 100px;}
+.padLeft10{padding-left: 10px;}
+.padBottom100{padding-bottom: 100px;}

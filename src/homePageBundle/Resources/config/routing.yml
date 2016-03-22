@@ -124,5 +124,9 @@ listArtists:
     defaults: { _controller: homePageBundle:Artist:index }
 
 concept:
-    path:   /concept
-    defaults: { _controller: homePageBundle:concept:index }
+    path:   /Concept
+    defaults: { _controller: homePageBundle:Concept:index }
+
+help:
+    path:   /Help
+    defaults: { _controller: homePageBundle:Help:index }

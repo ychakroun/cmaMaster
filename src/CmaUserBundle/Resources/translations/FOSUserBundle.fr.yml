@@ -131,8 +131,8 @@ form:
     profile:
         tag:
             add: "Ajouter un tag"
-        submit: 'Enregister votre profile'
-        piece: 'Ajouter une oeuvre'
+        submit: 'Valider les photos sélectionnées'
+        piece: 'Ajouter une oeuvre à la galerie'
         description: "Ajouter une description"
     image:
         submit: 'Enregister l''image'
