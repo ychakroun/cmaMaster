@@ -1,5 +1,5 @@
 {% trans_default_domain 'FOSUserBundle' %}
-<div class="grayBackground">
+<div class="grayBackground estimateEdit">
   <header id="profileHeader">
     <div id="imageHeader" class="basicHeaderOk imgLiquidFill">
       {% if profile and profile.imageHeader and profile.imageHeader.path %}
@@ -92,6 +92,16 @@
         </div>
          {% endif %}
         <div class="centerText top50 padBottom100">
+          <div class="blockCheckbox bottom30">
+          	<div class="checkbox">
+          		{{form_widget(form.condition)}}
+          		<label for="{{form.condition.vars.id}}"></label>
+          	</div>
+          <span class="padLeft10">J’accepte les conditions d’utilisation </span>
+          <div class="notice">
+            Les images à caractère violentes / sexuelles seront enlevées. Vous certifiez sur l’honneur que vous possedez les droits d’auteur des images utilisées. CMA n’est en aucun cas responsable en cas d’utilisation frauduleuse d’images.
+          </div>
+        </div>
           <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.profile.submit"|trans }}" />
         </div>
         </form>
