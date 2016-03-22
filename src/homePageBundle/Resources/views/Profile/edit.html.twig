@@ -91,10 +91,20 @@
             </div>
         </div>
          {% endif %}
-        <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.profile.submit"|trans }}" />
+        <div class="centerText top50 padBottom100">
+          <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.profile.submit"|trans }}" />
+        </div>
         </form>
-        <a href="{{path('piece_create')}}"><div class="buttonAction">{{'form.profile.piece' | trans }} </div></a>
+
+        <div class="borderTop centerText padBottom100">
+          <header class="headerArtisteGalerie top50 bottom50 black">
+        	  <p>Galerie <span class= "username">{{ artist.username }}</span></p>
+        	</header>
+          <a href="{{path('piece_create')}}"><div class="buttonAction">{{'form.profile.piece' | trans }} </div></a>
+        </div>
+
         <div id="imgtmp" style="display:none"></div>
+
         {% endif %}
     </div>
   </div>
