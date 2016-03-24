@@ -153,8 +153,11 @@ ul,li{
     #poprdr{
       background: white;
       width: 50vw;
+      min-width: 700px;
+      max-width: 800px;
       position: absolute;
-      left: 25vw;
+      transform: translate(-50%,0%);
+      left: 50%;
       top: 10vh;
       color: black;
       padding-bottom: 20px;
@@ -418,6 +421,9 @@ ul{font-size: 0;
 background: #f5f4f4;
 font-family: 'robotoregular';
 height: 100%;
+.checkbox label {
+  top:4px;
+}
 .containerS{
   color: #000;
   width: 100%;
@@ -671,32 +677,15 @@ height: 100%;
     box-sizing: border-box;
     margin: 20px 0;
   }
-  .checkbox{
-    width:50%;
-    box-sizing: border-box;
-    display: block;
-    margin: 20px;
-    margin-bottom: 30px;
-    margin-left: 0;
-    label{
-      padding-left: 20px;
-      text-transform: none;
-      color: black;
-    }
-  }
-  input[type="submit"]{
-    margin-left: 85px;
-  }
   .buttonAction{
     margin: 0 auto;
-    display: block;
+    display: inline-block;
     padding: 10px 20px;
     cursor: pointer;
     text-decoration: none !important;
     border: medium none;
     text-transform: none;
     font-size: 15px;
-    float: left;
     font-weight: 100;
     margin-left: 10px;
   }
@@ -718,7 +707,7 @@ height: 100%;
     display: inline-block;
     position: absolute;
   }
-  .buttonAction {&:nth-of-type(0){left: 0;margin-left:0 !important}&:nth-of-type(1){left: 377px;margin-left:0 !important}&:nth-of-type(2){left: 860px;margin-left:0 !important}}
+  // .buttonAction {&:nth-of-type(0){left: 0;margin-left:0 !important}&:nth-of-type(1){left: 377px;margin-left:0 !important}&:nth-of-type(2){left: 860px;margin-left:0 !important}}
   margin-bottom: 80px;
 }
 #rgstr{
@@ -733,24 +722,6 @@ height: 100%;
     padding-left: 0;
     box-sizing: border-box;
     margin: 20px 0;
-  }
-  .checkbox{
-    width:50%;
-    box-sizing: border-box;
-    display: block;
-    margin: 20px;
-    margin-bottom: 30px;
-    margin-left: 0;
-    label{
-      padding-left: 20px;
-      text-transform: none;
-    }
-  }
-  .checkbox:last-child{
-    margin-bottom: 30px;
-  }
-  input[type="submit"]{
-    margin-left: 185px;
   }
   #divselect{
     border: none;
@@ -792,14 +763,13 @@ height: 100%;
   }
   .buttonAction{
     margin: 0 auto;
-    display: block;
+    display: inline-block;
     padding: 10px 20px;
     cursor: pointer;
     text-decoration: none !important;
     border: medium none;
     text-transform: none;
     font-size: 15px;
-    float: left;
     font-weight: 100;
     margin-left: 10px;
   }
@@ -1580,6 +1550,22 @@ input[type="submit"]{
     opacity: 1;
   }
 }
+
+.checkbox label {
+    border: 2px solid #cfcaca;
+    cursor: pointer;
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    left: 0px;
+    top: 0px;
+    background: #fff;
+}
+.checkbox label:after {
+  top: 0px;
+  left: 0px;
+}
+
 button{
   border: 0px;
   cursor: pointer;
