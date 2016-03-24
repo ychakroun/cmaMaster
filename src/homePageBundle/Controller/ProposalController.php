@@ -32,7 +32,6 @@ class ProposalController extends Controller
       $comment=new Comment();
       $formComment = $this->createForm(CommentType::class,$comment);
       $proposal->parent = $em->getRepository('CmaUserBundle:Estimate')->findOneById($proposal->getEstimateId());
-      
       $proposal->setPiece = $em->getRepository('CmaUserBundle:Piece')->findById($proposal->getPiece()->getId());
       $formComment->handleRequest($request);
       if($formComment->isValid()){
@@ -58,7 +57,7 @@ class ProposalController extends Controller
         $em->flush();
       }
       if($proposal->getPiece()->getEtat()==2&&$user->getId()==$proposal->parent->getOwnerId()){
-          return $this->RedirectToRoute('estimate_validation',array('id'=>$proposal->parent->getId()));
+          return $this->RedirectToRoute('estimate_validation',array('userp'=>$proposal->owner,'id'=>$proposal->parent->getId()));
       }
       $comments = $proposal->getComments();
       foreach ($comments as $i => $comment) {
@@ -137,7 +136,7 @@ class ProposalController extends Controller
       }
       $estimate->removeProposal($proposal);
       $em->persist($proposal);
-      //$em->flush();
+      $em->flush();
       return $this->RedirectToRoute('user_estimate_proposals',array('id'=>$estimate->getId()));
     }
     /*

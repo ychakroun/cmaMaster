@@ -51,7 +51,7 @@ class EstimateController extends Controller
       if(!is_object($user)){
         throw new AccessDeniedException('This user does not have access to this section.');
       }
-      if($user->getRoles()[0]=='ROLE_ARTIST'){
+      if($user->hasRole('ROLE_ARTIST')){
         $existingEstimates = $em->getRepository('CmaUserBundle:Estimate')->findAll();
         $estimates = array();
         foreach ($existingEstimates as $key => $existingEstimate) {
@@ -69,7 +69,7 @@ class EstimateController extends Controller
         $Iestimates = $user->getEstimates();
         $estimates =array();
         foreach ($Iestimates as $key => $value) {
-          if(is_null($existingEstimate->getIsValidate())){
+          if(is_null($value->getIsValidate())){
             $value->owner = true;
             array_push($estimates, $value);
           }
@@ -166,7 +166,7 @@ class EstimateController extends Controller
     {
       $user = $this->get('security.token_storage')->getToken()->getUser();
       $userEstimates = $user->getEstimates();
-      $estimate = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:Estimate')->findById($id)[0];
+      $estimate = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:Estimate')->findOneById($id);
       if(!is_object($estimate)){
         throw new AccessDeniedException('This user does not have access to this section.');
       }
@@ -202,12 +202,16 @@ class EstimateController extends Controller
       }
       return $this->render('homePageBundle:Estimate:estimate_list_proposals.html.twig',array('username'=>$user->getUsername(),'proposals' => $proposals));
     }
-    public function validationAction(Request $request, $id){
+    public function validationAction(Request $request,$userp,$id){
       $em = $this->getDoctrine()->getManager();
       $estimate = $em->getRepository('CmaUserBundle:Estimate')->findOneById($id);
+      $userp = $em->getRepository('CmaUserBundle:User')->findOneByUsername($userp);
       $user = $this->get('security.token_storage')->getToken()->getUser();
-      dump($estimate->getOwnerId());
-      dump($user->getId());
+      $mangoPayServices = $this->get('home_page.mangoPayServices');
+      dump($mangoPayServices->getMangoUsers());
+      //$estimate->setIsValidate($userp);
+      //$em->persist($estimate);
+      //$em->flush();
       if (!is_object($user)||$user->getId()!=$estimate->getOwnerId()) {
         throw new AccessDeniedException('This user does not have access to this section.');
       }
