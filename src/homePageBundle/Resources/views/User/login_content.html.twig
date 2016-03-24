@@ -4,23 +4,32 @@
 	{% endif %}
 	{% if is_granted('IS_AUTHENTICATED_FULLY') == false %}
 		<div id="login">
-		<form  action="{{ path("fos_user_security_check") }}" method="post">
-	    	<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-	    	<input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'security.login.username'|trans }}" required="required" />
-	    	<input type="password" id="password" placeholder="{{ 'security.login.password'|trans }}" name="_password" required="required" />
-	    	<div class="checkbox">
-	    		<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-	    		<label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-	    	</div>
-	    	<input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-		</form>
-		<a  class='buttonAction' href="{{ path('fos_user_resetting_request') }}">{{ 'resetting.request.submit'|trans }}</a>
-		{% if app.request.get('_route') == 'fos_user_security_login' %}
-			<a  id="btnInsc" class='buttonAction' href="{{ path('fos_user_registration_register') }}" href="{{ path('fos_user_registration_register') }}">{{ 'layout.inscription'|trans }}</a>
-		{% else %}
-			<button  id="btnInsc" class='buttonAction' >{{ 'layout.inscription'|trans }}</button>
-		{% endif %}
+
+			<form  action="{{ path("fos_user_security_check") }}" method="post">
+		    	<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+		    	<input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'security.login.username'|trans }}" required="required" />
+		    	<input type="password" id="password" placeholder="{{ 'security.login.password'|trans }}" name="_password" required="required" />
+					<div class="blockCheckbox top50 bottom50">
+						<div class="checkbox">
+			    		<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+							<label for="remember_me"></label>
+			    	</div>
+						<p class="inline padLeft10">{{ 'security.login.remember_me'|trans }}</p>
+					</div>
+
+					<div class="centerText">
+						<input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+						<a  class='buttonAction' href="{{ path('fos_user_resetting_request') }}">{{ 'resetting.request.submit'|trans }}</a>
+						{% if app.request.get('_route') == 'fos_user_security_login' %}
+							<a  id="btnInsc" class='buttonAction' href="{{ path('fos_user_registration_register') }}" href="{{ path('fos_user_registration_register') }}">{{ 'layout.inscription'|trans }}</a>
+						{% else %}
+							<button  id="btnInsc" class='buttonAction' >{{ 'layout.inscription'|trans }}</button>
+						{% endif %}
+					</div>
+			</form>
+
 		</div>
+
 	{% else %}
 	{% if app.request.get('_route') == 'fos_user_security_login' %}
 		<a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
@@ -29,5 +38,5 @@
 		<a href="{{ path('home_page_basket') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
 	{% endif %}
 	{#    //////////////PANIER\\\\\\\\\\\\\\\\\\     #}
-	
+
 	{% endif %}
