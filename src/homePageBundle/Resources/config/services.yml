@@ -12,3 +12,5 @@ services:
         calls:
              - [setContext, ["@security.token_storage"]]
              - [setEntityManager, ["@doctrine.orm.entity_manager"]]
+    home_page.mangoPayServices:
+        class: homePageBundle\Services\mangoPayServices

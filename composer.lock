@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "982decd29ad88aadb29a322282f441fd",
-    "content-hash": "58a4b20e8f9272ce09a332a6d9e872f3",
+    "hash": "ccea2041a31f7f5c2e9d8892bdd35450",
+    "content-hash": "b2b415db181c83647dd5438565feeea9",
     "packages": [
         {
             "name": "coresphere/console-bundle",
@@ -839,7 +839,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/e770bfa2fd0fc665f55cd7cfeb34bddeffb892f4",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/a39d000577d735444bee97de9f5ee382e3f85fa1",
                 "reference": "e770bfa2fd0fc665f55cd7cfeb34bddeffb892f4",
                 "shasum": ""
             },
@@ -1122,6 +1122,42 @@
             "description": "lessphp is a compiler for LESS written in PHP.",
             "homepage": "http://leafo.net/lessphp/",
             "time": "2014-12-29 20:45:53"
+        },
+        {
+            "name": "mangopay/php-sdk-v2",
+            "version": "v2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mangopay/mangopay2-php-sdk.git",
+                "reference": "fd995fdae3c0ea9e5d253f89bb19018aa24a03fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mangopay/mangopay2-php-sdk/zipball/fd995fdae3c0ea9e5d253f89bb19018aa24a03fe",
+                "reference": "fd995fdae3c0ea9e5d253f89bb19018aa24a03fe",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-openssl": "*",
+                "php": ">=5.5.0",
+                "psr/log": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MangoPay\\": ""
+                },
+                "files": [
+                    "MangoPay/Autoloader.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "SDK PHP for Mangopay api V2",
+            "time": "2016-02-10 19:04:04"
         },
         {
             "name": "monolog/monolog",

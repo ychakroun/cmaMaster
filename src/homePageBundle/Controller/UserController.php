@@ -77,4 +77,25 @@ class UserController extends Controller
         }
         return $this->render('homePageBundle:User:information_user.html.twig',array('formInfo'=>$form->createView()));
     }
+    public function progressAction()
+    { 
+    $user = $this->get('security.token_storage')->getToken()->getUser();
+    $em = $this->getDoctrine()->getManager();
+    $estimates = $user->getEstimates();
+    if (!is_object($user)) {
+      throw new AccessDeniedException('This user does not have access to this section.');
+    }else if(!count($estimates)>0){
+      throw new HttpException(404,'This proposals not found');
+    }
+    $validEstimates = array();
+    foreach ($estimates as $key => $estimate) {
+        if(is_object($estimate->getIsValidate())){
+            if($user->getId()==$estimate->getOwnerId()){
+                $estimate->owner =true;
+            }
+            array_push($validEstimates, $estimate);
+        }
+    }
+      return $this->render('homePageBundle:Estimate:estimate_progress.html.twig',array('username'=>$user->getUsername(),'estimates' => $validEstimates));
+    }
 }
