@@ -60,7 +60,10 @@ class EstimateType extends AbstractType
             ->add('budget',null,array('label' => 'form.estimate.budget',
                 'required' => false,
                 'translation_domain' => 'FOSUserBundle',
-                'attr' => array('class' => 'prix')
+                'attr' => array(
+                  'class' => 'prix',
+                  'placeholder' => '€',
+                )
                 ))
             ->add('medium',null,array('label' => 'form.estimate.medium',
                 'required' => false,
