@@ -23,6 +23,19 @@ class mangoPayServices
      * Create Mangopay User
      * @return MangopPayUser $mangoUser
      */
+    public function getMangoUsers()
+    {
+
+        //Send the request
+        $users = $this->mangoPayApi->Users;
+        $mangoUsers = $this->mangoPayApi->Users->GetAll();
+
+        return  $mangoUsers;
+    }
+    /**
+     * Create Mangopay User
+     * @return MangopPayUser $mangoUser
+     */
     public function createMangoUser()
     {
 

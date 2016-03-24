@@ -208,7 +208,7 @@ class EstimateController extends Controller
       $userp = $em->getRepository('CmaUserBundle:User')->findOneByUsername($userp);
       $user = $this->get('security.token_storage')->getToken()->getUser();
       $mangoPayServices = $this->get('home_page.mangoPayServices');
-      $mangoPayServices->createMangoUser();
+      dump($mangoPayServices->getMangoUsers());
       //$estimate->setIsValidate($userp);
       //$em->persist($estimate);
       //$em->flush();
