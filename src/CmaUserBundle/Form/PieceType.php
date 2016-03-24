@@ -39,7 +39,10 @@ class PieceType extends AbstractType
             ->add('price',MoneyType::class,array(
               'label' => 'form.piece.price',
               'required' => true,
-              'translation_domain' => 'FOSUserBundle'
+              'translation_domain' => 'FOSUserBundle',
+              'attr' => array(
+                'placeholder' => '€',
+              ),
             ))
             ->add('theme',null,array(
               'label' => 'form.piece.theme',
