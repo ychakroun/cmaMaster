@@ -40,7 +40,7 @@ class EstimateType extends AbstractType
             ))
             ->add('description',null,array('label' => 'form.estimate.description',
                 'required' => false,
-                'label' => false,
+                'label' => 'form.estimate.description',
                 'translation_domain' => 'FOSUserBundle',
                 'attr' => array('class' => 'desc',
                     'cols'=>'40',
@@ -54,7 +54,7 @@ class EstimateType extends AbstractType
                 ))
             ->add('deliveryAdress',null,array('label' => 'form.estimate.deliveryAddress',
                 'required' => true,
-                'translation_domain' => 'FOSUserBundle', 
+                'translation_domain' => 'FOSUserBundle',
                 'attr' => array('class' => 'localité')
                 ))
             ->add('budget',null,array('label' => 'form.estimate.budget',
@@ -119,7 +119,7 @@ class EstimateType extends AbstractType
 
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

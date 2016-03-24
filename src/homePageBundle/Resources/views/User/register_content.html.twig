@@ -13,16 +13,29 @@
 	{{ form_widget(form.email, { 'attr': {'placeholder': 'form.email'} }) }}
     {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'form.password'} }) }}
     {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'form.password_confirmation'} }) }}
-    <div class="checkbox">
-    	{{ form_widget(form.parameter.newsletter) }}
-    	{{ form_label(form.parameter) }}
-	</div>
-    <div class="checkbox">
-    	{{ form_widget(form.publicPolicy) }}
-    	{{ form_label(form.publicPolicy) }}
-	</div>
-     <input class="buttonAction" type="submit" value="{{ 'layout.register' | trans }}" />
-{{ form_end(form) }}
-	{% if app.request.get('_route') != 'fos_user_registration_register' %}
-			<button id="btnLog" class='buttonAction' >{{ 'layout.login'|trans }}</button>
-	{% endif %}
+
+		<div class="checkConditions top50">
+			<div class="blockCheckbox">
+				<div class="checkbox">
+				{{ form_widget(form.parameter.newsletter) }}
+				<label for="{{form.parameter.newsletter.vars.id}}"></label>
+				</div>
+				<p class="inline padLeft10">{{ form_label(form.parameter) }}</p>
+			</div>
+			<div class="blockCheckbox top20">
+				<div class="checkbox">
+				{{ form_widget(form.publicPolicy) }}
+				<label for="{{form.publicPolicy.vars.id}}"></label>
+				</div>
+				<p class="inline padLeft10">{{ form_label(form.publicPolicy) }}</p>
+			</div>
+		</div>
+
+		<div class="buttonFooter top50 centerText">
+		    <input class="buttonAction" type="submit" value="{{ 'layout.register' | trans }}" />
+
+			{% if app.request.get('_route') != 'fos_user_registration_register' %}
+					<button id="btnLog" class='buttonAction' >{{ 'layout.login'|trans }}</button>
+			{% endif %}
+		</div>
+	{{ form_end(form) }}

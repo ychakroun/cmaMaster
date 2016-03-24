@@ -7,7 +7,7 @@
     </div>
 {% endblock %}
 {% block main %}
-  <section class="param">
+  <section id="infos" class="param">
     <header class="headerSection">
       <div class="globalS">
         <div class="idSection">{{ "information_page.header" | trans }}</div>
@@ -29,27 +29,71 @@
               Vous devez remplir les informations suivante pour finaliser votre inscription et rendre votre profil public.
               Ces informations sont gardées confidentielles et servent à vous rémunérer.
             </p>
-          {{form_row(formInfo.username)}}
-          {{form_row(formInfo.email)}}
+            <p>
+              <label for="{{formInfo.username.vars.id}}">{{ "form.username" | trans }}</label><br>
+              {{form_widget(formInfo.username)}}
+            </p>
+            <p>
+              <label for="{{formInfo.email.vars.id}}">{{ "form.email" | trans }}</label><br>
+              {{form_widget(formInfo.email)}}
+            </p>
         </div>
         <div class="statut">
             <div class="titleS">
               <div>Statut</div>
             </div>
-          {{form_row(formInfo.information.zip)}}
-          {{form_row(formInfo.information.pays)}}
-          {{form_row(formInfo.information.zip)}}
-          {{form_row(formInfo.information.siret)}}
-          {{form_row(formInfo.information.zip)}}
-          {{form_row(formInfo.information.adress)}}
+          <p>
+            <label for="{{formInfo.information.siret.vars.id}}">{{ "form.information.siret" | trans }}</label><br>
+            {{form_widget(formInfo.information.siret)}}
+          </p>
+          <p>
+            <label for="{{formInfo.information.aBank.vars.id}}">{{ "form.information.aBank" | trans }}</label><br>
+            {{form_widget(formInfo.information.aBank)}}
+          </p>
+
+          <p>
+            <label for="{{formInfo.information.adress.vars.id}}">{{ "form.information.adress" | trans }}</label><br>
+            {{form_widget(formInfo.information.adress)}}
+          </p>
+
+          <p>
+            <label for="{{formInfo.information.zip.vars.id}}">{{ "form.information.zipcode" | trans }}</label><br>
+            {{form_widget(formInfo.information.zip)}}
+          </p>
+
+          <p>
+            <label for="{{formInfo.information.city.vars.id}}">{{ "form.information.city" | trans }}</label><br>
+            {{form_widget(formInfo.information.city)}}
+          </p>
+
+          <p>
+            <label for="{{formInfo.information.pays.vars.id}}">{{ "form.information.pays" | trans }}</label><br>
+            {{form_widget(formInfo.information.pays)}}
+          </p>
         </div>
-          {{form_row(formInfo.information.zip)}}
-          {{form_row(formInfo.information.aBank)}}
-          {{form_row(formInfo.information.ownerBank)}}
-          {{form_row(formInfo.information.resBank)}}
-          {{form_row(formInfo.information.rib)}}
-          {{form_row(formInfo.information.bic)}}
-          {{form_widget(formInfo)}}
+          <div class="bank">
+            <div class="titleS">
+              <div>Informations bancaires</div>
+            </div>
+            <p>
+              <label for="{{formInfo.information.ownerBank.vars.id}}">{{ "form.information.ownerBank" | trans }}</label><br>
+              {{form_widget(formInfo.information.ownerBank)}}
+            </p>
+            <p>
+              <label for="{{formInfo.information.resBank.vars.id}}">{{ "form.information.resBank" | trans }}</label><br>
+              {{form_widget(formInfo.information.resBank)}}
+            </p>
+            <p>
+              <label for="{{formInfo.information.rib.vars.id}}">{{ "form.information.rib" | trans }}</label><br>
+              {{form_widget(formInfo.information.rib)}}
+            </p>
+            <p>
+              <label for="{{formInfo.information.bic.vars.id}}">{{ "form.information.bic" | trans }}</label><br>
+              {{form_widget(formInfo.information.bic)}}
+            </p>
+
+
+          </div>
 
           <div class="button">
             <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "parameter_page.submit"|trans }}" />

@@ -22,8 +22,8 @@
           <ul>
             <li><a href="{{ url('listArtists') }}">Les artistes</a></li>
             <li><a href="{{ url('listGalleries') }}">La galerie</a></li>
-            <li>Le concept</li>
-            <li>Aide</li>
+            <li><a href="{{ url('concept') }}">Le concept</a></li>
+            <li><a href="{{ url('help') }}">Aide</a></li>
             {% if app.request.get('_route') != 'fos_user_registration_register' %}
             <li>
             {% if is_granted('ROLE_ARTIST') %}

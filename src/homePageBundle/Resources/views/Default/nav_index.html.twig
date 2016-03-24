@@ -1,5 +1,5 @@
 {% trans_default_domain 'FOSUserBundle' %}
-{% block nav %}  
+{% block nav %}
   <header id="header">
     <div id="globalH">
       <header id="headerHeader">
@@ -22,8 +22,8 @@
             <ul>
               <li><a href="{{ url('listArtists') }}">Les artistes</a></li>
               <li><a href="{{ url('listGalleries') }}">La galerie</a></li>
-              <li>Le concept</li>
-              <li>Aide</li>
+              <li><a href="{{ url('concept') }}">Le concept</a></li>
+              <li><a href="{{ url('help') }}">Aide</a></li>
               <li>
               {% if is_granted('ROLE_ARTIST') %}
                 {# image '@homePageBundle/Resources/img/login.png' #}

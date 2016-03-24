@@ -18,7 +18,7 @@
   {% embed 'homePageBundle:Default:navProfilArtiste.html.twig' with {'class':'gallery'}%}
   {% endembed %}
 </header>
-<div class="mainProfile grayBackground">
+<div id="galerie" class=" grayBackground">
     <div class="containerS">
       <aside class="aside">
         <div class="filtres-container">
@@ -26,7 +26,7 @@
           <div id="{{formfilter.vars.id}}">
           <div class="box">
             <input class="text" placeholder="mots lefs" type="text">
-            <button class="icon"><img src="img/search-black.png" alt=""></button>
+            <button class="icon"><img src="{{asset('img/search-black.png')}}" alt=""></button>
           </div>
           <div class="supports cat-filtres">
             <p>Supports</p>
@@ -55,6 +55,7 @@
               <li>
                 <div class="checkbox">
                   {{form_widget(widths)}}
+                  <label for="{{widths.vars.id}}"></label>
                 </div>
                 <p>{{widths.vars.label}}</p>
               </li>
@@ -68,6 +69,7 @@
               <li>
                 <div class="checkbox">
                   {{form_widget(prices)}}
+                  <label for="{{prices.vars.id}}"></label>
                 </div>
                 <p>{{prices.vars.value}}</p>
                 {% endfor %}
@@ -85,11 +87,9 @@
           <p class="prix-croiss"><span>Prix croissants</span></p>
           <p class="prix-decroiss"><span>Prix décroissants</span></p>
         </div>
-        <ul id="galerieLink">
+        <ul>
           <section class="galerie">
             <div class="containerS">
-              <div class="titleS">
-              </div>
               <div class="contentS">
                 <ul>
                 {% for piece in pieces %}

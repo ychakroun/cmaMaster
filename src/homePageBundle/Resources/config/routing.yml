@@ -123,3 +123,11 @@ listGalleries:
 listArtists:
     path:     /artist
     defaults: { _controller: homePageBundle:Artist:index }
+
+concept:
+    path:   /Concept
+    defaults: { _controller: homePageBundle:Concept:index }
+
+help:
+    path:   /Help
+    defaults: { _controller: homePageBundle:Help:index }

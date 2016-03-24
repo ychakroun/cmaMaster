@@ -32,7 +32,7 @@
           <div id="{{formfilter.vars.id}}">
           <div class="box">
             <input class="text" placeholder="mots lefs" type="text">
-            <button class="icon"><img src="img/search-black.png" alt=""></button>
+            <button class="icon"><img src="{{asset('img/search-black.png')}}" alt=""></button>
           </div>
           <div class="supports cat-filtres">
             <p>Supports</p>
@@ -61,6 +61,7 @@
               <li>
                 <div class="checkbox">
                   {{form_widget(widths)}}
+                  <label for="{{widths.vars.id}}"></label>
                 </div>
                 <p>{{widths.vars.label}}</p>
               </li>
@@ -74,17 +75,22 @@
               <li>
                 <div class="checkbox">
                   {{form_widget(prices)}}
+                  <label for="{{prices.vars.id}}"></label>
                 </div>
                 <p>{{prices.vars.value}}</p>
                 {% endfor %}
               </li>
             </ul>
           </div>
-        <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.filterPieces.submit"|trans }}" />
+
       </div>
       </form>
+      <div class="centerText top50">
+        <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.filterPieces.submit"|trans }}" />
+      </div>
       </div>
       </aside>
+
       <div class="contentS">
         <div class="filtres-top">
           <p class="nouveaute"><a href="{{path('listGalleries',{'topfilter':'null'})}}"><span>Nouveautés</span></a></p>
@@ -113,20 +119,21 @@
           {% endif %}
           {% endfor %}
         </ul>
+        <footer class="footerNav">
+          <div> <span>&lt;</span>
+          <nav>
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+          </nav>
+          <span>&gt;</span> </div>
+        </footer>
       </div>
     </div>
-    <footer class="footerNav">
-      <div> <span>&lt;</span>
-      <nav>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-        </ul>
-      </nav>
-      <span>&gt;</span> </div>
-    </footer>
+
   </section>
 {% endblock %}
