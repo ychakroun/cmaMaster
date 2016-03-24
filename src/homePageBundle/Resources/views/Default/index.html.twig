@@ -22,6 +22,7 @@
             <ul>
             {% if listArtists.indexAction %}
                 {% for artist in listArtists.indexAction %}
+									<a href="{{ path('artist_profile', { 'username': artist.username }) }}">
                     <li class="blocArtiste">
                          <div class="globalBlocArtiste">
                             <header class="headerBlocArtiste">
@@ -52,6 +53,7 @@
                             <div class="contentBlocArtiste">
                                 <ul>
                                   <li class="imgLiquidFill">
+																		<div class="description"><div class="content">{{profile.description}}</div></div>
                                     {% if profile.imageHeader %}
                                       <img src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
                                     {% else %}
@@ -84,6 +86,7 @@
                           {% endif %}
                         </div>
                     </li>
+									</a>
                 {% endfor %}
             {% else %}
                 <h1>
