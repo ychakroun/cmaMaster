@@ -73,7 +73,7 @@ class User extends BaseUser
     private $profile;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CmaUserBundle\Entity\Estimate")
+     * @ORM\ManyToMany(targetEntity="CmaUserBundle\Entity\Estimate", cascade={"persist","remove"})
      * @ORM\JoinTable(name="users_estimates",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="estimate_id", referencedColumnName="id", unique=true)}
@@ -224,7 +224,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function addEstimate(\CmaUserBundle\Entity\Estimate $estimate)
+    public function addEstimate(\CmaUserBundle\Entity\Estimate $estimate = null)
     {
         $this->estimates[] = $estimate;
 
@@ -236,7 +236,7 @@ class User extends BaseUser
      *
      * @param \CmaUserBundle\Entity\Estimate $estimate
      */
-    public function removeEstimate(\CmaUserBundle\Entity\Estimate $estimate)
+    public function removeEstimate(\CmaUserBundle\Entity\Estimate $estimate = null)
     {
         $this->estimates->removeElement($estimate);
     }

@@ -80,6 +80,7 @@ class EstimateController extends Controller
     public function createAction(Request $request)
     {
       $user = $this->get('security.token_storage')->getToken()->getUser();
+      $em = $this->getDoctrine()->getManager();
       if (!is_object($user)) {
         throw new AccessDeniedException('This user does not have access to this section.');
       }
@@ -92,9 +93,7 @@ class EstimateController extends Controller
             }else if($formEstimate->get('save')->isClicked()){
               $estimate->setIsPublic(false);
             }
-            $estimate->setOwnerId($estimate);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($estimate);
+            $estimate->setOwnerId($user->getId());
             $user->addEstimate($estimate);
             $em->persist($user);
             $em->flush();
