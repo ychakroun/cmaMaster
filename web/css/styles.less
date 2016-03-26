@@ -580,23 +580,26 @@ height: 100%;
       .title{
         text-align: center;
         font-family: 'FuturaStd-MediumOblique';
-        font-size: 23px;
+        font-size: 28px;
         padding: 40px 0;
       }
       .equipe{
         margin-top: 30px;
         width: 100%;
+        position: relative;
+        color:#545454;
+        font-family: "robotoregular";
+        font-size: 14px;
+      }
+      .imagefooter{
         height: 500px;
         position: relative;
-        font-size: 0;
-        .pics{
-          height: 123px;
-          width: 123px;
-          .inline;
-          background: #000;
-          &:first-child{float: left;}
-          &:nth-child(2){margin-left: 280px;}
-          &:nth-child(3){float: right;}
+        img{
+          position: absolute;
+          transform: translate(-50%,0);
+          left:50%;
+          height: 500px;
+          width: auto;
         }
       }
     }
@@ -609,15 +612,14 @@ height: 100%;
         .block{
           .inline;
           width: 50%;
-          height: 323px;
+          min-height:323px;
           position: relative;
           font-size: 14px;
           .content{
             position: absolute;
-            top: 0;
             vertical-align: top;
             transform: translate(0,-50%);
-            top:50%;
+            top:40%;
             .titreContent{
               font-size: 18px;
               padding-bottom: 20px;
@@ -631,20 +633,49 @@ height: 100%;
           }
         }
         .image{
-          width: 250px;
-          height: 250px;
-          margin: 30px 25%;
+          width: 350px;
+          height: 350px;
+          border: solid 1px #919191;
           border-radius: 50%;
-          background: #000;
         }
       }
       &:nth-child(odd){
         background-color: #fff;
         text-align: left;
+        .image{
+          margin: 50px 0%;
+        }
       }
       &:nth-child(even){
         background-color: #f5f4f4;
         text-align: right;
+        .image{
+          margin: 50px 25%;
+        }
+      }
+      &:first-child{
+        .image{
+          background: url('../img/motion-01.jpg')no-repeat 50% 50%;
+          background-size: 160%;
+        }
+      }
+      &:nth-child(2){
+        .image{
+          background: url('../img/motion-02.jpg')no-repeat 50% 50%;
+          background-size: 160%;
+        }
+      }
+      &:nth-child(3){
+        .image{
+          background: url('../img/motion-03.jpg')no-repeat 50% 50%;
+          background-size: 160%;
+        }
+      }
+      &:nth-child(4){
+        .image{
+          background: url('../img/motion-04.jpg')no-repeat 50% 50%;
+          background-size: 180%;
+        }
       }
     }
   }
