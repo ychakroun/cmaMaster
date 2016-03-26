@@ -92,7 +92,7 @@
         <ul id="galerieLink">
         {% for piece in pieces %}
           <li>
-            <div class="images">
+            <div class="images imgLiquidFill">
             {% if piece.image1 %}
               <img src="{{asset("images/"~piece.image1.path)}}" alt="">
             {% else %}
