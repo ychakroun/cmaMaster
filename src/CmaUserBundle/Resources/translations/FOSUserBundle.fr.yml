@@ -210,3 +210,104 @@ estimate_page:
     header: 'Commandes'
 proposal_page:
     header: 'Commandes'
+help:
+  notice: "Cette page est faite pour répondre aux principales questions que vous pourrez être amenés à vous poser. Cette liste est non exhaustive, c'est pourquoi, si vous avez un quelconque doute, n'hésitez jamais à nous contacter personnellement au 06 XX XX XX XX ou via la boite de dialogue ci-dessous."
+  artist:
+    question1: "Et au niveau du transport, qui est en charge ?"
+    question2: "Et Custom My Art, comment se rémunère-t-il ?"
+    question3: "Et pour les droits à l’image sur les œuvres ?"
+    question4: "Faut-il obligatoirement être inscrit à la maison des artistes ou à l’agessa pour commencer sur Custom My Art ?"
+    question5: "Sommes-nous obligés de communiquer avec le client lors du processus de création ?"
+    question6: "Comment constituer le devis de notre œuvre ?"
+    question7: "Comment se passe le pré-paiement ?"
+    question8: "J’ai terminé la mission mais je n’ai pas encore perçu les fonds. Que faire ?"
+    question9: "Comment optimiser mon profil pour qu’il remonte dans les résultats de recherche ?"
+    question10: "Que se passe-t-il si je refuse un projet ?"
+    question11: "Comment est calculé mon taux de réponse ?"
+    question12: "Le client a accepté mon devis mais je n’ai pas encore été payé, est-ce normal ?"
+    question13: "Comment annuler un devis non prépayé ?"
+    question14: "Comment remplir un devis à un client Hopwork ?"
+    question15: "Je suis affilié à la Maison Des Artistes (MDA), comment faire mon<br>devis ?"
+    answer1:
+      block1: "L'emballage ainsi que le transport de l'œuvre est à la charge unique de l'artiste. En effet, la livraison fait partie intégrante de la proposition que l'artiste doit soumettre à son client. Il est fortement conseillé de faire appel à des organismes de livraison spécialisés. Cependant, il est possible de négocier et s'accorder avec son client sur une toute autre proposition de livraison."
+      block2: "Rappelez-vous seulement que vous en êtes entièrement responsable."
+    answer2:
+      block1: "Le modèle financier de Custom My Art est extrêmement simple. Il repose sur une dualité : l'artiste fait son profit ; le processus de commande est gratuit pour le client. Custom My Art prélèvera une commission fixe de 15% HT sur chaque transactions financières menées sur la plateforme (Galerie On-line et œuvres sur-mesure)."
+      block2: "Outre le service de mise en relation, Custom My Art met à disposition de ses artistes des services supplémentaires sous la forme de packs premium."
+      block3: "Pour les artistes qui souscrivent au PACK AGENT, la commission prise par CMA sur la vente de l'œuvre finale sera de 25% HT."
+    answer3:
+      block1: "Vous réalisez une œuvre, l'intégralité des droits à l'image de cette dernière vous revient.  Custom My Art se donne simplement le droit d'utiliser vos œuvres dans le seul et unique cadre de la promotion et de la communication de votre profil ou de la plateforme."
+      block2: "C'est votre œuvre, ce sont vos droits !"
+    answer4:
+      block1: "Il n'est absolument pas obligé d'apparaître sur les listes de La Maison des Artistes ou de l'Agessa pour pouvoir créer un profil et proposer son art sur la plateforme. Afin d'être dans la légalité, la seule recommandation qu'il vous ai demandé est de nous fournir un N°SIRET."
+      block2: "Obtenez votre N°SIRET en seulement 5min en vous déclarant autoentrepreneur et commencez votre activité !"
+    answer5:
+      block1: "Custom My Art n'est personne pour vous obliger à quoi que ce soit. Cependant, nous vous recommanderons toujours de discuter, d'échanger et de partager toutes les informations nécessaires à la réalisation de votre œuvre."
+      block2: "Plus vous communiquerez avec votre client, plus il sera satisfait de votre œuvre !"
+    answer6:
+      block1: "Custom My Art vous met à disposition un devis pré rempli. Ce devis devra obligatoirement contenir une description écrite de votre futur œuvre, une proposition budgétaire et un délai."
+      block2: "Plus votre devis sera complet, plus vos chances de finaliser la commande avec votre client seront élevées. Joindre un croquis de votre future œuvre dans le devis est un facteur non négligeable."
+    answer7:
+      block1: "Lorsque votre client accepte votre devis nous lui demandons de pré-payer le montant de la mission sur un compte de séquestre. Le pré-paiement permet de sécuriser le paiement de la mission et d’instaurer un cadre de confiance entre vous et votre client. Grâce à cette solution, vous commencez à travailler une fois que les fonds ont été versés et se retrouvent bloqués sur un compte séquestre. Vous pouvez réaliser votre mission en toute sécurité, les fonds sont alors débloqués une fois que le vous et le client validez que la mission est bien terminée."
+    answer8:
+      block1: "Pour finaliser le paiement, assurez vous auprès du client qu’il a bien lui aussi cliqué sur <b>Terminer la mission</b>. Si le client vous informe qu’il a bien payé alors appelez nous, il se peut que les clients paient par virement bancaire et oublient d’indiquer la référence, il nous faut donc faire un rapprochement manuel entre son paiement et votre facture."
+    answer9:
+      block1: "Pour augmenter votre visibilité sur la plateforme et être bien placé dans les recherches, il faut avoir un profil complet et à jour. Concrètement, cela consiste à bien choisir ses mots-clés - qui définissent vos compétences -, avoir un taux de réponse supérieur à 80 %, et surtout avoir des recommandations et des commentaires clients suite à des missions !Nous mettons aussi en avant les profils des nouveaux Hopworkers et les profils qui sont mis à jour (par exemple lorsque vous changez votre statut de “ponctuellement” à “disponible”)."
+      block2: "Enfin, l’algorithme de notre moteur de recherche va favoriser les profils qui concrétisent des missions avec des entreprises (c.a.d. qui ont un bon taux de conversion des contacts en devis puis en missions). C’est donc un cercle vertueux puisque faire des missions permet d’avoir plus de contacts et donc plus de propositions de missions intéressantes. De même veillez à bien vous mettre en “indisponible” quand vous ne pouvez pas prendre plus de missions pour ne pas devoir répondre “non” trop souvent à des clients."
+    answer10:
+      block1: "Évidemment, vous n’êtes pas obligé de répondre “oui” à tous les projets qui vous sont proposés. S'ils ne conviennent pas à vos compétences, si vous avez un planning trop chargé, ou tout simplement si la mission ne vous plaît pas vous pouvez dire “non” au client. Il est important cependant de répondre à son message… Et c’est bien plus professionnel et poli ;)"
+    answer11:
+      block1: "Le taux de réponse qui influence votre classement dans les résultats de recherche est calculé en fonction de vos réponses lorsqu’une nouvelle conversation est engagée avec vous. Une fois que vous avez répondu au premier message d’une personne, vous ne risquez pas d’avoir un mauvais taux de réponse. Donc si vous n’êtes pas disponible n’oubliez pas de le signaler professionnellement à votre client. On ne sait jamais, il pourrait de nous nouveau faire appel à vous !"
+    answer12:
+      block1: "Grâce à notre système de pré-paiement, le client est à même de verser les fonds de votre mission sur un compte de séquestre dès qu’il accepte le devis. Si vous souhaitez être sûr que votre client dispose bien des fonds pour vous payer vérifiez avant de commencer votre mission que le devis est bien en état “mission démarrée” et non pas “Mission acceptée (en attente de provision)”.Une fois la mission terminée, c’est le client qui débloque ces fonds en indiquant que la mission est terminée et vous les percevrez sous 2 jours ouvrés. Il est donc important de relancer le client avant de débuter votre travail pour qu’il pré-paie votre mission. Si vous n’êtes pas à l’aise n’hésitez pas à demander un coup de main à l’équipe Hopwork, nous sommes là pour ça! Dès que la mission sera pré-payée, vous en serez averti via une notification mail."
+    answer13:
+      block1: "Dans le cas où une mission n’aboutit pas, ou si vous avez fait un doublon de devis, vous pouvez annuler le devis. Pour cela rendez-vous dans la rubrique “Mes devis”. En cliquant sur le devis que vous désirez annuler vous pouvez le supprimer. Sachez cependant que si vous avez fait une erreur en réalisant votre devis, dans le montant par exemple, ou si vous voulez rajouter des prestations vous pouvez simplement modifier le devis à tout moment tant que la mission n’est pas terminée."
+    answer14:
+      block1: "Il vous suffit de vous rendre dans la fenêtre de conversation avec votre client et de cliquer sur “Etablir un devis”. Vous avez la possibilité de détailler tâches par tâches ce que vous allez réaliser et d’indiquer le montant précis de ces prestations. Le calcul se fait alors automatiquement. Avec cette interface vous pouvez tout de suite voir quel sera le montant de la commission Hopwork (10% HT). Tout est OK pour vous ? Vous pouvez alors envoyer votre devis au client !"
+    answer15:
+      block1: "Les personnes qui dépendent de la Maison Des Artistes (MDA) sont soumises au système de précompte ou “prélèvement à la source”. Cela signifie qu’une partie de vos contributions sociales sont prélevées à la source. Votre client devra donc payer9,40% du montant de facture HT à la MDA et le reste via Hopwork. Vous devez alors indiquer dans vos mentions légales que vous êtes affilié à la MDA et qu’une partie de la facture (9,40% du montant HT) doit être réglée directement auprès d’eux. Voici un exemple de texte que vous pourriez utiliser dans vos mentions légales (vous êtes bien sûr libre de le modifier) :"
+      block2: "Membre d’une association agréée. Contribution Maison Des Artistes à la charge du diffuseur :"
+      block3: "- Les sommes précomptées d’un montant de 9,40% du montant HT de la facture ainsi que la contribution diffuseur de 1,1% sont à verser directement par chèque à l’intention de la MDA au 60, rue du Faubourg Poissonnière, 75484 Paris Cedex 10 lors de la déclaration trimestrielle du client à la MDA"
+      block4: "- Le solde (soit 90,60% de la facture HT) est à régler par virement bancaire à Hopwork en précisant bien la référence de la transaction (IBAN : FR76 18829 7541601736222242 51, BIC : CMBRFR2BCME)"
+      block5: "Attention il faut bien préciser à votre client qu’il doit déclarer à la MDA l’ensemble de vos rémunérations chaque trimestre afin de payer ses précomptes et contributions diffuseurs. Le formulaire est"
+      block6: ". Une fois cette déclaration effectuée il doit vous retourner un certificat de précompte complété et signé qui justifie qu’il a bien réglé les précomptes auprès de la Maison Des Artistes."
+      block7: "Vous devez prévenir le support de Hopwork que vous êtes à la MDA et nous préciser le montant que vous devez recevoir sur votre compte Hopwork. Nous modifierons alors votre devis en conséquence pour que votre client ne puisse régler que les 90,60% qui vous sont dus. Attention, il n’y a pas de précompte à verser dans le cas où votre client est un particulier, une société étrangère, un commerçant d’art ou s’il s’agit d’une rétrocession d’honoraires entre affiliés de la MDA."
+      block8: "Enfin, si vous n’avez pas fait ces démarches et que votre client n’a pas versé de précompte, pas de panique, tout va bien se passer! Vous devrez déclarer vos revenus annuels à la MDA en précisant votre bénéfice et le total précompté par chaque client. A ce moment là la MDA va calculer le montant réel des cotisations dues, puis en déduire les cotisations précomptées, et hop, le restant à payer est ensuite appelé chaque trimestre."
+  user:
+    question1: "Comment contacter un artiste ?"
+    question2: "Est-il possible de négocier le devis directement auprès des artistes ?"
+    question3: "Que se passe-t-il si l'œuvre ne correspond pas à ma commande ?"
+    question4: "Que se passe-t-il si l'œuvre est livrée endommagée ?"
+    question5: "Comment fonctionne le système de paiement ?"
+    question6: "Le paiement est-il sécurisé ?"
+    question7: "Les artistes sont-ils sélectionnés ?"
+    question8: "Y-a-t-il une échelle de prix pour les commandes sur-mesure ?"
+    question9: "Que se passe-t-il si je n'ai pas d'idée précise de ce que je veux ?"
+    answer1:
+      block1: "Custom My Art a été pensé pour que la mise en relation entre vous et l'artiste soit la plus simple et fluide possible. Ainsi, vous avez deux possibilités pour contacter un artiste : soit directement sur son profil, en actionnant le bouton Demander un devis ; soit en remplissant le formulaire de commande présent sur la home page, derrière le bouton Demandez un devis. Cette dernière action enverra votre demande à toute la communauté d'artistes de Custom My Art."
+      block2: "Demandez un devis à l'ensemble de la communauté d'artistes Custom My Art ou directement vers votre artiste préféré !"
+    answer2:
+      block1: "Lorsque vous envoyez une demande de devis à un artiste, une page commune entre vous et l'artiste s'ouvre. Custom My Art vous donne ici la possibilité de discuter en temps réel avec l'artiste, avant même qu'un contrat ne soit signé."
+      block2: "Le but est ici de vous permettre de choisir l'artiste qui répondra au plus près à vos attentes !"
+    answer3:
+      block1: "Si vous considérez que l'œuvre reçu ne correspond pas à votre commande, refusez-là immédiatement auprès du transporteur. Elle sera alors rétrocédée à l'artiste. Actionnez le bouton Faire une réclamation présent l'espace de la plateforme consacré à votre œuvre. Cela informera directement un membre de l'équipe Custom My Art qui vous contactera dans les plus courts délais. Le montant de la vente ne vous sera bien évidemment pas débité. "
+      block2: "Dans ce cas de litige, le rôle de Custom My Art est de mettre tous les documents à disposition des deux partis pour faire la lumière sur les responsabilités de chacun."
+      block3: "Il est primordial que vous vérifiiez chaque détail de votre œuvre lorsqu'elle vous sera livrée !"
+    answer4:
+      block1: "Si vous constatez un dommage sur votre œuvre lors de sa livraison, refusez-la auprès du transporteur, qui se chargera de la retourner à l'artiste. C'est ensuite au tour des assurances de transport de ce dernier de prendre le relai. "
+      block2: "Actionnez le bouton Œuvre refusée présent l'espace de la plateforme consacré à votre œuvre. Cela informera directement un membre de l'équipe Custom My Art qui vous contactera dans les plus courts délais. Le montant de la vente ne vous sera bien évidemment pas débité. "
+      block3: "Nous mettons un point d'orgue à vous contacter dans les œuvres qui suivent votre refus et à vous accompagner afin de régler le litige !"
+    answer5:
+      block1: "Lorsque vous validé un devis avec l'artiste que vous aurez choisi, il vous ai demandé de déposer le montant de la vente sur un compte sécurisé. Ce montant sera bloqué pendant tout le processus créatif, et débloqué lorsque vous aurez actionné le bouton Œuvre livrée lors de sa réception."
+      block2: "Le montant de la vente est contrôlé et sécurisé à chaque moment de la conception à la livraison !"
+    answer6:
+      block1: "Custom My Art est en partenariat avec la société de paiement Leetchi SAS, qui met à disposition de la plateforme l'un des services les plus sécurisé au monde. L'ensemble du processus de paiement est entièrement contrôlé et verrouillé, et ce à tout moment. Aucune information bancaire n'est stockée sur CustomMyArt.com."
+    answer7:
+      block1: "Custom My Art vous met à disposition une communauté d'artistes exclusivement professionnel. Nous sélectionnons scrupuleusement chaque profil entrant afin qu'ils répondent à des critères de qualité et de savoir-faire artistique. "
+      block2: "Cette sélection nous permet de vous offrir la meilleure communauté d'artiste d'art urbain qui existe !"
+    answer8:
+      block1: "Vous êtes entièrement libre d'estimer le prix de votre œuvre selon votre budget. Ce prix sera susceptible d'être revalorisé ensuite avec les artistes. "
+      block2: "Simplement, dans le monde de l'art une règle doit être respectée : le prix doit comprendre à minima les matériaux, le transport (comprenant le conditionnement) ainsi que la prestation de l'artiste. Suivant votre projet, chaque artiste jugera par lui-même s'il est prêt à y répondre."
+    answer9:
+      block1: "Custom My art possède une communauté d'artiste plus créative que jamais. Ils se feront une joie de vous proposer des œuvres et laisser libre court à leur imagination. Vous pourrez toujours en discuter avec eux ensuite."
+      block2: "N'hésitez pas à confronter plusieurs approches artistiques différentes en lançant des appels d'offres à notre communauté !"
