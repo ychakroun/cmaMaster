@@ -311,3 +311,30 @@ help:
     answer9:
       block1: "Custom My art possède une communauté d'artiste plus créative que jamais. Ils se feront une joie de vous proposer des œuvres et laisser libre court à leur imagination. Vous pourrez toujours en discuter avec eux ensuite."
       block2: "N'hésitez pas à confronter plusieurs approches artistiques différentes en lançant des appels d'offres à notre communauté !"
+concept:
+  step1:
+    title: "Etape n°1"
+    block1: "Présentez votre idée en seulement quelques minutes grâce au formulaire de commande CMA disponible à partir des boutons Demander un devis. Ces boutons sont présents sur la page d'accueil ou directement sur le profil de l'artiste de votre choix."
+    block2: "Renseignez alors votre budget, les matériaux à utiliser, le support, ou encore le délai à respecter."
+    block3: "Votre formulaire peut prendre la forme d'un véritable cahier des charges avec des idées concrètes, ou au contraire, des idées abstraites, un concept, des couleurs… "
+    block4: "Un conseiller CMA sera à vos côtés pour vous aider à exprimer au mieux vos envies !"
+  step2:
+    title: "Etape n°2"
+    block1: "Envoyez votre projet directement à un artiste via son profil, ou bien à l'ensemble de la communauté créative Custom My Art."
+    block2: "Recevez alors des dizaines de propositions artistiques entièrement personnalisées."
+    block3: "Si vous avez une idée précise de votre projet, n'hésitez pas à envoyer directement votre appel à projet vers un artiste en particulier. Si vous souhaitez confronter différentes approches artistiques à votre idée originelle, procédez en appel d'offre !"
+  step3:
+    title: "Etape n°3"
+    block1: "Échangez avec les artistes via notre messagerie interne et imaginez ensemble votre projet. "
+    block2: "Il ne reste plus qu'à déterminez votre coup de cœur !"
+    block3: "Les propositions des artistes contiennent un croquis, une note ainsi qu'une proposition budgétaire précise. Notre messagerie interne vous permet de suivre et de guider votre artiste avant et pendant le processus de créations"
+  step4:
+    title: "Etape n°4"
+    block1: "Si vous validez une proposition artistique, vous devez placer le montant de la prestation sur un compte sécurisé. Bien évidemment, ce montant sera bloqué pendant tout le processus créatif et débloqué lorsque vous aurez validé la réception de votre œuvre. "
+    block2: "L'artiste réalise l'œuvre au sein de son atelier ou bien directement chez vous. Il s'occupe à 100% de la livraison."
+    block3: "Enfin, découvrez votre œuvre et, si elle correspond à vos attentes, les fonds relatifs à la vente sont débloqués."
+    block4: "SI vous refusez une proposition budgétaire, le processus de commande s'arrête et rien ne vous sera facturé !"
+  follow:
+    title: "Suivi Post Commande"
+    block1: "Si vous n'êtes pas satisfaits de l'œuvre livrée, CMA s'autorise à reprendre les échanges entre vous et l'artiste afin de définir si l'œuvre en question est conforme à la proposition validée. Si ce n'est pas le cas, la transaction finale sera purement et simplement annulée."
+    block2: "Pour plus d'informations, rendez-vous sur CGU & CGV "
