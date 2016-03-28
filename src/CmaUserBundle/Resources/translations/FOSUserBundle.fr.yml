@@ -89,7 +89,7 @@ form:
         placeholder: 'Votre message'
         file: 'Ajouter une piece jointe'
     estimate:
-        title: 'Titre de l''oeuvre'
+        title: "Titre de l'oeuvre"
         medium: 'Support'
         deliveryAddress: 'Adresse de livraison / Réalisation '
         day: 'Délais'
@@ -199,6 +199,8 @@ estimate:
             single: 'Demande de devis en cours'
     proposal:
         show: 'Voir la proposition'
+        single: 'Proposition reçu'
+        plurial: "Propositions reçus"
         create: 'Proposer une création'
         unread:
             single: 'message non lu'
@@ -206,6 +208,7 @@ estimate:
         artist:
             list:
                 single: 'Propostion en attente'
+
 estimate_page:
     header: 'Commandes'
 proposal_page:

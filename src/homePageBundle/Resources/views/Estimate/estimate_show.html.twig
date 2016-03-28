@@ -17,10 +17,10 @@
     </header>
     <div class="containerS">
       {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
-      <div class="contentS">
+      <div class="contentS f0">
         {% if estimates|length > 0 %}
           <header class="headerEstimates">
-            <div class="Name" style="border-bottom:2px solid black;width:100%;padding-bottom:10px;margin-bottom:40px">
+            <div class="titleS" style="">
               {% if estimates|length > 1 %}
                 {{ estimates|length }}
                 {{"estimate.show.title.plurial" | trans }}
@@ -55,11 +55,12 @@
                   <div><p>{{ estimate.date.date|date("d/m/Y") }} - {{ estimate.date.date|date("H:i") }}</p></div>
                 </div>
                 <div class="infoEstimate">
-                  <div class="budget"><p>{{ estimate.budget }} </p></div>
+                  <div class="budget"><p>{{ estimate.budget }} €</p></div>
                   <div class="timeLimit"><p>{{ estimate.timeLimit.date|date("d/m/Y") }} </p></div>
                   <div class="technics"><p>{{ estimate.technics }}</p></div>
                 </div>
                 <div class="estimateProposals">
+                <p>
                 {% if not is_granted('ROLE_ARTIST') %}
                   {% if estimate.proposals %}
                     {% for proposal in estimate.proposals %}
@@ -68,48 +69,55 @@
                           {% if comment.unread %}
                             {% if comment.unread|length > 1 %}
                               {{ comment.unread|length }}
-                              {{ 'estimate.proposal.comment.plurial' }}
+                              {{ 'estimate.proposal.unread.plurial' | trans }}
                             {% else %}
                               {{ comment.unread|length }}
-                              {{ 'estimate.proposal.comment.single' }}
+                              {{ 'estimate.proposal.unread.single' | trans}}
                             {% endif %}
                           {% endif %}
                         {% endfor %}
                       {% endif %}
                     {% endfor %}
+                  </p>
+                    <p>
                     {% if estimate.proposals|length > 1 %}
                           {{ estimate.proposals|length }}
-                          {{ 'estimate.proposals.plurial'|trans }}
+                          {{ 'estimate.proposal.plurial'| trans }}
                     {% else %}
                           {{ estimate.proposals|length }}
-                          {{ 'estimate.proposals.single'|trans }}
+                          {{ 'estimate.proposal.single'| trans }}
                     {% endif %}
+                  </p>
                   {% endif %}
+
                 {% elseif is_granted('ROLE_ARTIST') %}
+                  <div class="description">
                     {{ estimate.description|length > 50 ? estimate.description|slice(0, 50) ~ '...' : estimate.description  }}
+                  </div>
                 {% endif %}
+
                 </div>
                 {% if not is_granted('ROLE_ARTIST') or estimate.owner %}
                   <a href="{{ path('user_estimate_proposals',{'id': estimate.id} ) }}">
                     <div class="action">
                       {% if  estimate.proposals|length > 1 %}
-                        {{ estimate.proposals|length}} {{ 'estimate.proposal.artist.list.single'|trans }}
+                        {{ estimate.proposals|length}} {{ 'estimate.proposal.artist.list.single'| trans }}
                       {% else %}
-                        {{ estimate.proposals|length}} {{ 'estimate.proposal.artist.list.single'|trans }}
+                        {{ estimate.proposals|length}} {{ 'estimate.proposal.artist.list.single'| trans }}
                       {% endif %}
                     </div>
                   </a>
                 {% elseif is_granted('ROLE_ARTIST') %}
                   <a href="{{ path('proposal_create',{'id': estimate.id} ) }}">
                     <div class="action">
-                      {{ 'estimate.proposal.create'|trans }}
+                      {{ 'estimate.proposal.create'| trans }}
                     </div>
                   </a>
                 {% endif %}
               </div>
            {% endfor %}
         {% else %}
-          <div><p>{{ 'estimate.user.notExist' |trans}}</p></div>
+          <div><p>{{ 'estimate.user.notExist' | trans}}</p></div>
         {% endif %}
       </div>
   </section>

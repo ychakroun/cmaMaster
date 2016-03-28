@@ -281,67 +281,68 @@ ul,li{
   }
 }
 #galerie{
-.contentS{
-padding-top: 70px;
-width: 620px;
-.inline;
-.filtres-top{
-font-family: 'robotomedium';
-vertical-align: top;
-color:#000;
-border-bottom: 1px solid #000;
-width: 100%;font-size : 0 ;
-p{.inline;font-size : 15px;padding-bottom: 5px;
-a{color: #000; text-decoration: none;}}
-.nouveaute{width: 33%;}
-.prix-croiss{width: 34%;text-align: center;}
-.prix-decroiss{width: 33%;text-align: right;}
-}
-#galerieLink{font-size: 0;
-padding-top: 55px;
-li{
-margin-bottom: 40px;
-box-sizing: border-box;
-border: 1px solid #000;
-width: 300px; height: 320px; .inline;font-size: 0px;padding: 0;
-.images{font-size: 0;width: 100%;height: 245px;img{height: 100%;width: 100%;}}
-.infos{
-color: #000;font-size: 16px;font-family: 'robotomedium';
-.decriptions{
-  float: left;padding-left: 20px;padding-top: 15px;
-  .name{}
-    .title{font-size: 12px;color:#ac0012;}
+  .contentS{
+    padding-top: 70px;
+    width: 620px;
+    .inline;
+    .filtres-top{
+    font-family: 'robotomedium';
+    vertical-align: top;
+    color:#000;
+    border-bottom: 1px solid #000;
+    width: 100%;font-size : 0 ;
+    p{.inline;font-size : 15px;padding-bottom: 5px;
+    a{color: #000; text-decoration: none;}}
+    .nouveaute{width: 33%;}
+    .prix-croiss{width: 34%;text-align: center;}
+    .prix-decroiss{width: 33%;text-align: right;}
   }
-  .price{float: right;padding-right: 20px;padding-top: 15px;}
-}
-&:nth-child(5n+1){margin-right: 0px;width: 620px;}
-&:nth-child(5n+2){margin-right: 10px;}
-&:nth-child(5n+3){margin-left: 10px;}
-&:nth-child(5n+4){margin-right: 10px;}
-&:nth-child(5n+5){margin-left: 10px;}
-}
-}
-.footerNav{
-font-family: 'robotomedium';
-color: #000;
-border-top: 1px solid #000;
-div{
-text-align: center;
-margin-top: 10px;padding-bottom: 20px;
-span{margin-left: 10px; margin-right: 10px;}
-nav{.inline;
-ul{
-  li{.inline;font-size: 14px;box-sizing: border-box;
-    padding: 10px 15px;
-    margin: 20px 5px;
-    &:selected{border:solid  #000 1px;font-size: 18px;}
-    &:nth-child(2){border:solid  #000 1px;font-size: 18px;}//juste pour intégration
+  #galerieLink{
+    font-size: 0;
+    padding-top: 55px;
+    li{
+    margin-bottom: 40px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    width: 300px; height: 320px; .inline;font-size: 0px;padding: 0;
+    .images{font-size: 0;width: 100%;height: 245px;img{height: 100%;width: 100%;}}
+    .infos{
+    color: #000;font-size: 16px;font-family: 'robotomedium';
+    .decriptions{
+      float: left;padding-left: 20px;padding-top: 15px;
+      .name{}
+        .title{font-size: 12px;color:#ac0012;}
+      }
+      .price{float: right;padding-right: 20px;padding-top: 15px;}
+    }
+    &:nth-child(5n+1){margin-right: 0px;width: 620px;}
+    &:nth-child(5n+2){margin-right: 10px;}
+    &:nth-child(5n+3){margin-left: 10px;}
+    &:nth-child(5n+4){margin-right: 10px;}
+    &:nth-child(5n+5){margin-left: 10px;}
+    }
   }
-}
-}
-}
-}
-}
+  .footerNav{
+    font-family: 'robotomedium';
+    color: #000;
+    border-top: 1px solid #000;
+    div{
+    text-align: center;
+    margin-top: 10px;padding-bottom: 20px;
+    span{margin-left: 10px; margin-right: 10px;}
+    nav{.inline;
+    ul{
+      li{.inline;font-size: 14px;box-sizing: border-box;
+        padding: 10px 15px;
+        margin: 20px 5px;
+        &:selected{border:solid  #000 1px;font-size: 18px;}
+        &:nth-child(2){border:solid  #000 1px;font-size: 18px;}//juste pour intégration
+      }
+    }
+    }
+    }
+  }
+  }
 
 }
 .galerie{
@@ -519,6 +520,61 @@ height: 100%;
     &:nth-child(3){margin-left: 10px;}
   }
   padding-bottom:50px;
+}
+.estimateSummary{
+    .block{
+      font-size: 14px;
+      vertical-align: top;
+      margin-bottom: 20px;
+      .inline;width: 298px;
+      font-family: 'robotoregular';
+      &:nth-child(odd){margin-right: 10px;}
+      &:nth-child(even){margin-left: 10px;}
+        span{
+          width: 298px;
+          font-family: 'robotoitalic';
+          display: block;
+          color: #999;
+          border-bottom: solid #999999 1px;
+        }
+      }
+      .description{
+        font-size: 14px;
+        vertical-align: top;
+        margin-bottom: 20px;
+        .inline;width: 100%;
+        font-family: 'robotoregular';
+        span{
+          width: 620px;
+          font-family: 'robotoitalic';
+          display: block;
+          color: #999;
+          border-bottom: solid #999999 1px;
+        }
+      }
+
+    .title{
+      height: auto;
+      text-align: left;
+      font-size: 16px;
+      font-family: 'robotomedium';
+      border-bottom: 1px solid #000;
+      width: 625px;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      padding-top: 30px;
+      span{
+        font-family: 'FuturaStd-MediumOblique';
+        font-size: 20px;}
+    }
+
+    #uploadImage{
+      width: auto!important;
+      .imageEstimate{
+        width: 195px;
+        height: 195px;
+      }
+    }
 }
 #artistes{
   background: #151515!important;
@@ -858,7 +914,7 @@ height: 100%;
 }
 
 .param{
-  background: #f5f4f4;
+  background: #f5f4f4!important;
   font-family: 'robotoregular';
   .containerS{
     .aside{
@@ -876,6 +932,17 @@ height: 100%;
           }
         }
       }
+    }
+    .title{
+      height: auto;
+      text-align: left;
+      font-size: 16px;
+      font-family: 'robotomedium';
+      border-bottom: 1px solid #000;
+      width: 625px;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      padding-top: 30px;
     }
     .contentS{
       font-size: 14px;
@@ -942,14 +1009,16 @@ height: 100%;
   }
 }
 .estimates{
+  font-size: 0;
+  background: #fff;
+  &:nth-child(even){width: 298px; margin: 0 12px 0 0; }
+  &:nth-child(odd){width: 298px; margin: 0 0 0 12px;}
   a{text-decoration: none;color:black;}
   position: relative;
-  background: white;
   display: inline-block;
-  width: 50%;
-  font-size: 0;
   .header{
-    padding: 5px 20px;
+    position: absolute;
+    padding: 5px 15px;
     font-size: 14px;
     .delete{
       text-align: left;
@@ -974,10 +1043,20 @@ height: 100%;
     top:15%;
   }
   .infoEstimate{
+    text-align: center;
+    margin: 0 20px;;
+    border-bottom: 1px solid #000;
     font-size: 14px;
+    font-weight: bold;
     div{
       p{
         font-size: 14px;
+      }
+      &:first-child{
+          text-align: left;
+      }
+      &:last-child{
+          text-align: right;
       }
       width: 32%;
       display: inline-block;
@@ -985,22 +1064,41 @@ height: 100%;
       box-sizing: border-box;
       text-align: center;
     }
-    padding: 5px 20px;
+    padding: 5px 5px 20px ;
   }
   .estimateProposals{
-    font-size: 14px;
-    padding: 5px 20px;
-    text-align: center;
+    font-size: 0px;
+    width: 100%;
+    font-family: 'robotoregular';
+    padding: 15px 20px;
+    box-sizing: border-box;
+    color: #4b4b4b;
+    p{
+      width: 50%;
+      font-size: 12px;
+      display: inline-block;
+      &:first-child{
+        text-align: left;
+      }
+      &:last-child{
+        text-align: right;
+      }
+    }
+    div{
+      font-size: 12px;
+      text-align: center;
+    }
   }
   .titleEstimate{
-    padding: 40px 20px;
+    padding: 30px 20px 10px 20px;
     text-align: center;
     h4{
-      font-size: 20px;
+      font-family: 'robotoitalic';
+      font-size: 24px;
       font-style: bold;
     }
     div{
-      font-size: 11px;
+      font-size: 10px;
     }
   }
   .action{
@@ -1027,6 +1125,128 @@ height: 100%;
     .checkbox label{
       top:4px;
     }
+  }
+}
+
+.proposalCreate{
+  .title{
+    .headTitle{
+      font-family: 'FuturaStd-MediumOblique';
+      font-size: 20px;
+    }
+  }
+  .description{
+    width: 100%;
+  }
+    span{
+      width: 298px;
+      font-family: 'robotoitalic';
+      display: block;
+      color: #999;
+      border-bottom: solid #999999 1px;
+    }
+    #uploadImage{
+      width: auto!important;
+      .imagePiece{
+        width: 195px;
+        height: 195px;
+      }
+    }
+}
+
+.proposalsList{
+  width: 100%;
+  position: relative;
+  background: #fff;
+  height: 150px;
+  margin: 20px 0;
+
+  .headerP{
+    width: 150px;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    display: inline-block;
+    h4{
+      padding-top: 47px;
+      font-family: 'robotoitalic';
+      font-size: 22px;
+    }
+  }
+  .info{
+    position: absolute;
+    left: 180px;
+    top: 30px;
+    width: 260px;
+    display: inline-block;
+    div{
+      width: 30%;
+      text-align: center;
+      display: inline-block;
+      &:first-child{
+        text-align: left;
+      }
+      &:nth-child(3){
+        text-align: right;
+      }
+    }
+    .proposal{
+      width: 100%;
+      text-align: left;
+    }
+  }
+  .buttonAction{
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    top:45px;
+    padding: 15px 15px;
+  }
+  .delete{
+    position: absolute;
+    right: 15px;
+    top:3px;
+    a{
+      color: #000;
+      font-size: 20px;
+      text-decoration: none;
+    }
+  }
+
+}
+.titlePropo{
+  font-family: 'FuturaStd-MediumOblique';
+  font-size: 20px;
+}
+.titleproposal{
+  text-align: center;
+  color: #fff;
+  h3{font-family: 'FuturaStd-MediumOblique';font-size: 22px;padding-top: 40px;}
+}
+.proposals{
+  .infoproposal{
+    p{
+      span{
+        color: #999;
+      }
+    }
+  }
+}
+#comments{
+  .titleS{
+    padding-top: 0px!important;
+  }
+
+}
+.actionProposal{
+  text-align: center;
+  .buttonAction{
+    width: 97%!important;
+    font-size: 13px!important;
+    padding: 15px 0!important;
+  }
+  a{
+    text-decoration: none;
   }
 }
 
@@ -1617,7 +1837,9 @@ button{
 }
 
 /*padding & margin*/
+.f0{font-size: 0px;}
 .top20{margin-top: 20px;}
+.top30{margin-top: 30px;}
 .top50{margin-top: 50px;}
 .bottom20{margin-bottom: 20px;}
 .bottom30{margin-bottom: 30px;}

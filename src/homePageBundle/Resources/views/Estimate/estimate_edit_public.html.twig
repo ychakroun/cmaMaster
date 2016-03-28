@@ -19,74 +19,75 @@
     <div class="containerS">
       {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
       <div class="contentS">
-        <section id="devis">
+        <section id="devis" class="estimateSummary">
+            <p class="title"><span>Mon devis</span></p>
           <div class="containerS">
         <div class="descriptionOeuvre">
         		<p>
-        			<label for="{{formEstimate.title.vars.id}}" class="titreOeuvre">{{formEstimate.title.vars.label}}</label><br>
+        			<label for="{{formEstimate.title.vars.id}}" class="titreOeuvre">{{formEstimate.title.vars.label | trans}}</label><br>
         			{{form_widget(formEstimate.title,{'disabled': 'disabled'})}}
         		</p>
         		<p>
-        			<label for="{{formEstimate.day.vars.id}}" class="jours">{{formEstimate.day.vars.label}}</label><br>
+        			<label for="{{formEstimate.day.vars.id}}" class="jours">{{formEstimate.day.vars.label | trans}}</label><br>
         			{{form_widget(formEstimate.day,{'disabled': 'disabled'})}}
         		</p>
         		<p>
-        			<label for="{{formEstimate.deliveryAdress.vars.id}}" class="localité">{{formEstimate.deliveryAdress.vars.label}}</label><br>
+        			<label for="{{formEstimate.deliveryAdress.vars.id}}" class="localité">{{formEstimate.deliveryAdress.vars.label | trans}}</label><br>
         			{{form_widget(formEstimate.deliveryAdress,{'disabled': 'disabled'})}}
         		</p>
             <p>
-        			<label for="{{formEstimate.medium.vars.id}}" class="localité">{{formEstimate.medium.vars.label}}</label><br>
+        			<label for="{{formEstimate.medium.vars.id}}" class="localité">{{formEstimate.medium.vars.label | trans}}</label><br>
         			{{form_widget(formEstimate.medium,{'disabled': 'disabled'})}}
         		</p>
             <p class="textarea">
-        			<label for="{{formEstimate.description.vars.id}}" class="desc">{{formEstimate.description.vars.label}}</label><br>
+        			<label for="{{formEstimate.description.vars.id}}" class="desc">{{formEstimate.description.vars.label | trans}}</label><br>
               {{form_widget(formEstimate.description,{'disabled': 'disabled'})}}
         		</p>
         </div>
-        <div class="titleS">
-          <div>Plus de détails</div>
+        <div class="title">
+          Plus de détails
         </div>
         <div class="descriptionOeuvre">
             <p>
-        			<label for="{{formEstimate.budget.vars.id}}" class="prix">{{formEstimate.budget.vars.label}}</label><br>
+        			<label for="{{formEstimate.budget.vars.id}}" class="prix">{{formEstimate.budget.vars.label | trans}}</label><br>
         			{{form_widget(formEstimate.budget,{'disabled': 'disabled'})}}
         		</p>
             <p>
-              <label for="{{formEstimate.orientation.vars.id}}" class="localité">{{formEstimate.orientation.vars.label}}</label><br>
+              <label for="{{formEstimate.orientation.vars.id}}" class="localité">{{formEstimate.orientation.vars.label | trans}}</label><br>
               {{form_widget(formEstimate.orientation,{'disabled': 'disabled'})}}
             </p>
             <p>
-              <label for="{{formEstimate.technics.vars.id}}" class="techniques">{{formEstimate.technics.vars.label}}</label><br>
+              <label for="{{formEstimate.technics.vars.id}}" class="techniques">{{formEstimate.technics.vars.label | trans}}</label><br>
               {{form_widget(formEstimate.technics,{'disabled': 'disabled'})}}
             </p>
             <p>
-              <label for="{{formEstimate.tools.vars.id}}" class="outils">{{formEstimate.tools.vars.label}}</label><br>
+              <label for="{{formEstimate.tools.vars.id}}" class="outils">{{formEstimate.tools.vars.label | trans}}</label><br>
               {{form_widget(formEstimate.tools,{'disabled': 'disabled'})}}
             </p>
             <p>
-        			<label for="{{formEstimate.width.vars.id}}" class="largeur">{{formEstimate.width.vars.label}}</label><br>
+        			<label for="{{formEstimate.width.vars.id}}" class="largeur">{{formEstimate.width.vars.label | trans}}</label><br>
 					{{form_widget(formEstimate.width,{'disabled': 'disabled'})}}
         		</p>
             <p>
-        			<label for="{{formEstimate.height.vars.id}}" class="hauteur">{{formEstimate.height.vars.label}}</label><br>
+        			<label for="{{formEstimate.height.vars.id}}" class="hauteur">{{formEstimate.height.vars.label | trans}}</label><br>
         			{{form_widget(formEstimate.height,{'disabled': 'disabled'})}}
         		</p>
         </div>
-        <div class="titleS">
-          <div>Illustrer votre demande</div>
+        <div class="title">
+          Illustrer votre demande
         </div>
         <div id="uploadImage">
-          <div id="div1" class="imageEstimate">
+          <div id="div1" class="imageEstimate imgLiquidFill">
             {% if estimate.image1 %}
               <img id="1" src="{{ asset("images/"~estimate.image1.path) }}" alt="">
             {% endif %}          </div>
-          <div  id="div2" class="imageEstimate" >
+          <div  id="div2" class="imageEstimate imgLiquidFill" >
             {% if estimate.image2 %}
               <img id="2" src="{{ asset("images/"~estimate.image2.path) }}" alt="">
             {% endif %}
             <!-- <canvas id="imageCanvas"></canvas> -->
           </div>
-          <div id="div3" class="imageEstimate" >
+          <div id="div3" class="imageEstimate imgLiquidFill" >
             {% if estimate.image3 %}
               <img id="3" src="{{ asset("images/"~estimate.image3.path) }}" alt="">
             {% endif %}
