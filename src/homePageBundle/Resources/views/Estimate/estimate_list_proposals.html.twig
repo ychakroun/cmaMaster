@@ -21,8 +21,8 @@
       <section id="devis">
         <div class="containerS">
         {% if proposals|length > 0 %}
-          <header class="headerproposals">
-            <div class="Name" style="border-bottom:2px solid black;width:100%;padding-bottom:10px;margin-bottom:40px">
+          <header class="title">
+            <div class="titlePropo">
               {% if proposals|length > 1 %}
                 {{ proposals|length }}
                 {% if userServices.getUsername != proposals.0.owner%}
@@ -41,25 +41,30 @@
             </div>
           </header>
            {% for proposal in proposals %}
-              <div class="proposals" id="proposal[{{proposal.id}}]">
+              <div class="proposals proposalsList" id="proposal[{{proposal.id}}]">
+
                   <a id="linktoproposal" href="{{path ( 'proposal_detail',{'id': proposal.id} ) }}"></a>
+
                 <header class="header">
                 {% if proposal.owner == userServices.getId %}
                   <div class="delete"><a href="{{path ('proposal_delete', {'id': proposal.id} ) }}">X</a></div>
                 {% endif %}
                 </header>
-                <div class="titleproposal" style='background-image: url({% if proposal.parent.image1 %}{{asset('images/'~proposal.piece.image1.path)}}{% else %} {{asset('img/600x400.jpg')}}{% endif %}); background-size: cover; background-position: center center; background-repeat: no-repeat;width:150px;height:150px;'>
-                  <h4>{{ proposal.otheruser }}</h4>
-                  <div><p>{{ proposal.parent.date.date|date("m/d/Y") }} - {{ proposal.timeLimit.date|date("H:i") }}</p></div>
+
+                <div class="headerP" style='background-image: url({% if proposal.parent.image1 %}{{asset('images/'~proposal.piece.image1.path)}}{% else %} {{asset('img/600x400.jpg')}}{% endif %}); background-size: cover; background-position: center center; background-repeat: no-repeat;width:150px;height:150px; display:inline-block;'>
+                    <h4>{{ proposal.otheruser }}</h4>
+                    {{ proposal.parent.date.date|date("m/d/Y") }} - {{ proposal.timeLimit.date|date("H:i") }}
                 </div>
-                <div class="infoproposal">
-                  <div class="budget"><p>{{ proposal.piece.price }} </p></div>
+
+                <div class="infoproposal info">
+                  <div class="budget"><p>{{ proposal.piece.price }} €</p></div>
                   <div class="timeLimit"><p>{{ proposal.timeLimit.date|date("d/m/Y") }} </p></div>
                   <div class="technics"><p>{{ proposal.piece.technics }}</p></div>
-                  <div class="proposalProposals">
+                  <div class="proposal">
                     {{ proposal.description|length > 100 ? proposal.description|slice(0, 100) ~ '...' : proposal.description  }}
                   </div>
                 </div>
+
                 {% if proposal.unread %}
                 <div class="unread">
                    {% if proposal.unread > 1 %}
@@ -70,7 +75,7 @@
                 </div>
                 {% endif %}
                   <a href="{{ path('artist_proposal_show',{'id': proposal.id,'username': username} ) }}">
-                    <div class="action">
+                    <div class="buttonAction">
                       {{ 'estimate.proposal.show'|trans }}
                     </div>
                   </a>

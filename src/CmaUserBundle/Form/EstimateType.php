@@ -21,7 +21,8 @@ class EstimateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title',null,array('label' => 'form.estimate.title',
+            ->add('title',null,array(
+                'label' => 'form.estimate.title',
                 'required' => true,
                 'translation_domain' => 'FOSUserBundle',
                 'attr' => array('class' => 'titreOeuvre')
@@ -57,7 +58,8 @@ class EstimateType extends AbstractType
                 'translation_domain' => 'FOSUserBundle',
                 'attr' => array('class' => 'localité')
                 ))
-            ->add('budget',null,array('label' => 'form.estimate.budget',
+            ->add('budget',null,array(
+                'label' => 'form.estimate.budget',
                 'required' => false,
                 'translation_domain' => 'FOSUserBundle',
                 'attr' => array(

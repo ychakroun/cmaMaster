@@ -11,7 +11,6 @@
 	{{parent()}}
 {% endblock %}
 {% block main %}
-
 <section class="param">
   <header class="headerSection">
     <div class="globalS">
@@ -23,51 +22,52 @@
   <div class="containerS">
     {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
     <div class="contentS">
-      <section id="devis">
+      <section id="devis" class="estimateSummary">
         <div class="containerS">
-          <div class="descriptionOeuvre">
-          	<div class="titreOeuvre"> {{ 'form.estimate.title'|trans }} {{estimate.title}}</div>
-            <br>
-          	<div class="jours"> {{ 'form.estimate.day'|trans  }} {{estimate.timeLimit|date('d/m/y')}}</div><br>
-          	<div class="localité">{{ 'form.estimate.deliveryAdress'|trans }} {{estimate.deliveryAdress}}</div><br>
-          	<div class="localité">{{ 'form.estimate.medium'|trans }} {{estimate.medium}}</div><br>
-          	<div class="desc">{{ 'form.estimate.description'|trans }} {{estimate.description}}</div><br>
+          <p class="title"><span>Demande de XXX</span></p>
+          <div class="descriptionOeuvre top20">
+          	<p class="block">
+              <span> {{ 'form.estimate.title'| trans }}</span>
+              {{estimate.title}}
+            </p>
+          	<p class="block"><span>{{ 'form.estimate.day'| trans  }}</span>{{estimate.timeLimit|date('d/m/y')}}</p>
+          	<p class="block"><span>{{ 'form.estimate.deliveryAdress'| trans }}</span> {{estimate.deliveryAdress}}</p>
+          	<p class="block"><span>{{ 'form.estimate.medium'| trans }}</span> {{estimate.medium}}</p>
+          	<p class="description"><span>{{ 'form.estimate.description'| trans }}</span> {{estimate.description}}</p>
           </div>
-          <div class="titleS">
-            <div>Plus de détails</div>
-          </div>
+          <p class="title">
+            Plus de détails
+          </p>
           <div class="descriptionOeuvre">
-          	<div class="prix">{{ 'form.estimate.price'|trans }} {{estimate.budget}}</div><br>
-            <div class="localité">
-              {{ 'form.estimate.orientation'|trans }} 
-              {% if estimate.orientation %} 
-                {{ 'form.estimate.orientation.true'|trans }} 
-              {% else %} 
-              {{ 'form.estimate.orientation.false'|trans }}  
+          	<p class="block"><span>{{ 'form.estimate.price'| trans }}</span> {{estimate.budget}} €</p>
+            <p class="block">
+              <span>{{ 'form.estimate.orientation'| trans }}</span>
+              {% if estimate.orientation %}
+                {{ 'form.estimate.orientation.true'| trans }}
+              {% else %}
+              {{ 'form.estimate.orientation.false'| trans }}
               {% endif %}
-            </div>
-            <br>
-            <div for="{{estimate.technics}}" class="techniques">{{ 'form.estimate.technics'|trans }} {{estimate.technics}}</div>
-            <br>
-            <div class="outils">{{ 'form.estimate.tools'|trans }} {{estimate.tools}}</div><br>
-          	<div class="largeur">{{ 'form.estimate.width'|trans }} {{estimate.width}}</div><br>
-          	<div class="hauteur">{{ 'form.estimate.height'|trans }} {{estimate.height}}</div><br>
+            </p>
+            <p class="block" ><span>{{ 'form.estimate.technics'|trans }}</span>{{estimate.technics}}</p>
+            <p class="block"><span>{{ 'form.estimate.tools'| trans }}</span> {{estimate.tools}}</p>
+          	<p class="block"><span>{{ 'form.estimate.width'| trans }}</span>>{{estimate.width}} cm</p>
+          	<p class="block"><span>{{ 'form.estimate.height'| trans }}</span> {{estimate.height}} cm</p>
           </div>
-          <div class="titleS">
-            <div>Illustrer votre demande</div>
-          </div>
+          <p class="title">
+            Illustrer votre demande
+          </p>
           <div id="uploadImage">
-            <div id="div1" class="imageEstimate">
+            <div id="div1" class="imageEstimate imgLiquidFill">
               {% if estimate.image1 %}
                 <img src="{{ asset("images/"~estimate.image1.path) }}" alt="">
               {% endif %}          </div>
-            <div  id="div2" class="imageEstimate" >
+            <div  id="div2" class="imageEstimate imgLiquidFill" >
               {% if estimate.image2 %}
                 <img src="{{ asset("images/"~estimate.image2.path) }}" alt="">
               {% endif %}
               <!-- <canvas id="imageCanvas"></canvas> -->
             </div>
-            <div id="div3" class="imageEstimate" >
+            <div id="div3" class="imageEstimate imgLiquidFill" >
               {% if estimate.image3 %}
                 <img src="{{ asset("images/"~estimate.image3.path) }}" alt="">
               {% endif %}

@@ -11,7 +11,7 @@
     </div>
 {% endblock %}
 {% block main %}
-<section class="param">
+<section class="param proposalCreate">
   <header class="headerSection">
     <div class="globalS">
       <div class="idSection">{{ "estimate_page.header" | trans }}</div>
@@ -26,41 +26,68 @@
         <div class="containerS">
         <div class="descriptionOeuvre">
         <header class="">
-          <div class="Name">
+          <div class="title">
+            <div class="headTitle">
             {{"form.proposal.create.title" | trans }}
             {% if owner %}
               {{owner}}
             {% endif %}
           </div>
+          </div>
         </header>
         {% if formProposal %}
         {{form_start(formProposal)}}
-          <div class="titreOeuvre"> {{ 'form.estimate.title'|trans }} {{estimate.title}}</div>
-          <div class="localité">{{ 'form.estimate.medium'|trans }} {{estimate.medium}}</div><br>
-          <div class="localité">{{ 'form.estimate.deliveryAddress'|trans }} {{estimate.deliveryAdress}}</div><br>
-          <label for="{{formProposal.day.vars.id}}">{{ formProposal.day.vars.label|trans }}</label>
-          {{form_widget(formProposal.day)}}
-          <label for="{{formProposal.description.vars.id}}">{{ formProposal.description.vars.label|trans }}</label>
-          {{form_widget(formProposal.description)}}
+        <div class="descriptionOeuvre top20">
+          <p class="titreOeuvre">
+            <span>{{ 'form.estimate.title'|trans }}</span>
+            {{estimate.title}}
+          </p>
+          <p class="localité">
+            <span>{{ 'form.estimate.medium'| trans }}</span>
+            {{estimate.medium}}
+          </p>
+          <p class="localité">
+            <span>{{ 'form.estimate.deliveryAddress'|trans }}</span>
+            {{estimate.deliveryAdress}}
+          </p>
+          <p>
+            <label for="{{formProposal.day.vars.id}}">{{ formProposal.day.vars.label| trans }}</label>
+            {{form_widget(formProposal.day)}}
+          </p>
+          <p class="description">
+            <label for="{{formProposal.description.vars.id}}">{{ formProposal.description.vars.label| trans }}</label>
+            {{form_widget(formProposal.description)}}
+          </p>
         </div>
-        <div class="titleS">
-          <div>Plus de détails</div>
+        </div>
+        <div class="title">
+          Plus de détails
         </div>
         <div class="descriptionOeuvre">
-          <label for="{{formProposal.piece.price.vars.id}}">{{ formProposal.piece.price.vars.label|trans }}</label>
-          {{form_widget(formProposal.piece.price)}}
-          <label for="{{formProposal.piece.feature.vars.id}}">{{ formProposal.piece.feature.vars.label|trans }}</label>
-          {{form_widget(formProposal.piece.feature)}}
-          <label for="{{formProposal.piece.technics.vars.id}}">{{ formProposal.piece.technics.vars.label|trans }}</label>
-          {{form_widget(formProposal.piece.technics)}}
-          <label for="{{formProposal.piece.width.vars.id}}">{{ formProposal.piece.width.vars.label|trans }}</label>
-          {{form_widget(formProposal.piece.width)}}
-          <label for="{{formProposal.piece.height.vars.id}}">{{ formProposal.piece.height.vars.label|trans }}</label>
-          {{form_widget(formProposal.piece.height)}}
+          <p>
+            <label for="{{formProposal.piece.price.vars.id}}">{{ formProposal.piece.price.vars.label| trans }}</label>
+            {{form_widget(formProposal.piece.price)}}
+          </p>
+          <p>
+            <label for="{{formProposal.piece.feature.vars.id}}">{{ formProposal.piece.feature.vars.label| trans }}</label>
+            {{form_widget(formProposal.piece.feature)}}
+          </p>
+          <p>
+            <label for="{{formProposal.piece.technics.vars.id}}">{{ formProposal.piece.technics.vars.label| trans }}</label>
+            {{form_widget(formProposal.piece.technics)}}
+          </p>
+          <p>
+            <label for="{{formProposal.piece.width.vars.id}}">{{ formProposal.piece.width.vars.label| trans }}</label>
+            {{form_widget(formProposal.piece.width)}}
+          </p>
+          <p>
+            <label for="{{formProposal.piece.height.vars.id}}">{{ formProposal.piece.height.vars.label| trans }}</label>
+            {{form_widget(formProposal.piece.height)}}
+          </p>
         </div>
-        <div class="titleS">
-          <div>Illustrez votre oeuvre</div>
-        </div>
+        <p class="title">
+          Illustrez votre oeuvre
+        </p>
           {{form_widget(formProposal.piece.image1.file,{attr: {'style':"display:none"}})}}
           {{form_widget(formProposal.piece.image1.name,{attr: {'value': username }})}}
           {{form_widget(formProposal.piece.image2.file,{attr: {'style':"display:none"}})}}
