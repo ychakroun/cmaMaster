@@ -1,0 +1,46 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA Artist Profile Gallery{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block main %}
+<header id="profileHeader">
+  <div class="basicHeaderOk imgLiquidFill">
+    {% if artist.profile.imageHeader and artist.profile.imageHeader.path%}
+        <img id="0" src="{{ asset( 'images/'~artist.profile.imageHeader.path ) }}" alt="">
+    {% else %}
+       <div class="basicHeader"><img id="0" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
+    {% endif %}
+  </div>
+  {% embed 'homePageBundle:Default:navProfilArtiste.html.twig' with {'class':'gallery'}%}
+  {% endembed %}
+</header>
+<section class="opinions">
+    <div class="containerS">
+      <ul>
+        <!-- STRAT LOOP  -->
+        <li>
+          <!-- STRAT (faire condition si il y une image ça s'affiche sinon non) -->
+          <div class="image imgLiquidFill">
+            <img src="{{ asset( 'images/'~artist.profile.imageHeader.path ) }}" alt="">
+          </div>
+          <!-- END (faire condition si il y une image ça s'affiche sinon non) -->
+          <div class="text">
+            <h4>
+              <span class="name">Amélie</span>
+              <span class="title">"Super résulat"</span>
+              <span class="support">Affiche</span>
+            </h4>
+            <p class="detail">
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </li>
+          <!-- END LOOP  -->
+      </ul>
+    </div>
+</section>
+{% endblock %}
