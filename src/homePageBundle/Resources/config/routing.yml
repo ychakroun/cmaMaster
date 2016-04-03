@@ -131,3 +131,7 @@ concept:
 help:
     path:   /Help
     defaults: { _controller: homePageBundle:Help:index }
+
+buy:
+    path:   /Buy
+    defaults: { _controller: homePageBundle:Buy:index }

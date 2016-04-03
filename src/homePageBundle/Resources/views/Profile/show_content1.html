@@ -1,0 +1,113 @@
+{% trans_default_domain 'FOSUserBundle' %}
+    <header class="headerSection">
+      <div class="globalS">
+        <div class="idSection">La Galerie</div>
+        <div class="logoSection"><img src="{{asset('img/logoTampon.png')}}" alt=""></div>
+        <div class="infoSection">
+
+        </div>
+      </div>
+    </header>
+    <section class="buy">
+      <div class="containerS">
+        <div class="title">LTR BOTTLE</div>
+        <div class="content">
+          <div class="images">
+            <div id="Glide" class="glide">
+                <div class="glide__arrows">
+                    <button class="glide__arrow prev" data-glide-dir="<"><</button>
+                    <button class="glide__arrow next" data-glide-dir=">">></button>
+                </div>
+                <div class="glide__wrapper">
+                    <ul class="glide__track">
+                      <li class="glide__slide"><img src="{{asset("img/Nebay/Galerie-1.jpg")}}" alt=""></li>
+                      <li class="glide__slide"><img src="{{asset("img/Nebay/Galerie-2.jpg")}}" alt=""></li>
+                      <li class="glide__slide"><img src="{{asset("img/Nebay/Galerie-3.jpg")}}" alt=""></li>
+                    </ul>
+                </div>
+                <div class="glide__bullets"></div>
+            </div>
+            <div class="notice">
+              Oeuvre originale signée par l’artiste et certifiée par Custom My Art  /  Tous droits réservés - 2015
+              <span><img src="{{asset('img/smallLogo.png')}}" alt=""></span>
+            </div>
+          </div>
+          <div class="description">
+            <p class="title">Déscription</p>
+            <h4>Thème:</h4>
+            <p class="content">L'alcool et la drogue au sein de la société moderne.</p>
+            <h4>Caractéristique:</h4>
+            <p class="content">Lot de 3 bouteilles - Verres - 30cm x 5cm</p>
+            <p class="title top40">Techniques</p>
+            <div class="tags">
+              <ul class="techniques">
+                <li>Pochoir</li>
+                <li>Marqueurs</li>
+                <li>Art toys</li>
+              </ul>
+            </div>
+            <div class="addBasket">
+              <div class="price">10 300 €</div>
+              <h6>hors frais de livraison</h6>
+              <a class="buttonMore" href="{{path('artist_profile_gallery',{'username':artist.username})}}">Ajouter au panier</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <header class="profileHeaderBuy">
+      <div class="basicHeaderOk">
+          <div class="bg imgLiquidFill">
+          <img id="0" src="{{ asset( 'images/'~artist.profile.imageHeader.path ) }}" alt="">
+          </div>
+          <div class="cache"></div>
+          <div class="content">
+            <p class="name">{{ artist.username }}</p>
+            <p class="description">{{ artist.profile.description}}</p>
+
+              <div class="infos">
+                <div class="block"><img src="{{asset('img/custom.png')}}" alt=""><p>{{0}} custom.</p></div>
+                <div class="block"><img src="{{asset('img/likes.png')}}" alt=""><p>{{0}} likes</p></div>
+                <div class="block"><img src="{{asset('img/avis.png')}}" alt=""><p>{{0}} avis</p></div>
+              </div>
+
+          </div>
+      </div>
+    </header>
+
+  	<section class="galerie">
+      	<header class="headerArtisteGalerie padTop60 bottom60">
+      	  <p>Galerie <span class= "username">{{ artist.username }}</span></p>
+      	</header>
+      	<div class="containerS">
+
+      	  <div class="contentS">
+      	    <ul>
+      	    {% for piece in pieces %}
+
+      	      <li>
+                <a href="{{path('buy',{'username':artist.username})}}">
+        	        <div class="images imgLiquidFill">
+        	        {% if piece.image1 %}
+        	          <img src="{{asset("images/"~piece.image1.path)}}" alt="">
+        	        {% else %}
+        	          <img src="{{asset('img/600x400.jpg')}}" alt="">
+        	        {% endif %}
+        	        </div>
+        	        <div class="infos">
+        	          <div class="decriptions">
+        	            <p class="name">{{piece.user.username}}</p>
+        	            <p class="title">{{piece.title}}</p>
+        	          </div>
+        	          <div class="price">{{piece.price}} €</div>
+        	        </div>
+                </a>
+      	      </li>
+      	     {% endfor %}
+      	    </ul>
+      	  </div>
+      	</div>
+        <footer class="footerSection"><a href="{{path('artist_profile_gallery',{'username':artist.username})}}"><div class="buttonMore">Accéder à la galerie virtuelle</div></a></footer>
+    	</section>
+  </div>
+</div>
