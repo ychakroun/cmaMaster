@@ -214,7 +214,7 @@ estimate_page:
 proposal_page:
     header: 'Commandes'
 help:
-  notice: "Cette page est faite pour répondre aux principales questions que vous pourrez être amenés à vous poser. Cette liste est non exhaustive, c'est pourquoi, si vous avez un quelconque doute, n'hésitez jamais à nous contacter personnellement au 06 XX XX XX XX ou via la boite de dialogue ci-dessous."
+  notice: " Cette page est faite pour répondre aux principales questions que vous pourrez être amenés à vous poser. Cette liste est non exhaustive, c'est pourquoi, si vous avez un quelconque doute, n'hésitez jamais à nous contacter personnellement au 06 24 04 48 13 ou via l'adresse : contact@custommyart.com"
   artist:
     question1: "Et au niveau du transport, qui est en charge ?"
     question2: "Et Custom My Art, comment se rémunère-t-il ?"
