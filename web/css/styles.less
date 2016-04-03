@@ -35,6 +35,7 @@ ul,li{
 .padTop60{
   padding-top: 60px;
 }
+
 #smallHeader
 {
   #header{
@@ -301,12 +302,14 @@ ul,li{
     font-size: 0;
     padding-top: 55px;
     li{
+      background: #fff;
     margin-bottom: 40px;
     box-sizing: border-box;
     border: 1px solid #000;
     width: 300px; height: 320px; .inline;font-size: 0px;padding: 0;
     .images{font-size: 0;width: 100%;height: 245px;img{height: 100%;width: 100%;}}
     .infos{
+
     color: #000;font-size: 16px;font-family: 'robotomedium';
     .decriptions{
       float: left;padding-left: 20px;padding-top: 15px;
@@ -346,12 +349,14 @@ ul,li{
 
 }
 .galerie{
+  background: #f5f4f4;
 .headerSection{}
 .containerS{
 .titleS{color: #000;}
 .contentS{
 ul{font-size: 0;
   li{
+    background: #fff;
     margin-bottom: 40px;
     box-sizing: border-box;
     border: 1px solid #000;
@@ -1561,7 +1566,177 @@ height: 100%;
   }
 }
 
-/*aside*/
+/*START buy*/
+.buy{
+  background: #f5f4f4;
+  padding: 0 0 50px 0;
+  .title{
+    text-transform: uppercase;
+    font-size: 30px;
+    padding: 30px 0 20px 0;
+    font-weight: 900;
+    color: #c71616;
+    font-family: 'FuturaStd-MediumOblique';
+  }
+  .images{
+    .inline;
+    #Glide{
+      width: 700px;
+      height: 440px;
+      background-position: center center;
+      .glide__wrapper{
+        background: #000;
+        background-position: center center;
+        top: 50%; left: 50%;
+        width: 700px;
+        height: 440px;
+        text-align: center;
+        img{
+          position: relative;
+          margin: 0 auto;
+          width: auto;
+          height: 440px;
+        }
+      }
+    }
+    .notice{
+      position: relative;
+      padding: 15px 0;
+      font-size: 12px;
+      border-bottom: 1px solid #000;
+      img{
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+  .description{
+    position: relative;
+    .inline;
+    padding-left: 10px;
+    width: 210px;
+    height: 440px;
+    vertical-align: top;
+    .title{
+      text-transform: none;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 0 0 0 0;
+      border-bottom: 1px solid #000;
+      color: #000;
+      font-size: 16px;
+    }
+    h4{
+      font-family: 'robotoitalic';
+      font-size: 12px;
+      color:#999999;
+    }
+    .content{
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+    .tags{
+      .techniques{
+        font-size: 0px;
+        li{
+          display: inline-block;
+          .inline;
+          border: 1px solid #adadad;
+          font-family: 'robotoregular';
+          line-height: 24px;
+          text-align: center;
+          text-transform: uppercase;
+          color:#999999;
+          padding: 0 10px;
+          font-size: 12px;
+          height: 25px;
+          margin: 0 10px 10px 0;
+          box-sizing: border-box;
+        }
+      }
+    }
+    .addBasket{
+      position: absolute;;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      .price{
+        margin-bottom: 5px;
+        width: 100%;
+        border: 1px solid #000;
+        line-height: 30px;
+      }
+      h6{
+        font-family: 'robotoitalic';
+        font-size: 10px;
+        color:#999999;
+        margin-bottom: 30px;
+      }
+      .buttonMore {
+        line-height: 35px;
+        padding: 0 0 0 0;
+        width: 100%;
+        font-size: 12px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.profileHeaderBuy{
+
+  .basicHeaderOk{
+    width: 100%;
+    text-align: center;
+    height: 330px;
+    position: relative;
+    .bg{
+      width: 100%;
+      height: 100%;
+    }
+    .cache{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #000;
+      opacity: 0.3;
+      z-index: 2;
+      filter: alpha(opacity=30); /* For IE8 and earlier */
+    }
+    .content{
+      color: #fff;
+      z-index: 4;
+      position: absolute;
+      transform: translate(-50%,-50%);
+      left: 50%;
+      top: 50%;
+      width: 380px;
+      .name{
+        font-family: 'FuturaStd-MediumOblique';
+        font-size: 30px;
+        padding: 0 0 20px 0;
+        text-transform: uppercase;
+      }
+      .description{
+        font-size: 12px;
+      }
+      .infos{
+        padding-top: 30px;
+        .block{
+          display: inline-block;
+          font-size: 12px;
+          &:first-child{margin: 0 30px 0 0;}
+          &:last-child{margin: 0 0 0 30px;}
+        }
+      }
+    }
+  }
+}
+/*END buy*/
+
+/*START aside*/
 .aside{
   padding-top: 70px;
   color:#000;
@@ -1657,6 +1832,8 @@ height: 100%;
     }
   }
 }
+/*END aside*/
+
 /*propriétés récurrentes*/
 input[type="search"],input[type="email"], input[type="password"],input[type="text"]{
   outline: none;
@@ -1686,7 +1863,6 @@ input[type="submit"]{
 .containerS{
   .widthCentralBloc;
   .horizontalCenter;
-  color: #fff;
   .titleS{
     height: 120px;
     text-align: center;
@@ -1840,10 +2016,12 @@ button{
 .f0{font-size: 0px;}
 .top20{margin-top: 20px;}
 .top30{margin-top: 30px;}
+.top40{margin-top: 40px;}
 .top50{margin-top: 50px;}
 .bottom20{margin-bottom: 20px;}
 .bottom30{margin-bottom: 30px;}
 .bottom50{margin-bottom: 50px;}
+.bottom60{margin-bottom: 60px;}
 .bottom100{margin-bottom: 100px;}
 .padLeft10{padding-left: 10px;}
 .padBottom100{padding-bottom: 100px;}
