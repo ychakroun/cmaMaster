@@ -62,7 +62,22 @@
 
     </div>
     <div id="video">
-      <div><script src="//content.jwplatform.com/players/DJdBaVmn-dauIv6UP.js"></script></div>
+      <div id="myElement">
+
+        <script type="text/javascript">
+          var playerInstance = jwplayer("myElement");
+          playerInstance.setup({
+              file: "//content.jwplatform.com/videos/DJdBaVmn-aR4zQVRD.mp4",
+              image: "{{ asset('img/poster.png') }}",
+              title: 'Basic Video Embed',
+              description: 'A video with a basic title and description!',
+              mediaid: 'DJdBaVmn'
+          });
+          </script>
+
+      </div>
+
+      </div>
     </div>
   </section>
 {% endblock %}
