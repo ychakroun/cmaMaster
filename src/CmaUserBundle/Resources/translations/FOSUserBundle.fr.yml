@@ -63,6 +63,20 @@ resetting:
     email:
         subject: 'Réinitialisation de votre mot de passe'
         message: "Bonjour %username% !\n\nPour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%\n\nCordialement,\nL'équipe.\n"
+homepage:
+  presentation_index:
+    private:
+      1: "Des artistes sélectionnés !\nCMA sélectionne minutieusement ses artistes afin de vous proposer une communauté professionnelle et talentueuse."
+      2: "Une œuvre unique et certifiée, chez vous ! \nSuivez en temps réel l'avancée de votre projet. Recevez ensuite votre œuvre accompagnée de son certificat d'authenticité."
+      3: "Un contact direct avec les artistes !\nGrâce à la messagerie interne CMA, rentrez en contact avec les artistes de votre choix et créez ensemble votre projet."
+    artist:
+      1: "A la recherche de nouveaux projets ?\nAugmentez votre activité en répondant aux nombreux appels à projet lancés sur la plateforme."
+      2: "Besoin de visibilité ?\nEtre artiste CMA c'est avoir son profil d'artiste et propre galerie virtuelle, et tout ça gratuitement !"
+      3: "Flexibilité du processus de commande.\nRecevez des appels à projet, répondez-y, réalisez le projet et recevez le montant de la vente. Aussi simple que ça ! "
+    company:
+      1: "Donnez du caractère à vos bureaux !\nImmergez vos employez, collaborateurs et clients dans un univers graphique en parfaite adéquation avec votre culture d'entreprise."
+      2: "Faites entrer l'art dans vos locaux !\nSoyez suivis tout au long de la création de votre œuvre par un conseiller CMA qui vous guidera de l'appel à projet à la livraison."
+      3: " Les avantages d'obtenir des objets d'art.\nBénéficiez directement d'une déduction fiscale équivalente à 20% du prix de l'œuvre durant 5 ans à partir de sa date d'acquisition !"
 layout:
     logout: Déconnexion
     login: Connexion
