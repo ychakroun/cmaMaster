@@ -92,7 +92,7 @@
 
                 {% elseif is_granted('ROLE_ARTIST') %}
                   <div class="description">
-                    {{ estimate.description|length > 50 ? estimate.description|slice(0, 50) ~ '...' : estimate.description  }}
+                    {{ estimate.description|length > 30 ? estimate.description|slice(0, 30) ~ '...' : estimate.description  }}
                   </div>
                 {% endif %}
 

@@ -155,7 +155,7 @@ form:
     parameter:
         newsletter: 'Je m''inscrit à la newslettre'
         mail_devis_all: 'Recevoir une notification par mail lorsque un devis est envoyé à la communauté.'
-        mail_devis_user: 'Lorsque un devis m’est envoyer.'
+        mail_devis_user: 'Lorsque un devis m’est envoyé.'
         mail_devis_com: 'Lorsque j’ai un nouveau message.'
         mail_devis_valid: 'Lorsque ma proposition de devis est acceptée.'
         is_public: 'Mettre mon compte en suspend.'
@@ -204,6 +204,7 @@ proposal:
     show:
         title:
              single: 'Proposition envoyée'
+             plurial: 'Propositions envoyées'
 comment:
     title: 'Discuter avec '
 estimate:

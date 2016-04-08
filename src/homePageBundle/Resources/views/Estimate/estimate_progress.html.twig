@@ -75,7 +75,7 @@
                     {% endfor %}
                   {% endif %}
                 {% else %}
-                    {{ estimate.description|length > 50 ? estimate.description|slice(0, 50) ~ '...' : estimate.description  }}
+                    {{ estimate.description|length > 30 ? estimate.description|slice(0, 30) ~ '...' : estimate.description  }}
                 {% endif %}
                 </div>
                 {% if not is_granted('ROLE_ARTIST') or estimate.owner %}

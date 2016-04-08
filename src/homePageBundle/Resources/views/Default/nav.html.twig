@@ -28,13 +28,26 @@
             <li>
             {% if is_granted('ROLE_ARTIST') %}
                 {# image '@homePageBundle/Resources/img/login.png' #}
-                  <a href="{{path('artist_edit')}}"><img src="{{ asset('img/login.png') }}" alt="" /></a>
+								<div class="login">
+									<img src="{{ asset('img/login.png') }}" alt="" />
+									<div class="logout">
+										<a href="{{ path('user_parameter') }}">Profil</a>
+										<a href="#">Se déconnecter</a>
+									</div>
                 {# endimage #}
               </li>
-              <li><a href="{{path('user_parameter')}}"><img src="{{asset('img/parametre.png')}}" alt=""></a></li>
+              <li><a href="{{path('artist_edit')}}"><img src="{{asset('img/parametre.png')}}" alt=""></a></li>
+
                 {% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
                 {# image '@homePageBundle/Resources/img/login.png' #}
-                  <a href="{{ path('user_parameter') }}"><img src="{{ asset('img/login.png') }}" alt="" /></a>
+								<div class="login">
+									<img src="{{ asset('img/login.png') }}" alt="" />
+									<div class="logout">
+										<a href="{{ path('user_parameter') }}">Profil</a>
+										<a href="#">Se déconnecter</a>
+									</div>
+
+								</div>
               </li>
               <li><a href="{{path('home_page_homepage')}}"><img src="{{asset('img/basket.png')}}" alt=""></a></li>
                 {# endimage #}
