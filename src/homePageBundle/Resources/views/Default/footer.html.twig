@@ -14,7 +14,8 @@
       <h3>À propos</h3>
       <ul>
         <li><a href="{{ url('concept') }}">Le concept</a></li>
-        <li>Certifié CMA</li>
+        <li><a href="{{ asset( 'pdf/CGV_CMA_VF.pdf' ) }}" target="_blank">CGV</a> & <a href="{{ asset( 'pdf/CGU_CMA_VF.pdf' ) }}" target="_blank">CGU</a> CMA</li>
+        <li><a href="{{ asset( 'pdf/Mangopay_Terms-FR.pdf' ) }}" target="_blank">CGU MANGOPAY</a></li>
       </ul>
     </div>
     <div class="newsletters">
@@ -34,11 +35,12 @@
         </div>
         </div>
         <div class="logo">
-          <img src="{{ asset( 'img/paypal.png' ) }}" alt="">
-          <img src="{{ asset( 'img/security.png' ) }}" alt="">
+
           <img src="{{ asset( 'img/savCma.png' ) }}" alt="">
         </div>
+
     </div>
+    <div class="footerPowered"><img src="{{ asset( 'img/powered-by-mangopay.png' ) }}" alt=""></div>
   </div>
 </footer>
 {% endblock %}
