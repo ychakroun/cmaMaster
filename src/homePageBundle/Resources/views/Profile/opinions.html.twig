@@ -12,7 +12,7 @@
     {% if artist.profile.imageHeader and artist.profile.imageHeader.path%}
         <img id="0" src="{{ asset( 'images/'~artist.profile.imageHeader.path ) }}" alt="">
     {% else %}
-       <div class="basicHeader"><img id="0" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
+       <div class="basicHeader"><img id="0" src="{{ asset( 'img/upload.png' ) }}" alt=""></div>
     {% endif %}
   </div>
   {% embed 'homePageBundle:Default:navProfilArtiste.html.twig' with {'class':'gallery'}%}
