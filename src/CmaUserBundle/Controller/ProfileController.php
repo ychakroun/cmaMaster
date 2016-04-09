@@ -137,6 +137,7 @@ class ProfileController extends Controller
             $formTagS = $userprofile->getTags();
             $existingTagS = $this->getDoctrine()->getRepository('CmaUserBundle:Tag')->findAll();
             foreach ($formTagS as $key => $formTag) {
+                dump($formTag);
                 foreach ($existingTagS as $key => $existingTag) {
                     if($formTag->getName() === $existingTag->getName()) {
                         $userprofile->removeTag($formTag);

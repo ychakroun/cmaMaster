@@ -5,6 +5,7 @@ namespace homePageBundle\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
 use CmaUserBundle\Form\EstimateType;
@@ -166,10 +167,11 @@ class EstimateController extends Controller
       $user = $this->get('security.token_storage')->getToken()->getUser();
       $userEstimates = $user->getEstimates();
       $estimate = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:Estimate')->findOneById($id);
+      $usernameOfestimate = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:User')->findOneById($estimate->getOwnerId());
       if(!is_object($estimate)){
         throw new AccessDeniedException('This user does not have access to this section.');
       }
-      return $this->render('homePageBundle:Estimate:estimate_detail.html.twig',array('estimate' => $estimate));
+      return $this->render('homePageBundle:Estimate:estimate_detail.html.twig',array('estimate' => $estimate,'usernameOfestimate'=>$usernameOfestimate));
     }
     public function proposalListAction($id)
     {
