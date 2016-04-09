@@ -19,12 +19,46 @@
     {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
     <div class="contentS">
       <section id="devis">
-        <header id="Breadcrumb" class="{{ proposal.piece.etat }}">
-          {{proposal.piece.etat}}
+        <header id="Breadcrumb" class="{{ proposal.piece.etat }} padTop30">
+          <div class="centerText">
+          {% if proposal.piece.etat == 1 %}
+          <img src="{{ asset("img/commande/commande-1.png") }}" alt="">
+          <ul class="stateEstimate">
+            <li class="black">Proposition</li>
+            <li>Projet en cours</li>
+            <li>Oeuvre livrée</li>
+            <li>Validation</li>
+          </ul>
+          {% elseif proposal.piece.etat == 2 %}
+          <img src="{{ asset("img/commande/commande-2.png") }}" alt="">
+          <ul class="stateEstimate">
+            <li>Proposition</li>
+            <li class="black">Projet en cours</li>
+            <li>Oeuvre livrée</li>
+            <li>Validation</li>
+          </ul>
+          {% elseif proposal.piece.etat == 3 %}
+          <img src="{{ asset("img/commande/commande-3.png") }}" alt="">
+          <ul class="stateEstimate">
+            <li>Proposition</li>
+            <li>Projet en cours</li>
+            <li class="black">Oeuvre livrée</li>
+            <li>Validation</li>
+          </ul>
+          {% elseif proposal.piece.etat > 3 %}
+          <img src="{{ asset("img/commande/commande-4.png") }}" alt="">
+          <ul class="stateEstimate">
+            <li>Proposition</li>
+            <li>Projet en cours</li>
+            <li>Oeuvre livrée</li>
+            <li class="black">Validation</li>
+          </ul>
+          {% endif %}
+          </div>
         </header>
         <div class="containerS">
           <header class="headerproposals">
-            <div class="titleproposal top30" style='background-image: url({% if proposal.parent.image1 %}{{asset('images/'~proposal.parent.image1.path)}}{% else %} {{asset('img/600x400.jpg')}}{% endif %}); background-size: cover; background-position: center center; background-repeat: no-repeat;width:100%;height:150px;'>
+            <div class="titleproposal" style='background-image: url({% if proposal.parent.image1 %}{{asset('images/'~proposal.parent.image1.path)}}{% else %} {{asset('img/600x400.jpg')}}{% endif %}); background-size: cover; background-position: center center; background-repeat: no-repeat;width:100%;height:150px;'>
             <div><h3>{{proposal.owner}}</h3>
             <span>{{ proposal.parent.date.date|date("m/d/Y") }} - {{ proposal.timeLimit.date|date("H:i") }}</span></div>
         </div>
