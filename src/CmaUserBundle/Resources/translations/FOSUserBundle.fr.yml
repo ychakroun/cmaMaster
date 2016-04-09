@@ -208,6 +208,10 @@ proposal:
 comment:
     title: 'Discuter avec '
 estimate:
+    user:
+        notExist: 'Vous n''avez pas de'
+        progress: 'projets en cours'
+        devis: 'devis en attente'
     show:
         title:
             plurial: 'Demandes de devis en cours'

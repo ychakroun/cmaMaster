@@ -17,12 +17,12 @@ class Image
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     public $id;
-
-
-    public $name;
-
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    public $name;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
     public $path;
     /**

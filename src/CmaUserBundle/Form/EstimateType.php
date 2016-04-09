@@ -73,7 +73,7 @@ class EstimateType extends AbstractType
                 'attr' => array('class' => 'localité')
                 ))
             ->add('technics',null,array('label' => 'form.estimate.technics',
-                'required' => false,
+                'required' => true,
                 'translation_domain' => 'FOSUserBundle',
                 'attr' => array('class' => 'techniques')
                 ))

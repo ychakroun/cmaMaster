@@ -103,7 +103,7 @@
                 <header class="headerComment">
                 {% if comment.ownerComment %}
                   <div class='contentC' style="padding:40px;box-sizing:border-box;background:white;margin-bottom:30px;">
-                  <div style="text-align:right" class="commentOwner">{{proposal.owner}} - {{comment.date.date|date("m/d")}}</div>
+                  <div style="text-align:right" class="commentOwner">{{comment.username}} - {{comment.date.date|date("m/d")}}</div>
                   {% if comment.image %}
                     <div style="background:url({{asset('images/'~comment.image.path)}});background-size: cover; background-position: center center; background-repeat: no-repeat;width:300px;height:300px;margin:20px auto;"></div>
                   {% endif %}
@@ -113,7 +113,7 @@
                   </div>
                 {% else %}
                 <div class='contentC' style="padding:30px;box-sizing:border-box;margin-bottom:30px;">
-                  <span class="commentOwner">{{proposal.otheruser}} - {{comment.date.date|date("m/d")}}</span>
+                  <span class="commentOwner">{{comment.username}} - {{comment.date.date|date("m/d")}}</span>
                   {% if comment.image and comment.image.path %}
                     <div style="background:url({{asset('images/'~comment.image.path)}});background-size: cover; background-position: center center; background-repeat: no-repeat;width:300px;height:300px;margin:20px auto;"></div>
                   {% endif %}

@@ -27,7 +27,11 @@ class ProposalController extends Controller
       if(!is_object($proposal)){
         throw new HttpException(404,'This user does not have proposal.');
       }
-      $proposal->otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->getUserId())->getUsername();
+      if($proposal->getUserId()!=$user->getId()){
+        $proposal->otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->getUserId())->getUsername();
+      }else{
+        $proposal->otheruser = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId())->getUsername();
+      }
       $proposal->owner = $em->getRepository('CmaUserBundle:User')->findOneById($proposal->parent->getOwnerId());
       $comment=new Comment();
       $formComment = $this->createForm(CommentType::class,$comment);
@@ -66,8 +70,9 @@ class ProposalController extends Controller
           $em->persist($comment);
           $em->flush();
         }
+        $comment->username = $em->getRepository('CmaUserBundle:User')->findOneById($comment->getUserId())->getUsername();
       }
-      return $this->render('homePageBundle:Proposal:proposal_artist_show.html.twig',array('formComment'=>$formComment->createView(),'formEtat'=>$formEtat->createView(),'user'=>$user->getId(),'proposal'=>$proposal));
+      return $this->render('homePageBundle:Proposal:proposal_artist_show.html.twig',array('formComment'=>$formComment->createView(),'formEtat'=>$formEtat->createView(),'username'=>$user->getUsername(),'user'=>$user->getId(),'proposal'=>$proposal));
     }
     public function createAction(Request $request,$id)
     {

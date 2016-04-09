@@ -89,6 +89,15 @@ class EstimateController extends Controller
       $formEstimate = $this->createForm(EstimateType::class,$estimate);
       $formEstimate->handleRequest($request);
         if ($formEstimate->isValid()) {
+            if($estimate->getImage1()->getPath()==null){
+              $estimate->setImage1(null);
+            }
+            if($estimate->getImage2()->getPath()==null){
+              $estimate->setImage2(null);
+            }
+            if($estimate->getImage3()->getPath()==null){
+              $estimate->setImage3(null);
+            }
             if($formEstimate->get('submit')->isClicked()){
               $estimate->setIsPublic(true);
             }else if($formEstimate->get('save')->isClicked()){
@@ -123,7 +132,8 @@ class EstimateController extends Controller
     {
       $user = $this->get('security.token_storage')->getToken()->getUser();
       $userEstimates = $user->getEstimates();
-      $estimate = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:Estimate')->findById($id)[0];
+      $estimate = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:Estimate')->findOneById($id);
+      dump($estimate);
       $user->removeEstimate($estimate);
       $formEstimate = $this->createForm(EstimateType::class,$estimate);
       $formEstimate->handleRequest($request);
@@ -140,7 +150,7 @@ class EstimateController extends Controller
             $em->flush();
             return $this->redirect($this->generateUrl('user_devis'));
         }
-      return $this->render('homePageBundle:Estimate:estimate_edit.html.twig',array('username'=>$user->getUsername(),'formEstimate' => $formEstimate->createView()));
+      return $this->render('homePageBundle:Estimate:estimate_edit.html.twig',array('username'=>$user->getUsername(),'formEstimate' => $formEstimate->createView(),'estimate',$estimate));
     }
     public function editAction(Request $request,$id)
     {
@@ -151,8 +161,8 @@ class EstimateController extends Controller
         if($userEstimate->getId()==$estimate->getId()){
           $formEstimate = $this->createForm(EstimateType::class,$estimate,array( 'action' => $this->generateUrl('user_estimate_update',array('id'=>$estimate->getId()))));
           if(!$estimate->getIsPublic())
-          {
-            return $this->redirect($this->generateUrl('user_estimate_update'),array('estimate'=>$estimate->getId()));
+          { 
+            return $this->redirectToRoute('user_estimate_update',array('id'=>$estimate->getId()));
           }
           return $this->render('homePageBundle:Estimate:estimate_edit_public.html.twig',array('username'=>$user->getUsername(),'estimate'=>$estimate,'formEstimate' => $formEstimate->createView()));
         }
