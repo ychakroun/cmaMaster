@@ -133,7 +133,6 @@ class EstimateController extends Controller
       $user = $this->get('security.token_storage')->getToken()->getUser();
       $userEstimates = $user->getEstimates();
       $estimate = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:Estimate')->findOneById($id);
-      dump($estimate);
       $user->removeEstimate($estimate);
       $formEstimate = $this->createForm(EstimateType::class,$estimate);
       $formEstimate->handleRequest($request);
@@ -150,7 +149,8 @@ class EstimateController extends Controller
             $em->flush();
             return $this->redirect($this->generateUrl('user_devis'));
         }
-      return $this->render('homePageBundle:Estimate:estimate_edit.html.twig',array('username'=>$user->getUsername(),'formEstimate' => $formEstimate->createView(),'estimate',$estimate));
+      dump($estimate);
+      return $this->render('homePageBundle:Estimate:estimate_edit.html.twig',array('username'=>$user->getUsername(),'formEstimate' => $formEstimate->createView(),'estimate'=>$estimate));
     }
     public function editAction(Request $request,$id)
     {
