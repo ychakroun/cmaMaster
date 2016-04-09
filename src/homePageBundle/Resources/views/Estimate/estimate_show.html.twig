@@ -98,7 +98,11 @@
 
                 </div>
                 {% if not is_granted('ROLE_ARTIST') or estimate.owner %}
-                  <a href="{{ path('user_estimate_proposals',{'id': estimate.id} ) }}">
+                  {% if  estimate.proposals|length > 0 %}
+                    <a href="{{ path('user_estimate_proposals',{'id': estimate.id} ) }}">
+                  {% else %}
+                    <a href="{{ path('user_estimate_edit',{'id': estimate.id} ) }}">
+                  {% endif %}
                     <div class="action">
                       {% if  estimate.proposals|length > 1 %}
                         {{ estimate.proposals|length}} {{ 'estimate.proposal.artist.list.single'| trans }}
