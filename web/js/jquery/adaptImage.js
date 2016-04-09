@@ -11,11 +11,6 @@ $(document).ready(function() {
    });
 
    //Open description
-   $(".js-description-more").on('click',function(){
-     $(".js-description-hide").removeClass('hide');
-   })
-
-
    $(".js-description-more").each(function(){
      var parent = $(this),
      button = $(this),
