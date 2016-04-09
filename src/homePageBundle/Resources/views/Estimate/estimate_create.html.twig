@@ -111,9 +111,11 @@
 		{{form_widget(formEstimate.submit)}}
     </div>
     <div class="footertext">
-      <p>Vous pouvez également consulter la commnauté d’artistes et envoyer
-        un devis “coup de cœur” à l’artiste de votre choix via son profil.
-      </p>
+      <div class="alertBox">
+        <p class="alert"><img src="{{ asset("img/alert.png") }}" alt="alert" width="18"/><b> Informations importantes</b></p><br>
+        Votre demande va être envoyée en <b>Appel d’offre</b>, c’est à dire à l’ensemble de la communauté d’artistes CMA. Vous pouvez également envoyer une demande directement à l’artiste de votre choix, en cliquant sur le bouton <b>Demander un devis</b> de son profil.
+        <div class="smallLogo"><img src="{{asset('img/smallLogo.png')}}" alt=""></div>
+      </div>
     </div>
     {{form_widget(formEstimate._token)}}
     {{form_end(formEstimate)}}

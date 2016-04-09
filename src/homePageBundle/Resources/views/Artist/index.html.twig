@@ -58,7 +58,7 @@
               <div class="contentBlocArtiste">
                 <ul>
                   <li class="imgLiquidFill">
-                    <div class="description"><div class="content">{{profile.description}}</div></div>
+                    <div class="description"><div class="content">{{profile.description|length > 170 ? profile.description|slice(0, 170) ~ '...' : profile.description}}</div></div>
                     {% if profile.imageHeader %}
                     <img src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
                     {% else %}

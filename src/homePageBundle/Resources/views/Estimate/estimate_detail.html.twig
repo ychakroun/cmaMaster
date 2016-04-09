@@ -76,15 +76,9 @@
           </div>
           {% if estimate.ownerId != userServices.getId %}
           <form action="{{ path('proposal_create',{'id': estimate.id} ) }}">
-            <div class="blockCheckbox">
-              <div class="checkbox">
-                <input id="checkbox" required="" name="check" type="checkbox">
-                <label for="checkbox"></label>
-              </div>
-                <p>J’accepte les conditions d’utilisation </p>
-            </div>
+            
             <div class="button">
-              <div class="buttonSend"><input type="submit" value="Proposer une création" style="background-color:rgba(0,0,0,0)"></input></div>
+              <div class="buttonSend"><input type="submit" value="Proposer une création" style="background-color:rgba(0,0,0,0);color:#fff"></input></div>
             </div>
           </form>
           {% endif %}
