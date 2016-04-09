@@ -29,12 +29,11 @@ class PieceType extends AbstractType
               'required' => false,
               'translation_domain' => 'FOSUserBundle'
             ))
-            ->add('realisationDate',DateType::class, array(
-                'input'  => 'datetime',
+            ->add('realisationDate',null, array(
                 'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd',
                 'required' => false,
-                'label' => false
+                'label' => false,
+                'attr' => array('class' => 'datepicker'),
             ))
             ->add('price',MoneyType::class,array(
               'label' => 'form.piece.price',
