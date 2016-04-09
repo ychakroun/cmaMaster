@@ -22,11 +22,9 @@
       		<div class= "localisation">{{ artist.information.pays }}</div>
       	{% endif %}
       	{% if artist.profile.description %}
-      		<div class= "description js-description-more">
-          {{artist.profile.description|length > 380 ? artist.profile.description|slice(0, 380) ~ '...' : artist.profile.description}}
+      		<div class= "description js-description-more short">
+          {{artist.profile.description}}
         </div>
-
-        <!-- <div class="js-description-hide" style="width:100px;height:100px;background:red;position:absolute">test</div> -->
       	{% endif %}
       	 <div class="top0 bottom20"><button class="buttonMore"> {{"profile.show.devis" | trans }} </button></div>
        </div>
