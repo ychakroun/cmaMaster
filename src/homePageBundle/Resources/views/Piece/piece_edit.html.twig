@@ -32,7 +32,7 @@
   {% if userServices.allProfile.imageHeader and userServices.allProfile.imageHeader.path%}
       <img id="0" src="{{ asset( 'images/'~userServices.allProfile.imageHeader.path ) }}" alt="">
   {% else %}
-     <div class="basicHeader"><img id="0" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
+     <div class="basicHeader"><img id="0" src="{{ asset( 'img/upload.png' ) }}" alt=""></div>
   {% endif %}
 </header>
   <section class="piece">
@@ -68,7 +68,7 @@
             {% if piece.image1 and piece.image1.path%}
                 <img id="1" src="{{ asset( 'images/'~piece.image1.path ) }}" alt="">
             {% else %}
-                <img id="1" src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+                <img id="1" src="{{ asset( 'img/upload.png' ) }}" alt="">
             {% endif %}
         </div>
         <div id="div2" class="imagePiece imgLiquidFill">

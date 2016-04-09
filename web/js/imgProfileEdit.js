@@ -24,7 +24,7 @@ function initProfileImage(){
         						setImageTemp();
         					}
         					reader.readAsDataURL(files[y]);
-        					
+
         				}
         			}
         		}
@@ -55,7 +55,7 @@ function initPieceImage(){
                                 setImageTemp();
                             }
                             reader.readAsDataURL(files[y]);
-                            
+
                         }
                     }
                 }
@@ -86,7 +86,7 @@ function initProposalImage(){
                                 setImageTemp();
                             }
                             reader.readAsDataURL(files[y]);
-                            
+
                         }
                     }
                 }
@@ -117,7 +117,7 @@ function initEstimateImage(){
                                 setImageTemp();
                             }
                             reader.readAsDataURL(files[y]);
-                            
+
                         }
                     }
                 }
@@ -145,7 +145,7 @@ function initOpinionImage(){
                                 setImageTemp();
                             }
                             reader.readAsDataURL(files[y]);
-                            
+
                         }else{
                             document.getElementById("opinion_image_file").click();
                         }

@@ -4,7 +4,7 @@
     {% if artist.profile.imageHeader and artist.profile.imageHeader.path%}
         <img id="0" src="{{ asset( 'images/'~artist.profile.imageHeader.path ) }}" alt="">
     {% else %}
-       <div class="basicHeader"><img id="0" src="{{ asset( 'img/800x500.jpg' ) }}" alt=""></div>
+       <div class="basicHeader"><img id="0" src="{{ asset( 'img/upload.png' ) }}" alt=""></div>
     {% endif %}
   </div>
   {% embed "homePageBundle:Default:navProfilArtiste.html.twig" with {'class':'profile'} %}
@@ -13,6 +13,7 @@
 <div class="mainProfile grayBackground">
   <div class="containerS">
     <section class="profilArtiste">
+
     <div class="infosArtiste">
       <div class="headeArtisteLeft">
       	{% if artist.username %}
@@ -47,12 +48,15 @@
     	{% endif %}
       </div>
     </div>
+    <header class="headerArtisteGalerie padBottom60 padTop30 borderTop">
+      <p>Portfolio</p>
+    </header>
   	<div id="imageAll">
   		<div class= "imageProfile imgLiquidFill">
   			{% if artist.profile.image1 %}
   				<img src="{{ asset( 'images/'~artist.profile.image1.path ) }}" alt="">
   			{% else %}
-          	    <img src="{{ asset( 'img/800x500.jpg' ) }}" alt="">
+          	    <img src="{{ asset( 'img/upload.png' ) }}" alt="">
   			{% endif %}
   		</div>
   		<div class= "imageProfile imgLiquidFill">
