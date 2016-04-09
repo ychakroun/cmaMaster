@@ -20,7 +20,8 @@
             Information(s) Manquante(s)
           {% endblock %}
           {% block content %}
-            Niahah nan an le siret machin
+            <p class="alertSiret">Vous devez fournir un SIRET ainsi qu’un Relevé d’Identité Bancaire avant d’ajouter une oeuvre à votre galerie. Ces documents sont indispensables pour mettre une création en vente sur notre plateforme. Nous vous invitons à vous rendre sur votre rubrique Informations personnelles afin de les mettre à jour.</p>
+            <div class="centerText"><a href="{{ path('user_info') }}" class='buttonAction'>Informations personnelles</a></div>
           {% endblock %}
         {% endembed %}
         </div>
