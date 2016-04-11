@@ -1,5 +1,18 @@
 $(document).ready(function() {
 
+    //Bandeau alert
+    $('#barre').animate({
+        marginTop: "0",
+    }, 500);
+
+    $("#fermer").mousedown(function(){
+
+      $('#barre').animate({
+              marginTop: "-30px",
+      }, 500);
+
+     });
+
     //Adapt image
     $(".imgLiquidFill").imgLiquid();
 
@@ -34,6 +47,13 @@ $(document).ready(function() {
 
    });
 
+   //Datepicker
    $('.datepicker').datepicker();
+
+   //alert
+  //    $(".js-alert-popup").on('click',function(e){
+  //      e.preventDefault();
+  // 	    alert("Notre système de paiement est en cours d'installation. Afin de poursuivre la création de votre commande, contactez l'équipe CMA à l'adresse : contact@custommyart.com");
+  //  });
 
 });

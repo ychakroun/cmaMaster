@@ -23,7 +23,11 @@ class ProposalEtatType extends AbstractType
                 $form = $event->getForm();
                 switch ($data->getPiece()->getEtat()) {
                     case 1:
-                       $form ->add('etat',SubmitType::class,array('label'=>'form.proposal.etat.1','translation_domain'=>'FOSUserBundle'));
+                       $form ->add('etat',SubmitType::class,array(
+                         'label'=>'form.proposal.etat.1',
+                         'translation_domain'=>'FOSUserBundle',
+                          'attr'=> array('class' => 'js-alert-popup'),
+                       ));
                       break;
                     case 2:
                        $form->add('etat',SubmitType::class,array('label'=>'form.proposal.etat.2','translation_domain'=>'FOSUserBundle'));
@@ -35,12 +39,16 @@ class ProposalEtatType extends AbstractType
                        $form->add('etat',SubmitType::class,array('label'=>'form.proposal.etat.4','translation_domain'=>'FOSUserBundle'));
                       break;
                     default:
-                        $form ->add('etat',SubmitType::class,array('label'=>'form.proposal.etat.1','translation_domain'=>'FOSUserBundle'));
+                        $form ->add('etat',SubmitType::class,array(
+                          'label'=>'form.proposal.etat.1',
+                        'translation_domain'=>'FOSUserBundle',
+                         'attr'=> array('class' => 'js-alert-popup'),
+                      ));
                       break;
                     }
             });
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

@@ -1,0 +1,50 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA User Estimate{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset( 'js/imgProfileEdit.js' ) }}"></script>
+	{{parent()}}
+{% endblock %}
+{% block main %}
+
+<section class="param">
+  <header class="headerSection">
+    <div class="globalS">
+      <div class="idSection">{{ "estimate_page.header" | trans }}</div>
+      <div class="logoSection"><img src="{{ asset("img/logoTampon.png") }}" alt="cma_tampon" /></div>
+      <div class="infoSection"></div>
+    </div>
+  </header>
+  <div class="containerS">
+    {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
+    <div class="contentS">
+      <section id="devis">
+        <div class="containerS">
+          <div class="bucket">
+            <div class="titleS">
+              <div>Panier</div>
+            </div>
+          </div>
+          <div class="titleS">
+            <div>Vos Coordonées Banquaires</div>
+          </div>
+          <div class="formPayement">
+
+          </div>
+          <div class="titleS">
+            <div>Adresse de Facturation</div>
+          </div>
+          <div class="titleS">
+            <div>Adresse de livraison</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+{% endblock %}
