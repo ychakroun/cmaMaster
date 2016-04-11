@@ -52,7 +52,7 @@ class ComplainController extends Controller
       		$message = \Swift_Message::newInstance()
         	->setSubject('Reclamation sur la proposition n°'.$proposal->getId().' de l\'artiste '.$complain->otherusername)
         	->setFrom($user->getEmail())
-        	->setTo('leo.pena@custommyart.com')
+        	->setTo('contact@custommyart.com')
         	->setBody(
             	$this->renderView(
                 	 'email/complain.html.twig',

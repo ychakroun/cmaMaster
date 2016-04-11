@@ -11,6 +11,7 @@
     {% embed "homePageBundle:Default:navProfilArtiste.html.twig" with {'class':'profile'} %}
     {% endembed %}
   </header>
+<form  action="{{ path("artist_edit")}}" enctype="multipart/form-data" method="post" >
   <div class="containerS">
     <div id="mainProfile">
         {% if is_granted('ROLE_ARTIST') %}
@@ -18,14 +19,14 @@
         <div class="headeArtisteLeft">
         <div class="username">{{username }}</div>
         <div class="localisation">Paris</div>
-        <form  action="{{ path("artist_edit")}}" enctype="multipart/form-data" method="post" >
+          {{ form_errors(form) }}
             <input id="{{ form._token.vars.id }}" name="{{ form._token.vars.full_name }}"type="hidden" name="_csrf_token" value="{{ form._token.vars.value }}" />
         	   <div id="{{form.vars.id}}">
              	{{form_row(form.description,{attr: {'placeholder':'form.profile.description' | trans }})}}
              	{{form_widget(form.imageHeader.file,{attr: {'style':"display:none"}})}}
              	{{form_row(form.imageHeader.name,{attr: {'value':username}})}}
             </div>
-          </div>
+        </div>
               <div class="headeArtisteRight">
                 <div class="infos">
                   <div><img src="{{asset('img/custom.png')}}" alt=""><p>{{0}} custom.</p></div>
@@ -34,7 +35,7 @@
                 </div>
                	<div id="{{ form.tags.vars.id}}">
                		<ul id="marqueurs" class="tags" data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}">
-                          {% for tag in form.tags%}
+                        {% for tag in form.tags%}
                           <li class="tagLiCss">
                               <div class="initial" id="profile_tags_{{ tag.vars.name }}">
                                   <div>
@@ -42,7 +43,7 @@
                                   </div>
                               </div>
                           </li>
-                          {% endfor %}
+                        {% endfor %}
                		</ul>
                	</div>
               </div>
@@ -107,7 +108,6 @@
         </div>
           <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.profile.submit"|trans }}" />
         </div>
-        </form>
 
         <div class="borderTop centerText padBottom100">
           <header class="headerArtisteGalerie top50 bottom50 black">
@@ -115,9 +115,8 @@
         	</header>
           <a href="{{path('piece_create')}}"><div class="buttonAction">{{'form.profile.piece' | trans }} </div></a>
         </div>
-
+</form>
         <div id="imgtmp" style="display:none"></div>
-
         {% endif %}
     </div>
   </div>

@@ -84,7 +84,7 @@ class Tag
     }
     public function addProfile(\CmaUserBundle\Entity\Profile $profile = null)
     {
-        $this->profiles[] = $profile;
+        $this->profiles->add($profile);
     }
     /**
      * Get profile

@@ -44,11 +44,11 @@ class ProfileType extends AbstractType
               'translation_domain' =>
               'FOSUserBundle'))
             ->add('tags', CollectionType::class, array(
+              'entry_type' => TagType::class,
               'allow_delete' => true,
               'allow_add'=> true,
               'by_reference' => false,
-              'required' => false,
-              'entry_type' => TagType::class))
+              'required' => false))
             ->add('condition', CheckboxType::class,array("mapped" => false,
                 'required' => true,
                 'label' => "J'accepte les conditions d'utilisations",

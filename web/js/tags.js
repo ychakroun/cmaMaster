@@ -63,6 +63,7 @@ function removeTagOnChange(tagFormLi,input,collectionHolder, newLinkLi){
 		e.preventDefault();
 	}
 	input.onkeyup = function(e){
+		console.log(e);
 		e.preventDefault();
 		addTagForm(collectionHolder, newLinkLi);
 		inputHolder = collectionHolder[0].getElementsByTagName("input");
@@ -74,14 +75,14 @@ function removeTagOnChange(tagFormLi,input,collectionHolder, newLinkLi){
 	}
 }
 function addTagFormDeleteLink(tagFormLi) {
-var removeFormA = document.createElement('a');
-removeFormA.innerHTML = "X";
-tagFormLi.appendChild(removeFormA);
-removeFormA.onclick = function(e) {
-    // prevent the link from creating a "#" on the URL
-    e.preventDefault();
-    // remove the li for the tag form
-    tagFormLi.parentNode.removeChild(tagFormLi);
+	var removeFormA = document.createElement('a');
+	removeFormA.innerHTML = "X";
+	tagFormLi.appendChild(removeFormA);
+	removeFormA.onclick = function(e) {
+    	// prevent the link from creating a "#" on the URL
+    	e.preventDefault();
+    	// remove the li for the tag form
+    	tagFormLi.parentNode.removeChild(tagFormLi);
 	};
 }
 function setAddContent(content) {

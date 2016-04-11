@@ -20,7 +20,6 @@ class ImageController extends Controller
         }else{
              $name = $usr->getUser()->getUsername();
              $document->name = $name;
-             dump($document);
              $document->getName();
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();

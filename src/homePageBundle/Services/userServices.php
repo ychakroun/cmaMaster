@@ -95,9 +95,9 @@ class userServices {
         $crush = 0;
         $pieces = $this->em->getRepository('CmaUserBundle:Opinion')->findByUser($user);
         foreach ($pieces as $key => $piece) {
-            if($piece->getCrush()){
-                $crush ++;
-            }
+            //if($piece->getCrush()){
+                //$crush ++;
+            //}
         }
         return $crush;
     }

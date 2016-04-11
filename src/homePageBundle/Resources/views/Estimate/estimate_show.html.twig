@@ -112,7 +112,11 @@
                     </div>
                   </a>
                 {% elseif is_granted('ROLE_ARTIST') %}
-                  <a href="{{ path('proposal_create',{'id': estimate.id} ) }}">
+                  {% if  estimate.owner %}
+                    <a href="{{ path('user_estimate_proposals',{'id': estimate.id} ) }}">
+                  {% else %}
+                   <a href="{{ path('proposal_create',{'id': estimate.id} ) }}">
+                  {% endif %}
                     <div class="action">
                       {{ 'estimate.proposal.create'| trans }}
                     </div>

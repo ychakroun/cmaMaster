@@ -17,13 +17,7 @@ class TagType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name',null,array('required'=>false))
-            ->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
-            $form = $event->getForm();
-            $data = $event->getData();
-            dump($form);
-            dump($data);
-        });
+            ->add('name');
     }
     
     /**

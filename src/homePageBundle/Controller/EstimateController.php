@@ -59,8 +59,11 @@ class EstimateController extends Controller
           if( $user->getId()==$existingEstimate->getOwnerId() && $existingEstimate->getIsPublic() && is_null($existingEstimate->getIsValidate())){
               $existingEstimate->owner = true;
               array_push($estimates, $existingEstimate);
-          }else if($existingEstimate->getIsPublic()===true && is_null($existingEstimate->getIsValidate())){
+          }else if($existingEstimate->getIsPublic() && is_null($existingEstimate->getIsValidate())){
             $existingEstimate->owner = false;
+            array_push($estimates, $existingEstimate);
+          }else if($user->getId()==$existingEstimate->getOwnerId()&&is_null($existingEstimate->getIsValidate())){
+            $existingEstimate->owner = true;
             array_push($estimates, $existingEstimate);
           }
         }
@@ -149,7 +152,6 @@ class EstimateController extends Controller
             $em->flush();
             return $this->redirect($this->generateUrl('user_devis'));
         }
-      dump($estimate);
       return $this->render('homePageBundle:Estimate:estimate_edit.html.twig',array('username'=>$user->getUsername(),'formEstimate' => $formEstimate->createView(),'estimate'=>$estimate));
     }
     public function editAction(Request $request,$id)

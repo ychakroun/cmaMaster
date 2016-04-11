@@ -52,7 +52,7 @@ class Profile
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Image", cascade={"persist","remove"})
     */
     private $image3;
-    /**
+    /** 
     * @ORM\ManyToMany(targetEntity="CmaUserBundle\Entity\Tag", inversedBy="profiles",cascade={"persist","remove"})
     * @ORM\JoinColumn(name="profile_tag", referencedColumnName="id")
     *
@@ -202,7 +202,8 @@ class Profile
     public function addTag(\CmaUserBundle\Entity\Tag $tag = null)
     {
         $tag->addProfile($this);
-        $this->tags[] = $tag;
+        dump($tag);
+        $this->tags->add($tag);
         return $this;
     }
 
@@ -210,11 +211,7 @@ class Profile
     {
          $this->tags->removeElement($tag);
     }
-    /**
-     * Get profile
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
+    
     public function getProfile()
     {
         return $this;
