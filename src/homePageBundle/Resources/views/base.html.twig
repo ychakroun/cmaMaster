@@ -15,6 +15,7 @@
       <link rel="stylesheet/less" type="text/css" href="{{ asset( 'css/styles.less' ) }}">
 			<link rel="stylesheet" type="text/css" href="{{ asset( 'css/glide.core.min.css' ) }}">
 			<link rel="stylesheet" type="text/css" href="{{ asset( 'css/glide.theme.min.css' ) }}">
+			<link rel="stylesheet" type="text/css" href="{{ asset( 'css/barre.css' ) }}">
 			<link rel="stylesheet" type="text/css" href="{{ asset( 'css/jquery-ui.min.css' ) }}">
 
 
@@ -37,6 +38,10 @@
   {% endblock %}
 </head>
 <body>
+	<div id="barre">
+	    Bienvenue sur Custom My Art ! Nous lançons la version bêta du site, nous serons donc particulièrement attentifs à toutes vos précieuses remarques ! 
+	    <div id="fermer">X</div>
+	</div>
     {% block body %}
     {% block nav %}
         {% include "homePageBundle:Default:nav.html.twig" %}

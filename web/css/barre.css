@@ -1,0 +1,35 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#barre {
+    width: 100%;
+    background:#000;
+    color: #fff;
+    padding:10px 0;
+    font-family:  "Trebuchet MS";
+    text-align: center;
+    font-size:11px;
+    margin-top:-50px;
+}
+
+#fermer {
+    background: url(../img/fermer.png);
+    color: #fff;
+    width: 18px;
+    height:18px;
+    display: block;
+    cursor: pointer;
+    float:right;
+    margin-right:30px;
+}
+
+#fermer:hover {
+/* J'utilise un gif en :hover pour animer la croix de fermeture */
+    background: url(../img/fermer.gif);
+}

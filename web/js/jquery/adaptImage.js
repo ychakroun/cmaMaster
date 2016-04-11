@@ -1,5 +1,18 @@
 $(document).ready(function() {
 
+    //Bandeau alert
+    $('#barre').animate({
+        marginTop: "0",
+    }, 500);
+
+    $("#fermer").mousedown(function(){
+
+      $('#barre').animate({
+              marginTop: "-30px",
+      }, 500);
+
+     });
+
     //Adapt image
     $(".imgLiquidFill").imgLiquid();
 
@@ -34,6 +47,7 @@ $(document).ready(function() {
 
    });
 
+   //Datepicker
    $('.datepicker').datepicker();
 
 });
