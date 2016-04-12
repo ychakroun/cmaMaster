@@ -23,8 +23,9 @@
 			{% for section in listArtists.pageArtist %}
 			<ul id="{{ loop.index }}">
 				{% for artist in section %}
-				<a href="{{ path('artist_profile', { 'username': artist.username }) }}">
+
 					<li class="blocArtiste">
+						<a href="{{ path('artist_profile', { 'username': artist.username }) }}">
 						<div class="globalBlocArtiste">
 							<header class="headerBlocArtiste">
 								<div class="name"id="{{ artist.id }}">{{artist.username}}
@@ -84,8 +85,8 @@
 							</div>
 							{% endif %}
 						</div>
+						</a>
 					</li>
-					</a>
 					{% endfor %}
 				</ul>
 

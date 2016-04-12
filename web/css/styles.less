@@ -275,7 +275,7 @@ ul,li{
         .contentS{width: 100%;
           ul{font-size: 0px;.inline;width: 100%;
             .blocArtiste{.inline; width: 50%;
-              .globalBlocArtiste{width: 385px;float: left;margin-bottom: 80px;
+              .globalBlocArtiste{width: 385px;margin-bottom: 80px;
                 .headerBlocArtiste{
                   .name{font-family: 'montserratregular';font-size: 24px;padding-bottom: 5px;span{font-size: 12px;padding-left: 15px;}}
                   .infos{font-size: 12px;
@@ -314,9 +314,9 @@ ul,li{
                   }
                 }
               }
-              &:nth-child(2n+1){
-                .globalBlocArtiste{float: right;margin-bottom: 80px;
-                }
+              &:nth-child(even){
+                width: 385px;
+                float: right;
               }
             }
           }
@@ -325,15 +325,16 @@ ul,li{
       }
       .footerSection{text-align: center;padding-bottom: 50px;}
     }
-.blocArtistes{
-  .globalBlocArtiste{
-  float: left!important;
-  }
-  &:nth-child(1n+1){
-    .globalBlocArtiste{float: right!important;margin-bottom: 80px;
-    }
-  }
-}
+
+// .blocArtistes{
+//   .globalBlocArtiste{
+//   float: left!important;
+//   }
+//   &:nth-child(1n+1){
+//     .globalBlocArtiste{float: right!important;margin-bottom: 80px;
+//     }
+//   }
+// }
 #galerie{
   .contentS{
     padding-top: 70px;
