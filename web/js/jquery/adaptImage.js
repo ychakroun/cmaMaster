@@ -50,6 +50,14 @@ $(document).ready(function() {
    //Datepicker
    $('.datepicker').datepicker();
 
+   //flexslider
+   $('.flexslider').flexslider({
+     animation: "slide",
+     animationLoop: true,
+     controlNav: false,
+     directionNav: false,
+    });
+
    //alert
   //    $(".js-alert-popup").on('click',function(e){
   //      e.preventDefault();

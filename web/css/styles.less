@@ -63,10 +63,23 @@ ul,li{
 }
 /*style*/
 #header{
+  .sliderBg{
+    position: absolute;
+    top:0;
+    height: 590px;
+    width: auto;
+    overflow: hidden;
+    img{
+      filter: brightness(0.6);
+       -webkit-filter: brightness(0.6);
+       -moz-filter: brightness(0.6);
+       -o-filter: brightness(0.6);
+       -ms-filter: brightness(0.6);
+      width: 100%;
+    }
+  }
   font-family: 'robotomedium';
   color: #fff;
-  background: url('../img/headerHome.png') no-repeat center;
-  background-size: cover; /* version standardisée */
   height: 590px;
   position: relative;
   .horizontalCenter;
