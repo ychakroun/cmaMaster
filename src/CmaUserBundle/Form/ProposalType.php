@@ -29,8 +29,10 @@ class ProposalType extends AbstractType
             ->add('day', NumberType::class,array('label' => 'form.estimate.day',
                 'required' => false,
                 'translation_domain' => 'FOSUserBundle',
-                'attr' => array('class' => 'jours',
-                    'type'=>'number')
+                'attr' => array(
+                  'class' => 'jours',
+                  'type'=>'number',
+                  'placeholder' => 'Inscrire le nombre de jours')
                 ))
             ->add('piece',PieceProposalType::class,array('label' => false,
                 'required' => false,
@@ -42,10 +44,10 @@ class ProposalType extends AbstractType
                 'label' => 'form.estimate.condition',
                 'translation_domain' => 'FOSUserBundle'
                 ))
-            
+
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
