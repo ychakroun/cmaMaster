@@ -199,6 +199,8 @@ sidebar_parameter:
 proposal:
     delete: 'Supprimer la proposition'
     decline: 'Decliner la proposition'
+    complaint : 'Faire une réclamation'
+    opinion : 'Oeuvre livrée'
     description:
     title: 'Description de l''oeuvre'
     show:

@@ -213,7 +213,7 @@
         {{form_end(formEtat)}}
       </span>
       {% elseif user == proposal.parent.ownerId and proposal.piece.etat == 4 %}
-        <span class="right" style="width: 50%; display: inline-block; font-size: 14px;text-align: right;">
+        <span class="right" style="width: 50%; display: inline-block; font-size: 14px;text-align: center;">
           <a style="background-color:#666;"class="buttonAction" href="{{path('estimate_opinion',{'id':proposal.id} ) }}">
             {{'proposal.opinion'|trans}}
           </a>
