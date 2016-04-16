@@ -51,7 +51,9 @@ class EstimateType extends AbstractType
                 'required' => false,
                 'translation_domain' => 'FOSUserBundle',
                 'attr' => array('class' => 'jours',
-                    'type'=>'number')
+                    'type'=>'number',
+                    'placeholder' => 'Inscrire le nombre de jours'
+                  )
                 ))
             ->add('deliveryAdress',null,array('label' => 'form.estimate.deliveryAddress',
                 'required' => true,
@@ -85,12 +87,16 @@ class EstimateType extends AbstractType
             ->add('width',null,array('label' => 'form.estimate.width',
                 'required' => false,
                 'translation_domain' => 'FOSUserBundle',
-                'attr' => array('class' => 'largeur')
+                'attr' => array(
+                  'class' => 'largeur',
+                  'placeholder' => 'en cm'
+                )
                 ))
             ->add('height',null,array('label' => 'form.estimate.height',
                 'required' => false,
                 'translation_domain' => 'FOSUserBundle',
-                'attr' => array('class' => 'hauteur')
+                'attr' => array('class' => 'hauteur',
+                'placeholder' => 'en cm')
                 ))
             ->add('image1',ImageType::class,array('required' => false,
                 'label' => false,

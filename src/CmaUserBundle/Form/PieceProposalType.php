@@ -18,9 +18,11 @@ class PieceProposalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('price',MoneyType::class,array('label' => 'form.proposal.price',
+            ->add('price',null,array(
+                'label' => 'form.proposal.price',
                 'required' => true,
-                'translation_domain' => 'FOSUserBundle'
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('placeholder' => '€')
                 ))
             ->add('feature',TextType::class,array('label' => 'form.piece.feature',
                 'required' => false,
@@ -32,25 +34,25 @@ class PieceProposalType extends AbstractType
             ->add('width',null,array('label' => 'form.piece.width',
                 'required' => false,
                 'translation_domain' => 'FOSUserBundle',
-                'attr' => array('class' => 'largeur')
+                'attr' => array('class' => 'largeur','placeholder' => 'en cm')
                 ))
             ->add('height',null,array('label' => 'form.piece.height',
                 'required' => false,
                 'translation_domain' => 'FOSUserBundle',
-                'attr' => array('class' => 'hauteur')
+                'attr' => array('class' => 'hauteur','placeholder' => 'en cm')
                 ))
             ->add('image1',ImageType::class,array('required' => false,
                 'label' => false,
                 'translation_domain' => 'FOSUserBundle'))
             ->add('image2',ImageType::class,array('required' => false,
-                'label' => false, 
+                'label' => false,
                 'translation_domain' => 'FOSUserBundle'))
             ->add('image3',ImageType::class,array('required' => false,
-                'label' => false, 
+                'label' => false,
                 'translation_domain' => 'FOSUserBundle'))
             ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

@@ -18,8 +18,31 @@
     <div class="containerS">
       {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
       <div class="contentS basket">
-       <div class="step">
-
+       <div class="step padTop30">
+           <div class="centerText">
+           {% if etat == 1 %}
+           <img src="{{ asset("img/achat/achat-2.png") }}" alt="">
+           <ul class="stateEstimate">
+             <li class="black">Panier</li>
+             <li>Livraison</li>
+             <li>Paiement</li>
+           </ul>
+           {% elseif etat == 2 %}
+           <img src="{{ asset("img/achat/achat-3.png") }}" alt="">
+           <ul class="stateEstimate">
+             <li>Panier</li>
+             <li class="black">Livraison</li>
+             <li>Paiement</li>
+           </ul>
+           {% elseif proposal.piece.etat == 3 %}
+           <img src="{{ asset("img/achat/achat-4.png") }}" alt="">
+           <ul class="stateEstimate">
+             <li>Panier</li>
+             <li>Livraison</li>
+             <li class="black">Paiement</li>
+           </ul>
+           {% endif %}
+           </div>
        </div>
        <div class="step1">
          <header class="headerStep">Mon panier</header>

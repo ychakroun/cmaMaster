@@ -34,7 +34,7 @@ registration:
         great: 'Merci !'
         confirm: 'Votre inscription est bien enregistré !'
         message2: 'Un e-mail de confirmation vient d''être envoyé à l''adresse e-mail %email%'
-        message1: 'Vous devez clicker sur un lien present dans cet e-mail afin de valider votre inscription'
+        message1: 'Vous devez cliquer sur un lien présent dans cet e-mail afin de valider votre inscription'
     confirmed: 'Félicitations %username%, votre compte est maintenant activé.'
     back: 'Retour à la page d''origine.'
     submit: 'Confirmer votre inscription'
@@ -199,6 +199,8 @@ sidebar_parameter:
 proposal:
     delete: 'Supprimer la proposition'
     decline: 'Decliner la proposition'
+    complaint : 'Faire une réclamation'
+    opinion : 'Oeuvre livrée'
     description:
     title: 'Description de l''oeuvre'
     show:
