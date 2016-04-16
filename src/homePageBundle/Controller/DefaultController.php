@@ -21,6 +21,7 @@ class DefaultController extends Controller
         $piecesWithUserValid = array();
         foreach ($pieces as $key => $piece) {
             $artist = $piece->getUser();
+            dump($artist->getIsPublic());
             if($artist->getIsPublic()){
                 array_push($piecesWithUserValid,$piece);
             }

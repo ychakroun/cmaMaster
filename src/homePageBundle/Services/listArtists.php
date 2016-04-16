@@ -16,7 +16,7 @@ class listArtists {
     	$listArtists = $repository->findByRoleIndex('ROLE_ARTIST');
         $artistformat = array();
         foreach ($listArtists as $key => $artist) {
-            if($artist->getParameter()!=null&&$artist->getProfile()!=null){
+            if($artist->getParameter()!=null&&$artist->getProfile()!=null&&$artist->getIsPublic()){
                 array_push($artistformat,$artist);
             }
         }
@@ -50,7 +50,7 @@ class listArtists {
     	$i = 0;
     	$y = 0;
     	foreach ($listArtists as $key => $artist) {
-            if($artist->getParameter()!=null&&$artist->getProfile()!=null){
+            if($artist->getParameter()!=null&&$artist->getProfile()!=null&&$artist->getIsPublic()){
     		  $tab = 'tab'.$key;
     		  if($i == 6){
     		  	$i = 0;

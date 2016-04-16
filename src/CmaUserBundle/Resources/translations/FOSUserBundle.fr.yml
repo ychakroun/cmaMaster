@@ -46,6 +46,10 @@ registration:
         confirm: 'Votre compte est désormais activé !'
         message2: 'Venez découvrir sans plus attendre tous les talents de la communauté créative CMA.'
         message1: 'Vous pouvez également vous rendre dans la section Galerie ou encore consulter notre page concept pour tout savoir du fonctionnement de notre plateforme.'
+        artistgreat: 'Felicitation !'
+        artistconfirm: 'Votre compte va être verifié par Custom My Art!'
+        artistmessage2: 'Venez découvrir sans plus attendre tous les devis proposés à la communauté créative CMA.'
+        artistmessage1: 'Vous pouvez également vous rendre dans la section Galerie ou encore consulter notre page concept pour tout savoir du fonctionnement de notre plateforme.'
     email:
         subject: 'Bienvenue %username% !'
         message: "Bonjour %username% !\n\nPour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%\n\nCordialement,\nL'équipe.\n"

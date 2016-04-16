@@ -168,7 +168,7 @@ class User extends BaseUser
      *
      * @return boolean
      */
-    public function isPublic()
+    public function getIsPublic()
     {
         return $this->isPublic;
     }

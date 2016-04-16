@@ -8,23 +8,31 @@
 		<div class="choices" id="2">{{ 'artist' | trans }}<div class="arrow"></div></div>
 		<div class="choices" id="3">{{ 'company' | trans }}<div class="arrow"></div></div>
 		<div class="choices" id="4">{{ 'private' | trans }}<div class="arrow"></div></div>
+		{{ form_errors(form.group) }}
 	</div>
 	{{ form_widget(form.username, { 'attr': {'placeholder': 'form.username'} }) }}
+	{{ form_errors(form.username) }}
 	{{ form_widget(form.email, { 'attr': {'placeholder': 'form.email'} }) }}
+	{{ form_errors(form.email) }}
     {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'form.password'} }) }}
+    {{ form_errors(form.plainPassword.first) }}
     {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'form.password_confirmation'} }) }}
+    {{ form_errors(form.plainPassword.second) }}
 
 		<div class="checkConditions top50">
 			<div class="blockCheckbox">
 				<div class="checkbox">
 				{{ form_widget(form.parameter.newsletter) }}
+				{{ form_errors(form.parameter.newsletter) }}
 				<label for="{{form.parameter.newsletter.vars.id}}"></label>
 				</div>
 				<p class="inline padLeft10">{{ form_label(form.parameter) }}</p>
+				{{ form_errors(form.parameter) }}
 			</div>
 			<div class="blockCheckbox top20">
 				<div class="checkbox">
 				{{ form_widget(form.publicPolicy) }}
+				{{ form_errors(form.publicPolicy) }}
 				<label for="{{form.publicPolicy.vars.id}}"></label>
 				</div>
 				<p class="inline padLeft10">{{ form_label(form.publicPolicy) }}</p>

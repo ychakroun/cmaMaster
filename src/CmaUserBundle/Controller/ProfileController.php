@@ -137,13 +137,24 @@ class ProfileController extends Controller
             $formTagS = $userprofile->getTags();
             $existingTagS = $this->getDoctrine()->getRepository('CmaUserBundle:Tag')->findAll();
             foreach ($formTagS as $key => $formTag) {
-                dump($formTag);
                 foreach ($existingTagS as $key => $existingTag) {
                     if($formTag->getName() === $existingTag->getName()) {
                         $userprofile->removeTag($formTag);
                         $userprofile->addTag($existingTag);
                     }
                 }
+            }
+            if($userprofile->getImageHeader()->getPath()==null){
+              $userprofile->setImageHeader(null);
+            }
+            if($userprofile->getImage1()->getPath()==null){
+              $userprofile->setImage1(null);
+            }
+            if($userprofile->getImage2()->getPath()==null){
+              $userprofile->setImage2(null);
+            }
+            if($userprofile->getImage3()->getPath()==null){
+              $userprofile->setImage3(null);
             }
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
             $userManager->updateUser($user);

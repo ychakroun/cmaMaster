@@ -1,0 +1,5 @@
+FOS\UserBundle\Model\User:
+    properties:
+        username:
+            - NotBlank: ~
+            - CmaUserBundle\Validator\Constraints\ContainsSpace: ~
