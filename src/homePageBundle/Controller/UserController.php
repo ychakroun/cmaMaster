@@ -87,8 +87,6 @@ class UserController extends Controller
     dump($user->getEstimates());
     if (!is_object($user)) {
       throw new AccessDeniedException('This user does not have access to this section.');
-    }else if(!count($estimates)>0){
-      throw new HttpException(404,'This proposals not found');
     }
     $validEstimates = array();
     foreach ($estimates as $key => $estimate) {

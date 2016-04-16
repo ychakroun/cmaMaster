@@ -46,6 +46,11 @@
         {% endif %}
       </p>
     </header>
+    {% if pieces|length > 0 %}
+      {% for key,piece in pieces %}
+        <div class="piece titlePieceCreate">{{'piece' | trans }} n°{{key + 1}}  {{piece.title}}<a href="{{path('piece_delete',{'id':piece.id})}}" style="float:right;color:black;">X</a></div>
+      {% endfor %}
+    {% endif %}
     <div class="nbPiece titlePieceCreate">
     {% if nbPiece > 1 %}
       {{'piece' | trans }}s n°{{nbPiece + 1}}

@@ -57,8 +57,8 @@ class EstimateController extends Controller
         $estimates = array();
         foreach ($existingEstimates as $key => $existingEstimate) {
           if( $user->getId()==$existingEstimate->getOwnerId() && $existingEstimate->getIsPublic() && is_null($existingEstimate->getIsValidate())){
-              $existingEstimate->owner = true;
-              array_push($estimates, $existingEstimate);
+            $existingEstimate->owner = true;
+            array_push($estimates, $existingEstimate);
           }else if($existingEstimate->getIsPublic() && is_null($existingEstimate->getIsValidate())){
             $existingEstimate->owner = false;
             array_push($estimates, $existingEstimate);

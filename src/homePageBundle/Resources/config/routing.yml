@@ -51,6 +51,10 @@ piece_create:
     path:     /piece/create
     defaults: { _controller: homePageBundle:Piece:create }
 
+piece_delete:
+    path:     /piece/delete/{id}
+    defaults: { _controller: homePageBundle:Piece:delete }
+
 proposal_create:
     path:     /estimate/{id}/proposal/create
     defaults: {_controller: homePageBundle:Proposal:create }

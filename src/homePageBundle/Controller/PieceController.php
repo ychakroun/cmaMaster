@@ -54,7 +54,13 @@ class PieceController extends Controller
     public function createAction(Request $request)
     {
       $user = $this->get('security.token_storage')->getToken()->getUser();
-      $pieces = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findByUser($user);
+      $pieces = array();
+      $pieces_all = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findByUser($user);
+      foreach ($pieces_all as $key => $piece) {
+        if(!($piece->getIsProposal())){
+          array_push($pieces, $piece);
+        }
+      }
       $nbPiece = sizeof($pieces);
       if (!is_object($user)||$user->getRoles()[0]!='ROLE_ARTIST') {
         throw new AccessDeniedException('This user does not have access to this section.');
@@ -66,7 +72,7 @@ class PieceController extends Controller
         if ($form->isValid()) {
         	if($user->getInformation()){
         		if($user->getInformation()->getSiret()&&$user->getInformation()->getRib()){
-        		$em = $this->getDoctrine()->getManager();
+        		  $em = $this->getDoctrine()->getManager();
             	$em->persist($piece);
             	$em->flush();
             	return $this->redirectToRoute("artist_profile",array('username'=>$user->getUsername()));
@@ -77,6 +83,21 @@ class PieceController extends Controller
             	return $this->render("homePageBundle:Piece:piece_create.html.twig",array('formPiece' => $form->createView(),'username' => $user->getUsername(),'nbPiece' => $nbPiece,'noSiret'=>true));
             }
         }
-        return $this->render("homePageBundle:Piece:piece_create.html.twig",array('formPiece' => $form->createView(),'username' => $user->getUsername(),'nbPiece' => $nbPiece,'noSiret'=>false));
+        return $this->render("homePageBundle:Piece:piece_create.html.twig",array('formPiece' => $form->createView(),'username' => $user->getUsername(),'nbPiece' => $nbPiece,'noSiret'=>false,'pieces'=>$pieces));
     }
+  public function deleteAction($id)
+  {
+    $user = $this->get('security.token_storage')->getToken()->getUser();
+    $piece = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findOneById($id);
+    if (!is_object($user)||$user->getRoles()[0]!='ROLE_ARTIST'||$piece->getUser()!==$user) {
+      throw new AccessDeniedException('This user does not have access to this section.');
+    }
+    else{
+      $em = $this->getDoctrine()->getManager();
+      $em->remove($piece);
+      $em->flush();
+      return $this->redirectToRoute('piece_create');
+    }
+    
+  }
 }
