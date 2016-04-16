@@ -59,6 +59,9 @@ class User extends BaseUser
      /** @ORM\Column(type="boolean", name="public_policy") */
 
     private $publicPolicy;
+    /** @ORM\Column(type="boolean", name="is_public",nullable=true) */
+
+    private $isPublic;
     /**
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Parameter", cascade={"persist","remove"})
     */
@@ -146,7 +149,29 @@ class User extends BaseUser
     {
         return $this->publicPolicy;
     }
+    /**
+     * Set isPublic
+     *
+     * @param boolean $isPublic
+     *
+     * @return User
+     */
+    public function setIsPublic($boolean)
+    {
+        $this->isPublic = (Boolean) $boolean;
 
+        return $this;
+    }
+
+    /**
+     * Get isPublic
+     *
+     * @return boolean
+     */
+    public function isPublic()
+    {
+        return $this->isPublic;
+    }
     /**
      * Set parameter
      *

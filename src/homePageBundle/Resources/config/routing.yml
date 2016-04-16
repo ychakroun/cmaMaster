@@ -105,7 +105,7 @@ artist_profile_gallery:
 
 artist_profile_opinions:
     path:     /profile/{username}/opinions
-    defaults: { _controller: CmaUserBundle:Profile:opinions }
+    defaults: { _controller: homePageBundle:Opinion:index }
 
 artist_edit:
     path:     /profile/edit
@@ -133,5 +133,5 @@ help:
     defaults: { _controller: homePageBundle:Help:index }
 
 buy:
-    path:   /Buy
+    path:   /buy/{pieceId}
     defaults: { _controller: homePageBundle:Buy:index }

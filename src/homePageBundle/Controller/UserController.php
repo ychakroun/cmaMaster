@@ -4,6 +4,8 @@ namespace homePageBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
 use CmaUserBundle\Form\UserParameterType;
@@ -81,7 +83,8 @@ class UserController extends Controller
     { 
     $user = $this->get('security.token_storage')->getToken()->getUser();
     $em = $this->getDoctrine()->getManager();
-    $estimates = $user->getEstimates();
+    $estimates = $em->getRepository('CmaUserBundle:Estimate')->findByOwnerId($user->getId());
+    dump($user->getEstimates());
     if (!is_object($user)) {
       throw new AccessDeniedException('This user does not have access to this section.');
     }else if(!count($estimates)>0){

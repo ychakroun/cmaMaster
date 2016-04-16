@@ -10,7 +10,7 @@ use Doctrine\ORM\EntityManager;
 class BuyController extends Controller
 {
 
-    public function indexAction()
+    public function indexAction($pieceId)
     {
       	return $this->render('homePageBundle:Buy:index.html.twig');
     }

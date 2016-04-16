@@ -98,22 +98,16 @@
               <div id="div1" class="imgLiquidFill" style="margin:20px 0px;width: 100%;height: 300px;">
                 {% if proposal.piece.image1 and proposal.piece.image1.path%}
                 <img id="1" src="{{ asset( 'images/'~proposal.piece.image1.path ) }}" alt="">
-                {% else %}
-                <img id="1" src="{{ asset( 'img/upload.png' ) }}" alt="">
                 {% endif %}
               </div>
               <div id="div2" class="imgLiquidFill" style="margin:20px 0px;width: 100%;height: 300px;">
                 {% if proposal.piece.image2 and proposal.piece.image2.path %}
                 <img id="2" src="{{ asset( 'images/'~proposal.piece.image2.path ) }}" alt="">
-                {% else %}
-                <img id="2" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
                 {% endif %}
               </div>
               <div id="div3" class="imgLiquidFill" style="margin:20px 0px;width: 100%;height: 300px;">
                 {% if proposal.piece.image3 and proposal.piece.image3.path%}
                 <img id="3" src="{{ asset( 'images/'~proposal.piece.image3.path ) }}" alt="">
-                {% else %}
-                <img id="3" src="{{ asset( 'img/600x400.jpg' ) }}" alt="">
                 {% endif %}
               </div>
             </div>

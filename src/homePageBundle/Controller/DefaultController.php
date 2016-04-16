@@ -17,7 +17,14 @@ class DefaultController extends Controller
     		}
     	}*/
         $em = $this->getDoctrine()->getManager();
-        $pieces = $em->getRepository('CmaUserBundle:Piece')->findBy(array('etat'=>array('5',null)));
-        return $this->render('homePageBundle:Default:index.html.twig',array('pieces'=>$pieces));
+        $pieces = $em->getRepository('CmaUserBundle:Piece')->findBy(array('etat'=>null));
+        $piecesWithUserValid = array();
+        foreach ($pieces as $key => $piece) {
+            $artist = $piece->getUser();
+            if($artist->getIsPublic()){
+                array_push($piecesWithUserValid,$piece);
+            }
+        }
+        return $this->render('homePageBundle:Default:index.html.twig',array('pieces'=>$piecesWithUserValid));
     }
 }
