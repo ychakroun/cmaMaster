@@ -88,7 +88,7 @@
       	    {% for piece in pieces %}
 
       	      <li>
-                <a href="{{path('buy',{'username':artist.username})}}">
+                <a href="{{path('buy',{'artistUsername':piece.user.username,'pieceId':piece.id})}}">
         	        <div class="images">
         	        {% if piece.image1 %}
         	          <img src="{{asset("images/"~piece.image1.path)}}" alt="">

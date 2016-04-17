@@ -99,6 +99,7 @@
         <ul id="galerieLink">
           {% for piece in pieces %}
           {% if piece.user %}
+          <a href="{{path('buy',{'artistUsername':piece.user.username,'pieceId':piece.id})}}">
           <li>
             <div class="images imgLiquidFill">
               {% if piece.image1 %}
@@ -115,6 +116,7 @@
               <div class="price">{{piece.price}} €</div>
             </div>
           </li>
+        </a>
           {% endif %}
         {% endfor %}
         </ul>
