@@ -71,7 +71,6 @@ class FilterPiecesType extends AbstractType
     {
         $this->data = $data;
         $resolver->setDefaults(array(
-            'data_class' => null,
             'csrf_protection' => false,
         ));
     }

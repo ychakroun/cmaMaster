@@ -36,7 +36,12 @@
       <p>{{ "sidebar_parameter.purchase" | trans }}</p>
       <ul>
         <li>
-          <p><a href="{{ path('user_sold_project') }}">{{ "sidebar_parameter.sold" | trans }}</a></p>
+          <p>{% if is_granted('ROLE_ARTIST') %}
+              <a href="{{ path('user_sold_project') }}">{{ "sidebar_parameter.sold" | trans }}</a>
+            {% else %}
+              <a href="{{ path('user_sold') }}">{{ "sidebar_parameter.usersold" | trans }}</a>
+            {% endif %}
+          </p>
         </li>
       </ul>
     </div>

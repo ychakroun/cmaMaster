@@ -23,7 +23,7 @@
 
         <div class="identity">
             <div class="titleS">
-            <div></div>  <!-- ICI dans la div -->
+            <div>{{userServices.username}}</div>
             </div>
             <p class="instruction">
               Vous devez remplir les informations suivante pour finaliser votre inscription et rendre votre profil public.
@@ -40,8 +40,9 @@
         </div>
         <div class="statut">
             <div class="titleS">
-              <div>Statut</div>
+              <div>{% if is_granted('ROLE_ARTIST') %}Statut{% else %}Adresse{% endif %}</div>
             </div>
+          {% if is_granted('ROLE_ARTIST') %}
           <p>
             <label for="{{formInfo.information.siret.vars.id}}">{{ "form.information.siret" | trans }}</label><br>
             {{form_widget(formInfo.information.siret)}}
@@ -50,7 +51,7 @@
             <label for="{{formInfo.information.aBank.vars.id}}">{{ "form.information.aBank" | trans }}</label><br>
             {{form_widget(formInfo.information.aBank)}}
           </p>
-
+          {% endif %}
           <p>
             <label for="{{formInfo.information.adress.vars.id}}">{{ "form.information.adress" | trans }}</label><br>
             {{form_widget(formInfo.information.adress)}}
@@ -71,6 +72,7 @@
             {{form_widget(formInfo.information.pays)}}
           </p>
         </div>
+        {% if is_granted('ROLE_ARTIST') %}
           <div class="bank">
             <div class="titleS">
               <div>Informations bancaires</div>
@@ -91,10 +93,8 @@
               <label for="{{formInfo.information.bic.vars.id}}">{{ "form.information.bic" | trans }}</label><br>
               {{form_widget(formInfo.information.bic)}}
             </p>
-
-
           </div>
-
+        {% endif %}
           <div class="button">
             <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "parameter_page.submit"|trans }}" />
           </div>

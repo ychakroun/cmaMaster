@@ -37,6 +37,36 @@ class InformationType extends AbstractType
               'required' => false,
               'translation_domain' => 'FOSUserBundle'
             ))
+            ->add('siret',TextType::class, array(
+              'label' => 'form.information.siret',
+              'required' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('aBank',TextType::class, array(
+              'label' => 'form.information.aBank',
+              'required' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('ownerBank',TextType::class, array(
+              'label' => 'form.information.ownerBank',
+              'required' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('resBank',TextType::class, array(
+              'label' => 'form.information.resBank',
+              'required' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('rib',TextType::class, array(
+              'label' => 'form.information.rib',
+              'required' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
+            ->add('bic',TextType::class, array(
+              'label' => 'form.information.bic',
+              'required' => false,
+              'translation_domain' => 'FOSUserBundle'
+            ))
         ;
     }
 

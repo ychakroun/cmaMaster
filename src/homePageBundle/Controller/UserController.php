@@ -67,7 +67,11 @@ class UserController extends Controller
           return $this->render('homePageBundle:Default:index.html.twig');
         }else{
             $user = $this->get('security.token_storage')->getToken()->getUser();
-            $form = $this->createForm(UserInformationType::class, $user);
+            if($user->hasRole('ROLE_ARTIST')){
+                $form = $this->createForm(ArtistInformationType::class, $user);
+            }else{
+                $form = $this->createForm(UserInformationType::class, $user);
+            }
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();

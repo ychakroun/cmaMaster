@@ -21,6 +21,7 @@
       <section id="devis">
         <header id="Breadcrumb" class="{{ proposal.piece.etat }} padTop30">
           <div class="centerText">
+          {% set testEtat  = [2,3 ]%}
           {% if proposal.piece.etat == 1 %}
           <img src="{{ asset("img/commande/commande-1.png") }}" alt="">
           <ul class="stateEstimate">
@@ -29,7 +30,7 @@
             <li>Oeuvre livrée</li>
             <li>Validation</li>
           </ul>
-          {% elseif proposal.piece.etat == 2 %}
+          {% elseif proposal.piece.etat in testEtat %}
           <img src="{{ asset("img/commande/commande-2.png") }}" alt="">
           <ul class="stateEstimate">
             <li>Proposition</li>
@@ -37,7 +38,7 @@
             <li>Oeuvre livrée</li>
             <li>Validation</li>
           </ul>
-          {% elseif proposal.piece.etat == 3 %}
+          {% elseif proposal.piece.etat == 4 %}
           <img src="{{ asset("img/commande/commande-3.png") }}" alt="">
           <ul class="stateEstimate">
             <li>Proposition</li>
@@ -45,7 +46,7 @@
             <li class="black">Oeuvre livrée</li>
             <li>Validation</li>
           </ul>
-          {% elseif proposal.piece.etat > 3 %}
+          {% elseif proposal.piece.etat > 5 %}
           <img src="{{ asset("img/commande/commande-4.png") }}" alt="">
           <ul class="stateEstimate">
             <li>Proposition</li>

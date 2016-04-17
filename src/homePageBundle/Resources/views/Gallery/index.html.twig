@@ -82,16 +82,14 @@
               </li>
             </ul>
           </div>
-
       </div>
-
       <div class="centerText top50">
         <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.filterPieces.submit"|trans }}" />
       </div>
+      {{form_widget(formfilter._token)}}
       </form>
       </div>
       </aside>
-
       <div class="contentS">
         <div class="filtres-top">
           <p class="nouveaute"><a href="{{path('listGalleries',{'topfilter':'null'})}}"><span>Nouveautés</span></a></p>
@@ -118,7 +116,7 @@
             </div>
           </li>
           {% endif %}
-          {% endfor %}
+        {% endfor %}
         </ul>
         <footer class="footerNav">
           <div> <span>&lt;</span>
@@ -135,6 +133,5 @@
         </footer>
       </div>
     </div>
-
   </section>
 {% endblock %}

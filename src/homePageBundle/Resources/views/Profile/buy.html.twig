@@ -4,13 +4,12 @@
         <div class="idSection">La Galerie</div>
         <div class="logoSection"><img src="{{asset('img/logoTampon.png')}}" alt=""></div>
         <div class="infoSection">
-
         </div>
       </div>
     </header>
     <section class="buy">
       <div class="containerS">
-        <div class="title">LTR BOTTLE</div>
+        <div class="title">{{piece.title}}</div>
         <div class="content">
           <div class="images">
             <div id="Glide" class="glide">
@@ -84,9 +83,8 @@
       	  <div class="contentS">
       	    <ul>
       	    {% for piece in pieces %}
-
       	      <li>
-                <a href="{{path('buy',{'username':artist.username})}}">
+
         	        <div class="images imgLiquidFill">
         	        {% if piece.image1 %}
         	          <img src="{{asset("images/"~piece.image1.path)}}" alt="">
@@ -101,7 +99,6 @@
         	          </div>
         	          <div class="price">{{piece.price}} €</div>
         	        </div>
-                </a>
       	      </li>
       	     {% endfor %}
       	    </ul>

@@ -220,11 +220,11 @@ class EstimateController extends Controller
       $estimate = $em->getRepository('CmaUserBundle:Estimate')->findOneById($id);
       $userp = $em->getRepository('CmaUserBundle:User')->findOneByUsername($userp);
       $user = $this->get('security.token_storage')->getToken()->getUser();
-      $mangoPayServices = $this->get('home_page.mangoPayServices');
-      dump($mangoPayServices->getMangoUsers());
-      //$estimate->setIsValidate($userp);
-      //$em->persist($estimate);
-      //$em->flush();
+      //$mangoPayServices = $this->get('home_page.mangoPayServices');
+      //$mangoPayServices->getMangoUsers());
+      $estimate->setIsValidate($userp);
+      $em->persist($estimate);
+      $em->flush();
       if (!is_object($user)||$user->getId()!=$estimate->getOwnerId()) {
         throw new AccessDeniedException('This user does not have access to this section.');
       }

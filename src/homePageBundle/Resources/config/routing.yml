@@ -97,6 +97,10 @@ user_finish_project:
 
 user_sold_project:
     path:     /soldproject
+    defaults: { _controller: homePageBundle:User:soldArtist }
+
+user_sold:
+    path:     /sold
     defaults: { _controller: homePageBundle:User:sold }
 
 artist_profile:
@@ -137,5 +141,5 @@ help:
     defaults: { _controller: homePageBundle:Help:index }
 
 buy:
-    path:   /buy/{pieceId}
+    path:   /buy/{artistUsername}/{pieceId}
     defaults: { _controller: homePageBundle:Buy:index }

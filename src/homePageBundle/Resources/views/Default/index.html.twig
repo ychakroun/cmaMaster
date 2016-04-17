@@ -119,26 +119,29 @@
 		</div>
 		<div class="contentS">
 			<ul>
-				{% for piece in pieces %}
+			{% for piece in pieces %}
+				{{dump(piece)}}
 				{% if piece and piece.user %}
 				<li>
-					<div class="images imgLiquidFill">
-						{% if piece.image1 %}
-						<img src="{{asset("images/"~piece.image1.path)}}" alt="">
-						{% else %}
-						<img src="{{asset('img/600x400.jpg')}}" alt="">
-						{% endif %}
-					</div>
-					<div class="infos">
-						<div class="decriptions">
-							<p class="name">{{piece.user.username}}</p>
-							<p class="title">{{piece.title}}</p>
+					<a href="{{path('buy',{'artistUsername':piece.user.username,'pieceId':piece.id})}}">
+						<div class="images imgLiquidFill">
+							{% if piece.image1 %}
+							<img src="{{asset("images/"~piece.image1.path)}}" alt="">
+							{% else %}
+							<img src="{{asset('img/600x400.jpg')}}" alt="">
+							{% endif %}
 						</div>
-						<div class="price">{{piece.price}} €</div>
-					</div>
+						<div class="infos">
+							<div class="decriptions">
+								<p class="name">{{piece.user.username}}</p>
+								<p class="title">{{piece.title}}</p>
+							</div>
+							<div class="price">{{piece.price}} €</div>
+						</div>
+					</a>
 				</li>
 				{% endif %}
-				{% endfor %}
+			{% endfor %}
 			</ul>
 		</div>
 	</div>

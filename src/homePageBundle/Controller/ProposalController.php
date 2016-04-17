@@ -40,6 +40,9 @@ class ProposalController extends Controller
       $formComment->handleRequest($request);
       if($formComment->isValid()){
         $comment->setUserId($user->getId());
+        if($comment->getImage()->getPath()==null){
+          $comment->setImage(null);
+        }
         if($proposal->owner->getId()==$user->getId()){
           $comment->setOwnerComment(true);
         }else{
@@ -108,6 +111,9 @@ class ProposalController extends Controller
       $user = $this->get('security.token_storage')->getToken()->getUser();
       $em=$this->getDoctrine()->getManager();
       $proposals = $this->getDoctrine()->getManager()->getRepository('CmaUserBundle:Proposal')->findByUserId($user->getId());
+      foreach ($proposals as $key => $value) {
+        # code...
+      }
       if (!is_object($user)||!$user->hasRole('ROLE_ARTIST')) {
         throw new AccessDeniedException('This user does not have access to this section.');
       }else if(!count($proposals>0)){
