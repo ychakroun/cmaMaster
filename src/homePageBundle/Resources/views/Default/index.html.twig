@@ -120,7 +120,6 @@
 		<div class="contentS">
 			<ul>
 			{% for piece in pieces %}
-				{{dump(piece)}}
 				{% if piece and piece.user %}
 				<li>
 					<a href="{{path('buy',{'artistUsername':piece.user.username,'pieceId':piece.id})}}">

@@ -25,24 +25,34 @@
         </li>
         {% endif %}
         <li>
-          <p><a href="{{ path('user_progress_project') }}">{{ "sidebar_parameter.progress_project" | trans }}</a></p>
+          <p><a href="{{ path('progress_project') }}">{{ "sidebar_parameter.progress_project" | trans }}</a></p>
         </li>
         <li>
-          <p><a href="{{ path('user_finish_project') }}">{{ "sidebar_parameter.finish_project" | trans }}</a></p>
+          <p><a href="{{ path('finish_project') }}">{{ "sidebar_parameter.finish_project" | trans }}</a></p>
         </li>
       </ul>
     </div>
     <div class="prix cat-filtres">
       <p>{{ "sidebar_parameter.purchase" | trans }}</p>
       <ul>
+        {% if is_granted('ROLE_ARTIST') %}
         <li>
-          <p>{% if is_granted('ROLE_ARTIST') %}
+          <p>
               <a href="{{ path('user_sold_project') }}">{{ "sidebar_parameter.sold" | trans }}</a>
-            {% else %}
-              <a href="{{ path('user_sold') }}">{{ "sidebar_parameter.usersold" | trans }}</a>
-            {% endif %}
           </p>
         </li>
+        {% else %}
+        <li> 
+          <p>
+            <a href="{{ path('user_sold') }}">{{ "sidebar_parameter.usersoldProgress" | trans }}</a>
+          </p> 
+        </li>      
+        <li>
+          <p>
+            <a href="{{ path('user_sold_done') }}">{{ "sidebar_parameter.usersold" | trans }}</a>
+          </p>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </div>

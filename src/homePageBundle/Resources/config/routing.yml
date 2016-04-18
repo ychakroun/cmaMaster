@@ -39,9 +39,9 @@ user_parameter:
     path:     /parameter
     defaults: { _controller: homePageBundle:User:parameter }
 
-user_basket:
+user_cart:
     path:     /basket
-    defaults: { _controller: homePageBundle:Basket:index }
+    defaults: { _controller: homePageBundle:Cart:index }
 
 piece_edit_id:
     path:     /piece/edit/{id}
@@ -87,11 +87,11 @@ user_info:
     path:     /information
     defaults: { _controller: homePageBundle:User:information }
 
-user_progress_project:
+progress_project:
     path:     /progressproject
     defaults: { _controller: homePageBundle:User:progress }
 
-user_finish_project:
+finish_project:
     path:     /finishproject
     defaults: { _controller: homePageBundle:User:finish }
 
@@ -101,7 +101,11 @@ user_sold_project:
 
 user_sold:
     path:     /sold
-    defaults: { _controller: homePageBundle:User:sold }
+    defaults: { _controller: homePageBundle:Cart:index }
+
+user_sold_done:
+    path:     /sold/done
+    defaults: { _controller: homePageBundle:Buy:done }
 
 artist_profile:
     path:     /profile/{username}
@@ -143,3 +147,7 @@ help:
 buy:
     path:   /buy/{artistUsername}/{pieceId}
     defaults: { _controller: homePageBundle:Buy:index }
+
+add_to_cart:
+    path:   /add/piece/{pieceId}
+    defaults: { _controller: homePageBundle:Buy:add }

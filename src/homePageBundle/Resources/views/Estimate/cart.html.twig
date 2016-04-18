@@ -1,0 +1,107 @@
+{% extends "homePageBundle::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}CMA User Estimate{% endblock %}
+{% block nav %}
+    <div id="smallHeader" >
+        {% include "homePageBundle:Default:nav.html.twig" %}
+    </div>
+{% endblock %}
+{% block main %}
+  {% if didHavePieceToBuy %}
+  <section class="param">
+    <header class="headerSection">
+      <div class="globalS">
+        <div class="idSection">{{ "estimate_page.header" | trans }}</div>
+        <div class="logoSection"><img src="{{ asset("img/logoTampon.png") }}" alt="cma_tampon" /></div>
+        <div class="infoSection"></div>
+      </div>
+    </header>
+    <div class="containerS">
+      {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
+      <div class="contentS basket">
+       <div class="step">
+
+       </div>
+       <div class="step1">
+         <header class="headerStep">Mon panier</header>
+         <div class="content">
+           <ul>
+             <li>
+               <div class="image imgLiquidFill"><img src="#" alt=""></div>
+               <div class="description">
+                 <h4>Thème:</h4>
+                 <p>L'alcool et la drogue au sein de la société moderne.</p>
+                 <h4>Caractéristique:</h4>
+                 <p>Lot de 3 bouteilles - Verres <br> 30cm x 5cm</p>
+               </div>
+               <div class="price">120 €</div>
+             </li>
+           </ul>
+           <div class="totalPrice">
+             <img src="{{ asset("img/basketFooterPayment.png") }}" alt="" />
+             <div class="price">
+               <p class="text">Total TTC</p>
+               <div class="result">
+                  <p class="number">20 000€</p>
+                  <p class="notice"> + frais de port<br>(étape suivante)</p>
+                </div>
+             </div>
+           </div>
+           <footer class="footerStep">
+              <div class="notice">
+                Paiement 100% sécurisé par le service PAYPAL SECURE ou par carte bancaire. Vous disposerez de 14 jours pour demander un remboursement ou échanger votre commande.
+                  En cas de retour de l'oeuvre, les frais de transport restent à la charge de l'acquéreur.
+                </div>
+                <div class="validate">
+                  <div class="buttonMore">Valider mon panier</div>
+                </div>
+           </footer>
+         </div>
+       </div>
+    {% else %}
+        NO articles
+    {% endif %}
+{#       <div class="step2">
+         <header class="headerStep">Adresse de livraison</header>
+
+         <!-- strat (A afficher que si on est dans la deuxième étape)  -->
+         <div class="statut content ">
+           <p>
+             <label for="">{{ "form.information.adress" | trans }}</label><br>
+            <input type="text">
+           </p>
+
+           <p>
+             <label for="">{{ "form.information.zipcode" | trans }}</label><br>
+             <input type="text">
+           </p>
+
+           <p>
+             <label for="">{{ "form.information.city" | trans }}</label><br>
+             <input type="text">
+           </p>
+
+           <p>
+             <label for="">{{ "form.information.pays" | trans }}</label><br>
+             <input type="text">
+           </p>
+           <footer class="footerStep"></footer>
+         </div>
+         <!-- end  (A afficher que si on est dans la deuxième étape)-->
+
+
+       </div>
+       <div class="step3">
+         <header class="headerStep">Coordonnées bancaires</header>
+         <!-- strat (A afficher que si on est dans la toisième étape)  -->
+         <div class="content">
+           <ul>
+             <li></li>
+           </ul>
+           <footer class="footerStep"></footer>
+         </div>
+         <!-- end  (A afficher que si on est dans la toisième étape)-->
+       </div>
+      </div>#}
+  </section>
+{% endblock %}

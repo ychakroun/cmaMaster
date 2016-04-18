@@ -55,7 +55,7 @@
             <div class="addBasket">
               <div class="price">{{piece.price}} €</div>
               <h6>hors frais de livraison</h6>
-              <a class="buttonMore" href="{{path('artist_profile_gallery',{'username':artist.username})}}">Ajouter au panier</a>
+              <a class="buttonMore" href="{{path('add_to_cart',{'pieceId':piece.id})}}">Ajouter au panier</a>
             </div>
           </div>
         </div>

@@ -200,7 +200,8 @@ sidebar_parameter:
     finish_project: 'Mes projets réalisés'
     purchase: 'Achat en galerie'
     sold: 'Mes oeuvres vendues'
-    usersold: 'Achats'
+    usersoldProgress: 'En cours'
+    usersold: 'Effectué'
 proposal:
     delete: 'Supprimer la proposition'
     decline: 'Decliner la proposition'
