@@ -40,7 +40,7 @@ user_parameter:
     defaults: { _controller: homePageBundle:User:parameter }
 
 user_cart:
-    path:     /basket
+    path:     /cart
     defaults: { _controller: homePageBundle:Cart:index }
 
 piece_edit_id:
