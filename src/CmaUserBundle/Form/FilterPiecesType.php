@@ -17,7 +17,6 @@ class FilterPiecesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        dump($options);
         $builder
             ->add('medium',ChoiceType::class , array(
                 'choices' => $options['data']['data'],

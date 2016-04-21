@@ -91,9 +91,9 @@
       </aside>
       <div class="contentS">
         <div class="filtres-top">
-          <p class="nouveaute"><a href="{{path('listGalleries',{'page':nbPage,'topfilter':topfilter})}}"><span>Nouveautés</span></a></p>
-          <p class="prix-croiss"><a href="{{path('listGalleries',{'page':nbPage,'topfilter':1})}}"><span>Prix croissants</span></a></p>
-          <p class="prix-decroiss"><a href="{{path('listGalleries',{'page':nbPage,'topfilter':2})}}"><span>Prix décroissants</span></a></p>
+          <p class="nouveaute"><a href="{{path('listGalleries',{'page':nbPage,'topfilter':topfilter}) ~ uri}}"><span>Nouveautés</span></a></p>
+          <p class="prix-croiss"><a href="{{path('listGalleries',{'page':nbPage,'topfilter':1}) ~ uri}}"><span>Prix croissants</span></a></p>
+          <p class="prix-decroiss"><a href="{{path('listGalleries',{'page':nbPage,'topfilter':2}) ~ uri}}"><span>Prix décroissants</span></a></p>
         </div>
         <ul id="galerieLink">
           {% for piece in pieces %}
@@ -126,7 +126,7 @@
               {% set nbPages = listArtists.getNbArtists / 6 %}
                 {% set nbPages = nbPages|round %}
                 {% for page in 1..nbPages %}
-                  <a href="{{path('listGalleries',{'page':page,'topfilter':topfilter})}} "><li {% if page == nbPage %}class="active" {% endif %}>{{page}}</li></a>
+                  <a href="{{path('listGalleries',{'page':page,'topfilter':topfilter}) ~ uri}} "><li {% if page == nbPage %}class="active" {% endif %}>{{page}}</li></a>
                 {% endfor %}
             </ul>
           </nav>

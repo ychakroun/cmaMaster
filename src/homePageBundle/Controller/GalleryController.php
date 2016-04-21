@@ -22,8 +22,8 @@ class GalleryController extends Controller
     	$form = $this->createForm(FilterPiecesType::class,array('data'=>$mediums));
         $form->handleRequest($request);
         $uri = $request->getRequestUri();
-        if(strripos($uri,'/')>0){
-            $uri = substr($uri, strripos($uri,'/'),strlen($uri));
+        if(strripos($uri,'?')){
+            $uri = substr($uri, strripos($uri,'?'),strlen($uri));
         }else{
             $uri = null;
         }
