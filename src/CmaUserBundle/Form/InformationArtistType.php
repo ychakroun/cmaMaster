@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class InformationType extends AbstractType
+class InformationArtistType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder

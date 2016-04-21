@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
 use CmaUserBundle\Form\UserParameterType;
 use CmaUserBundle\Form\UserInformationType;
+use CmaUserBundle\Form\ArtistInformationType;
 use CmaUserBundle\Entity\User;
 use FOS\UserBundle\Doctrine\UserManager;
 use FOS\UserBundle\Model\UserInterface;
