@@ -86,15 +86,14 @@
       <div class="centerText top50">
         <input class='buttonAction' type="submit" id="_submit" name="_submit" value="{{ "form.filterPieces.submit"|trans }}" />
       </div>
-      {{form_widget(formfilter._token)}}
       </form>
       </div>
       </aside>
       <div class="contentS">
         <div class="filtres-top">
-          <p class="nouveaute"><a href="{{path('listGalleries',{'topfilter':'null'})}}"><span>Nouveautés</span></a></p>
-          <p class="prix-croiss"><a href="{{path('listGalleries',{'topfilter':'2'})}}"><span>Prix croissants</span></a></p>
-          <p class="prix-decroiss"><a href="{{path('listGalleries',{'topfilter':'1'})}}"><span>Prix décroissants</span></a></p>
+          <p class="nouveaute"><a href="{{path('listGalleries',{'page':nbPage,'topfilter':topfilter})}}"><span>Nouveautés</span></a></p>
+          <p class="prix-croiss"><a href="{{path('listGalleries',{'page':nbPage,'topfilter':1})}}"><span>Prix croissants</span></a></p>
+          <p class="prix-decroiss"><a href="{{path('listGalleries',{'page':nbPage,'topfilter':2})}}"><span>Prix décroissants</span></a></p>
         </div>
         <ul id="galerieLink">
           {% for piece in pieces %}
@@ -124,11 +123,11 @@
           <div> <span>&lt;</span>
           <nav>
             <ul>
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
+              {% set nbPages = listArtists.getNbArtists / 6 %}
+                {% set nbPages = nbPages|round %}
+                {% for page in 1..nbPages %}
+                  <a href="{{path('listGalleries',{'page':page,'topfilter':topfilter})}} "><li {% if page == nbPage %}class="active" {% endif %}>{{page}}</li></a>
+                {% endfor %}
             </ul>
           </nav>
           <span>&gt;</span> </div>

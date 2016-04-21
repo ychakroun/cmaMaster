@@ -13,15 +13,8 @@ class listArtists {
 
     public function indexAction() {
         $repository = $this->em->getRepository('CmaUserBundle:User');
-    	$listArtists = $repository->findByRoleIndex('ROLE_ARTIST');
-        $artistformat = array();
-        dump($listArtists);
-        foreach ($listArtists as $key => $artist) {
-            if($artist->getParameter()!=null&&$artist->getProfile()!=null&&$artist->getIsPublic()){
-                array_push($artistformat,$artist);
-            }
-        }
-        return ($artistformat);
+    	$listArtists = $repository->findByRoleAndOffset('ROLE_ARTIST',0);
+        return ($listArtists);
     }
     public function getNbArtists() {
         $repository = $this->em->getRepository('CmaUserBundle:User');
@@ -37,7 +30,6 @@ class listArtists {
     public function allPieces() {
         $repository = $this->em->getRepository('CmaUserBundle:Piece');
         $listPieces = $repository->findAll();
-        $piecesformat = array();
         foreach ($listPieces as $key => $piece) {
             if($piece->getUser()!=null){
                array_push($piecesformat, $piece);
@@ -49,7 +41,6 @@ class listArtists {
         $offset = $offset-1;
         $repository = $this->em->getRepository('CmaUserBundle:User');
     	$listArtists = $repository->findByRoleAndOffset('ROLE_ARTIST',$offset);
-        dump($listArtists);
         return ($listArtists);
     }
     public function getProfile($user) {

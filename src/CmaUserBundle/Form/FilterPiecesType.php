@@ -17,11 +17,10 @@ class FilterPiecesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $dataInit = $options['data'];
-        $options['data'] = null;
+        dump($options);
         $builder
             ->add('medium',ChoiceType::class , array(
-                'choices' => $dataInit[0],
+                'choices' => $options['data']['data'],
                 'choice_label' => function ($value) {
                 return $value;
                 },
@@ -64,14 +63,13 @@ class FilterPiecesType extends AbstractType
             ->setMethod('GET')
         ;
     }
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function Options(array $data)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $this->data = $data;
         $resolver->setDefaults(array(
             'csrf_protection' => false,
+            'csrf_field_name' => '_token',
+            // a unique key to help generate the secret token
+            'csrf_token_id'   => 'task_item',
         ));
     }
 }

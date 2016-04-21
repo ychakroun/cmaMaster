@@ -19,8 +19,14 @@ class GalleryController extends Controller
         $urlParameter = $request->query->get('filter_pieces');
         $mediums = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findSomeMedium(0);
     	$pieces = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findWithUrl($page,$topfilter,$urlParameter);
-    	$form = $this->createForm(FilterPiecesType::class,array($mediums));
+    	$form = $this->createForm(FilterPiecesType::class,array('data'=>$mediums));
         $form->handleRequest($request);
-      	return $this->render('homePageBundle:Gallery:index.html.twig',array('formfilter'=>$form->createView(),'pieces'=>$pieces,'mediums'=>$mediums));
+        $uri = $request->getRequestUri();
+        if(strripos($uri,'/')>0){
+            $uri = substr($uri, strripos($uri,'/'),strlen($uri));
+        }else{
+            $uri = null;
+        }
+      	return $this->render('homePageBundle:Gallery:index.html.twig',array('topfilter'=>$topfilter,'nbPage'=>$page,'formfilter'=>$form->createView(),'pieces'=>$pieces,'mediums'=>$mediums,'uri'=>$uri));
     }
 }
