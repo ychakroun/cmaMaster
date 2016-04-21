@@ -3,7 +3,7 @@ namespace homePageBundle\Services;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManager;
 class listArtists {
-	
+
 	protected $em;
 
 	public function setEntityManager(ObjectManager $em)
@@ -14,6 +14,7 @@ class listArtists {
     public function indexAction() {
         $repository = $this->em->getRepository('CmaUserBundle:User');
     	$listArtists = $repository->findByRoleIndex('ROLE_ARTIST');
+				dump(listArtists);
         $artistformat = array();
         foreach ($listArtists as $key => $artist) {
             if($artist->getParameter()!=null&&$artist->getProfile()!=null&&$artist->getIsPublic()){
@@ -49,13 +50,14 @@ class listArtists {
     	$listArtists = $repository->findByRole('ROLE_ARTIST');
     	$i = 0;
     	$y = 0;
+			$artistformat = array();
     	foreach ($listArtists as $key => $artist) {
             if($artist->getParameter()!=null&&$artist->getProfile()!=null&&$artist->getIsPublic()){
     		  $tab = 'tab'.$key;
     		  if($i == 6){
     		  	$i = 0;
     		  	$y++;
-    		  	$artistformat[$y][$i] = $artist; 
+    		  	$artistformat[$y][$i] = $artist;
     		  }else{
     		  	$artistformat[$y][$i] = $artist;
     		  }
@@ -79,7 +81,7 @@ class listArtists {
         }else{
             return $information = null;
         }
-        
+
     }
 }
 ?>
