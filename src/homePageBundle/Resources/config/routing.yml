@@ -133,8 +133,8 @@ listGalleries:
     methods:  [GET,POST]
 
 listArtists:
-    path:     /artist
-    defaults: { _controller: homePageBundle:Artist:index }
+    path:     /artist/{nbPage}
+    defaults: { _controller: homePageBundle:Artist:index,nbPage:1 }
 
 concept:
     path:   /Concept

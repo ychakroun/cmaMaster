@@ -17,7 +17,7 @@ class UserRepository extends EntityRepository
     // On retourne ces résultats
     return $results;
   }
-  /**
+ /**
  * @param string $role
  *
  * @return array
@@ -35,6 +35,31 @@ class UserRepository extends EntityRepository
         ->setParameter('roles', '%"'.$role.'"%');
 
     return $qb->getQuery()->getResult();
+  }
+  /**
+ * @param string $role
+ *
+ * @return array
+ */
+  public function findByRoleAndOffset($role,$offset)
+  {
+    $offset = $offset*6;
+    $artists = array();
+    $qb = $this->createQueryBuilder('a');
+    $qb->select('u')
+        ->from($this->_entityName, 'u')
+        ->leftJoin('u.groups', 'g')
+        ->where($qb->expr()->orX(
+            $qb->expr()->like('u.roles', ':roles'),
+            $qb->expr()->like('g.roles', ':roles')
+        ))
+        ->setParameter('roles', '%"'.$role.'"%');
+    foreach ($qb->getQuery()->getResult() as $key => $artist) {
+      if(($key>=$offset)&&($key<=$offset+6)&&$artist->getIsPublic()&&$artist->getProfile()){
+        array_push($artists, $artist);
+      }
+    }
+    return $artists;
   }
     /**
      * @param string $role

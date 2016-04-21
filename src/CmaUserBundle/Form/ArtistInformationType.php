@@ -9,7 +9,7 @@ use CmaUserBundle\Form\InformationArtistType;
 use FOS\UserBundle\Form\Type\ProfileFormType;
 use FOS\UserBundle\Util\LegacyFormHelper;
 
-class UserInformationType extends AbstractType
+class ArtistInformationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

@@ -13,8 +13,8 @@ class ArtistController extends Controller
     {
       return $this->render('homePageBundle:Artist:view.html.twig',array('id'  => $id));
     }
-    public function indexAction()
+    public function indexAction($nbPage)
     {
-      	return $this->render('homePageBundle:Artist:index.html.twig');
+      	return $this->render('homePageBundle:Artist:index.html.twig',array('nbPage' => $nbPage));
     }
 }

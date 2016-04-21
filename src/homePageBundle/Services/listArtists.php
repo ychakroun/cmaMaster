@@ -15,6 +15,7 @@ class listArtists {
         $repository = $this->em->getRepository('CmaUserBundle:User');
     	$listArtists = $repository->findByRoleIndex('ROLE_ARTIST');
         $artistformat = array();
+        dump($listArtists);
         foreach ($listArtists as $key => $artist) {
             if($artist->getParameter()!=null&&$artist->getProfile()!=null&&$artist->getIsPublic()){
                 array_push($artistformat,$artist);
@@ -44,25 +45,12 @@ class listArtists {
         }
         return $piecesformat;
     }
-    public function pageArtist() {
+    public function pageArtist($offset) {
+        $offset = $offset-1;
         $repository = $this->em->getRepository('CmaUserBundle:User');
-    	$listArtists = $repository->findByRole('ROLE_ARTIST');
-    	$i = 0;
-    	$y = 0;
-    	foreach ($listArtists as $key => $artist) {
-            if($artist->getParameter()!=null&&$artist->getProfile()!=null&&$artist->getIsPublic()){
-    		  $tab = 'tab'.$key;
-    		  if($i == 6){
-    		  	$i = 0;
-    		  	$y++;
-    		  	$artistformat[$y][$i] = $artist; 
-    		  }else{
-    		  	$artistformat[$y][$i] = $artist;
-    		  }
-    		  $i++;
-            }
-    	}
-        return ($artistformat);
+    	$listArtists = $repository->findByRoleAndOffset('ROLE_ARTIST',$offset);
+        dump($listArtists);
+        return ($listArtists);
     }
     public function getProfile($user) {
         $profile = $this->em

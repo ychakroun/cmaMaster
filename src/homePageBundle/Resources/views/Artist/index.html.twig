@@ -25,81 +25,75 @@
       {% endfor %}
       {% endif %}
     </ul>
-
     <div class="contentS">
-      {% if listArtists.pageArtist %}
-      {% for section in listArtists.pageArtist %}
-      <ul id="{{ loop.index }}">
-				{% for artist in section %}
-
-					<li class="blocArtiste">
-						<a href="{{ path('artist_profile', { 'username': artist.username }) }}">
-						<div class="globalBlocArtiste">
-							<header class="headerBlocArtiste">
-								<div class="name"id="{{ artist.id }}">{{artist.username}}
-									{% if  listArtists.getInformation(artist)%}
-									{% set information = listArtists.getInformation(artist) %}
-									<span>
-										<img src="{{asset('img/map.png')}}" alt="">
-										{% if information.city %}
-										{{information.city}}
-										{% else %}
-										{% endif %}
-									</span>
-								</div>
-								<div class="infos">
-									<img src="{{asset('img/custom.png')}}" alt=""><p>{{0}} custom.</p>
-									<img src="{{asset('img/likes.png')}}" alt=""><p>{{0}} likes</p>
-									<img src="{{asset('img/avis.png')}}" alt=""><p>{{0}} avis</p>
-								</div>
-								{% endif %}
-							</header>
-							{% if listArtists.getProfile(artist) %}
-							{% set profile = listArtists.getProfile(artist) %}
-							<div class="contentBlocArtiste">
-								<ul>
-									<li class="imgLiquidFill">
-										<div class="description"><div class="content">
-										{{profile.description|length > 170 ? profile.description|slice(0, 170) ~ '...' : profile.description}}
-										</div></div>
-										{% if profile.imageHeader %}
-										<img src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
-										{% else %}
-										<img src="{{ asset( 'img/upload.png' ) }}" alt="">
-										{% endif %}
-									</li>
-									<li class="imgLiquidFill">
-										{% if profile.image1 %}
-										<img src="{{ asset( 'images/'~profile.image1.path ) }}" alt="">
-										{% else %}
-										<img src="{{ asset( 'img/upload.png' ) }}" alt="">
-										{% endif %}
-									</li>
-									<li class="imgLiquidFill">
-										{% if profile.image2 %}
-										<img src="{{ asset( 'images/'~profile.image2.path ) }}" alt="">
-										{% else %}
-										<img src="{{ asset( 'img/upload.png' ) }}" alt="">
-										{% endif %}
-									</li>
-									<li class="imgLiquidFill">
-										{% if profile.image3 %}
-										<img src="{{ asset( 'images/'~profile.image3.path ) }}" alt="">
-										{% else %}
-										<img src="{{ asset( 'img/upload.png' ) }}" alt="">
-										{% endif %}
-									</li>
-								</ul>
+      {% if listArtists.pageArtist(nbPage) %}
+      <ul>
+			{% for artist in listArtists.pageArtist(nbPage) %}
+				<li class="blocArtiste">
+					<a href="{{ path('artist_profile', { 'username': artist.username }) }}">
+					<div class="globalBlocArtiste">
+						<header class="headerBlocArtiste">
+							<div class="name"id="{{ artist.id }}">{{artist.username}}
+								{% if  listArtists.getInformation(artist)%}
+								{% set information = listArtists.getInformation(artist) %}
+								<span>
+									<img src="{{asset('img/map.png')}}" alt="">
+									{% if information.city %}
+									{{information.city}}
+									{% else %}
+									{% endif %}
+								</span>
+							</div>
+							<div class="infos">
+								<img src="{{asset('img/custom.png')}}" alt=""><p>{{0}} custom.</p>
+								<img src="{{asset('img/likes.png')}}" alt=""><p>{{0}} likes</p>
+								<img src="{{asset('img/avis.png')}}" alt=""><p>{{0}} avis</p>
 							</div>
 							{% endif %}
+						</header>
+						{% if listArtists.getProfile(artist) %}
+						{% set profile = listArtists.getProfile(artist) %}
+						<div class="contentBlocArtiste">
+							<ul>
+								<li class="imgLiquidFill">
+									<div class="description"><div class="content">
+									{{profile.description|length > 170 ? profile.description|slice(0, 170) ~ '...' : profile.description}}
+									</div></div>
+									{% if profile.imageHeader %}
+									<img src="{{ asset( 'images/'~profile.imageHeader.path ) }}" alt="">
+									{% else %}
+									<img src="{{ asset( 'img/upload.png' ) }}" alt="">
+									{% endif %}
+								</li>
+								<li class="imgLiquidFill">
+									{% if profile.image1 %}
+									<img src="{{ asset( 'images/'~profile.image1.path ) }}" alt="">
+									{% else %}
+									<img src="{{ asset( 'img/upload.png' ) }}" alt="">
+									{% endif %}
+								</li>
+								<li class="imgLiquidFill">
+									{% if profile.image2 %}
+									<img src="{{ asset( 'images/'~profile.image2.path ) }}" alt="">
+									{% else %}
+									<img src="{{ asset( 'img/upload.png' ) }}" alt="">
+									{% endif %}
+								</li>
+								<li class="imgLiquidFill">
+									{% if profile.image3 %}
+									<img src="{{ asset( 'images/'~profile.image3.path ) }}" alt="">
+									{% else %}
+									<img src="{{ asset( 'img/upload.png' ) }}" alt="">
+									{% endif %}
+								</li>
+							</ul>
 						</div>
-						</a>
-					</li>
-					{% endfor %}
-				</ul>
-
-
-          {% endfor %}
+						{% endif %}
+					</div>
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
         </div>
         {% else %}
         <h1>
@@ -110,11 +104,11 @@
           <div> <span>&lt;</span>
             <nav>
               <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
+              	{% set nbPages = listArtists.getNbArtists / 6 %}
+              	{% set nbPages = nbPages|round %}
+              	{% for page in 1..nbPages %}
+                	<li {% if page == nbPage %}class="active" {% endif %}>{{page}}</li>
+                {% endfor %}
               </ul>
             </nav>
             <span>&gt;</span> </div>

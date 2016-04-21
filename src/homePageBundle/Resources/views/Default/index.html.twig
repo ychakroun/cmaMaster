@@ -19,11 +19,9 @@
 			<h3>De la jeune pépite à l'artiste confirmé, découvrez les talents de la communauté professionnelle CMA.</h3>
 		</div>
 		<div class="contentS">
-			{% if listArtists.pageArtist %}
-			{% for section in listArtists.pageArtist %}
-			<ul id="{{ loop.index }}">
-				{% for artist in section %}
-
+			{% if listArtists.pageArtist(0) %}
+			<ul>
+				{% for artist in listArtists.pageArtist(0) %}
 					<li class="blocArtiste">
 						<a href="{{ path('artist_profile', { 'username': artist.username }) }}">
 						<div class="globalBlocArtiste">
@@ -89,9 +87,6 @@
 					</li>
 					{% endfor %}
 				</ul>
-
-
-					{% endfor %}
 				</div>
 				{% else %}
 				<h1>
