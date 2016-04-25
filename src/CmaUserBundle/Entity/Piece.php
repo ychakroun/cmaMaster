@@ -132,7 +132,7 @@ class Piece
      */
     private $date;
     /**
-    * @ORM\ManyToOne(targetEntity="CmaUserBundle\Entity\User", cascade={"persist","remove"})
+    * @ORM\ManyToOne(targetEntity="CmaUserBundle\Entity\User")
     */
     private $user;
     /**

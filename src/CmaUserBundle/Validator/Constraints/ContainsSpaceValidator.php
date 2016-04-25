@@ -8,7 +8,8 @@ class ContainsSpaceValidator extends ConstraintValidator
 {
     public function validate($value, Constraint $constraint)
     {
-        if (!preg_match('/\\s+$/', $value, $matches)) {
+        $tab = preg_match('/\\s/', $value, $matches);
+        if ($tab===1) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('%string%', $value)
                 ->addViolation();

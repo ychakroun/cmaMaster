@@ -139,9 +139,9 @@ class Image
         $chmod = $updloadDir.substr($this->path, 0,strpos($this->path,'/'));
         $file = $this->path;
         if ($file) {
-            chmod($chmod,0777);
+            //chmod($chmod,0777);
             unlink($updloadDir.$file);
-            chmod($chmod,0755);
+            //chmod($chmod,0755);
         }
     }
     public function getAbsolutePath(){

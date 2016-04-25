@@ -1,0 +1,34 @@
+<?php
+
+namespace CmaUserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Likes
+ *
+ * @ORM\Table(name="likes")
+ * @ORM\Entity(repositoryClass="CmaUserBundle\Repository\LikesRepository")
+ */
+class Likes
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\User", cascade={"persist","remove"})
+     */
+    private $userId;
+
+    /**
+     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\User", cascade={"persist","remove"})
+     */
+    private $artistId;
+
+}

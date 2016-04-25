@@ -147,7 +147,7 @@ class Estimate
 
     /**
     *@ORM\JoinColumn(nullable=true)
-    * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\User", cascade={"persist","remove"})
+    * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\User")
     */
     private $isValidate;
 

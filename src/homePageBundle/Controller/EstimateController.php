@@ -72,9 +72,9 @@ class EstimateController extends Controller
       {
         $Iestimates = $user->getEstimates();
         $estimates =array();
-        foreach ($Iestimates as $key => $value) {
-          if(is_null($value->getIsValidate())){
-            $value->owner = true;
+        foreach ($Iestimates as $key => $estimate) {
+          if(is_null($estimate->getIsValidate())){
+            $estimate->owner = true;
             array_push($estimates, $value);
           }
         }
@@ -114,6 +114,41 @@ class EstimateController extends Controller
         }
       return $this->render('homePageBundle:Estimate:estimate_create.html.twig',array('username'=>$user->getUsername(),'formEstimate' => $formEstimate->createView()));
     }
+    public function createUniqueAction(Request $request,$artistId)
+    {
+      $user = $this->get('security.token_storage')->getToken()->getUser();
+      $em = $this->getDoctrine()->getManager();
+      $artist = $em->getRepository('CmaUserBundle:User')->findOneById($artistId);
+      if (!is_object($user)) {
+        throw new AccessDeniedException('This user does not have access to this section.');
+      }
+      $estimate = new Estimate();
+      $formEstimate = $this->createForm(EstimateType::class,$estimate);
+      $formEstimate->handleRequest($request);
+        if ($formEstimate->isValid()) {
+            if($estimate->getImage1()->getPath()==null){
+              $estimate->setImage1(null);
+            }
+            if($estimate->getImage2()->getPath()==null){
+              $estimate->setImage2(null);
+            }
+            if($estimate->getImage3()->getPath()==null){
+              $estimate->setImage3(null);
+            }
+            if($formEstimate->get('submit')->isClicked()){
+              $estimate->setIsPublic(true);
+            }else if($formEstimate->get('save')->isClicked()){
+              $estimate->setIsPublic(false);
+            }
+            $estimate->setOwnerId($user->getId());
+            $estimate->setIsValidate($artist);
+            $user->addEstimate($estimate);
+            $em->persist($user);
+            $em->flush();
+            return $this->redirect($this->generateUrl('progress_project'));
+        }
+      return $this->render('homePageBundle:Estimate:estimate_create.html.twig',array('username'=>$user->getUsername(),'formEstimate' => $formEstimate->createView()));
+    }
     public function deleteAction(Request $request,$id)
     {
       $user = $this->get('security.token_storage')->getToken()->getUser();
@@ -123,8 +158,8 @@ class EstimateController extends Controller
         if($userEstimate->getId()==$estimate->getId()){
           $em = $this->getDoctrine()->getManager();
           $user->removeEstimate($estimate); 
-          $em->remove($estimate);
           $em->persist($user);
+          $em->remove($estimate);
           $em->flush();
           return $this->redirect($this->generateUrl('user_devis'));
         }
@@ -140,6 +175,20 @@ class EstimateController extends Controller
       $formEstimate = $this->createForm(EstimateType::class,$estimate);
       $formEstimate->handleRequest($request);
       if ($formEstimate->isValid()) {
+            if($formEstimate->get('submit')->isClicked()){
+              $estimate->setIsPublic(true);
+            }else if($formEstimate->get('save')->isClicked()){
+              $estimate->setIsPublic(false);
+            }
+            if($estimate->getImage1()->getPath()==null){
+              $estimate->setImage1(null);
+            }
+            if($estimate->getImage2()->getPath()==null){
+              $estimate->setImage2(null);
+            }
+            if($estimate->getImage3()->getPath()==null){
+              $estimate->setImage3(null);
+            }
             if($formEstimate->get('submit')->isClicked()){
               $estimate->setIsPublic(true);
             }else if($formEstimate->get('save')->isClicked()){
@@ -207,7 +256,7 @@ class EstimateController extends Controller
         $comments = $proposal->getComments();
         $comments = $proposal->getComments();
         $proposal->unread = 0;
-        foreach ($comments as $i => $comment) {
+        foreach ($comments as $key => $comment) {
           if($comment->getUnread()&&$comment->getUserId()!=$user->getId()){
             $proposal->unread ++;
           }
@@ -220,10 +269,19 @@ class EstimateController extends Controller
       $estimate = $em->getRepository('CmaUserBundle:Estimate')->findOneById($id);
       $userp = $em->getRepository('CmaUserBundle:User')->findOneByUsername($userp);
       $user = $this->get('security.token_storage')->getToken()->getUser();
-      //$mangoPayServices = $this->get('home_page.mangoPayServices');
-      //$mangoPayServices->getMangoUsers());
-      $estimate->setIsValidate($userp);
-      $em->persist($estimate);
+      $mangoPayServices = $this->get('home_page.mangoPayServices');
+      if($user->getMangoId()){
+        $mangoUser = $mangoPayServices->getMangoUser($user->getMangoId());
+      }else if($user->getBirthday()&&$user->getFirstname()&&$user->getName()){
+        $timeStampBirthDay = $user->getBirthday()->getTimestamp();
+        $created = $mangoPayServices->createMangoUser($user->getFirstname(),$user->getName(),$timeStampBirthDay,$user->getEmail());
+        $user->setMangoId($created->Id);
+        dump(gettype($created->Id));
+      }else{
+        return $this->redirectToRoute('user_info');
+      }
+      //$estimate->setIsValidate($userp);
+      $em->persist($user);
       $em->flush();
       if (!is_object($user)||$user->getId()!=$estimate->getOwnerId()) {
         throw new AccessDeniedException('This user does not have access to this section.');

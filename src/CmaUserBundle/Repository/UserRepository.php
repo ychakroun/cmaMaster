@@ -1,5 +1,5 @@
 <?php
-namespace CmaUserBundle\Entity;
+namespace CmaUserBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 

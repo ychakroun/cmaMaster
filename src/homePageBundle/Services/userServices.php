@@ -79,27 +79,33 @@ class userServices {
         }
         return $custom;
     }
-    public function getLike($id) {
-        $user = $this->em->getRepository('CmaUserBundle:User')->findOneById($id);
-        $crush = 0;
-        $pieces = $this->em->getRepository('CmaUserBundle:Piece')->findByUser($user);
-        foreach ($pieces as $key => $piece) {
-            if($piece->getCrush()){
-                $crush ++;
+    public function doesLikeIt($artistId) {
+        $user = $this->sc->getToken()->getUser();
+        $artist = $this->em->getRepository('CmaUserBundle:User')->findOneById($artistId);
+        if(is_string($user)){
+            return false;
+        }else{
+            $likes = $user->getLikes();
+        }
+        if($likes!==null){
+            foreach ($likes as $key => $like) {
+                if($like->getArtist()===$artist){
+                    return true;
+                }
             }
         }
-        return $crush;
+        return false;
+    }
+    public function getLikes($id) {
+        $artist = $this->em->getRepository('CmaUserBundle:User')->findOneById($id);
+        $likes = $this->em->getRepository('CmaUserBundle:Likes')->findByArtist($artist);
+        return sizeof($likes);
     }
     public function getOpinion($id) {
         $user = $this->em->getRepository('CmaUserBundle:User')->findOneById($id);
         $crush = 0;
-        $pieces = $this->em->getRepository('CmaUserBundle:Opinion')->findByUser($user);
-        foreach ($pieces as $key => $piece) {
-            //if($piece->getCrush()){
-                //$crush ++;
-            //}
-        }
-        return $crush;
+        $opinion = $this->em->getRepository('CmaUserBundle:Opinion')->findByUser($user);
+        return count($opinion);
     }
     public function getImageHeader() {
         if($this->sc->getToken()->getUser()->getProfile()){

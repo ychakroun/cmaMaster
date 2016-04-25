@@ -97,6 +97,15 @@ class ProposalController extends Controller
             $proposal->getPiece()->setEtat(1);
             $proposal->setUserId($user->getId());
             $proposal->setEstimateId($estimate->getId());
+            if($proposal->getPiece()->getImage1()->getPath()==null){
+              $proposal->getPiece()->setImage1(null);
+            }
+            if($proposal->getPiece()->getImage2()->getPath()==null){
+              $proposal->getPiece()->setImage2(null);
+            }
+            if($proposal->getPiece()->getImage3()->getPath()==null){
+              $proposal->getPiece()->setImage3(null);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($proposal);
             $estimate->addProposal($proposal);

@@ -20,14 +20,14 @@
       <div class="contentS basket">
        <div class="step padTop30">
            <div class="centerText">
-           {% if etat == 1 %}
+           {% if proposal.piece.etat == 1 %}
            <img src="{{ asset("img/achat/achat-2.png") }}" alt="">
            <ul class="stateEstimate">
              <li class="black">Panier</li>
              <li>Livraison</li>
              <li>Paiement</li>
            </ul>
-           {% elseif etat == 2 %}
+           {% elseif proposal.piece.etat == 2 %}
            <img src="{{ asset("img/achat/achat-3.png") }}" alt="">
            <ul class="stateEstimate">
              <li>Panier</li>

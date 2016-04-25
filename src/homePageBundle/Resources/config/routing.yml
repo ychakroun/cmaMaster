@@ -6,6 +6,10 @@ user_estimate_create:
     path:     /estimate/create
     defaults: {_controller: homePageBundle:Estimate:create }
 
+user_estimate_create_unique:
+    path:     /estimate/create/{artistId}
+    defaults: {_controller: homePageBundle:Estimate:createUnique }
+
 user_estimate_edit:
     path:     /estimate/{id}
     defaults: {_controller: homePageBundle:Estimate:edit }
@@ -151,3 +155,7 @@ buy:
 add_to_cart:
     path:   /add/piece/{pieceId}
     defaults: { _controller: homePageBundle:Buy:add }
+
+add_like_artist: 
+    path:   /add/like/{artistId}
+    defaults: {_controller: homePageBundle:Likes:toggle}

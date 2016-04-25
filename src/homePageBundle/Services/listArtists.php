@@ -14,7 +14,17 @@ class listArtists {
     public function indexAction() {
         $repository = $this->em->getRepository('CmaUserBundle:User');
     	$listArtists = $repository->findByRoleAndOffset('ROLE_ARTIST',0);
-        return ($listArtists);
+        $artists =array();
+        $maxIndex = count($listArtists);
+        if($maxIndex>4){
+            $maxIndex = 4;
+        }
+        for ($i=0; $i < $maxIndex; $i++) { 
+            if($listArtists[$i]){
+                array_push($artists, $listArtists[$i]);
+            }
+        }
+        return $artists;
     }
     public function getNbArtists() {
         $repository = $this->em->getRepository('CmaUserBundle:User');

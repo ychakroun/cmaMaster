@@ -27,7 +27,6 @@ class mangoPayServices
     {
 
         //Send the request
-        $users = $this->mangoPayApi->Users;
         $mangoUsers = $this->mangoPayApi->Users->GetAll();
 
         return  $mangoUsers;
@@ -36,17 +35,28 @@ class mangoPayServices
      * Create Mangopay User
      * @return MangopPayUser $mangoUser
      */
-    public function createMangoUser()
+    public function getMangoUser($mangoId)
     {
 
+        //Send the request
+        $mangoUsers = $this->mangoPayApi->Users->Get($mangoId);
+
+        return  $mangoUsers;
+    }
+    /**
+     * Create Mangopay User
+     * @return MangopPayUser $mangoUser
+     */
+    public function createMangoUser($firstname,$lastname,$birthday,$email)
+    {
         $mangoUser = new \MangoPay\UserNatural();
         $mangoUser->PersonType = "NATURAL";
-        $mangoUser->FirstName = 'John';
-        $mangoUser->LastName = 'Doe';
-        $mangoUser->Birthday = 1409735187;
+        $mangoUser->FirstName = $firstname;
+        $mangoUser->LastName = $lastname;
+        $mangoUser->Birthday = $birthday;
         $mangoUser->Nationality = "FR";
         $mangoUser->CountryOfResidence = "FR";
-        $mangoUser->Email = 'john.doe@mail.com';
+        $mangoUser->Email = $email;
 
         //Send the request
         $mangoUser = $this->mangoPayApi->Users->Create($mangoUser);

@@ -13,7 +13,6 @@
 <div class="mainProfile grayBackground">
   <div class="containerS">
     <section class="profilArtiste">
-
     <div class="infosArtiste">
       <div class="headeArtisteLeft">
       	{% if artist.username %}
@@ -27,14 +26,38 @@
           {{artist.profile.description}}
         </div>
       	{% endif %}
-      	 <div class="top0 bottom20"><button class="buttonMore"> {{"profile.show.devis" | trans }} </button></div>
+      	 <div class="top0 bottom20"> 
+          {% if is_granted('ROLE_USER') %}
+          <a href="{{path('user_estimate_create_unique',{'artistId':artist.id})}}">
+            <button class="buttonMore"> 
+              {{"profile.show.devis" | trans }} 
+            </button>
+          </a>
+          {% endif %}
+        </div>
        </div>
        <div class="headeArtisteRight">
          <div class="infos">
            <div><img src="{{asset('img/custom-b.png')}}" alt=""><p>{{userServices.getCustom(artist.id)}} custom.</p></div>
-           <div><img src="{{asset('img/likes-b.png')}}" alt=""><p>{{userServices.getLike(artist.id)}} likes</p></div>
+           {% if is_granted('ROLE_ARTIST') %}
+           <div>
+              <img src="{{asset('img/likes-b.png')}}" alt="">
+              <p>{{userServices.getLikes(artist.id)}} likes</p>
+           </div>
+           {% else %}
+            {% if is_granted('ROLE_USER') %}<a href="{{path('add_like_artist',{'artistId':artist.id})}}"></a>{% endif %}
+              <div>
+                  {% if userServices.doesLikeIt(artist.id) > 0 %} 
+                    <img src="{{asset('img/likes-r.png')}}" alt="">
+                  {% else %}
+                    <img src="{{asset('img/likes-b.png')}}" alt="">
+                  {% endif %}
+                 <p>{{userServices.getLikes(artist.id)}} likes</p>
+              </div>
+            </a>
+           {% endif %}
            <div><img src="{{asset('img/avis-b.png')}}" alt=""><p>{{userServices.getOpinion(artist.id)}} avis</p></div>
-         </div>
+        </div>
     	{% if userServices.tagsFromProfile(artist.profile) %}
     		<div class= 'tags'>
     		{% for tag in userServices.tagsFromProfile(artist.profile) %}

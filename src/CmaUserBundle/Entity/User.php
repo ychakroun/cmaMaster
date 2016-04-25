@@ -9,7 +9,7 @@ use FOS\UserBundle\Model\GroupableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="CmaUserBundle\Entity\UserRepository")
+ * @ORM\Entity(repositoryClass="CmaUserBundle\Repository\UserRepository")
  */
 
 class User extends BaseUser
@@ -20,6 +20,10 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+    /**
+     * @ORM\Column(type="string",name="mango_id",nullable=true)
+     */
+    protected $mangoId;
     /**
      * @ORM\ManyToMany(targetEntity="CmaUserBundle\Entity\Group")
      * @ORM\JoinTable(name="fos_user_user_group",
@@ -56,6 +60,12 @@ class User extends BaseUser
      */
     protected $name;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\Date()
+     */
+    protected $birthday;
+
      /** @ORM\Column(type="boolean", name="public_policy") */
 
     private $publicPolicy;
@@ -70,6 +80,14 @@ class User extends BaseUser
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Information", cascade={"persist","remove"})
     */
     private $information;
+    /**
+     * @ORM\ManyToMany(targetEntity="Likes", cascade={"persist","remove"})
+     * @ORM\JoinTable(name="likes_user",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="likes_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    private $likes;
     /**
     * @ORM\OneToOne(targetEntity="CmaUserBundle\Entity\Profile", cascade={"persist","remove"})
     */
@@ -88,6 +106,28 @@ class User extends BaseUser
     {
         $this->groups = new ArrayCollection();
         parent::__construct();
+    }
+    /**
+     * Set mangoId
+     *
+     * @param string $mangoId
+     *
+     * @return User
+     */
+    public function setMangoId($mangoId)
+    {
+        return $this->mangoId = $mangoId;
+    }
+    /**
+     * Get mangoId
+     *
+     * @param string $mangoId
+     *
+     * @return User
+     */
+    public function getMangoId()
+    {
+        return $this->mangoId;
     }
     public function getName()
     {
@@ -274,5 +314,64 @@ class User extends BaseUser
     public function getEstimates()
     {
         return $this->estimates;
+    }
+
+
+    /**
+     * Add like
+     *
+     * @param \CmaUserBundle\Entity\Likes $like
+     *
+     * @return User
+     */
+    public function addLike(\CmaUserBundle\Entity\Likes $like)
+    {
+        $this->likes[] = $like;
+
+        return $this;
+    }
+
+    /**
+     * Remove like
+     *
+     * @param \CmaUserBundle\Entity\Likes $like
+     */
+    public function removeLike(\CmaUserBundle\Entity\Likes $like)
+    {
+        $this->likes->removeElement($like);
+    }
+
+    /**
+     * Get likes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLikes()
+    {
+        return $this->likes;
+    }
+
+    /**
+     * Set birthday
+     *
+     * @param \DateTime $birthday
+     *
+     * @return User
+     */
+    public function setBirthday($birthday)
+    {
+        $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    /**
+     * Get birthday
+     *
+     * @return \DateTime
+     */
+    public function getBirthday()
+    {
+        return $this->birthday;
     }
 }

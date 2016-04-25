@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use CmaUserBundle\Form\InformationType;
 use FOS\UserBundle\Form\Type\ProfileFormType;
 use FOS\UserBundle\Util\LegacyFormHelper;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 
@@ -20,6 +21,16 @@ class UserInformationType extends AbstractType
           'label' => 'form.username',
           'translation_domain' => 'FOSUserBundle'
         ))
+        ->add('name', null, array(
+          'required'=>true,
+          'label' => 'form.firstname',
+          'translation_domain' => 'FOSUserBundle'
+        ))
+        ->add('firstname', null, array(
+          'required'=>true,
+          'label' => 'form.name',
+          'translation_domain' => 'FOSUserBundle'
+        ))
         ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array(
           'label' => 'form.email',
           'translation_domain' => 'FOSUserBundle'
@@ -27,6 +38,11 @@ class UserInformationType extends AbstractType
         ->add('information', InformationType::class, array(
           'label' => null,'required' => false,
           'translation_domain' => 'FOSUserBundle'
+        ))
+        ->add('birthday', BirthdayType::class, array(
+            'placeholder' => array('year'=>'année','month'=>'mois','day'=>'jour'),
+            'format'=>'dd-MM-yyyy',
+            'widget'=>'choice'
         ))       
         ;
     }

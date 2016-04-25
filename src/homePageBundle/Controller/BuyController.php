@@ -45,7 +45,6 @@ class BuyController extends Controller
     		$em->persist($cart);
     		$em->flush();
     	}
-    	dump($request);
     	$referer = $request->headers->get('referer');
     	return $this->redirect($referer);	
     }
