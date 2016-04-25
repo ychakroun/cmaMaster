@@ -75,7 +75,7 @@ class EstimateController extends Controller
         foreach ($Iestimates as $key => $estimate) {
           if(is_null($estimate->getIsValidate())){
             $estimate->owner = true;
-            array_push($estimates, $value);
+            array_push($estimates, $estimate);
           }
         }
       }
