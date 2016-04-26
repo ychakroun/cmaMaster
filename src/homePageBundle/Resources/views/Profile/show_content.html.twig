@@ -26,11 +26,11 @@
           {{artist.profile.description}}
         </div>
       	{% endif %}
-      	 <div class="top0 bottom20"> 
+      	 <div class="top0 bottom20">
           {% if is_granted('ROLE_USER') %}
           <a href="{{path('user_estimate_create_unique',{'artistId':artist.id})}}">
-            <button class="buttonMore"> 
-              {{"profile.show.devis" | trans }} 
+            <button class="buttonMore">
+              {{"profile.show.devis" | trans }}
             </button>
           </a>
           {% endif %}
@@ -47,7 +47,7 @@
            {% else %}
             {% if is_granted('ROLE_USER') %}<a href="{{path('add_like_artist',{'artistId':artist.id})}}"></a>{% endif %}
               <div>
-                  {% if userServices.doesLikeIt(artist.id) > 0 %} 
+                  {% if userServices.doesLikeIt(artist.id) > 0 %}
                     <img src="{{asset('img/likes-r.png')}}" alt="">
                   {% else %}
                     <img src="{{asset('img/likes-b.png')}}" alt="">
@@ -60,13 +60,13 @@
         </div>
     	{% if userServices.tagsFromProfile(artist.profile) %}
     		<div class= 'tags'>
-    		{% for tag in userServices.tagsFromProfile(artist.profile) %}
     			<ul id="marqueurs">
+            {% for tag in userServices.tagsFromProfile(artist.profile) %}
     				<li id"tag_{{tag.id}}">
     					{{tag.name}}
     				</li>
+            	{% endfor %}
     			</ul>
-    		{% endfor %}
     		</div>
     	{% endif %}
       </div>

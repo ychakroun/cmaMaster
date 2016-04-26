@@ -18,7 +18,7 @@ class DefaultController extends Controller
                 array_push($piecesWithUserValid,$piece);
             }
         }
-        dump($piecesWithUserValid);
+        // dump($piecesWithUserValid);
         return $this->render('homePageBundle:Default:index.html.twig',array('pieces'=>$piecesWithUserValid));
     }
 }
