@@ -17,10 +17,10 @@
         <div class="idSection">La Galerie</div>
         <div class="logoSection"><img src="{{asset('img/logoTampon.png')}}" alt=""></div>
         <div class="infoSection">
-          {% if pieces|length > 1 %}
-            {{pieces|length}} Oeuvres
+          {% if listArtists.allPieces|length > 1 %}
+            {{listArtists.allPieces|length}} Oeuvres
           {% else %}
-            {{pieces|length}} Oeuvre
+            {{listArtists.allPieces|length}} Oeuvre
           {% endif %}
         </div>
       </div>
@@ -123,8 +123,8 @@
           <div> <span>&lt;</span>
           <nav>
             <ul>
-              {% set nbPages = listArtists.getNbArtists / 6 %}
-                {% set nbPages = nbPages|round %}
+              {% set nbPages = listArtists.getNbPieces / 6 %}
+                {% set nbPages = nbPages|round(0,'ceil') %}
                 {% for page in 1..nbPages %}
                   <a href="{{path('listGalleries',{'page':page,'topfilter':topfilter}) ~ uri}} "><li {% if page == nbPage %}class="active" {% endif %}>{{page}}</li></a>
                 {% endfor %}

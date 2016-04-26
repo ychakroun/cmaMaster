@@ -40,12 +40,24 @@ class listArtists {
     public function allPieces() {
         $repository = $this->em->getRepository('CmaUserBundle:Piece');
         $listPieces = $repository->findAll();
+        $piecesformat = array();
         foreach ($listPieces as $key => $piece) {
-            if($piece->getUser()!=null){
+            if($piece->getUser()!==null){
                array_push($piecesformat, $piece);
             }
         }
         return $piecesformat;
+    }
+    public function getNbPieces() {
+        $repository = $this->em->getRepository('CmaUserBundle:Piece');
+        $listPieces = $repository->findAll();
+         $piecesformat = array();
+        foreach ($listPieces as $key => $piece) {
+            if($piece->getUser()!==null){
+               array_push($piecesformat, $piece);
+            }
+        }
+        return count($piecesformat);
     }
     public function pageArtist($offset) {
         $offset = $offset-1;

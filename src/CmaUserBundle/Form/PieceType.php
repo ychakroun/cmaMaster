@@ -5,7 +5,6 @@ namespace CmaUserBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PieceType extends AbstractType
@@ -35,7 +34,7 @@ class PieceType extends AbstractType
                 'label' => false,
                 'attr' => array('class' => 'datepicker'),
             ))
-            ->add('price',MoneyType::class,array(
+            ->add('price',null,array(
               'label' => 'form.piece.price',
               'required' => true,
               'translation_domain' => 'FOSUserBundle',
