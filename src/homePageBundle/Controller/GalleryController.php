@@ -17,8 +17,17 @@ class GalleryController extends Controller
     public function indexAction(Request $request,$page,$topfilter)
     {
         $urlParameter = $request->query->get('filter_pieces');
-        $mediums = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findSomeMedium(0);
+        $mediums = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findSomeMedium();
+        dump($mediums);
     	$pieces = $this->getDoctrine()->getRepository('CmaUserBundle:Piece')->findWithUrl($page,$topfilter,$urlParameter);
+        $piecesToShow = array();
+        $i = 0;
+        while ( $i < 5 && $i < count($pieces)) {
+            array_push($piecesToShow, $pieces[$i]);
+            $i++;
+            dump($i);
+        }
+        dump($pieces);
     	$form = $this->createForm(FilterPiecesType::class,array('data'=>$mediums));
         $form->handleRequest($request);
         $uri = $request->getRequestUri();
@@ -27,6 +36,14 @@ class GalleryController extends Controller
         }else{
             $uri = null;
         }
-      	return $this->render('homePageBundle:Gallery:index.html.twig',array('topfilter'=>$topfilter,'nbPage'=>$page,'formfilter'=>$form->createView(),'pieces'=>$pieces,'mediums'=>$mediums,'uri'=>$uri));
+        $nbAllPages = ceil(count($pieces)/6);
+      	return $this->render('homePageBundle:Gallery:index.html.twig',array('topfilter'=>$topfilter,
+               'nbPage'=>$page,
+               'formfilter'=>$form->createView(),
+               'pieces'=>$piecesToShow,
+               'mediums'=>$mediums,
+               'uri'=>$uri,
+               'nbAllPages'=>$nbAllPages
+        ));
     }
 }

@@ -33,7 +33,6 @@ class PieceRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter(':etat', 5)
             ->addOrderBy($orderBy, $order)
             ->setFirstResult( $offset )
-           	->setMaxResults( 6 )
         ;
         $price=array();
         $medium=array();
@@ -140,14 +139,14 @@ class PieceRepository extends \Doctrine\ORM\EntityRepository
         }
 	    return $query = $qb->getQuery()->getResult();
 	}
-	public function findSomeMedium($offset){
+	public function findSomeMedium(){
 		$qb = $this->createQueryBuilder('r')
 			->select('r.medium')
-            ->setFirstResult( $offset )
-           	->setMaxResults( 5 )
+            ->distinct()
         ;
         $query = $qb->getQuery()->getResult();
         $result=array();
+        dump($query);
         foreach ($query as $key => $value) {
         	if($value['medium']!= null){
         		array_push($result,$value['medium']);

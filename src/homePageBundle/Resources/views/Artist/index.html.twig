@@ -105,7 +105,7 @@
             <nav>
               <ul>
               	{% set nbPages = listArtists.getNbArtists / 6 %}
-              	{% set nbPages = nbPages|round %}
+              	{% set nbPages = nbPages|round(0,'ceil') %}
               	{% for page in 1..nbPages %}
                 	<a href="{{path('listArtists',{'nbPage':page})}}"><li {% if page == nbPage %}class="active" {% endif %}>{{page}}</li></a>
                 {% endfor %}
