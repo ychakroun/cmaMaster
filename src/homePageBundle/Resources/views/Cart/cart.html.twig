@@ -60,11 +60,29 @@
                   En cas de retour de l'oeuvre, les frais de transport restent à la charge de l'acquéreur.
                 </div>
                 <div class="validate">
-                  <div class="buttonMore">Valider mon panier</div>
+                  <div class="buttonMore js-validate-cart">Valider mon panier</div>
                 </div>
            </footer>
          </div>
        </div>
+
+       <div id="popupco" class="js-validate-pop pop hide">
+         <div id="poprdr">
+           <header id="headerSection" class="headerSection">
+           </header>
+           <h1>Informations</h1>
+           <div id="validate-cart">
+              <p>Le système de paiement n'est actuellement pas disponible via notre interface web.</br></br>
+              Afin de poursuivre votre commande, merci de bien vouloir vous rapprocher de</br>
+              <a href="mailto:contact@custommyart.com">l'équipe de Custom My Art.</a></p>
+           </div>
+           <div id="rgstr">
+             <h1>{{ 'layout.inscription' | trans }}</h1>
+             {{ render(controller('FOSUserBundle:Registration:register')) }}
+           </div>
+         </div>
+       </div>
+
 {#       <div class="step2">
          <header class="headerStep">Adresse de livraison</header>
 
