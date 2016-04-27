@@ -65,8 +65,7 @@ $(document).ready(function() {
          $('body').css('overflow','hidden');
      });
 
-    $("#popupco").on('click',function(e){
-        e.preventDefault();
+    $("#popupco").on('click',function(){
         $('.js-validate-pop').addClass('hide');
         $('body').css('overflow','auto');
     });
