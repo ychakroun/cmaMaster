@@ -58,6 +58,19 @@ $(document).ready(function() {
      directionNav: false,
     });
 
+    //alert cart
+    $(".js-validate-cart").on('click',function(e){
+         e.preventDefault();
+         $('.js-validate-pop').removeClass('hide');
+         $('body').css('overflow','hidden');
+     });
+
+    $("#popupco").on('click',function(e){
+        e.preventDefault();
+        $('.js-validate-pop').addClass('hide');
+        $('body').css('overflow','auto');
+    });
+
    //alert
   //    $(".js-alert-popup").on('click',function(e){
   //      e.preventDefault();
