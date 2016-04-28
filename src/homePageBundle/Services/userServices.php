@@ -117,5 +117,21 @@ class userServices {
             return null;
         }
     }
+    public function getNbUnreadComment($estimates)
+    {
+        dump($estimates);
+        $unread = 0;
+        foreach ($proposal as $key => $proposals) {
+            dump($proposal);
+            if($proposal->getComment()){
+                if($proposal->getComment()->unread){
+                    $unread ++;
+                }
+            }else{
+                return false;
+            }
+        }
+        return $unread;
+    }
 }
 ?>

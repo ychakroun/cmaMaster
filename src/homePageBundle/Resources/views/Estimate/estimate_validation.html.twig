@@ -21,21 +21,21 @@
        <div class="step padTop30">
            <div class="centerText">
            {% if proposal.piece.etat == 1 %}
-           <img src="{{ asset("img/achat/achat-2.png") }}" alt="">
+           <img src="{{ asset("img/achat/achat-1.png") }}" alt="">
            <ul class="stateEstimate">
              <li class="black">Panier</li>
              <li>Livraison</li>
              <li>Paiement</li>
            </ul>
            {% elseif proposal.piece.etat == 2 %}
-           <img src="{{ asset("img/achat/achat-3.png") }}" alt="">
+           <img src="{{ asset("img/achat/achat-2.png") }}" alt="">
            <ul class="stateEstimate">
              <li>Panier</li>
              <li class="black">Livraison</li>
              <li>Paiement</li>
            </ul>
            {% elseif proposal.piece.etat == 3 %}
-           <img src="{{ asset("img/achat/achat-4.png") }}" alt="">
+           <img src="{{ asset("img/achat/achat-3.png") }}" alt="">
            <ul class="stateEstimate">
              <li>Panier</li>
              <li>Livraison</li>
@@ -44,19 +44,26 @@
            {% endif %}
            </div>
        </div>
+       {% if proposal.piece.etat == 1 %}
        <div class="step1">
          <header class="headerStep">Mon panier</header>
          <div class="content">
            <ul>
              <li>
-               <div class="image imgLiquidFill"><img src="#" alt=""></div>
+               <div class="image imgLiquidFill">
+                {% if proposal.piece.image1.path %}
+                  <img src="{{asset("images/" ~ proposal.piece.image1.path)}}" alt="">
+                {% else %}
+                  <img src="#" alt="">
+                {% endif %}
+              </div>
                <div class="description">
                  <h4>Thème:</h4>
-                 <p>Ceci est une page test, le thème est le test</p>
+                 <p>{{proposal.piece.theme}}</p>
                  <h4>Caractéristique:</h4>
-                 <p>Lot de 3 bouteilles - Verres <br> 30cm x 5cm</p>
+                 <p>{{proposal.piece.feature}}<br> {{proposal.piece.width}} x {{proposal.piece.height}}</p>
                </div>
-               <div class="price">120 €</div>
+               <div class="price">{{proposal.piece.price}} €</div>
              </li>
            </ul>
            <div class="totalPrice">
@@ -64,7 +71,7 @@
              <div class="price">
                <p class="text">Total TTC</p>
                <div class="result">
-                  <p class="number">20 000€</p>
+                  <p class="number">{{ proposal.piece.price }} €</p>
                   <p class="notice"> + frais de port<br>(étape suivante)</p>
                 </div>
              </div>
@@ -75,14 +82,16 @@
                   En cas de retour de l'oeuvre, les frais de transport restent à la charge de l'acquéreur.
                 </div>
                 <div class="validate">
-                  <div class="buttonMore">Valider mon panier</div>
+                  <a href="{{path('estimate_validation_step',{'pieceId':proposal.piece.id,'proposalId':proposal.id})}}"><div class="buttonMore">Valider mon panier</div></a>
                 </div>
            </footer>
          </div>
        </div>
+     {% endif %}
+       {% if proposal.piece.etat == 2 %}
        <div class="step2">
          <header class="headerStep">Adresse de livraison</header>
-
+        
          <!-- strat (A afficher que si on est dans la deuxième étape)  -->
          <div class="statut content ">
            <p>
@@ -104,12 +113,14 @@
              <label for="">{{ "form.information.pays" | trans }}</label><br>
              <input type="text">
            </p>
+           <a href="{{path('estimate_validation_step',{'pieceId':proposal.piece.id,'proposalId':proposal.id})}}"><div class="buttonMore">Valider mon adresse</div></a>
            <footer class="footerStep"></footer>
          </div>
+          </div>
+       {% endif %}
          <!-- end  (A afficher que si on est dans la deuxième étape)-->
-
-
-       </div>
+      
+       {% if proposal.piece.etat == 3 %}
        <div class="step3">
          <header class="headerStep">Coordonnées bancaires</header>
          <!-- strat (A afficher que si on est dans la toisième étape)  -->
@@ -119,8 +130,11 @@
            </ul>
            <footer class="footerStep"></footer>
          </div>
+         <a href="{{path('estimate_validation_step',{'pieceId':proposal.piece.id,'proposalId':proposal.id})}}"><div class="buttonMore">Valider mon adresse</div></a>
          <!-- end  (A afficher que si on est dans la toisième étape)-->
        </div>
-      </div>
+        </div>
+       {% endif %}
+     
   </section>
 {% endblock %}

@@ -155,7 +155,7 @@ class ProposalController extends Controller
         throw new HttpException(404,'This user does not have proposal.');
       }
       $estimate->removeProposal($proposal);
-      $em->persist($proposal);
+      $em->persist($estimate);
       $em->flush();
       return $this->RedirectToRoute('user_estimate_proposals',array('id'=>$estimate->getId()));
     }

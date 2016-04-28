@@ -268,6 +268,7 @@ class EstimateController extends Controller
       $em = $this->getDoctrine()->getManager();
       $estimate = $em->getRepository('CmaUserBundle:Estimate')->findOneById($id);
       $userp = $em->getRepository('CmaUserBundle:User')->findOneByUsername($userp);
+      $proposal = $em->getRepository('CmaUserBundle:Proposal')->findOneByUserId($userp->getId());
       $user = $this->get('security.token_storage')->getToken()->getUser();
       $mangoPayServices = $this->get('home_page.mangoPayServices');
       if($user->getMangoId()){
@@ -280,12 +281,22 @@ class EstimateController extends Controller
       }else{
         return $this->redirectToRoute('user_info');
       }
-      //$estimate->setIsValidate($userp);
-      $em->persist($user);
+      $estimate->setIsValidate($userp);
+      $em->persist($estimate);
       $em->flush();
       if (!is_object($user)||$user->getId()!=$estimate->getOwnerId()) {
         throw new AccessDeniedException('This user does not have access to this section.');
       }
-      return $this->render('homePageBundle:Estimate:estimate_validation.html.twig');
+      return $this->render('homePageBundle:Estimate:estimate_validation.html.twig',array('proposal'=>$proposal));
+    }
+    public function validationStepAction($proposalId,$pieceId)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $proposal = $em->getRepository('CmaUserBundle:Proposal')->findOneById($proposalId);
+      $piece = $em->getRepository('CmaUserBundle:Piece')->findOneById($pieceId);
+      $piece->setEtat($piece->getEtat()+1);
+      $em->persist($piece);
+      $em->flush();
+      return $this->render('homePageBundle:Estimate:estimate_validation.html.twig',array('proposal'=>$proposal));
     }
 }

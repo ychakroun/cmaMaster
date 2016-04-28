@@ -15,14 +15,12 @@
         <div class="infoSection"></div>
       </div>
     </header>
-    {#
     <div class="containerS">
       {% include "homePageBundle:Default:sidebar_parameter.html.twig" %}
       <div class="contentS f0">
         {% if estimates|length > 0 %}
           <header class="headerEstimates">
             <div class="titleS" style="">
-              #}
               {% if estimates|length > 1 %}
                 {{ estimates|length }}
                 {{"estimate.show.title.plurial" | trans }}

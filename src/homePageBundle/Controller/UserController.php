@@ -89,7 +89,6 @@ class UserController extends Controller
     $user = $this->get('security.token_storage')->getToken()->getUser();
     $em = $this->getDoctrine()->getManager();
     $estimates = $em->getRepository('CmaUserBundle:Estimate')->findByOwnerId($user->getId());
-    dump($user->getEstimates());
     if (!is_object($user)) {
       throw new AccessDeniedException('This user does not have access to this section.');
     }
