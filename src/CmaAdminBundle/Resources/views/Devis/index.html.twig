@@ -1,0 +1,88 @@
+{% extends 'CmaAdminBundle::layout.html.twig' %}
+{% block javascripts %}
+  {{ parent() }}
+  {% javascripts
+  '@CmaAdminBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
+  '@CmaAdminBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
+  %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  <script type="text/javascript">
+    $(function () {
+      $('#devis_table').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+      });
+    });
+  </script>
+{% endblock %}
+{% block content %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>Liste de devis</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-files-o"></i> Home</a></li>
+                <li class="active">Liste de devis</li>
+            </ol>
+        </section>
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-body">
+                  <table id="devis_table" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th width="150">Titre</th>
+                        <th>Description</th>
+                        <th>Budget</th>
+                        <th width="100">Date</th>
+                        <th width="100">Expire</th>
+                        <th>Address</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in devis %}
+                      <tr>
+                        <td>{{ item.getId() }}</td>
+                        <td>{{ item.getTitle() }}</td>
+                        <td>{{ item.getDescription()|slice(0, 180) ~ '...' }}</td>
+                        <td>{{ item.getBudget()~" €" }}</td>
+                        <td>{{ item.getDate().date }}</td>
+                        <td>{{ item.getTimeLimit().date }}</td>
+                        <td>{{ item.getDeliveryAdress() }}</td>
+                        <td>
+                          {% if item.getIsValidate() %}<i class="fa fa-check"></i>{% else %}<a href="{{ path('cma_admin_enable_devis',{'id':item.getId()}) }}" title="activé"><i class="fa fa-check"></i></a>{% endif %}
+                          <a href="{{ path('cma_admin_view_devis',{'id':item.getId()}) }}" title="visualisé"><i class="fa fa-eye"></i></a>
+                          <a href="{{ path('cma_admin_edit_devis',{'id':item.getId()}) }}" title="edité"><i class="fa fa-pencil"></i></a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>#</th>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Budget</th>
+                        <th>Date</th>
+                        <th>Expire</th>
+                        <th>Address</th>
+                        <th></th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+{% endblock %}

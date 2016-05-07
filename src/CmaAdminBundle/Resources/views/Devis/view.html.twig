@@ -1,0 +1,130 @@
+{% extends 'CmaAdminBundle::layout.html.twig' %}
+{% block javascripts %}
+  {{ parent() }}
+  {% javascripts
+  '@CmaAdminBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
+  '@CmaAdminBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
+  %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  <script type="text/javascript">
+    $(function () {
+      $('#propositions_table').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+      });
+    });
+  </script>
+{% endblock %}
+{% block content %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>Devis - {{ devis.getTitle() }}</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-files-o"></i> Home</a></li>
+                <li class="active">Devis - {{ devis.getTitle() }}</li>
+            </ol>
+        </section>
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div style="float: right;">
+                            <a href="{{ path('cma_admin_edit_devis',{'id':devis.getId()}) }}" title="edité"><i class="fa fa-pencil"></i></a>
+                            {% if not devis.getIsValidate() %}<a href="{{ path('cma_admin_enable_devis',{'id':devis.getId()}) }}" title="activé"><i class="fa fa-check"></i></a>{% endif %}
+                        </div>
+                        <h3 class="box-title">Détails</h3>
+                        <ul>
+                            {% if devis.image1 %}<li><img src="{{ asset("images/"~devis.image1.path)|imagine_filter('devis_image') }}" alt=""></li>{% endif %}
+                            {% if devis.image2 %}<li><img src="{{ asset("images/"~devis.image2.path)|imagine_filter('devis_image') }}" alt=""></li>{% endif %}
+                            {% if devis.image3 %}<li><img src="{{ asset("images/"~devis.image3.path)|imagine_filter('devis_image') }}" alt=""></li>{% endif %}
+                        </ul>
+                        <p><b>Budget : </b>{{ devis.getBudget()~" €" }}</p>
+                        <p><b>Date : </b>{{ devis.getDate().date }}</p>
+                        <p><b>Expire : </b>{{ devis.getTimeLimit().date }}</p>
+                        <p><b>Address : </b>{{ devis.getDeliveryAdress() }}</p>
+                        <p><b>Description : </b>{{ devis.getDescription() }}</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-body">
+                        <h3 class="box-title">Créateur du Devis</h3>
+                        <p><b>Nom et prénom:</b> {{ user.getName()~' '~user.getFirstName() }}</p>
+                        <p><b>Adress email:</b> {{ user.getEmail() }}</p>
+                        <p><b>Date d'anniversaire:</b> {{ user.getBirthday().date|date("m/d/Y H:i:s") }}</p>
+                        <p><b>Public:</b> {{ user.getIsPublic() ? 'Oui' : 'Non' }}</p>
+                        <p><b>Activé:</b> {{ user.isEnabled() ? 'Oui' : 'Non' }}</p>
+                        <p><b>Inscrit newsletter:</b> {{ user.getParameter().newsletter ? 'Oui' : 'Non' }}</p>
+                        <p><b>Role:</b>
+                            {% if 'ROLE_ADMIN' in user.getRoles() %}
+                                Administrator
+                            {% elseif 'ROLE_ARTIST' in user.getRoles() %}
+                                ARTIST
+                            {% elseif 'ROLE_COMPANY' in user.getRoles() %}
+                                COMPANY
+                            {% elseif 'ROLE_USER' in user.getRoles() %}
+                                USER
+                            {% else %}
+                                Anonymous
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                {% if devis.getProposals().snapshot  %}
+                <div class="box">
+                  <div class="box-body">
+                    <h3 class="box-title">Propositions</h3>
+                    <div>
+                        <table id="devis_table" class="table table-bordered table-striped">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th width="150">Titre</th>
+                                <th>Description</th>
+                                <th>Prix</th>
+                                <th width="100">Date</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            {% for proposal in devis.getProposals() %}
+                                {% set piece = proposal.getPiece() %}
+                                <tr>
+                                  <td>{{ proposal.getId() }}</td>
+                                  <td>{{ piece.getTitle() }}</td>
+                                  <td>{{ proposal.getDescription()|slice(0, 180) ~ '...' }}</td>
+                                  <td>{{ piece.getPrice() }} €</td>
+                                  <td>{{ proposal.getDate().date }}</td>
+                                  <td>
+                                    <a href="{{ path('cma_admin_view_proposal',{'id':proposal.getId()}) }}" title="visualisé"><i class="fa fa-eye"></i></a>
+                                    {#<a href="{{ path('cma_admin_edit_proposal',{'id':item.getId()}) }}" title="edité"><i class="fa fa-pencil"></i></a>#}
+                                  </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot>
+                              <tr>
+                                <th>#</th>
+                                <th width="150">Titre</th>
+                                <th>Description</th>
+                                <th>Prix</th>
+                                <th width="100">Date</th>
+                                <th></th>
+                              </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+            </div>
+          </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'CmaAdminBundle::layout.html.twig' %}
+{% block javascripts %}
+  {{ parent() }}
+  {% javascripts
+  '@CmaAdminBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
+  '@CmaAdminBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
+  %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  <script type="text/javascript">
+    $(function () {
+      $('#users_table').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+      });
+    });
+  </script>
+{% endblock %}
+{% block content %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>Gestion d'utilisateurs</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-users"></i> Home</a></li>
+                <li class="active">Gestion d'utilisateurs</li>
+            </ol>
+        </section>
+        <section class="content">
+          {% set flashMessages = app.session.flashbag.get('notice') %}
+          {% if flashMessages %}
+            <div class="alert alert-success fade in">
+              {% for flashMessage in flashMessages %}
+                {{ flashMessage }}
+              {% endfor %}
+              <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+            </div>
+          {% endif %}
+          {% set flashMessages = app.session.flashbag.get('error') %}
+          {% if flashMessages %}
+            <div class="alert alert-danger fade in">
+              {% for flashMessage in flashMessages %}
+                {{ flashMessage }}
+              {% endfor %}
+              <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+            </div>
+          {% endif %}
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Utilisateurs</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <table id="users_table" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Public / Privé</th>
+                        <th>Activé</th>
+                        <th>Newsletters</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                      <tr>
+                        <td>{{ user.getId() }}</td>
+                        <td>{{ user.getName() }}</td>
+                        <td>{{ user.getFirstName() }}</td>
+                        <td>{{ user.getEmail() }}</td>
+                        <td>{{ user.getIsPublic() ? 'Public' : 'Privé' }}</td>
+                        <td>{{ user.isEnabled() ? 'Oui' : 'Non' }}</td>
+                        <td>{{ user.getParameter().newsletter ? 'Inscrit(Oui)' : 'Inscrit(Non)' }}</td>
+                        <td>
+                          <a href="{{ path('cma_admin_view_user',{'id':user.getId()}) }}" title="visualisé"><i class="fa fa-eye"></i></a>
+                          {% if user.isEnabled() %}<i class="fa fa-check"></i>{% else %}<a href="{{ path('cma_admin_enable_user',{'id':user.getId()}) }}" title="activé"><i class="fa fa-check"></i></a>{% endif %}
+                          {% if user.getIsPublic() %}<a href="{{ path('cma_admin_stat_user',{'id':user.getId()}) }}" title="changé en privé"><i class="fa fa-user-secret"></i></a>{% else %}<a href="{{ path('cma_admin_stat_user',{'id':user.getId()}) }}" title="changé en public"><i class="fa fa-user"></i></a>{% endif %}
+                          <a href="{{ path('cma_admin_remove_user',{'id':user.getId()}) }}" title="supprimé"><i class="fa fa-trash"></i></a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Public / Privé</th>
+                        <th>Activé</th>
+                        <th>Newsletters</th>
+                        <th></th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+{% endblock %}

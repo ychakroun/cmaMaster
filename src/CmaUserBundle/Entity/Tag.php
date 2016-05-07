@@ -103,4 +103,14 @@ class Tag
     {
         $this->profiles = new ArrayCollection();
     }
+
+    /**
+     * Remove profile
+     *
+     * @param \CmaUserBundle\Entity\Profile $profile
+     */
+    public function removeProfile(\CmaUserBundle\Entity\Profile $profile)
+    {
+        $this->profiles->removeElement($profile);
+    }
 }

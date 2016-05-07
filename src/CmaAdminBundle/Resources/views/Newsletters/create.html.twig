@@ -1,0 +1,56 @@
+{% extends 'CmaAdminBundle::layout.html.twig' %}
+{% block javascripts %}
+  {{ parent() }}
+  {% javascripts
+  '@CmaAdminBundle/Resources/public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
+  '@CmaAdminBundle/Resources/public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js'
+  %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  <script type="text/javascript">
+    $(function () {
+      $(".textarea").wysihtml5();
+    });
+  </script>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {% stylesheets
+  'cmaadmin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
+  filter='cssrewrite'
+  %}
+  <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+  {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>Gestion de Newsletters</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-files-o"></i> Home</a></li>
+                <li class="active">New Newsletter</li>
+            </ol>
+        </section>
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box box-info">
+                <div class="box-body pad">
+                    <form method="post">
+                        <div class="form-group">
+                            {{ form_widget(form_newsletter.subject,{ 'attr': {'class': 'form-control', 'placeholder':'Sujet du mail'} }) }}
+                        </div>
+                        {{ form_widget(form_newsletter.content,{'attr': {'class':'textarea', 'style':'width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;'} }) }}
+                        {{form_widget(form_newsletter._token)}}
+                        <input type="submit" class="btn btn-primary" value="Envoyer" />
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+{% endblock %}

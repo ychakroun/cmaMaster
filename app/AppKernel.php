@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new CmaUserBundle\CmaUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new CmaAdminBundle\CmaAdminBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

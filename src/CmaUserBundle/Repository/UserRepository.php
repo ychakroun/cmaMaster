@@ -88,4 +88,19 @@ class UserRepository extends EntityRepository
     $qb->select('u')->from($this->_entityName, 'u')->leftJoin('u.groups', 'g')->where('u.username = :username')->setParameter('username', $username);
     return $qb->getQuery()->getResult();
   }
+
+    public function getNewsletterUsers($offset)
+    {
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('u')
+            ->from($this->_entityName, 'u')
+            ->leftJoin('u.parameter', 'p')
+            ->where($qb->expr()->eq('p.newsletter',1))
+            ->setMaxResults(100)
+            ->setFirstResult($offset);
+        return $qb->getQuery()->getResult();
+    }
+
+
+
 }

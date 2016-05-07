@@ -1,0 +1,89 @@
+{% extends 'CmaAdminBundle::layout.html.twig' %}
+{% block javascripts %}
+  {{ parent() }}
+  {% javascripts
+  '@CmaAdminBundle/Resources/public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
+  '@CmaAdminBundle/Resources/public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js'
+  %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  <script type="text/javascript">
+    $(function () {
+      $(".textarea").wysihtml5();
+    });
+  </script>
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {% stylesheets
+  'cmaadmin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
+  filter='cssrewrite'
+  %}
+  <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+  {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>Liste de Newsletters</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-files-o"></i> Home</a></li>
+                <li class="active">Liste de Newsletter</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            {% if newsletters %}
+                            <table id="users_table" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Subject</th>
+                                    <th>Content</th>
+                                    <th>Date</th>
+                                    <th>Envoyée</th>
+                                    <th>Etat</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for newsletter in newsletters %}
+                                        <tr>
+                                            <td>{{ newsletter.getId() }}</td>
+                                            <td>{{ newsletter.getSubject() }}</td>
+                                            <td>{{ newsletter.getContent()|truncate(100)|raw }}</td>
+                                            <td>{{ newsletter.getDate().date|date("m/d/Y H:i:s") }}</td>
+                                            <td>{{ newsletter.getOffset() }}</td>
+                                            <td>{{ newsletter.getFinished() ? 'Cloturé' : (newsletter.getOffset() == 0 ? 'En attente' : 'En cours') }}</td>
+                                            <td><a href="{{ path('cma_admin_newsletters_view',{'id': newsletter.getId() }) }}" title="visualisé"><i class="fa fa-eye"></i></a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Subject</th>
+                                    <th>Content</th>
+                                    <th>Date</th>
+                                    <th>Envoyée</th>
+                                    <th>Etat</th>
+                                    <th></th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                            {% else %}
+                                Aucun newsletter trouvée
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

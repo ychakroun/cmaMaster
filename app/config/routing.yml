@@ -1,3 +1,8 @@
+cma_admin:
+    resource: "@CmaAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
@@ -18,3 +23,6 @@ app:
 _welcome:
     path:  /
     defaults: { _controller: homePageBundle:Default:index }
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

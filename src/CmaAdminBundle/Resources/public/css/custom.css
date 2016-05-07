@@ -1,0 +1,12 @@
+#users_table a.icons {
+  margin: 0 4px;
+}
+#devis_table_filter label {
+  float: right;
+}
+.chat .item>.message {
+  margin-top: 0;
+}
+.imgLiquidFill,.imgLiquidFill img { max-width: 100%; }
+
+.comment_trash { float: left; }

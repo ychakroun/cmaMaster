@@ -1,0 +1,48 @@
+{% extends 'CmaAdminBundle::layout.html.twig' %}
+{% block javascripts %}
+  {{ parent() }}
+  {% javascripts
+  '@CmaAdminBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
+  '@CmaAdminBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
+  %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  <script type="text/javascript">
+    $(function () {
+      $('#users_table').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+      });
+    });
+  </script>
+{% endblock %}
+{% block content %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>Newsletter #{{ newsletter.getId() }}</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-users"></i> Home</a></li>
+                <li class="active">Newsletter #{{ newsletter.getId() }}</li>
+            </ol>
+        </section>
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+                <p><b>Sujet:</b> {{ newsletter.getSubject() }}</p>
+                <p><b>Date de création:</b> {{ newsletter.getDate().date|date("m/d/Y H:i:s") }}</p>
+                <p><b>Etat:</b> {{ newsletter.getFinished() ? 'Cloturé' : (newsletter.getOffset() == 0 ? 'En attente' : 'En cours') }}</p>
+                <div class="box">
+                    <div class="box-body">
+                        {{ newsletter.getContent()|raw }}
+                    </div>
+                </div>
+            </div>
+          </div>
+        </section>
+    </div>
+{% endblock %}

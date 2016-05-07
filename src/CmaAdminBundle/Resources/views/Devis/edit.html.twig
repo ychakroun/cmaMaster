@@ -1,0 +1,144 @@
+{% extends 'CmaAdminBundle::layout.html.twig' %}
+{% block javascripts %}
+  {{ parent() }}
+  <script src="{{ asset( 'js/imgProfileEdit.js' ) }}"></script>
+{% endblock %}
+{% block content %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>Devis - {{ devis.getTitle() }}</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-files-o"></i> Home</a></li>
+                <li class="active">Devis - {{ devis.getTitle() }}</li>
+            </ol>
+        </section>
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+            <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Devis</h3>
+                </div>
+                <div class="box-body">
+                  {{form_start(formEstimate)}}
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                       <label>{{formEstimate.title.vars.label}}*</label>
+                       {{ form_widget(formEstimate.title,{ 'attr': {'class': 'form-control'} }) }}
+                      </div>
+                    </div>
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                       <label>{{formEstimate.day.vars.label}}*</label>
+                       {{ form_widget(formEstimate.day,{ 'attr': {'class': 'form-control'} }) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                       <label>{{formEstimate.deliveryAdress.vars.label}}*</label>
+                       {{ form_widget(formEstimate.deliveryAdress,{ 'attr': {'class': 'form-control'} }) }}
+                      </div>
+                    </div>
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                       <label>{{formEstimate.medium.vars.label}}*</label>
+                       {{ form_widget(formEstimate.medium,{ 'attr': {'class': 'form-control'} }) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="form-group">
+                       <label>{{formEstimate.description.vars.label}}*</label>
+                       {{ form_widget(formEstimate.description,{ 'attr': {'class': 'form-control'} }) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Plus de détails</h3>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                       <label>{{formEstimate.budget.vars.label}}*</label>
+                       {{ form_widget(formEstimate.budget,{ 'attr': {'class': 'form-control'} }) }}
+                      </div>
+                    </div>
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                       <label>{{formEstimate.orientation.vars.label}}*</label>
+                       {{ form_widget(formEstimate.orientation,{ 'attr': {'class': 'form-control'} }) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                       <label>{{formEstimate.technics.vars.label}}*</label>
+                       {{ form_widget(formEstimate.technics,{ 'attr': {'class': 'form-control'} }) }}
+                      </div>
+                    </div>
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                       <label>{{formEstimate.tools.vars.label}}*</label>
+                       {{ form_widget(formEstimate.tools,{ 'attr': {'class': 'form-control'} }) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                       <label>{{formEstimate.width.vars.label}}*</label>
+                       {{ form_widget(formEstimate.width,{ 'attr': {'class': 'form-control'} }) }}
+                      </div>
+                    </div>
+                    <div class="col-xs-6">
+                      <div class="form-group">
+                       <label>{{formEstimate.height.vars.label}}*</label>
+                       {{ form_widget(formEstimate.height,{ 'attr': {'class': 'form-control'} }) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="box-header with-border">
+                   <h3 class="box-title">Illustrer votre demande</h3>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-4">
+                          {{ form_widget(formEstimate.image1.file) }}
+                          {{ form_row(formEstimate.image1.name,{attr: {'value': username }}) }}
+                          {% if devis.image1 %}
+                              <img id="1" src="{{ asset("images/"~devis.image1.path) }}" alt="" class="col-xs-12">
+                          {% endif %}
+                      </div>
+                      <div class="col-xs-4">
+                          {{ form_widget(formEstimate.image2.file) }}
+                          {{ form_row(formEstimate.image2.name,{attr: {'value': username }}) }}
+                          {% if devis.image2 %}
+                              <img id="1" src="{{ asset("images/"~devis.image2.path) }}" alt="" class="col-xs-12">
+                          {% endif %}
+                      </div>
+                      <div class="col-xs-4">
+                          {{ form_widget(formEstimate.image3.file) }}
+                          {{ form_row(formEstimate.image3.name,{attr: {'value': username }}) }}
+                          {% if devis.image3 %}
+                              <img id="1" src="{{ asset("images/"~devis.image3.path) }}" alt="" class="col-xs-12">
+                          {% endif %}
+                      </div>
+                  </div>
+                  <div class="box-footer">
+                      {{form_widget(formEstimate.condition, { 'attr': {'checked': 'checked', 'class':'hidden'} })}}
+                      {{form_widget(formEstimate.save,{ 'attr': {'class': 'btn btn-primary'} })}}
+                  </div>
+                   {{form_widget(formEstimate._token)}}
+                  </form>
+                </div><!-- /.box-body -->
+              </div>
+           </div>
+          </div>
+        </section>
+      </div>
+{% endblock %}

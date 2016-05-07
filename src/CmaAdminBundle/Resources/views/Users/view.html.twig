@@ -1,0 +1,131 @@
+{% extends 'CmaAdminBundle::layout.html.twig' %}
+{% block javascripts %}
+  {{ parent() }}
+  {% javascripts
+  '@CmaAdminBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
+  '@CmaAdminBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
+  %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+{% endblock %}
+{% block content %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>{{ user.getName()~' '~user.getFirstName() }}</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-users"></i> Home</a></li>
+                <li class="active">{{ user.getName()~' '~user.getFirstName() }}</li>
+            </ol>
+        </section>
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+                <p><b>Nom et prénom:</b> {{ user.getName()~' '~user.getFirstName() }}</p>
+                <p><b>Adress email:</b> {{ user.getEmail() }}</p>
+                <p><b>Date d'anniversaire:</b> {{ user.getBirthday().date|date("m/d/Y H:i:s") }}</p>
+                <p><b>Public:</b> {{ user.getIsPublic() ? 'Oui' : 'Non' }}</p>
+                <p><b>Activé:</b> {{ user.isEnabled() ? 'Oui' : 'Non' }}</p>
+                <p><b>Inscrit newsletter:</b> {{ user.getParameter().newsletter ? 'Oui' : 'Non' }}</p>
+                <p><b>Role:</b>
+                    {% if 'ROLE_ADMIN' in user.getRoles() %}
+                        Administrator
+                    {% elseif 'ROLE_ARTIST' in user.getRoles() %}
+                        ARTIST
+                    {% elseif 'ROLE_COMPANY' in user.getRoles() %}
+                        COMPANY
+                    {% elseif 'ROLE_USER' in user.getRoles() %}
+                        USER
+                    {% else %}
+                        Anonymous
+                    {% endif %}
+                </p>
+                <div class="infos">
+                    <div><img src="{{asset('img/custom-b.png')}}" alt=""><p>{{ userServices.getCustom(user.getId())}} custom.</p></div>
+                    {% if 'ROLE_ARTIST' in user.getRoles()  %}
+                    <div>
+                       <img src="{{asset('img/likes-b.png')}}" alt="">
+                       <p>{{userServices.getLikes(user.getId())}} likes</p>
+                    </div>
+                    {% else %}
+                     {% if 'ROLE_USER' in user.getRoles() %}<a href="{{path('add_like_artist',{'artistId':user.getId()})}}"></a>{% endif %}
+                       <div>
+                           {% if userServices.doesLikeIt(user.getId()) > 0 %}
+                             <img src="{{asset('img/likes-r.png')}}" alt="">
+                           {% else %}
+                             <img src="{{asset('img/likes-b.png')}}" alt="">
+                           {% endif %}
+                          <p>{{userServices.getLikes(user.getId())}} likes</p>
+                       </div>
+                     </a>
+                    {% endif %}
+                    <div><img src="{{asset('img/avis-b.png')}}" alt=""><p>{{userServices.getOpinion(user.getId())}} avis</p></div>
+                    {% if userServices.tagsFromProfile(user.getProfile()) %}
+                        <div class= 'tags'>
+                            <ul id="marqueurs">
+                        {% for tag in userServices.tagsFromProfile(user.getProfile()) %}
+                                <li id="tag_{{tag.id}}">
+                                    {{tag.name}}
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Portfolio</h3>
+                    </div>
+                    <div class="box-body">
+                        <div id="imageAll">
+                            {% if user.getProfile().getImage1() %}
+                            <div class= "imageProfile imgLiquidFill">
+                                <img src="{{ asset( 'images/'~user.getProfile().getImage1().getPath() ) }}" alt="">
+                            </div>
+                            {% endif %}
+                            {% if user.getProfile().getImage2() %}
+                            <div class= "imageProfile imgLiquidFill">
+                                <img src="{{ asset( 'images/'~user.getProfile().getImage2().getPath() ) }}" alt="">
+                            </div>
+                            {% endif %}
+                            {% if user.getProfile().getImage3() %}
+                            <div class= "imageProfile imgLiquidFill">
+                                <img src="{{ asset( 'images/'~user.getProfile().getImage3().getPath() ) }}" alt="">
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Galleries</h3>
+                    </div>
+                    <div class="box-body">
+                        <ul>
+                            {% for piece in pieces %}
+                                <li>
+                                    <a href="{{ path('buy',{'artistUsername':piece.getUser().getUsername(),'pieceId':piece.getId()}) }}">
+                                        {% if piece.getImage1() %}
+                                        <div class="images">
+                                                <img src="{{ asset("images/"~piece.getImage1().getPath()) }}" alt="">
+                                        </div>
+                                        {% endif %}
+                                        <div class="infos">
+                                            <div class="decriptions">
+                                                <p class="name">{{ piece.getUser().getUsername() }}</p>
+                                                <p class="title">{{ piece.getTitle() }}</p>
+                                            </div>
+                                            <div class="price">{{piece.getPrice()}} €</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </section>
+    </div>
+{% endblock %}

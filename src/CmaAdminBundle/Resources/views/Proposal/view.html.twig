@@ -1,0 +1,109 @@
+{% extends 'CmaAdminBundle::layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '@CmaAdminBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
+    '@CmaAdminBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script type="text/javascript">
+        $(function () {
+            $('#propositions_table').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+    </script>
+{% endblock %}
+{% block content %}
+    {% set piece = proposal.getPiece() %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>Proposition - {{ piece.getTitle() }}</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-files-o"></i> Home</a></li>
+                <li class="active">Proposition - {{ piece.getTitle() }}</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <h3 class="box-title">Détails</h3>
+                            <p><b>Titre : </b>{{ piece.getTitle() }}</p>
+                            <p><b>Prix : </b>{{ piece.getPrice()~" €" }}</p>
+                            <p><b>Utilisateur : </b>{{ user.getFirstName()~" "~user.getName() }}</p>
+                            <p><b>Délais : </b>{{ proposal.getTimeLimit().date }}</p>
+                            <p><b>Technique : </b>{{ piece.getTechnics() }}</p>
+                            <p><b>Livraison : </b>{{ devis.getDeliveryAdress() }}</p>
+                            <p><b>Support : </b>{{ piece.getMedium() }}</p>
+                            <p><b>Description : </b>{{ proposal.getDescription() }}</p>
+                            <b>Images : </b>
+                            <div class="col-12">
+                                {% if piece.getImage1() and piece.getImage1().path %}
+                                    <div id="div1" class="pull-left imgLiquidFill" style="margin:20px 0px;">
+                                        <img id="1" src="{{ asset( 'images/'~piece.getImage1().path ) }}" alt="">
+                                    </div>
+                                {% endif %}
+                                {% if piece.getImage2() and piece.getImage2().path %}
+                                    <div id="div2" class="pull-left imgLiquidFill" style="margin:20px 0px;">
+                                        <img id="2" src="{{ asset( 'images/' ~ piece.getImage2().path ) }}" alt="">
+                                    </div>
+                                {% endif %}
+                                {% if piece.getImage3() and piece.getImage3().path %}
+                                    <div id="div3" class="pull-left imgLiquidFill" style="margin:20px 0px;">
+                                        <img id="3" src="{{ asset( 'images/' ~ piece.getImage3().path ) }}" alt="">
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% if proposal.comments %}
+                    <div class="box box-success">
+                        <div class="box-header">
+                            <i class="fa fa-comments-o"></i>
+                            <h3 class="box-title">Discussion</h3>
+                        </div>
+                        <div class="box-body chat" id="chat-box">
+                            {% for comment in proposal.comments %}
+                            <div class="item">
+                                <a href="" class="comment_trash" title="supprimé"><i class="fa fa-trash"></i></a>
+                                <div class="message">
+                                    <span class="name">
+                                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{comment.date.date|date("m/d/Y H:i:s")}}</small>
+                                        {% set user = getUserById(comment.getUserId()) %}
+                                        {{ user.getFirstName()~' '~user.getName() }}
+                                    </span>
+                                    {% if comment.getImage() and comment.getImage().path %}
+                                        <div style="background:url({{asset('images/'~comment.getImage().path)|imagine_filter('devis_image')}});background-size: cover; background-position: center center; background-repeat: no-repeat;width:300px;height:300px;margin:20px auto;"></div>
+                                    {% endif %}
+                                    {{ comment.getComment() }}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div><!-- /.chat -->
+                        <form name="comment" method="post">
+                            <div class="box-footer">
+                                <div class="input-group">
+                                    <input class="form-control" name="{{ form.comment.vars.full_name }}" placeholder="Type message...">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                    {{form_widget(form._token)}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

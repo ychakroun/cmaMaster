@@ -1,0 +1,16 @@
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+            {#<li><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>#}
+            <li {% if app.request.attributes.get('_route') == 'cma_admin_users' %}class="active" {% endif %}><a href="{{ path('cma_admin_users') }}"><i class="fa fa-users"></i><span>Gestion des inscriptions</span></a></li>
+            <li {% if app.request.attributes.get('_route') == 'cma_admin_devis' %}class="active" {% endif %}><a href="{{ path('cma_admin_devis') }}"><i class="fa fa-files-o"></i><span>Gestion des devis</span></a></li>
+            <li class="treeview {% if app.request.attributes.get('_route') == 'cma_admin_newsletters_create' or app.request.attributes.get('_route') == 'cma_admin_newsletters' %}active{% endif %}">
+                <a href="{{ path('cma_admin_newsletters') }}"><i class="fa fa-envelope"></i><span>Newsletters</span><i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li {% if app.request.attributes.get('_route') == 'cma_admin_newsletters' %}class="active"{% endif %}><a href="{{ path('cma_admin_newsletters') }}"><i class="fa fa-circle-o"></i> Liste de Newsletters</a></li>
+                    <li {% if app.request.attributes.get('_route') == 'cma_admin_newsletters_create' %}class="active"{% endif %}><a href="{{ path('cma_admin_newsletters_create') }}"><i class="fa fa-circle-o"></i> Crée un newsletter</a></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</aside>

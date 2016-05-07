@@ -1,0 +1,15 @@
+services:
+    cma_admin.twig.extension:
+       class: CmaAdminBundle\Twig\AdminExtension
+       calls:
+           - [setEntityManager, ["@doctrine.orm.entity_manager"]]
+       tags:
+           - { name: twig.extension }
+
+    cma_admin.command.mailing:
+        class: CmaAdminBundle\Command\MailingCommand
+        calls:
+            - [setEntityManager, ["@doctrine.orm.entity_manager"]]
+            - [setContainer, ["@service_container"]]
+        tags:
+            -  { name: console.command }
